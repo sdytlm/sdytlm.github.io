@@ -1,0 +1,16 @@
+---
+layout: post
+title: "test"
+date: 2015-01-14 16:29:21 -0500
+comments: true
+categories: test 
+---
+
+``` C++ test
+#include<iostream>
+using namespace std;
+
+int main(){
+	cout << " haha" << endl;
+}
+```
