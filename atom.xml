@@ -4,11 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-<<<<<<< HEAD
-  <updated>2015-01-05T12:02:26-05:00</updated>
-=======
-  <updated>2015-01-01T22:26:20-05:00</updated>
->>>>>>> 7654fe202c484229971ffa556a86a067304e39f4
+  <updated>2015-01-14T16:31:43-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -16,5 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/01/14/test/"/>
+    <updated>2015-01-14T16:29:21-05:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/01/14/test</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span>test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="cp">#include&lt;iostream&gt;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; haha&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
 </feed>
