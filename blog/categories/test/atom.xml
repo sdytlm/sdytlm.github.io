@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Test | My Octopress Blog]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2015-01-15T10:51:59-05:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Test]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/01/14/test/"/>
+    <updated>2015-01-14T16:29:21-05:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/01/14/test</id>
+    <content type="html"><![CDATA[<pre><code class="C++ test">#include&lt;iostream&gt;
+using namespace std;
+
+int main(){
+    cout &lt;&lt; " haha" &lt;&lt; endl;
+}
+</code></pre>
+
+<pre><code class="C test2">void main(){
+    printf("haha\n");
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
