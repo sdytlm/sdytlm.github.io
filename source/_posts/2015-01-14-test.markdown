@@ -14,3 +14,9 @@ int main(){
 	cout << " haha" << endl;
 }
 ```
+
+``` C test2
+void main(){
+	printf("haha\n");
+}
+```
