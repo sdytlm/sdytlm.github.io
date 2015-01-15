@@ -4,11 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-<<<<<<< HEAD
   <updated>2015-01-15T10:51:59-05:00</updated>
-=======
-  <updated>2015-01-14T21:00:39-05:00</updated>
->>>>>>> 76bb3b9efb7b65fc1b8071aa103debfadfe48fdc
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -36,7 +32,6 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<<<<<<< HEAD
 
 
 
@@ -48,8 +43,6 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-=======
->>>>>>> 76bb3b9efb7b65fc1b8071aa103debfadfe48fdc
 ]]></content>
   </entry>
   
