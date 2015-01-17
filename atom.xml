@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-17T13:44:19-05:00</updated>
+  <updated>2015-01-17T14:51:45-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -133,13 +133,10 @@
 
 
 <pre><code class="`` c">  #include &lt;fcntl.h&gt;
-     ...
-     int fd;
-     mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-     char *filename = "/tmp/file";
-     ...
-     fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
-     ...
+  int fd;
+  mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+  char *filename = "/tmp/file";
+  fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
 </code></pre>
 
 <blockquote><p>当打开的文件不存在时 <strong>flag</strong> 必须有O_CREATE, 打开已存在文件则不需要.</p></blockquote></li>

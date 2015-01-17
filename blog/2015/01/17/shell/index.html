@@ -201,13 +201,10 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 
 <pre><code class="`` c">  #include &lt;fcntl.h&gt;
-     ...
-     int fd;
-     mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-     char *filename = "/tmp/file";
-     ...
-     fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
-     ...
+  int fd;
+  mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+  char *filename = "/tmp/file";
+  fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
 </code></pre>
 
 <blockquote><p>当打开的文件不存在时 <strong>flag</strong> 必须有O_CREATE, 打开已存在文件则不需要.</p></blockquote></li>
