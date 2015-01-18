@@ -1,0 +1,206 @@
+---
+layout: post
+title: "Mit6.828 Chapter 0: Operating System Interfaces"
+date: 2015-01-17
+comments: true
+categories: mit6.828
+tag: mit6.828  
+---
+
+
+**Process**: include memory containing instructions, data and a stack. **Instructions** implement the program's computation. The **data** are the variables on which the computation acts. The **stack** organizes the program's procedure calls.
+> Procedure calls： 也叫系统调用，用来给process调用kernel service. 当process调用系统调用时，硬件cpu会提高程序的privilege level然后执行内核中已经定义好的函数.
+
+<!--more-->
+
+### Processes and Memory
+* xv6 进程包括**user-space memory**和**per-process state** private to the kernel.
+* 当进程不工作时保存CPU Register，下次启动时再restore.
+* 一个进程可以调用fork system call来生成一个新进程叫**child process**. 原来那个进程叫**parent process**.
+> child process 有父进程的memory content.
+
+* fork system call returns in both parent and child.
+> In the parent process, fork returns the child's pid. In the child, it returns 0.
+
+   ``` c
+    int pid = fork();
+    if(pid > 0){
+        printf("parent: child=%d\n", pid);
+        pid = wait();
+        printf("child %d is done\n", pid);
+    } else if(pid == 0){
+        printf("child: exiting\n");
+        exit();
+    } else {
+        printf("fork error\n");
+    }
+    ```
+    输出结果是
+    ``` parent: child=1234
+        child: exiting
+        注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
+    ```
+    > 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
+* **exec(filename, *argv)** system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.
+
+    ``` c++
+    argv[0] = "echo"; // 会被忽略
+    argv[1] = "hello";
+    argv[2] = 0;
+    exec("/bin/echo", argv);
+    printf("exec error\n");
+    ```
+    > 第一个变量argv[0]会被忽略，不起实际作用
+
+* Xv6 shell的执行流程:
+    1. shell 执行 **getcmd** 获得用户输入的命令
+    2. shell 执行 **fork** 创建一个shell 进程的copy,然后shell进入wait状态
+    3. shell 执行 **runcmd** 运行用户的命令
+    4. runcmd函数调用**exec** 系统调用加载适当的函数如：echo
+    5. 在函数(echo) 的结束，有**exit**系统调用返回shell, shell从wait中退出
+
+> xv86为用户分配内存空间: **fork**为子进程copy父进程的内存,**exec** 为可执行文件ELF开辟内存, 当用户需要额外内存时(malloc) 调用**sbrk(n)**
+
+-----------
+### I/O and File Descriptors
+
+* File Descriptor: a small integer representing a kernel-managed object that a process may read from or write to.
+> xv6中，所有的object都有file descriptor
+
+* 每一个进程都有private file descriptor table.
+* **read(fd,buf,n)**系统调用: 读取fd中n个bytes到buf. 每个fd中都有一个**offset**，读取一次都会update offset，以便下次继续读取. 若没什么可读了，返回0，否则返回读取的字节数.
+* **write(fd,buf,n)**系统调用： 向fd中写入buf里的n个bytes. 工作原理与read类似，也有**offset**
+举例（Cat的实现）：
+
+    ``` c
+    char buf[512];
+    int n;
+    for(;;){
+        n = read(0, buf, sizeof (buf));  // 从标准输入读
+        if(n == 0)                       // 输入结束
+            break;
+        if(n < 0){                       // error
+            fprintf(2, "read error\n");
+            exit();
+        }
+        if(write(1, buf, n) != n){      // 向标准输出写
+            fprintf(2, "write error\n");
+            exit();
+        }
+    }
+    ```
+
+* close 系统调用会释放一个file descriptor。 当有进程申请新的file descriptor时，**数值最小的那个fd**会被分配给新的object.
+* 实现 I/O 重定向: 先用close释放一个file descriptor，然后重新open一个文件，这样新的文件就拥有了释放掉的fd(因为总是从最小的fd开始分配).
+
+    举例（实现cat < tinput.txt)：
+    ``` c
+    argv[0] = "cat";
+    argv[1] = 0;
+    if(fork() == 0) {  // 确保是在子进程里
+        close(0);      // 释放fd 0
+        open("input.txt", O_RDONLY); // assign fd0 to input.txt
+        exec("cat", argv);           // 执行cat命令
+    }
+    ```
+     > Fork 拷贝父进程的file descriptor table 到子进程. exec在载入文件时依然会保留进程的file descriptor table.
+* 当父子进程同时操作一个fd时，fd中的offset是共享的.
+
+    ``` c
+    if(fork() == 0) {
+        write(1, "hello ", 6);
+        exit();
+    } else {
+        wait();                  // 确保先执行子进程再执行父进程
+        write(1, "world\n", 6);
+    }
+    ```
+    > 父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.
+
+
+* **dup**系统调用: 复制当前fd，返回一个新的fd指向同一个Object. dup出来的新fd共享之前fd的offset
+    ``` c
+    fd = dup(1);                // 复制fd 1
+    write(1, "hello ", 6);
+    write(fd, "world\n", 6);
+    ```
+    > 在不创建子进程的情况下，通过dup实现共享offset。除此之外offset不能共享
+
+-----------
+### Pipes
+实现一个简单的Pipe, wc 连接pipe的read end
+``` C
+int p[2];
+char *argv[2];
+argv[0] = "wc";
+argv[1] = 0;
+pipe(p); // 创建pipe，在p中记录read和write fd
+if(fork() == 0) { // 子进程
+    close(0);
+    dup(p[0]);    // fd0 被赋给p[0]指向的object
+    close(p[0]);
+    close(p[1]);  // p[1]必须在wc之前被close, 否则read end就不会结束
+    exec("/bin/wc", argv); // execute wc on p[0]
+} else {         // 父进程
+    write(p[1], "hello world\n", 12); // execute "write hello world to p[1]"
+    close(p[0]);
+    close(p[1]);
+}
+```
+> 上面代码中, p[0]: read end, p[1]: write end . 子进程必须在wc之前关闭p[1], 否则wc时read end一直等待所有指向write end的fd关闭.
+
+* 如果pipe的read end没有数据, 则read end 要么是等待数据,要么等待所有指向write end的fd都关闭. 若后一种情况发生时，读到的是0，表示读到文件的结束了.
+* 如何实现`fork sh.c | wc -l`
+    * child process creates a pipe to connect the left end of the pipe with the right end.
+    * child process calls **runcmd** for the left end of the pipeline
+    * child process calls **runcmd** for the right end of the pipe
+    * waits for the left and the right ends to finish by calling **wait** twice
+* pipe 和 temp file的不同之处:
+    * pipe 可以自动清理
+    * tmp file需要空间，pipe不需要空间，传递的是data stream
+    * pipe 可以 synchronization,一个process可以block read等到另一个process写完pipe，再读取.
+
+-------
+### File System
+* **chdir** 系统调用: 改变当前工作目录
+* **mkdir** 系统调用: 创建一个新的目录, 用**open**系统调用可以创建新的文件
+* **mknod** 系统调用: 创建新的设备文件
+
+    ``` c
+    // chdir
+    chdir("/a");
+    chdir("b");
+    open("c", O_RDONLY);
+    // 另一种实现方法
+    open("/a/b/c", O_RDONLY);
+
+    // mkdir
+    mkdir("/dir");
+    fd = open("/dir/file", O_CREATE|O_WRONLY); // 创建文件
+    close(fd);
+
+    // mknod
+    mknod("/console", 1, 1); // 这两个数字分别是major and minor device number. 用来识别kernel deviced
+    ```
+* **fstat** 系统调用: 可以读取一个fd指向的object的信息. fstat 读取的数据结构定义如下
+
+    ``` C
+    #define T_DIR 1 // Directory
+    #define T_FILE 2 // File
+    #define T_DEV 3 // Device
+    struct stat {
+        short type; // Type of file
+        int dev; // File system’s disk device
+        uint ino; // Inode number, OS里用来识别真实文件的, 一个innode 可以被Link到多个名字去
+        short nlink; // Number of links to file
+        uint size; // Size of file in bytes
+};
+    ```
+
+* **link** 和 **unlink** 系统调用: 为已存在的文件创建一个“别名”，但是都指向相同的Innode.
+
+    ``` C
+    open("a", O_CREATE|O_WRONLY);
+    link("a", "b");
+    unlink("a");
+    ```

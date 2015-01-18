@@ -97,3 +97,94 @@ struct cmd* parseexec(char **ps, char *es)
     函数原型: int dup(int oldfd);
     函数说明: create a copy of the file descriptor oldfd
     > dup uses the lowest-numbered unused descriptor for the new descriptor.
+
+## 关键部分代码
+
+``` c
+void runcmd(struct cmd *cmd)
+{
+  int p[2], r;
+  struct execcmd *ecmd;
+  struct pipecmd *pcmd;
+  struct redircmd *rcmd;
+  char cmdPath[10] = "/bin/";
+
+
+  if(cmd == 0)
+    exit(0);
+
+  switch(cmd->type){
+  default:
+      fprintf(stderr, "unknown runcmd\n");
+      exit(-1);
+
+  case ' ':                       // 普通命令
+      ecmd = (struct execcmd*)cmd;
+      if(ecmd->argv[0] == 0)
+        exit(0);
+
+      // Your code here ...
+      if(execv(ecmd->argv[0],ecmd->argv)==-1){
+      // 到/bin目录中找命令
+          char cmdPath[10] = "/bin/";
+          strcat(cmdPath,ecmd->argv[0]);
+          if(execv(cmdPath,ecmd->argv)==-1){	// test /bin/cmd
+              char cmdPath2[15] = "/usr/bin/";
+              strcat(cmdPath2,ecmd->argv[0]);	// test /usr/bin/cmd (e.g.sort)
+              if(execv(cmdPath2,ecmd->argv)==-1){
+                  fprintf(stderr, "Command %s not found\n",ecmd->argv[0]);
+              exit(0);
+            }
+
+        }
+
+      }
+      break;
+
+    case '>':                       // 重定向命令
+    case '<':
+        rcmd = (struct redircmd*)cmd;
+        //fprintf(stderr, "redir not implemented\n");
+        // Your code here ...
+        close(rcmd->fd);		// 重定向命令已经默认的fd指向了0或1，所以这里是关闭stdin 或者 stdout
+        if(open(rcmd->file,rcmd->mode,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)<0){
+            fprintf(stderr,"Cannot open file\n");
+            exit(0);
+        }
+        runcmd(rcmd->cmd);
+        break;
+
+    case '|':                      //  管道线命令
+        pcmd = (struct pipecmd*)cmd;
+        // fprintf(stderr, "pipe not implemented\n");
+        // Your code here ...
+        if(pipe(p)<0){
+            fprintf(stderr,"Create pipe failes\n");
+            exit(0);
+        }
+        // 子进程把pipe的right end 和 标准输出连起来
+        if(fork1()==0){
+            close(1);
+            dup(p[1]); // 标准输出被赋予fd:p[1]
+            close(p[0]);
+            close(p[1]);  // 这样fd表里只剩下标准输入fd:0 和输出fd:p[1]
+            runcmd(pcmd->left);
+        }
+        if(fork1()==0){
+            close(0);
+            dup(p[0]); // 标准输入被赋予fd:p[0]
+            close(p[0]);
+            close(p[1]); // 这样fd表里只剩下标准输入fd:fd[0] 和 输出fd:p[0]
+            runcmd(pcmd->right);
+        }
+        close(p[0]);
+        close(p[1]);
+        wait();	// 父进程等待子进程结束。
+        wait();
+
+        break;
+      }
+      exit(0);
+  }
+
+```
