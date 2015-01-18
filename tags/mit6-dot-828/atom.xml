@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-17T23:12:12-05:00</updated>
+  <updated>2015-01-17T23:16:47-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -244,7 +244,9 @@ struct cmd* parseexec(char **ps, char *es)
 <blockquote><p>child process 有父进程的memory content.</p></blockquote></li>
 <li><p>fork system call returns in both parent and child.</p>
 
-<blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote>
+<blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote></li>
+</ul>
+
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -258,25 +260,29 @@ struct cmd* parseexec(char **ps, char *es)
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>int pid = fork();
-</span><span class='line'>  if(pid > 0){
-</span><span class='line'>      printf(&ldquo;parent: child=%d\n&rdquo;, pid);
-</span><span class='line'>      pid = wait();
-</span><span class='line'>      printf(&ldquo;child %d is done\n&rdquo;, pid);
-</span><span class='line'>  } else if(pid == 0){
-</span><span class='line'>      printf(&ldquo;child: exiting\n&rdquo;);
-</span><span class='line'>      exit();
-</span><span class='line'>  } else {
-</span><span class='line'>      printf(&ldquo;fork error\n&rdquo;);
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'>    if(pid > 0){
+</span><span class='line'>        printf(&ldquo;parent: child=%d\n&rdquo;, pid);
+</span><span class='line'>        pid = wait();
+</span><span class='line'>        printf(&ldquo;child %d is done\n&rdquo;, pid);
+</span><span class='line'>    } else if(pid == 0){
+</span><span class='line'>        printf(&ldquo;child: exiting\n&rdquo;);
+</span><span class='line'>        exit();
+</span><span class='line'>    } else {
+</span><span class='line'>        printf(&ldquo;fork error\n&rdquo;);
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure></p>
 
-<p>  输出结果是</p>
+<pre><code>输出结果是
 
-<p>  <code>parent: child=1234
-      child: exiting
-      注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
- </code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>parent: child=1234
+</span><span class='line'>child: exiting
+</span><span class='line'>注：输出结果的顺序可能不同，取决于child 和 parent谁先执行</span></code></pre></td></tr></table></div></figure>
+&gt; 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
+</code></pre>
 
-<blockquote><p>注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行</p></blockquote></li>
+<ul>
 <li><p><strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</p>
 
 <pre><code class="`` c++">  argv[0] = "echo"; // 会被忽略
@@ -334,18 +340,23 @@ struct cmd* parseexec(char **ps, char *es)
 <li><p>close 系统调用会释放一个file descriptor。 当有进程申请新的file descriptor时，<strong>数值最小的那个fd</strong>会被分配给新的object.</p></li>
 <li><p>实现 I/O 重定向: 先用close释放一个file descriptor，然后重新open一个文件，这样新的文件就拥有了释放掉的fd(因为总是从最小的fd开始分配).</p>
 
-<p>  举例（实现cat &lt; tinput.txt)：
-  <code>c
-  argv[0] = "cat";
-  argv[1] = 0;
-  if(fork() == 0) {  // 确保是在子进程里
-      close(0);      // 释放fd 0
-      open("input.txt", O_RDONLY); // assign fd0 to input.txt
-      exec("cat", argv);           // 执行cat命令
-  }
- </code></p>
+<p>  举例（实现cat &lt; tinput.txt)：</p></li>
+</ul>
 
-<blockquote><p>Fork 拷贝父进程的file descriptor table 到子进程. exec在载入文件时依然会保留进程的file descriptor table.</p></blockquote></li>
+
+<pre><code class="c">    argv[0] = "cat";
+    argv[1] = 0;
+    if(fork() == 0) {  // 确保是在子进程里
+        close(0);      // 释放fd 0
+        open("input.txt", O_RDONLY); // assign fd0 to input.txt
+        exec("cat", argv);           // 执行cat命令
+    }
+</code></pre>
+
+<pre><code> &gt; Fork 拷贝父进程的file descriptor table 到子进程. exec在载入文件时依然会保留进程的file descriptor table.
+</code></pre>
+
+<ul>
 <li><p>当父子进程同时操作一个fd时，fd中的offset是共享的.</p>
 
 <pre><code class="`` c">  if(fork() == 0) {
