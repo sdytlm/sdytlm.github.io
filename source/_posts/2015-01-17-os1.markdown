@@ -22,7 +22,7 @@ tag: mit6.828
 * fork system call returns in both parent and child.
 > In the parent process, fork returns the child's pid. In the child, it returns 0.
 
-   ``` c
+{% codeblock %}
     int pid = fork();
     if(pid > 0){
         printf("parent: child=%d\n", pid);
@@ -34,9 +34,12 @@ tag: mit6.828
     } else {
         printf("fork error\n");
     }
-    ```
+{% endcodeblock %}
+
     输出结果是
-    ``` parent: child=1234
+
+    ```
+        parent: child=1234
         child: exiting
         注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
     ```
@@ -94,7 +97,8 @@ tag: mit6.828
 * 实现 I/O 重定向: 先用close释放一个file descriptor，然后重新open一个文件，这样新的文件就拥有了释放掉的fd(因为总是从最小的fd开始分配).
 
     举例（实现cat < tinput.txt)：
-    ``` c
+
+``` c
     argv[0] = "cat";
     argv[1] = 0;
     if(fork() == 0) {  // 确保是在子进程里
@@ -102,7 +106,7 @@ tag: mit6.828
         open("input.txt", O_RDONLY); // assign fd0 to input.txt
         exec("cat", argv);           // 执行cat命令
     }
-    ```
+```
      > Fork 拷贝父进程的file descriptor table 到子进程. exec在载入文件时依然会保留进程的file descriptor table.
 * 当父子进程同时操作一个fd时，fd中的offset是共享的.
 
