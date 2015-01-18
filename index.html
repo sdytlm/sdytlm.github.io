@@ -9,18 +9,9 @@
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="test1
-2
-3
-4
-5
-6
-#include&lt;iostream&gt;
-using namespace std; int main(){ cout &lt;&lt; &quot; haha&quot; &lt;&lt; endl;
-} test21
-2
-3
-void main(){ &hellip;">
+  <meta name="description" content="常用Shell 命令 ls &gt; y 把ls结果输出到文件y中
+cat cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用 一次显示整个文件:cat filename
+从键盘创建一个文件: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,7 +74,7 @@ void main(){ &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/14/test/">Test</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/01/17/shell/">Mit6.828 Homework: Shell</a></h1>
     
     
       <p class="meta">
@@ -92,53 +83,143 @@ void main(){ &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-01-14T16:29:21-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:29 pm</span></time>
+<time class='entry-date' datetime='2015-01-17'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span>test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><h2>常用Shell 命令</h2>
+
+<ol>
+<li><code>ls &gt; y</code>
+ 把ls结果输出到文件y中</li>
+<li><code>cat</code>
+ cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用
+
+<ul>
+<li>一次显示整个文件:<code>cat filename</code></li>
+<li>从键盘创建一个文件:<code>cat &gt; filename</code> 只能创建新文件,不能编辑已有文件</li>
+<li>将几个文件合并为一个文件:<code>cat file1 file2 &gt; file</code></li>
+</ul>
+</li>
+<li><code>uniq</code>
+ uniq命令常用语报告或者消除文件中的重复内容，一般与sort命令结合使用</li>
+<li><code>wc</code>
+ wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ls &gt; y
+</span><span class='line'>cat &lt; y | sort | uniq | wc &gt; y1</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>功能：把当前目录ls的结果存到y中,然后读取y的内容，然后将y的内容排序，去掉重复，然后统计字数，行数.并把结果保存到y1</p></blockquote>
+
+<hr />
+
+<h2>什么是Unix Pipeline</h2>
+
+<p>举个例子：
+<code>ls -1 | grep p | more</code>
+只列出来还有字母p的当前目录下的文件</p>
+
+<p>Pipeline 使用&#8221;|&ldquo;来区分多个命令，从左到右，前一个命令的结果是后一个命令的输入</p>
+
+<hr />
+
+<h2>sh.c 数据结构</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="p">{...}</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">execcmd</span><span class="p">{...}</span>  <span class="c1">// 普通指令</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">redicmd</span><span class="p">{...}</span>  <span class="c1">// 有重定向的指令</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">pipecmd</span><span class="p">{...}</span>  <span class="c1">// pipe指令</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>sh.c 函数</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='C++'><span class='line'><span class="cp">#include&lt;iostream&gt;</span>
-</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; haha&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">void</span> <span class="n">runcmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">cmd</span><span class="p">)</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">getcmd</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nbuf</span><span class="p">)</span> <span class="c1">// 检测输入是否是标准输入流stdin，然后把用户输入存到buffer里</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">execcmd</span><span class="p">()</span> <span class="c1">// 为一个cmd数据结构分配内存</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">redircmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">subcmd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">)</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">pipecmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">right</span><span class="p">)</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">gettoken</span><span class="p">(</span><span class="n">chasr</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">q</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">eq</span><span class="p">)</span> <span class="c1">// 把地址ps到es的字符串中的变量找到，并存到q到eq的地址去</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">peek</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">toks</span><span class="p">)</span> <span class="c1">//判断从地址ps到es的字符串是否含有toks里面的字符</span>
+</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">mkcopy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span> <span class="c1">// s指向需要拷贝的字符串头，es指向需要拷贝的字符串结尾. 这个函数拷贝从s到es的字符串，然后返回拷贝的地址。</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parsecmd</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="c1">// 解析命令把buffer里的命令包装成可执行的数据结构struct cmd</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parseline</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parsepipe</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parsedirs</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">cmd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parseexec</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h2>用到的C和操作系统函数</h2>
+
+<ul>
+<li><p>strchr
+函数原型：extern char <em>strchr(char </em>str,char character)
+参数说明：str为一个字符串的指针，character为一个待查找字符。
+所在库名：#include <code>&lt;string.h&gt;</code>
+函数功能：从字符串str中寻找字符character第一次出现的位置。</p></li>
+<li><p>execv
+函数原型：execv(char<em> cmd, char </em>argv[]);
+函数说明：execv 本质上是执行命令 cmd, *argv[] 是包括argv[0]的参数
+举例：
+  <code>c
+  execv(argv[0], argv);
+ </code></p></li>
+<li><p>open
+ 函数原型：int open(const char *pathname, int flags, mode_t mode);
+ 函数说明：</p>
+
+<ul>
+<li>creates a new open file description, an entry in the system-wide  table of       open files. The new open file description is initially not shared with any       other process, but  sharing  may  arise  via <strong>fork</strong></li>
+<li>parameter <strong>flags</strong> must include one of the following access modes:              O_RDONLY, O_WRONLY, or O_RDWR.</li>
+<li><strong>mode</strong>: 创建文件时设定的其他用户权限: S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+<code>举例说明</code>：</li>
+<li>打开一个新文件用来写入</li>
+</ul>
 
 
-<figure class='code'><figcaption><span>test2</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;haha</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class="`` c">  #include &lt;fcntl.h&gt;
+  int fd;
+  mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+  char *filename = "/tmp/file";
+  fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
+</code></pre>
 
+<blockquote><p>当打开的文件不存在时 <strong>flag</strong> 必须有O_CREATE, 打开已存在文件则不需要.</p></blockquote></li>
+<li><p>dup
+  函数原型: int dup(int oldfd);
+  函数说明: create a copy of the file descriptor oldfd</p>
 
+<blockquote><p>dup uses the lowest-numbered unused descriptor for the new descriptor.</p></blockquote></li>
+</ul>
 
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;codeblock&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
 </div>
   
   
@@ -157,7 +238,7 @@ void main(){ &hellip;">
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/test/'>test (1)</a></li>
+    <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (1)</a></li>
 
   </ul>
 </section>
@@ -166,7 +247,7 @@ void main(){ &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/01/14/test/">Test</a>
+        <a href="/blog/2015/01/17/shell/">Mit6.828 Homework: Shell</a>
       </li>
     
   </ul>
@@ -174,7 +255,7 @@ void main(){ &hellip;">
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: NaN%" href="/tags/test/">test</a>
+    <a style="font-size: NaN%" href="/tags/mit6-dot-828/">mit6.828</a>
 
   </ul>
 </section>
