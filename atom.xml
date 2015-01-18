@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-17T23:04:20-05:00</updated>
+  <updated>2015-01-17T23:12:12-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -353,24 +353,35 @@
 
 <blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote>
 
-<pre><code class="` c">  int pid = fork();
-  if(pid &gt; 0){
-      printf("parent: child=%d\n", pid);
-      pid = wait();
-      printf("child %d is done\n", pid);
-  } else if(pid == 0){
-      printf("child: exiting\n");
-      exit();
-  } else {
-      printf("fork error\n");
-  }
-</code></pre>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int pid = fork();
+</span><span class='line'>    if(pid > 0){
+</span><span class='line'>        printf(&ldquo;parent: child=%d\n&rdquo;, pid);
+</span><span class='line'>        pid = wait();
+</span><span class='line'>        printf(&ldquo;child %d is done\n&rdquo;, pid);
+</span><span class='line'>    } else if(pid == 0){
+</span><span class='line'>        printf(&ldquo;child: exiting\n&rdquo;);
+</span><span class='line'>        exit();
+</span><span class='line'>    } else {
+</span><span class='line'>        printf(&ldquo;fork error\n&rdquo;);
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure></p>
 
-  输出结果是
-  <code>parent: child=1234
+<p>  输出结果是</p>
+
+<p>  <code>parent: child=1234
       child: exiting
       注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
- </code>
+ </code></p>
 
 <blockquote><p>注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行</p></blockquote></li>
 <li><p><strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</p>
