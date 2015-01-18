@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-17T22:04:41-05:00</updated>
+  <updated>2015-01-17T22:19:24-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -43,6 +43,9 @@ cat &lt; y | sort | uniq | wc &gt; y1
 
 <blockquote><p>功能：把当前目录ls的结果存到y中,然后读取y的内容，然后将y的内容排序，去掉重复，然后统计字数，行数.并把结果保存到y1</p></blockquote></li>
 </ol>
+
+
+<!--more-->
 
 
 <hr />
