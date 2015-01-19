@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-18T23:35:36-05:00</updated>
+  <updated>2015-01-18T23:38:10-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -270,13 +270,8 @@ if(pid &gt; 0){
     注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
 </code></pre>
 
-<pre><code>&gt; 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
-</code></pre>
-
-<ul>
-<li><strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</li>
-</ul>
-
+<blockquote><p>注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
+* <strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</p></blockquote>
 
 <pre><code class="c">    argv[0] = "echo"; // 会被忽略
     argv[1] = "hello";
@@ -285,8 +280,7 @@ if(pid &gt; 0){
     printf("exec error\n");
 </code></pre>
 
-<pre><code>&gt; 第一个变量argv[0]会被忽略，不起实际作用
-</code></pre>
+<blockquote><p>第一个变量argv[0]会被忽略，不起实际作用</p></blockquote>
 
 <ul>
 <li>Xv6 shell的执行流程:
@@ -374,8 +368,7 @@ if(pid &gt; 0){
     }
 </code></pre>
 
-<pre><code>&gt; 父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.
-</code></pre>
+<blockquote><p>父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.</p></blockquote>
 
 <ul>
 <li><strong>dup</strong>系统调用: 复制当前fd，返回一个新的fd指向同一个Object. dup出来的新fd共享之前fd的offset</li>
