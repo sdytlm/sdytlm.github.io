@@ -151,7 +151,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
   </header>
 
 
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -162,17 +162,18 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>int pid = fork();
-</span><span class='line'>if(pid > 0){
-</span><span class='line'>  printf("parent: child=%d\n", pid);
-</span><span class='line'>  pid = wait();
-</span><span class='line'>  printf("child %d is done\n", pid);
-</span><span class='line'>  } else if(pid == 0){
-</span><span class='line'>    printf("child: exiting\n");
-</span><span class='line'>    exit();
-</span><span class='line'>    } else {
-</span><span class='line'>      printf("fork error\n");
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;parent: child=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">pid</span> <span class="o">=</span> <span class="n">wait</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child %d is done</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child: exiting</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">exit</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;fork error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>

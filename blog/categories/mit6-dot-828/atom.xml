@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-18T22:39:17-05:00</updated>
+  <updated>2015-01-18T22:40:48-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -227,28 +227,18 @@ struct cmd* parseexec(char **ps, char *es)
     <link href="http://sdytlm.github.io/blog/2015/01/17/os1/"/>
     <updated>2015-01-17T00:00:00-05:00</updated>
     <id>http://sdytlm.github.io/blog/2015/01/17/os1</id>
-    <content type="html"><![CDATA[<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>int pid = fork();
-</span><span class='line'>if(pid > 0){
-</span><span class='line'>  printf(&ldquo;parent: child=%d\n&rdquo;, pid);
-</span><span class='line'>  pid = wait();
-</span><span class='line'>  printf(&ldquo;child %d is done\n&rdquo;, pid);
-</span><span class='line'>  } else if(pid == 0){
-</span><span class='line'>    printf(&ldquo;child: exiting\n&rdquo;);
-</span><span class='line'>    exit();
-</span><span class='line'>    } else {
-</span><span class='line'>      printf(&ldquo;fork error\n&rdquo;);
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure></p>
+    <content type="html"><![CDATA[<pre><code class="c">int pid = fork();
+if(pid &gt; 0){
+  printf("parent: child=%d\n", pid);
+  pid = wait();
+  printf("child %d is done\n", pid);
+  } else if(pid == 0){
+    printf("child: exiting\n");
+    exit();
+    } else {
+      printf("fork error\n");
+    }
+</code></pre>
 
 <p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
 
