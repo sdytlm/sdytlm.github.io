@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-17T23:16:47-05:00</updated>
+  <updated>2015-01-18T22:37:01-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -242,11 +242,11 @@ struct cmd* parseexec(char **ps, char *es)
 <li><p>一个进程可以调用fork system call来生成一个新进程叫<strong>child process</strong>. 原来那个进程叫<strong>parent process</strong>.</p>
 
 <blockquote><p>child process 有父进程的memory content.</p></blockquote></li>
-<li><p>fork system call returns in both parent and child.</p>
-
-<blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote></li>
+<li><p>fork system call returns in both parent and child.</p></li>
 </ul>
 
+
+<blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote>
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
