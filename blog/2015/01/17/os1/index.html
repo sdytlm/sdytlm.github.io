@@ -9,19 +9,7 @@
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-int pid = fork();
-if(pid &gt; 0){ printf(&quot;parent: child=%d\n&quot;, pid); pid = wait(); printf(&quot;child %d is done\n& &hellip;">
+  <meta name="description" content="Process: include memory containing instructions, data and a stack. Instructions implement the program&rsquo;s computation. The data are the variables &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,32 +85,7 @@ if(pid &gt; 0){ printf(&quot;parent: child=%d\n&quot;, pid); pid = wait(); print
   </header>
 
 
-<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
-</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;parent: child=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">pid</span> <span class="o">=</span> <span class="n">wait</span><span class="p">();</span>
-</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child %d is done</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
-</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child: exiting</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">exit</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;fork error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
+<div class="entry-content"><p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
 
 <blockquote><p>Procedure calls： 也叫系统调用，用来给process调用kernel service. 当process调用系统调用时，硬件cpu会提高程序的privilege level然后执行内核中已经定义好的函数.</p></blockquote>
 
@@ -143,20 +106,48 @@ if(pid &gt; 0){ printf(&quot;parent: child=%d\n&quot;, pid); pid = wait(); print
 
 <blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;parent: child=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">pid</span> <span class="o">=</span> <span class="n">wait</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child %d is done</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;child: exiting</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">exit</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;fork error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <pre><code>输出结果是
 
 ```
     parent: child=1234
+
     child: exiting
+
     注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
 ```
+
 &gt; 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
 </code></pre>
 
 <ul>
 <li><p><strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</p>
 
-<pre><code class="`` c++">  argv[0] = "echo"; // 会被忽略
+<pre><code class="`` c">  argv[0] = "echo"; // 会被忽略
   argv[1] = "hello";
   argv[2] = 0;
   exec("/bin/echo", argv);
