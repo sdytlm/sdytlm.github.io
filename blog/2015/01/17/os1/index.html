@@ -131,31 +131,47 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<pre><code>输出结果是
+<p>输出结果是:</p>
 
-```
-    parent: child=1234
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="nl">parent</span><span class="p">:</span> <span class="n">child</span><span class="o">=</span><span class="mi">1234</span>
+</span><span class='line'>
+</span><span class='line'><span class="nl">child</span><span class="p">:</span> <span class="n">exiting</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">注：输出结果的顺序可能不同，取决于</span><span class="n">child</span> <span class="err">和</span> <span class="n">parent</span><span class="err">谁先执行</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    child: exiting
 
-    注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
-```
-
-&gt; 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
+<pre><code>&gt; 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
 </code></pre>
 
 <ul>
-<li><p><strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</p>
+<li><strong>exec(filename, *argv)</strong> system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.</li>
+</ul>
 
-<pre><code class="`` c">  argv[0] = "echo"; // 会被忽略
-  argv[1] = "hello";
-  argv[2] = 0;
-  exec("/bin/echo", argv);
-  printf("exec error\n");
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;echo&quot;</span><span class="p">;</span> <span class="c1">// 会被忽略</span>
+</span><span class='line'><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="n">exec</span><span class="p">(</span><span class="s">&quot;/bin/echo&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;exec error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>&gt; 第一个变量argv[0]会被忽略，不起实际作用
 </code></pre>
 
-<blockquote><p>第一个变量argv[0]会被忽略，不起实际作用</p></blockquote></li>
-<li><p>Xv6 shell的执行流程:</p>
+<ul>
+<li>Xv6 shell的执行流程:
 
 <ol>
 <li> shell 执行 <strong>getcmd</strong> 获得用户输入的命令</li>
@@ -175,31 +191,55 @@
 <h3>I/O and File Descriptors</h3>
 
 <ul>
-<li><p>File Descriptor: a small integer representing a kernel-managed object that a process may read from or write to.</p>
+<li>File Descriptor: a small integer representing a kernel-managed object that a process may read from or write to.</li>
+</ul>
 
-<blockquote><p>xv6中，所有的object都有file descriptor</p></blockquote></li>
-<li><p>每一个进程都有private file descriptor table.</p></li>
+
+<blockquote><p>xv6中，所有的object都有file descriptor</p></blockquote>
+
+<ul>
+<li>每一个进程都有private file descriptor table.</li>
 <li><strong>read(fd,buf,n)</strong>系统调用: 读取fd中n个bytes到buf. 每个fd中都有一个<strong>offset</strong>，读取一次都会update offset，以便下次继续读取. 若没什么可读了，返回0，否则返回读取的字节数.</li>
-<li><p><strong>write(fd,buf,n)</strong>系统调用： 向fd中写入buf里的n个bytes. 工作原理与read类似，也有<strong>offset</strong>
-举例（Cat的实现）：</p>
+<li><strong>write(fd,buf,n)</strong>系统调用： 向fd中写入buf里的n个bytes. 工作原理与read类似，也有<strong>offset</strong>
+举例（Cat的实现):</li>
+</ul>
 
-<pre><code class="`` c">  char buf[512];
-  int n;
-  for(;;){
-      n = read(0, buf, sizeof (buf));  // 从标准输入读
-      if(n == 0)                       // 输入结束
-          break;
-      if(n &lt; 0){                       // error
-          fprintf(2, "read error\n");
-          exit();
-      }
-      if(write(1, buf, n) != n){      // 向标准输出写
-          fprintf(2, "write error\n");
-          exit();
-      }
-  }
-</code></pre></li>
-<li><p>close 系统调用会释放一个file descriptor。 当有进程申请新的file descriptor时，<strong>数值最小的那个fd</strong>会被分配给新的object.</p></li>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span><span class="p">(;;){</span>
+</span><span class='line'>    <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">buf</span><span class="p">));</span>  <span class="c1">// 从标准输入读</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>                       <span class="c1">// 输入结束</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>                       <span class="c1">// error</span>
+</span><span class='line'>        <span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;read error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">exit</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n</span><span class="p">){</span>      <span class="c1">// 向标准输出写</span>
+</span><span class='line'>        <span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;write error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">exit</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>close 系统调用会释放一个file descriptor。 当有进程申请新的file descriptor时，<strong>数值最小的那个fd</strong>会被分配给新的object.</li>
 <li><p>实现 I/O 重定向: 先用close释放一个file descriptor，然后重新open一个文件，这样新的文件就拥有了释放掉的fd(因为总是从最小的fd开始分配).</p>
 
 <p>  举例（实现cat &lt; tinput.txt)：</p></li>
@@ -227,28 +267,46 @@
 </code></pre>
 
 <ul>
-<li><p>当父子进程同时操作一个fd时，fd中的offset是共享的.</p>
-
-<pre><code class="`` c">  if(fork() == 0) {
-      write(1, "hello ", 6);
-      exit();
-  } else {
-      wait();                  // 确保先执行子进程再执行父进程
-      write(1, "world\n", 6);
-  }
-</code></pre>
-
-<blockquote><p>父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.</p></blockquote></li>
-<li><p><strong>dup</strong>系统调用: 复制当前fd，返回一个新的fd指向同一个Object. dup出来的新fd共享之前fd的offset
-  <code>c
-  fd = dup(1);                // 复制fd 1
-  write(1, "hello ", 6);
-  write(fd, "world\n", 6);
- </code></p>
-
-<blockquote><p>在不创建子进程的情况下，通过dup实现共享offset。除此之外offset不能共享</p></blockquote></li>
+<li>当父子进程同时操作一个fd时，fd中的offset是共享的.</li>
 </ul>
 
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;hello &quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">exit</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">wait</span><span class="p">();</span>                  <span class="c1">// 确保先执行子进程再执行父进程</span>
+</span><span class='line'>    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>&gt; 父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.
+</code></pre>
+
+<ul>
+<li><strong>dup</strong>系统调用: 复制当前fd，返回一个新的fd指向同一个Object. dup出来的新fd共享之前fd的offset</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">fd</span> <span class="o">=</span> <span class="n">dup</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>                <span class="c1">// 复制fd 1</span>
+</span><span class='line'><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;hello &quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+</span><span class='line'><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&quot;world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>&gt; 在不创建子进程的情况下，通过dup实现共享offset。除此之外offset不能共享
+</code></pre>
 
 <hr />
 
@@ -272,7 +330,7 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 </span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 </span><span class='line'><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;wc&quot;</span><span class="p">;</span>
 </span><span class='line'><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -322,43 +380,81 @@
 <ul>
 <li><strong>chdir</strong> 系统调用: 改变当前工作目录</li>
 <li><strong>mkdir</strong> 系统调用: 创建一个新的目录, 用<strong>open</strong>系统调用可以创建新的文件</li>
-<li><p><strong>mknod</strong> 系统调用: 创建新的设备文件</p>
-
-<pre><code class="`` c">  // chdir
-  chdir("/a");
-  chdir("b");
-  open("c", O_RDONLY);
-  // 另一种实现方法
-  open("/a/b/c", O_RDONLY);
-
-  // mkdir
-  mkdir("/dir");
-  fd = open("/dir/file", O_CREATE|O_WRONLY); // 创建文件
-  close(fd);
-
-  // mknod
-  mknod("/console", 1, 1); // 这两个数字分别是major and minor device number. 用来识别kernel deviced
-</code></pre></li>
-<li><p><strong>fstat</strong> 系统调用: 可以读取一个fd指向的object的信息. fstat 读取的数据结构定义如下</p>
-
-<pre><code class="`` C">  #define T_DIR 1 // Directory
-  #define T_FILE 2 // File
-  #define T_DEV 3 // Device
-  struct stat {
-      short type; // Type of file
-      int dev; // File system’s disk device
-      uint ino; // Inode number, OS里用来识别真实文件的, 一个innode 可以被Link到多个名字去
-      short nlink; // Number of links to file
-      uint size; // Size of file in bytes
-};
-</code></pre></li>
-<li><p><strong>link</strong> 和 <strong>unlink</strong> 系统调用: 为已存在的文件创建一个“别名”，但是都指向相同的Innode.</p>
-
-<pre><code class="`` C">  open("a", O_CREATE|O_WRONLY);
-  link("a", "b");
-  unlink("a");
-</code></pre></li>
+<li><strong>mknod</strong> 系统调用: 创建新的设备文件</li>
 </ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// chdir</span>
+</span><span class='line'><span class="n">chdir</span><span class="p">(</span><span class="s">&quot;/a&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">chdir</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">open</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// 另一种实现方法</span>
+</span><span class='line'><span class="n">open</span><span class="p">(</span><span class="s">&quot;/a/b/c&quot;</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// mkdir</span>
+</span><span class='line'><span class="n">mkdir</span><span class="p">(</span><span class="s">&quot;/dir&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;/dir/file&quot;</span><span class="p">,</span> <span class="n">O_CREATE</span><span class="o">|</span><span class="n">O_WRONLY</span><span class="p">);</span> <span class="c1">// 创建文件</span>
+</span><span class='line'><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// mknod</span>
+</span><span class='line'><span class="n">mknod</span><span class="p">(</span><span class="s">&quot;/console&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 这两个数字分别是major and minor device number. 用来识别kernel deviced</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>fstat</strong> 系统调用: 可以读取一个fd指向的object的信息. fstat 读取的数据结构定义如下</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#define T_DIR 1 </span><span class="c1">// Directory</span>
+</span><span class='line'><span class="cp">#define T_FILE 2 </span><span class="c1">// File</span>
+</span><span class='line'><span class="cp">#define T_DEV 3 </span><span class="c1">// Device</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">stat</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">short</span> <span class="n">type</span><span class="p">;</span> <span class="c1">// Type of file</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">dev</span><span class="p">;</span> <span class="c1">// File system’s disk device</span>
+</span><span class='line'>    <span class="n">uint</span> <span class="n">ino</span><span class="p">;</span> <span class="c1">// Inode number, OS里用来识别真实文件的, 一个innode 可以被Link到多个名字去</span>
+</span><span class='line'>    <span class="kt">short</span> <span class="n">nlink</span><span class="p">;</span> <span class="c1">// Number of links to file</span>
+</span><span class='line'>    <span class="n">uint</span> <span class="n">size</span><span class="p">;</span> <span class="c1">// Size of file in bytes</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>link</strong> 和 <strong>unlink</strong> 系统调用: 为已存在的文件创建一个“别名”，但是都指向相同的Innode.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">open</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">O_CREATE</span><span class="o">|</span><span class="n">O_WRONLY</span><span class="p">);</span>
+</span><span class='line'><span class="n">link</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">unlink</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
