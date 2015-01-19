@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-01-18T22:37:01-05:00</updated>
+  <updated>2015-01-18T22:39:17-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -334,7 +334,31 @@
     <link href="http://sdytlm.github.io/blog/2015/01/17/os1/"/>
     <updated>2015-01-17T00:00:00-05:00</updated>
     <id>http://sdytlm.github.io/blog/2015/01/17/os1</id>
-    <content type="html"><![CDATA[<p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int pid = fork();
+</span><span class='line'>if(pid > 0){
+</span><span class='line'>  printf("parent: child=%d\n", pid);
+</span><span class='line'>  pid = wait();
+</span><span class='line'>  printf("child %d is done\n", pid);
+</span><span class='line'>  } else if(pid == 0){
+</span><span class='line'>    printf("child: exiting\n");
+</span><span class='line'>    exit();
+</span><span class='line'>    } else {
+</span><span class='line'>      printf("fork error\n");
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
 
 <blockquote><p>Procedure calls： 也叫系统调用，用来给process调用kernel service. 当process调用系统调用时，硬件cpu会提高程序的privilege level然后执行内核中已经定义好的函数.</p></blockquote>
 
@@ -354,30 +378,6 @@
 
 
 <blockquote><p>In the parent process, fork returns the child&rsquo;s pid. In the child, it returns 0.</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>int pid = fork();
-</span><span class='line'>    if(pid > 0){
-</span><span class='line'>        printf("parent: child=%d\n", pid);
-</span><span class='line'>        pid = wait();
-</span><span class='line'>        printf("child %d is done\n", pid);
-</span><span class='line'>    } else if(pid == 0){
-</span><span class='line'>        printf("child: exiting\n");
-</span><span class='line'>        exit();
-</span><span class='line'>    } else {
-</span><span class='line'>        printf("fork error\n");
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
-
 
 <pre><code>输出结果是
 
