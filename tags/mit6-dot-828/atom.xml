@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T22:31:56-05:00</updated>
+  <updated>2015-02-01T22:40:38-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -18,7 +18,7 @@
     <link href="http://sdytlm.github.io/blog/2015/01/17/shell/"/>
     <updated>2015-01-17T00:00:00-05:00</updated>
     <id>http://sdytlm.github.io/blog/2015/01/17/shell</id>
-    <content type="html"><![CDATA[<h2>常用Shell 命令</h2>
+    <content type="html"><![CDATA[<h3>常用Shell 命令</h3>
 
 <ol>
 <li><code>ls &gt; y</code>
@@ -50,7 +50,7 @@ cat &lt; y | sort | uniq | wc &gt; y1
 
 <hr />
 
-<h2>什么是Unix Pipeline</h2>
+<h3>什么是Unix Pipeline</h3>
 
 <p>举个例子：
 <code>ls -1 | grep p | more</code>
@@ -60,7 +60,7 @@ cat &lt; y | sort | uniq | wc &gt; y1
 
 <hr />
 
-<h2>sh.c 数据结构</h2>
+<h3>sh.c 数据结构</h3>
 
 <pre><code class="c">struct cmd{...}
 struct execcmd{...}  // 普通指令
@@ -70,7 +70,7 @@ struct pipecmd{...}  // pipe指令
 
 <hr />
 
-<h2>sh.c 函数</h2>
+<h3>sh.c 函数</h3>
 
 <pre><code class="c">void runcmd(struct cmd *cmd)
 int getcmd(char* buffer, int nbuf) // 检测输入是否是标准输入流stdin，然后把用户输入存到buffer里
@@ -87,7 +87,7 @@ struct cmd* parsedirs(struct cmd *cmd, char **ps, char *es)
 struct cmd* parseexec(char **ps, char *es)
 </code></pre>
 
-<h2>用到的C和操作系统函数</h2>
+<h3>用到的C和操作系统函数</h3>
 
 <ul>
 <li><p>strchr
@@ -131,7 +131,7 @@ struct cmd* parseexec(char **ps, char *es)
 </ul>
 
 
-<h2>关键部分代码</h2>
+<h3>关键部分代码</h3>
 
 <pre><code class="c">void runcmd(struct cmd *cmd)
 {
