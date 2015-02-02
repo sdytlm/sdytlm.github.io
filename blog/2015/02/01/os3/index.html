@@ -90,45 +90,55 @@
 <table>
 <thead>
 <tr>
-<th><strong>Name</strong>       </th>
+<th><strong>Name</strong>  </th>
+<th>     </th>
 <th> <strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CS   </td>
+<td> </td>
 <td> code segment, for fetches via <strong>IP</strong></td>
 </tr>
 <tr>
 <td>SS   </td>
+<td> </td>
 <td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
 </tr>
 <tr>
 <td>DS   </td>
+<td> </td>
 <td> data segment, for load/store via other registers</td>
 </tr>
 <tr>
 <td>ES   </td>
+<td> </td>
 <td> another data segment, <strong>destination for string operationgs</strong></td>
 </tr>
 <tr>
 <td>SP   </td>
+<td> </td>
 <td> stack pointer</td>
 </tr>
 <tr>
 <td>BP   </td>
+<td> </td>
 <td> frame base pointer</td>
 </tr>
 <tr>
 <td>SI   </td>
+<td> </td>
 <td> source index</td>
 </tr>
 <tr>
 <td>DI   </td>
+<td> </td>
 <td> destination index</td>
 </tr>
 <tr>
 <td>IP   </td>
+<td> </td>
 <td> instruction pointer</td>
 </tr>
 </tbody>
@@ -137,6 +147,8 @@
 
 <!--more-->
 
+
+<hr />
 
 <blockquote><p>IP increment after running each instruction. CALL REt, JMP can modify it.</p></blockquote>
 
@@ -188,6 +200,8 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>MMIO</h3>
 
 <ul>
@@ -212,6 +226,8 @@
 
 <blockquote><p>side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。</p></blockquote>
 
+<hr />
+
 <h3>Translate virtual address to physical address</h3>
 
 <ul>
@@ -224,6 +240,8 @@ For example:</li>
 
 <blockquote><p>in 32-bit mode, MOVW is expressed as 0x66 MOVW</p></blockquote>
 
+<hr />
+
 <h3>Instruction encoding</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -235,6 +253,8 @@ For example:</li>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>x86 Physical Memory</h3>
 
 <ul>
@@ -244,6 +264,8 @@ For example:</li>
 
 
 <p><img src="https://copy.com/ydV77i6vO20CO3Ks" alt="image" /></p>
+
+<hr />
 
 <h3>ATT Syntax</h3>
 
@@ -320,6 +342,8 @@ Examples:</li>
 </pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">ret</span>             <span class="c1">// popl %eip</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h3>How the stack is used between caller and callee</h3>
 
@@ -421,6 +445,8 @@ Examples:</li>
 </span><span class='line'><span class="n">pop</span> <span class="o">%</span><span class="n">ebp</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h3>C -> Assembly</h3>
 
