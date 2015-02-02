@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T23:08:18-05:00</updated>
+  <updated>2015-02-01T23:11:07-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -23,45 +23,45 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center;"> Name </th>
+<th style="text-align:left;"> Name </th>
 <th style="text-align:center;"> Description </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;"> CS   </td>
+<td style="text-align:left;"> CS   </td>
 <td style="text-align:center;"> code segment, for fetches via <strong>IP</strong> </td>
 </tr>
 <tr>
-<td style="text-align:center;"> SS   </td>
+<td style="text-align:left;"> SS   </td>
 <td style="text-align:center;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
 </tr>
 <tr>
-<td style="text-align:center;"> DS   </td>
+<td style="text-align:left;"> DS   </td>
 <td style="text-align:center;"> data segment, for load/store via other registers </td>
 </tr>
 <tr>
-<td style="text-align:center;"> ES   </td>
+<td style="text-align:left;"> ES   </td>
 <td style="text-align:center;"> another data segment, <strong>destination for string operationgs</strong> </td>
 </tr>
 <tr>
-<td style="text-align:center;"> SP   </td>
+<td style="text-align:left;"> SP   </td>
 <td style="text-align:center;"> stack pointer </td>
 </tr>
 <tr>
-<td style="text-align:center;"> BP   </td>
+<td style="text-align:left;"> BP   </td>
 <td style="text-align:center;"> frame base pointer </td>
 </tr>
 <tr>
-<td style="text-align:center;"> SI   </td>
+<td style="text-align:left;"> SI   </td>
 <td style="text-align:center;"> source index </td>
 </tr>
 <tr>
-<td style="text-align:center;"> DI   </td>
+<td style="text-align:left;"> DI   </td>
 <td style="text-align:center;"> destination index </td>
 </tr>
 <tr>
-<td style="text-align:center;"> IP   </td>
+<td style="text-align:left;"> IP   </td>
 <td style="text-align:center;"> instruction pointer </td>
 </tr>
 </tbody>
@@ -100,14 +100,12 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-<span class='line-number'>19</span>
 </pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#define DATA_PORT    0x378</span>
 </span><span class='line'><span class="cp">#define STATUS_PORT  0x379</span>
 </span><span class='line'><span class="cp">#define   BUSY 0x80</span>
 </span><span class='line'><span class="cp">#define CONTROL_PORT 0x37A</span>
 </span><span class='line'><span class="cp">#define   STROBE 0x01</span>
-</span><span class='line'><span class="kt">void</span>
-</span><span class='line'><span class="nf">lpt_putc</span><span class="p">(</span><span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">lpt_putc</span><span class="p">(</span><span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="cm">/* wait for printer to consume previous byte */</span>
 </span><span class='line'>  <span class="k">while</span><span class="p">((</span><span class="n">inb</span><span class="p">(</span><span class="n">STATUS_PORT</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">BUSY</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
@@ -185,12 +183,12 @@ For example:</li>
 <blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
 
 <p>For example
-|  ATT syntax  |    Introduction     |
-|&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|
+| ATT syntax | Introduction |
+|:&mdash;&mdash;&mdash;&mdash;&ndash;|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
 | movl %eax, %edx |  edx = eax |
 | movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = <em>(int32_t)0x123 |
-| movl (%ebx), %edx | edx = </em>(int32_t)ebx |
+| movl 0x123, %edx | edx = <em>(int32_t)0x123
+ movl (%ebx), %edx | edx = </em>(int32_t)ebx |
 | movl 4(%ebx), %edx | edx = *(int32_t)(ebx+4) |</p>
 
 <h3>Gcc x86 Calling Conventions</h3>
