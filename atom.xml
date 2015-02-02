@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T22:40:38-05:00</updated>
+  <updated>2015-02-01T22:57:28-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,418 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Operating System III: X86 and PC Architecture]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/02/01/os3/"/>
+    <updated>2015-02-01T00:00:00-05:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/02/01/os3</id>
+    <content type="html"><![CDATA[<h3>Registers</h3>
+
+<table>
+<thead>
+<tr>
+<th> Name </th>
+<th> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> CS   </td>
+<td> code segment, for fetches via <strong>IP</strong></td>
+</tr>
+<tr>
+<td> SS   </td>
+<td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
+</tr>
+<tr>
+<td> DS   </td>
+<td> data segment, for load/store via other registers</td>
+</tr>
+<tr>
+<td> ES   </td>
+<td> another data segment, <strong>destination for string operationgs</strong> </td>
+</tr>
+<tr>
+<td> SP   </td>
+<td> stack pointer </td>
+</tr>
+<tr>
+<td> BP   </td>
+<td> frame base pointer </td>
+</tr>
+<tr>
+<td> SI   </td>
+<td> source index </td>
+</tr>
+<tr>
+<td> DI   </td>
+<td> destination index </td>
+</tr>
+<tr>
+<td> IP   </td>
+<td> instruction pointer</td>
+</tr>
+</tbody>
+</table>
+
+
+<!--more-->
+
+
+<blockquote><p>IP increment after running each instruction. CALL REt, JMP can modify it.</p></blockquote>
+
+<h3>I/O</h3>
+
+<ul>
+<li>Only 1024 I/O addresses</li>
+<li>Accessed with special instruction (<strong>IN, OUT</strong>)</li>
+<li>Example: write a byte to line printer;</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#define DATA_PORT    0x378</span>
+</span><span class='line'><span class="cp">#define STATUS_PORT  0x379</span>
+</span><span class='line'><span class="cp">#define   BUSY 0x80</span>
+</span><span class='line'><span class="cp">#define CONTROL_PORT 0x37A</span>
+</span><span class='line'><span class="cp">#define   STROBE 0x01</span>
+</span><span class='line'><span class="kt">void</span>
+</span><span class='line'><span class="nf">lpt_putc</span><span class="p">(</span><span class="kt">int</span> <span class="n">c</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="cm">/* wait for printer to consume previous byte */</span>
+</span><span class='line'>  <span class="k">while</span><span class="p">((</span><span class="n">inb</span><span class="p">(</span><span class="n">STATUS_PORT</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">BUSY</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* put the byte on the parallel lines */</span>
+</span><span class='line'>  <span class="n">outb</span><span class="p">(</span><span class="n">DATA_PORT</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* tell the printer to look at the data */</span>
+</span><span class='line'>  <span class="n">outb</span><span class="p">(</span><span class="n">CONTROL_PORT</span><span class="p">,</span> <span class="n">STROBE</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">outb</span><span class="p">(</span><span class="n">CONTROL_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>MMIO</h3>
+
+<ul>
+<li>Use normal physical memory address
+
+<ul>
+<li>Limited size of I/O address space</li>
+<li>No need instructions</li>
+<li>System controller routes to appropriate device</li>
+</ul>
+</li>
+<li>Work like &ldquo;magic&rdquo; memory
+
+<ul>
+<li><strong>Addressed</strong> and <strong>accessed</strong> like memory, but does not behave like memory</li>
+<li>Reads and writes can have &ldquo;side effects&rdquo;</li>
+<li>Read results can change due to external events</li>
+</ul>
+</li>
+</ul>
+
+
+<blockquote><p>side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。</p></blockquote>
+
+<h3>Translate virtual address to physical address</h3>
+
+<ul>
+<li><strong>pa = va + seg*16</strong>. e.g. set CS = 4096 to execute starting at 65536</li>
+<li>Can&rsquo;t use the 16-bit address of a <strong>stack variable</strong> as a pointer</li>
+<li><strong>0x66/0x67</strong> can switch between 16-bit and 32bit
+For example:</li>
+</ul>
+
+
+<blockquote><p>in 32-bit mode, MOVW is expressed as 0x66 MOVW</p></blockquote>
+
+<h3>Instruction encoding</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">b8</span> <span class="n">cd</span> <span class="n">ab</span>       <span class="mi">16</span><span class="o">-</span><span class="n">bit</span> <span class="n">CPU</span><span class="p">,</span>  <span class="n">AX</span> <span class="o">&lt;-</span> <span class="mh">0xabcd</span>
+</span><span class='line'><span class="n">b8</span> <span class="mi">34</span> <span class="mi">12</span> <span class="n">cd</span> <span class="n">ab</span>       <span class="mi">32</span><span class="o">-</span><span class="n">bit</span> <span class="n">CPU</span><span class="p">,</span> <span class="n">EAX</span> <span class="o">&lt;-</span> <span class="mh">0xabcd1234</span>
+</span><span class='line'><span class="mi">66</span> <span class="n">b8</span> <span class="n">cd</span> <span class="n">ab</span>      <span class="mi">32</span><span class="o">-</span><span class="n">bit</span> <span class="n">CPU</span><span class="p">,</span>  <span class="n">AX</span> <span class="o">&lt;-</span> <span class="mh">0xabcd</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>x86 Physical Memory</h3>
+
+<ul>
+<li>Reset or power-on jumps to ROM at <strong>0xfffffff0</strong> (so must be ROM at top&hellip;)</li>
+<li>Write to VGA memory appear on the screen</li>
+</ul>
+
+
+<p><img src="https://copy.com/ydV77i6vO20CO3Ks" alt="image" /></p>
+
+<h3>ATT Syntax</h3>
+
+<blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
+
+<p>For example
+|  ATT syntax  |    Introduction     |
+|&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|
+| movl %eax, %edx |  edx = eax |
+| movl $0x123, %edx | edx = 0x123 |
+| movl 0x123, %edx | edx = <em>(int32_t)0x123 |
+| movl (%ebx), %edx | edx = </em>(int32_t)ebx |
+| movl 4(%ebx), %edx | edx = *(int32_t)(ebx+4) |</p>
+
+<h3>Gcc x86 Calling Conventions</h3>
+
+<ul>
+<li>X86 stack <strong>grows down</strong>
+Examples:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">pushl</span> <span class="o">%</span><span class="n">eax</span>      <span class="c1">// subl $4, %esp</span>
+</span><span class='line'>                <span class="c1">// movl %eax, (%esp)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">popl</span> <span class="o">%</span><span class="n">eax</span>       <span class="c1">// movl (%esp), %eax</span>
+</span><span class='line'>                <span class="c1">// addl $4, %esp</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">call</span> <span class="mh">0x12345</span>    <span class="c1">// pushl %eip</span>
+</span><span class='line'>                <span class="c1">// movl $0x12345, %eip</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">ret</span>             <span class="c1">// popl %eip</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>How the stack is used between caller and callee</h3>
+
+<ul>
+<li><p>Just after call
+| Register or address in stack | What is stored |
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;&mdash;-|
+| %eip | The first instruction of callee |
+| %esp + 4 | First argument |
+| %esp | Return address |</p></li>
+<li><p>After ret instruction</p></li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th> Register or address in the stack </th>
+<th> What is stored </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> %eip </td>
+<td> Contains the return address </td>
+</tr>
+<tr>
+<td> %esp </td>
+<td> Points at arguments pushed by caller </td>
+</tr>
+<tr>
+<td> %eax (and %edx if 64-bit) </td>
+<td> Return value </td>
+</tr>
+<tr>
+<td> %ebp, %ebx, %esi, %edi </td>
+<td> contain contents from the time of call </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li><p>Terminology:</p>
+
+<ul>
+<li>%eax, %ecx, %edx: caller save register, that is caller should save them before call</li>
+<li>%ebp, %ebx, %esi: callee save register</li>
+</ul>
+</li>
+<li><p>Each function has a stack frame marked by <strong>%ebp, %esp</strong></p></li>
+</ul>
+
+
+<p><img src="https://copy.com/CfzaIS1btfMdlBui" alt="image" /></p>
+
+<p>To keep this contract, we need to prologue and epilogue</p>
+
+<p><strong>Prologue</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">pushl</span> <span class="o">%</span><span class="n">ebp</span>        <span class="c1">// push current ebp</span>
+</span><span class='line'><span class="n">movl</span> <span class="o">%</span><span class="n">esp</span><span class="p">,</span> <span class="o">%</span><span class="n">ebp</span>   <span class="c1">// ebp = esp, ebp point to the next address of saved %ebp</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>%esp: Always point to the bottom of stack
+  %ebp: Point to the stack bottom of caller function. ebp is used before <strong>ret</strong></p></blockquote>
+
+<p><strong>Epiloge</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">movl</span> <span class="o">%</span><span class="n">ebp</span><span class="p">,</span> <span class="o">%</span><span class="n">esp</span>     <span class="c1">// esp = ebp, then after that esp point to the bottom of caller&#39;s stack</span>
+</span><span class='line'><span class="n">pop</span> <span class="o">%</span><span class="n">ebp</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>C -> Assembly</h3>
+
+<p><strong>C code:</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">g</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Assembly code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="nl">_main</span><span class="p">:</span>
+</span><span class='line'>          <span class="c1">// prologue</span>
+</span><span class='line'>          <span class="n">pushl</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">esp</span><span class="p">,</span> <span class="o">%</span><span class="n">ebp</span>     <span class="c1">// esp: always the bottom of stack, ebp: 用来保存上个func的esp, 已被返回时使用</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// body</span>
+</span><span class='line'>          <span class="n">pushl</span> <span class="err">$</span><span class="mi">8</span>            <span class="c1">// parameter</span>
+</span><span class='line'>          <span class="n">call</span> <span class="n">_f</span>
+</span><span class='line'>          <span class="n">addl</span> <span class="err">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">//epilogue</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">ebp</span><span class="p">,</span> <span class="o">%</span><span class="n">esp</span>
+</span><span class='line'>          <span class="n">popl</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>          <span class="n">ret</span>
+</span><span class='line'>      <span class="nl">_f</span><span class="p">:</span>
+</span><span class='line'>          <span class="c1">// prologue</span>
+</span><span class='line'>          <span class="n">pushl</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">esp</span><span class="p">,</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// body</span>
+</span><span class='line'>          <span class="n">pushl</span> <span class="mi">8</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">call</span> <span class="n">_g</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// epilogue</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">ebp</span><span class="p">,</span> <span class="o">%</span><span class="n">esp</span>
+</span><span class='line'>          <span class="n">popl</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>          <span class="n">ret</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nl">_g</span><span class="p">:</span>
+</span><span class='line'>          <span class="c1">// prologue</span>
+</span><span class='line'>          <span class="n">pushl</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">esp</span><span class="p">,</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// save %ebx</span>
+</span><span class='line'>          <span class="n">pushl</span> <span class="o">%</span><span class="n">ebx</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// body</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="mi">8</span><span class="p">(</span><span class="o">%</span><span class="n">ebp</span><span class="p">),</span> <span class="o">%</span><span class="n">ebx</span> <span class="c1">// why %ebp not %esp, because you push %ebx, then %esp will be added 4</span>
+</span><span class='line'>          <span class="n">addl</span> <span class="err">$</span><span class="mi">3</span><span class="p">,</span> <span class="o">%</span><span class="n">ebx</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">ebx</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// restore %ebx</span>
+</span><span class='line'>          <span class="n">popl</span> <span class="o">%</span><span class="n">ebx</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">//epilogue</span>
+</span><span class='line'>          <span class="n">movl</span> <span class="o">%</span><span class="n">ebp</span><span class="p">,</span> <span class="o">%</span><span class="n">esp</span>
+</span><span class='line'>          <span class="n">popl</span> <span class="o">%</span><span class="n">ebp</span>
+</span><span class='line'>          <span class="n">ret</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mit6.828 Homework: Shell]]></title>
