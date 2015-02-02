@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-02T12:25:51-05:00</updated>
+  <updated>2015-02-02T12:29:13-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -23,7 +23,7 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left;"> <strong>Name</strong> </th>
+<th style="text-align:left;"> <strong>Name</strong>       </th>
 <th style="text-align:left;"> <strong>Description</strong> </th>
 </tr>
 </thead>
@@ -159,14 +159,39 @@ b8 34 12 cd ab      32-bit CPU, EAX &lt;- 0xabcd1234
 
 <blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
 
-<p>For example
-| <strong>ATT syntax</strong> | <strong>Introduction</strong> |
-|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |
-| movl %eax, %edx |  edx = eax |
-| movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = * (int32_t)0x123 |
-| movl (%ebx), %edx | edx = * (int32_t)ebx |
-| movl 4(%ebx), %edx | edx = * (int32_t)(ebx+4) |</p>
+<p>For example</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>ATT syntax</strong> </th>
+<th style="text-align:left;"> <strong>Introduction</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> movl %eax, %edx </td>
+<td style="text-align:left;">  edx = eax </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl $0x123, %edx </td>
+<td style="text-align:left;"> edx = 0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 0x123, %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl (%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)ebx </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 4(%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)(ebx+4) </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Gcc x86 Calling Conventions</h3>
 
@@ -203,13 +228,36 @@ Examples:
 <h3>How the stack is used between caller and callee</h3>
 
 <ul>
-<li><p>Just after call
-| <strong>Register or address in stack</strong> | <strong>What is stored</strong> |
-|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- |
-| %eip | The first instruction of callee |
-| %esp + 4 | First argument |
-| %esp | Return address |</p></li>
-<li><p>After ret instruction</p></li>
+<li>Just after call</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Register or address in stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> The first instruction of callee </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %esp + 4 </td>
+<td style="text-align:left;"> First argument </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Return address </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li>After ret instruction</li>
 </ul>
 
 
