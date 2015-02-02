@@ -24,7 +24,7 @@ tag: mit6.828
 | IP   | instruction pointer|
 
 
-
+<!--more-->
 > IP increment after running each instruction. CALL REt, JMP can modify it.
 
 ### I/O

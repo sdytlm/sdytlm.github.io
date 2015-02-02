@@ -7,7 +7,7 @@ categories: mit6.828
 tag: mit6.828  
 ---
 
-## 常用Shell 命令
+### 常用Shell 命令
 1. `ls > y`
     把ls结果输出到文件y中
 2. `cat`
@@ -27,7 +27,7 @@ cat < y | sort | uniq | wc > y1
 
 <!--more-->
 ------
-## 什么是Unix Pipeline
+### 什么是Unix Pipeline
 举个例子：
 `ls -1 | grep p | more`
 只列出来还有字母p的当前目录下的文件
@@ -36,7 +36,7 @@ Pipeline 使用"|"来区分多个命令，从左到右，前一个命令的结�
 
 
 -----
-## sh.c 数据结构
+### sh.c 数据结构
 ```c
 struct cmd{...}
 struct execcmd{...}  // 普通指令
@@ -44,7 +44,7 @@ struct redicmd{...}  // 有重定向的指令
 struct pipecmd{...}  // pipe指令
 ```
 -----
-## sh.c 函数
+### sh.c 函数
 ```c
 void runcmd(struct cmd *cmd)
 int getcmd(char* buffer, int nbuf) // 检测输入是否是标准输入流stdin，然后把用户输入存到buffer里
@@ -61,7 +61,7 @@ struct cmd* parsedirs(struct cmd *cmd, char **ps, char *es)
 struct cmd* parseexec(char **ps, char *es)
 ```
 
-## 用到的C和操作系统函数
+### 用到的C和操作系统函数
 * strchr
   函数原型：extern char *strchr(char *str,char character)
   参数说明：str为一个字符串的指针，character为一个待查找字符。
@@ -98,7 +98,7 @@ struct cmd* parseexec(char **ps, char *es)
     函数说明: create a copy of the file descriptor oldfd
     > dup uses the lowest-numbered unused descriptor for the new descriptor.
 
-## 关键部分代码
+### 关键部分代码
 
 ``` c
 void runcmd(struct cmd *cmd)
