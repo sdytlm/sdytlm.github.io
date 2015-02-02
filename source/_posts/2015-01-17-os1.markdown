@@ -36,28 +36,30 @@ if(pid > 0){
   printf("fork error\n");
 }
 ```
-    输出结果是
 
-    ```
-        parent: child=1234
+输出结果是:
 
-        child: exiting
 
-        注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
-    ```
+```
+    parent: child=1234
 
-    > 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
+    child: exiting
+
+    注：输出结果的顺序可能不同，取决于child 和 parent谁先执行
+```
+
+> 注意：parent process 和 child process 执行在不同的内存和寄存器中，修改其中的一个变量不会影响到另一个进程的执行
 * **exec(filename, *argv)** system call: 从file system 加载指定文件到进程的内存中. 在xv6中，文件格式为ELF. exec执行以后，不会反回原进程，而是继续从载入的文件开始执行.
 
-    ``` c
+``` c
     argv[0] = "echo"; // 会被忽略
     argv[1] = "hello";
     argv[2] = 0;
     exec("/bin/echo", argv);
     printf("exec error\n");
-    ```
+```
 
-    > 第一个变量argv[0]会被忽略，不起实际作用
+> 第一个变量argv[0]会被忽略，不起实际作用
 
 * Xv6 shell的执行流程:
     1. shell 执行 **getcmd** 获得用户输入的命令
@@ -72,14 +74,16 @@ if(pid > 0){
 ### I/O and File Descriptors
 
 * File Descriptor: a small integer representing a kernel-managed object that a process may read from or write to.
+
 > xv6中，所有的object都有file descriptor
 
 * 每一个进程都有private file descriptor table.
 * **read(fd,buf,n)**系统调用: 读取fd中n个bytes到buf. 每个fd中都有一个**offset**，读取一次都会update offset，以便下次继续读取. 若没什么可读了，返回0，否则返回读取的字节数.
 * **write(fd,buf,n)**系统调用： 向fd中写入buf里的n个bytes. 工作原理与read类似，也有**offset**
-举例（Cat的实现）：
+举例（Cat的实现):
 
-    ``` c
+
+``` c
     char buf[512];
     int n;
     for(;;){
@@ -95,7 +99,7 @@ if(pid > 0){
             exit();
         }
     }
-    ```
+```
 
 * close 系统调用会释放一个file descriptor。 当有进程申请新的file descriptor时，**数值最小的那个fd**会被分配给新的object.
 * 实现 I/O 重定向: 先用close释放一个file descriptor，然后重新open一个文件，这样新的文件就拥有了释放掉的fd(因为总是从最小的fd开始分配).
@@ -111,10 +115,12 @@ if(pid > 0){
         exec("cat", argv);           // 执行cat命令
     }
 ```
+
      > Fork 拷贝父进程的file descriptor table 到子进程. exec在载入文件时依然会保留进程的file descriptor table.
+
 * 当父子进程同时操作一个fd时，fd中的offset是共享的.
 
-    ``` c
+``` c
     if(fork() == 0) {
         write(1, "hello ", 6);
         exit();
@@ -122,22 +128,25 @@ if(pid > 0){
         wait();                  // 确保先执行子进程再执行父进程
         write(1, "world\n", 6);
     }
-    ```
-    > 父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.
+```
+
+> 父进程写的word不会覆盖子进程写的hello. 因为offset是共享的.
 
 
 * **dup**系统调用: 复制当前fd，返回一个新的fd指向同一个Object. dup出来的新fd共享之前fd的offset
-    ``` c
+
+``` c
     fd = dup(1);                // 复制fd 1
     write(1, "hello ", 6);
     write(fd, "world\n", 6);
-    ```
+```
+
     > 在不创建子进程的情况下，通过dup实现共享offset。除此之外offset不能共享
 
 -----------
 ### Pipes
 实现一个简单的Pipe, wc 连接pipe的read end
-``` C
+``` c
 int p[2];
 char *argv[2];
 argv[0] = "wc";
@@ -154,8 +163,11 @@ if(fork() == 0) { // 子进程
     close(p[0]);
     close(p[1]);
 }
+
 ```
+
 > 上面代码中, p[0]: read end, p[1]: write end . 子进程必须在wc之前关闭p[1], 否则wc时read end一直等待所有指向write end的fd关闭.
+
 
 * 如果pipe的read end没有数据, 则read end 要么是等待数据,要么等待所有指向write end的fd都关闭. 若后一种情况发生时，读到的是0，表示读到文件的结束了.
 * 如何实现`fork sh.c | wc -l`
@@ -174,7 +186,7 @@ if(fork() == 0) { // 子进程
 * **mkdir** 系统调用: 创建一个新的目录, 用**open**系统调用可以创建新的文件
 * **mknod** 系统调用: 创建新的设备文件
 
-    ``` c
+``` c
     // chdir
     chdir("/a");
     chdir("b");
@@ -189,10 +201,11 @@ if(fork() == 0) { // 子进程
 
     // mknod
     mknod("/console", 1, 1); // 这两个数字分别是major and minor device number. 用来识别kernel deviced
-    ```
+```
+
 * **fstat** 系统调用: 可以读取一个fd指向的object的信息. fstat 读取的数据结构定义如下
 
-    ``` C
+``` c
     #define T_DIR 1 // Directory
     #define T_FILE 2 // File
     #define T_DEV 3 // Device
@@ -203,12 +216,12 @@ if(fork() == 0) { // 子进程
         short nlink; // Number of links to file
         uint size; // Size of file in bytes
 };
-    ```
+```
 
 * **link** 和 **unlink** 系统调用: 为已存在的文件创建一个“别名”，但是都指向相同的Innode.
 
-    ``` C
+```
     open("a", O_CREATE|O_WRONLY);
     link("a", "b");
     unlink("a");
-    ```
+```

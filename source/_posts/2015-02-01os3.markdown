@@ -1,0 +1,235 @@
+---
+layout: post
+title: "Operating System III: x86 and PC Architecture"
+date: 2015-02-01
+comments: true
+categories: mit6.828
+tag: mit6.828  
+---
+
+
+
+### Registers
+
+| Name | Description |
+|------|-------------|
+| CS   | code segment, for fetches via **IP**|
+| SS   | stack segment, for load/store via **SP** and **BP**|
+| DS   | data segment, for load/store via other registers|
+| ES   | another data segment, **destination for string operationgs** |
+| SP   | stack pointer |
+| BP   | frame base pointer |
+| SI   | source index |
+| DI   | destination index |
+| IP   | instruction pointer|
+
+
+
+> IP increment after running each instruction. CALL REt, JMP can modify it.
+
+### I/O
+ * Only 1024 I/O addresses
+ * Accessed with special instruction (**IN, OUT**)
+ * Example: write a byte to line printer;
+
+```c
+#define DATA_PORT    0x378
+#define STATUS_PORT  0x379
+#define   BUSY 0x80
+#define CONTROL_PORT 0x37A
+#define   STROBE 0x01
+void
+lpt_putc(int c)
+{
+  /* wait for printer to consume previous byte */
+  while((inb(STATUS_PORT) & BUSY) == 0)
+    ;
+
+  /* put the byte on the parallel lines */
+  outb(DATA_PORT, c);
+
+  /* tell the printer to look at the data */
+  outb(CONTROL_PORT, STROBE);
+  outb(CONTROL_PORT, 0);
+}
+
+```
+
+### MMIO
+* Use normal physical memory address
+    * Limited size of I/O address space
+    * No need instructions
+    * System controller routes to appropriate device
+* Work like "magic" memory
+    * **Addressed** and **accessed** like memory, but does not behave like memory
+    * Reads and writes can have "side effects"
+    * Read results can change due to external events
+
+> side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。
+
+### Translate virtual address to physical address
+
+* **pa = va + seg*16**. e.g. set CS = 4096 to execute starting at 65536
+* Can't use the 16-bit address of a **stack variable** as a pointer
+* **0x66/0x67** can switch between 16-bit and 32bit
+For example:
+
+> in 32-bit mode, MOVW is expressed as 0x66 MOVW
+
+### Instruction encoding
+
+``` c
+b8 cd ab		16-bit CPU,  AX <- 0xabcd
+b8 34 12 cd ab		32-bit CPU, EAX <- 0xabcd1234
+66 b8 cd ab		32-bit CPU,  AX <- 0xabcd
+```
+
+### x86 Physical Memory
+* Reset or power-on jumps to ROM at **0xfffffff0** (so must be ROM at top...)
+* Write to VGA memory appear on the screen
+
+![image](https://copy.com/ydV77i6vO20CO3Ks)
+
+
+### ATT Syntax
+
+> **Operation  stc, dest**
+
+For example
+|  ATT syntax  |    Introduction     |
+|--------------|---------------------|
+| movl %eax, %edx |  edx = eax |
+| movl $0x123, %edx | edx = 0x123 |
+| movl 0x123, %edx | edx = *(int32_t)0x123 |
+| movl (%ebx), %edx | edx = *(int32_t)ebx |
+| movl 4(%ebx), %edx | edx = *(int32_t)(ebx+4) |
+
+### Gcc x86 Calling Conventions
+* X86 stack **grows down**
+Examples:
+``` c
+pushl %eax      // subl $4, %esp
+                // movl %eax, (%esp)
+
+```
+
+``` c
+popl %eax       // movl (%esp), %eax
+                // addl $4, %esp
+```
+
+``` c
+call 0x12345    // pushl %eip
+                // movl $0x12345, %eip
+```
+``` c
+ret             // popl %eip
+```
+
+### How the stack is used between caller and callee
+
+* Just after call
+| Register or address in stack | What is stored |
+|---------------------|----------------|
+| %eip | The first instruction of callee |
+| %esp + 4 | First argument |
+| %esp | Return address |
+
+
+* After ret instruction
+
+| Register or address in the stack | What is stored |
+|----------------------------------|----------------|
+| %eip | Contains the return address |
+| %esp | Points at arguments pushed by caller |
+| %eax (and %edx if 64-bit) | Return value |
+| %ebp, %ebx, %esi, %edi | contain contents from the time of call |
+
+
+* Terminology:
+    * %eax, %ecx, %edx: caller save register, that is caller should save them before call
+    * %ebp, %ebx, %esi: callee save register
+
+* Each function has a stack frame marked by **%ebp, %esp**
+
+![image](https://copy.com/CfzaIS1btfMdlBui)
+
+To keep this contract, we need to prologue and epilogue
+
+**Prologue**
+
+```
+pushl %ebp        // push current ebp
+movl %esp, %ebp   // ebp = esp, ebp point to the next address of saved %ebp
+```
+
+> %esp: Always point to the bottom of stack
+  %ebp: Point to the stack bottom of caller function. ebp is used before **ret**
+
+**Epiloge**
+
+```
+movl %ebp, %esp     // esp = ebp, then after that esp point to the bottom of caller's stack
+pop %ebp
+```
+
+### C -> Assembly
+
+**C code:**
+``` c
+int main(void) { return f(8)+1; }
+int f(int x) { return g(x); }
+int g(int x) { return x+3; }
+```
+
+Assembly code:
+```
+_main:
+		    // prologue
+			pushl %ebp
+			movl %esp, %ebp     // esp: always the bottom of stack, ebp: 用来保存上个func的esp, 已被返回时使用
+
+			// body
+			pushl $8            // parameter
+			call _f
+			addl $1, %eax
+
+			//epilogue
+			movl %ebp, %esp
+			popl %ebp
+			ret
+		_f:
+			// prologue
+			pushl %ebp
+			movl %esp, %ebp
+
+			// body
+			pushl 8(%esp)
+			call _g
+
+			// epilogue
+			movl %ebp, %esp
+			popl %ebp
+			ret
+
+		_g:
+		    // prologue
+			pushl %ebp
+			movl %esp, %ebp
+
+			// save %ebx
+			pushl %ebx
+
+			// body
+			movl 8(%ebp), %ebx // why %ebp not %esp, because you push %ebx, then %esp will be added 4
+			addl $3, %ebx
+			movl %ebx, %eax
+
+			// restore %ebx
+			popl %ebx
+
+			//epilogue
+			movl %ebp, %esp
+			popl %ebp
+			ret
+```
