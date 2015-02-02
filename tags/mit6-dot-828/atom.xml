@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T22:57:28-05:00</updated>
+  <updated>2015-02-01T23:08:18-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -23,46 +23,46 @@
 <table>
 <thead>
 <tr>
-<th> Name </th>
-<th> Description </th>
+<th style="text-align:center;"> Name </th>
+<th style="text-align:center;"> Description </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> CS   </td>
-<td> code segment, for fetches via <strong>IP</strong></td>
+<td style="text-align:center;"> CS   </td>
+<td style="text-align:center;"> code segment, for fetches via <strong>IP</strong> </td>
 </tr>
 <tr>
-<td> SS   </td>
-<td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
+<td style="text-align:center;"> SS   </td>
+<td style="text-align:center;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
 </tr>
 <tr>
-<td> DS   </td>
-<td> data segment, for load/store via other registers</td>
+<td style="text-align:center;"> DS   </td>
+<td style="text-align:center;"> data segment, for load/store via other registers </td>
 </tr>
 <tr>
-<td> ES   </td>
-<td> another data segment, <strong>destination for string operationgs</strong> </td>
+<td style="text-align:center;"> ES   </td>
+<td style="text-align:center;"> another data segment, <strong>destination for string operationgs</strong> </td>
 </tr>
 <tr>
-<td> SP   </td>
-<td> stack pointer </td>
+<td style="text-align:center;"> SP   </td>
+<td style="text-align:center;"> stack pointer </td>
 </tr>
 <tr>
-<td> BP   </td>
-<td> frame base pointer </td>
+<td style="text-align:center;"> BP   </td>
+<td style="text-align:center;"> frame base pointer </td>
 </tr>
 <tr>
-<td> SI   </td>
-<td> source index </td>
+<td style="text-align:center;"> SI   </td>
+<td style="text-align:center;"> source index </td>
 </tr>
 <tr>
-<td> DI   </td>
-<td> destination index </td>
+<td style="text-align:center;"> DI   </td>
+<td style="text-align:center;"> destination index </td>
 </tr>
 <tr>
-<td> IP   </td>
-<td> instruction pointer</td>
+<td style="text-align:center;"> IP   </td>
+<td style="text-align:center;"> instruction pointer </td>
 </tr>
 </tbody>
 </table>
