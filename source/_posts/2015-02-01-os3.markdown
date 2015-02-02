@@ -11,22 +11,26 @@ tag: mit6.828
 
 ### Registers
 
-| Name | Description |
-|:---------------|:-----------------------------------------------------------------|
-| CS   | code segment, for fetches via **IP** |
-| SS   | stack segment, for load/store via **SP** and **BP** |
-| DS   | data segment, for load/store via other registers |
-| ES   | another data segment, **destination for string operationgs** |
-| SP   | stack pointer |
-| BP   | frame base pointer |
-| SI   | source index |
-| DI   | destination index |
-| IP   | instruction pointer |
+**Name**  |     | **Description** 
+------------------------ | ----------------------------------------------------------------- 
+CS   |   | code segment, for fetches via **IP** 
+SS   |   | stack segment, for load/store via **SP** and **BP** 
+DS   |   | data segment, for load/store via other registers 
+ES   |   | another data segment, **destination for string operationgs** 
+SP   |   | stack pointer 
+BP   |   | frame base pointer 
+SI   |   | source index 
+DI   |   | destination index 
+IP   |   | instruction pointer 
+
 
 
 <!--more-->
+
 > IP increment after running each instruction. CALL REt, JMP can modify it.
 
+
+----------
 ### I/O
  * Only 1024 I/O addresses
  * Accessed with special instruction (**IN, OUT**)
@@ -53,6 +57,7 @@ void lpt_putc(int c)
 }
 
 ```
+------------
 
 ### MMIO
 * Use normal physical memory address
@@ -66,6 +71,9 @@ void lpt_putc(int c)
 
 > side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。
 
+
+----------
+
 ### Translate virtual address to physical address
 
 * **pa = va + seg*16**. e.g. set CS = 4096 to execute starting at 65536
@@ -75,6 +83,9 @@ For example:
 
 > in 32-bit mode, MOVW is expressed as 0x66 MOVW
 
+
+----------
+
 ### Instruction encoding
 
 ``` c
@@ -83,6 +94,8 @@ b8 34 12 cd ab		32-bit CPU, EAX <- 0xabcd1234
 66 b8 cd ab		32-bit CPU,  AX <- 0xabcd
 ```
 
+----------
+
 ### x86 Physical Memory
 * Reset or power-on jumps to ROM at **0xfffffff0** (so must be ROM at top...)
 * Write to VGA memory appear on the screen
@@ -90,13 +103,17 @@ b8 34 12 cd ab		32-bit CPU, EAX <- 0xabcd1234
 ![image](https://copy.com/ydV77i6vO20CO3Ks)
 
 
+----------
+
 ### ATT Syntax
 
 > **Operation  stc, dest**
 
+
 For example
-| ATT syntax | Introduction |
-|:-------------- |:---------------------:|
+
+| **ATT syntax** | **Introduction** |
+|:----------------------------- |:--------------------- |
 | movl %eax, %edx |  edx = eax |
 | movl $0x123, %edx | edx = 0x123 |
 | movl 0x123, %edx | edx = * (int32_t)0x123 |
@@ -124,12 +141,15 @@ call 0x12345    // pushl %eip
 ``` c
 ret             // popl %eip
 ```
+----------
 
 ### How the stack is used between caller and callee
 
 * Just after call
-| Register or address in stack | What is stored |
-|:--------------------- |:-------------------------:|
+
+
+| **Register or address in stack** | **What is stored** |
+|:-------------------------------------------- |:---------------------------------------- |
 | %eip | The first instruction of callee |
 | %esp + 4 | First argument |
 | %esp | Return address |
@@ -137,8 +157,9 @@ ret             // popl %eip
 
 * After ret instruction
 
-| Register or address in the stack | What is stored |
-|----------------------------------|----------------|
+
+| **Register or address in the stack** | **What is stored** |
+|:------------------------------------------ |:----------------------------------- |
 | %eip | Contains the return address |
 | %esp | Points at arguments pushed by caller |
 | %eax (and %edx if 64-bit) | Return value |
@@ -171,6 +192,8 @@ movl %esp, %ebp   // ebp = esp, ebp point to the next address of saved %ebp
 movl %ebp, %esp     // esp = ebp, then after that esp point to the bottom of caller's stack
 pop %ebp
 ```
+
+-----------
 
 ### C -> Assembly
 
