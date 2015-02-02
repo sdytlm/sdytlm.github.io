@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mit6.828 Homework: Shell - My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>Mit6.828 Homework: Shell - 卖萌的弱渣</title>
+  <meta name="author" content="Min Li">
 
   
   <meta name="description" content="常用Shell 命令 ls &gt; y 把ls结果输出到文件y中
@@ -23,7 +23,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
   <link rel="canonical" href="http://sdytlm.github.io/blog/2015/01/17/shell">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -38,9 +38,9 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">卖萌的弱渣</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>I am stupid, I am hungry.</h2>
   
 </hgroup>
 
@@ -60,6 +60,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://ramsites.net/~lim4/">About</a></li>
 </ul>
 
 </nav>
@@ -86,7 +87,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
   </header>
 
 
-<div class="entry-content"><h2>常用Shell 命令</h2>
+<div class="entry-content"><h3>常用Shell 命令</h3>
 
 <ol>
 <li><code>ls &gt; y</code>
@@ -115,9 +116,12 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 <blockquote><p>功能：把当前目录ls的结果存到y中,然后读取y的内容，然后将y的内容排序，去掉重复，然后统计字数，行数.并把结果保存到y1</p></blockquote>
 
+<!--more-->
+
+
 <hr />
 
-<h2>什么是Unix Pipeline</h2>
+<h3>什么是Unix Pipeline</h3>
 
 <p>举个例子：
 <code>ls -1 | grep p | more</code>
@@ -127,7 +131,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 <hr />
 
-<h2>sh.c 数据结构</h2>
+<h3>sh.c 数据结构</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -142,7 +146,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 <hr />
 
-<h2>sh.c 函数</h2>
+<h3>sh.c 函数</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -173,10 +177,11 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>用到的C和操作系统函数</h2>
+<h3>用到的C和操作系统函数</h3>
 
 <ul>
-<li><p>函数原型：extern char <code>*strchr(char *str,char character)</code>
+<li><p>strchr
+函数原型：extern char <em>strchr(char </em>str,char character)
 参数说明：str为一个字符串的指针，character为一个待查找字符。
 所在库名：#include <code>&lt;string.h&gt;</code>
 函数功能：从字符串str中寻找字符character第一次出现的位置。</p></li>
@@ -187,15 +192,15 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
   <code>c
   execv(argv[0], argv);
  </code></p></li>
-<li>open
+<li><p>open
  函数原型：int open(const char *pathname, int flags, mode_t mode);
- 函数说明：
+ 函数说明：</p>
 
 <ul>
 <li>creates a new open file description, an entry in the system-wide  table of       open files. The new open file description is initially not shared with any       other process, but  sharing  may  arise  via <strong>fork</strong></li>
 <li>parameter <strong>flags</strong> must include one of the following access modes:              O_RDONLY, O_WRONLY, or O_RDWR.</li>
 <li><strong>mode</strong>: 创建文件时设定的其他用户权限: S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-举例说明：</li>
+<code>举例说明</code>：</li>
 <li>打开一个新文件用来写入</li>
 </ul>
 
@@ -208,7 +213,187 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 </code></pre>
 
 <blockquote><p>当打开的文件不存在时 <strong>flag</strong> 必须有O_CREATE, 打开已存在文件则不需要.</p></blockquote></li>
+<li><p>dup
+  函数原型: int dup(int oldfd);
+  函数说明: create a copy of the file descriptor oldfd</p>
+
+<blockquote><p>dup uses the lowest-numbered unused descriptor for the new descriptor.</p></blockquote></li>
 </ul>
+
+
+<h3>关键部分代码</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">void</span> <span class="nf">runcmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">cmd</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">r</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">execcmd</span> <span class="o">*</span><span class="n">ecmd</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">pipecmd</span> <span class="o">*</span><span class="n">pcmd</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">redircmd</span> <span class="o">*</span><span class="n">rcmd</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">cmdPath</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/bin/&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">cmd</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">switch</span><span class="p">(</span><span class="n">cmd</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">){</span>
+</span><span class='line'>  <span class="k">default</span><span class="o">:</span>
+</span><span class='line'>      <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;unknown runcmd</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">case</span> <span class="sc">&#39; &#39;</span><span class="o">:</span>                       <span class="c1">// 普通命令</span>
+</span><span class='line'>      <span class="n">ecmd</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">execcmd</span><span class="o">*</span><span class="p">)</span><span class="n">cmd</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Your code here ...</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="n">execv</span><span class="p">(</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span><span class='line'>      <span class="c1">// 到/bin目录中找命令</span>
+</span><span class='line'>          <span class="kt">char</span> <span class="n">cmdPath</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/bin/&quot;</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">strcat</span><span class="p">(</span><span class="n">cmdPath</span><span class="p">,</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="n">execv</span><span class="p">(</span><span class="n">cmdPath</span><span class="p">,</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>   <span class="c1">// test /bin/cmd</span>
+</span><span class='line'>              <span class="kt">char</span> <span class="n">cmdPath2</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/usr/bin/&quot;</span><span class="p">;</span>
+</span><span class='line'>              <span class="n">strcat</span><span class="p">(</span><span class="n">cmdPath2</span><span class="p">,</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>   <span class="c1">// test /usr/bin/cmd (e.g.sort)</span>
+</span><span class='line'>              <span class="k">if</span><span class="p">(</span><span class="n">execv</span><span class="p">(</span><span class="n">cmdPath2</span><span class="p">,</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+</span><span class='line'>                  <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Command %s not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ecmd</span><span class="o">-&gt;</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>              <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">case</span> <span class="sc">&#39;&gt;&#39;</span><span class="o">:</span>                       <span class="c1">// 重定向命令</span>
+</span><span class='line'>    <span class="k">case</span> <span class="sc">&#39;&lt;&#39;</span><span class="o">:</span>
+</span><span class='line'>        <span class="n">rcmd</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">redircmd</span><span class="o">*</span><span class="p">)</span><span class="n">cmd</span><span class="p">;</span>
+</span><span class='line'>        <span class="c1">//fprintf(stderr, &quot;redir not implemented\n&quot;);</span>
+</span><span class='line'>        <span class="c1">// Your code here ...</span>
+</span><span class='line'>        <span class="n">close</span><span class="p">(</span><span class="n">rcmd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">);</span>     <span class="c1">// 重定向命令已经默认的fd指向了0或1，所以这里是关闭stdin 或者 stdout</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">open</span><span class="p">(</span><span class="n">rcmd</span><span class="o">-&gt;</span><span class="n">file</span><span class="p">,</span><span class="n">rcmd</span><span class="o">-&gt;</span><span class="n">mode</span><span class="p">,</span><span class="n">S_IRUSR</span><span class="o">|</span><span class="n">S_IWUSR</span><span class="o">|</span><span class="n">S_IRGRP</span><span class="o">|</span><span class="n">S_IROTH</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="s">&quot;Cannot open file</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="n">runcmd</span><span class="p">(</span><span class="n">rcmd</span><span class="o">-&gt;</span><span class="n">cmd</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">case</span> <span class="sc">&#39;|&#39;</span><span class="o">:</span>                      <span class="c1">//  管道线命令</span>
+</span><span class='line'>        <span class="n">pcmd</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">pipecmd</span><span class="o">*</span><span class="p">)</span><span class="n">cmd</span><span class="p">;</span>
+</span><span class='line'>        <span class="c1">// fprintf(stderr, &quot;pipe not implemented\n&quot;);</span>
+</span><span class='line'>        <span class="c1">// Your code here ...</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">pipe</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="s">&quot;Create pipe failes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="c1">// 子进程把pipe的right end 和 标准输出连起来</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>            <span class="n">close</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// 标准输出被赋予fd:p[1]</span>
+</span><span class='line'>            <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>            <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>  <span class="c1">// 这样fd表里只剩下标准输入fd:0 和输出fd:p[1]</span>
+</span><span class='line'>            <span class="n">runcmd</span><span class="p">(</span><span class="n">pcmd</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">fork1</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>            <span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">dup</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// 标准输入被赋予fd:p[0]</span>
+</span><span class='line'>            <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>            <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// 这样fd表里只剩下标准输入fd:fd[0] 和 输出fd:p[0]</span>
+</span><span class='line'>            <span class="n">runcmd</span><span class="p">(</span><span class="n">pcmd</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>        <span class="n">close</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span><span class='line'>        <span class="n">wait</span><span class="p">();</span> <span class="c1">// 父进程等待子进程结束。</span>
+</span><span class='line'>        <span class="n">wait</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -218,7 +403,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Min Li</span></span>
 
       
 
@@ -248,6 +433,10 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2015/01/17/os1/" title="Previous Post: Mit6.828 Chapter 0: Operating System Interfaces">&laquo; Mit6.828 Chapter 0: Operating System Interfaces</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/02/01/os3/" title="Next Post: Operating System III: x86 and PC Architecture">Operating System III: x86 and PC Architecture &raquo;</a>
       
     </p>
   </footer>
@@ -258,13 +447,35 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/01/os3/">Operating System III: X86 and PC Architecture</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/01/17/shell/">Mit6.828 Homework: Shell</a>
       </li>
     
+      <li class="post">
+        <a href="/blog/2015/01/17/os1/">Mit6.828 Chapter 0: Operating System Interfaces</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: NaN%" href="/tags/mit6-dot-828/">mit6.828</a>
+
   </ul>
 </section>
 
@@ -279,7 +490,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Your Name -
+  Copyright &copy; 2015 - Min Li -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

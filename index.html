@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>卖萌的弱渣</title>
+  <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="常用Shell 命令 ls &gt; y 把ls结果输出到文件y中
-cat cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用 一次显示整个文件:cat filename
-从键盘创建一个文件: &hellip;">
+  <meta name="description" content="Registers Name Description CS code segment, for fetches via IP SS stack segment, for load/store via SP and BP DS data segment, for load/store via &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +21,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
   <link rel="canonical" href="http://sdytlm.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -38,9 +36,9 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">卖萌的弱渣</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>I am stupid, I am hungry.</h2>
   
 </hgroup>
 
@@ -60,6 +58,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://ramsites.net/~lim4/">About</a></li>
 </ul>
 
 </nav>
@@ -67,6 +66,88 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/01/os3/">Operating System III: X86 and PC Architecture</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-01'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Registers</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Name</strong> </th>
+<th style="text-align:left;"> <strong>Description</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> CS   </td>
+<td style="text-align:left;"> code segment, for fetches via <strong>IP</strong> </td>
+</tr>
+<tr>
+<td style="text-align:left;"> SS   </td>
+<td style="text-align:left;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
+</tr>
+<tr>
+<td style="text-align:left;"> DS   </td>
+<td style="text-align:left;"> data segment, for load/store via other registers </td>
+</tr>
+<tr>
+<td style="text-align:left;"> ES   </td>
+<td style="text-align:left;"> another data segment, <strong>destination for string operationgs</strong> </td>
+</tr>
+<tr>
+<td style="text-align:left;"> SP   </td>
+<td style="text-align:left;"> stack pointer </td>
+</tr>
+<tr>
+<td style="text-align:left;"> BP   </td>
+<td style="text-align:left;"> frame base pointer </td>
+</tr>
+<tr>
+<td style="text-align:left;"> SI   </td>
+<td style="text-align:left;"> source index </td>
+</tr>
+<tr>
+<td style="text-align:left;"> DI   </td>
+<td style="text-align:left;"> destination index </td>
+</tr>
+<tr>
+<td style="text-align:left;"> IP   </td>
+<td style="text-align:left;"> instruction pointer </td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/02/01/os3/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -89,7 +170,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
   </header>
 
 
-  <div class="entry-content"><h2>常用Shell 命令</h2>
+  <div class="entry-content"><h3>常用Shell 命令</h3>
 
 <ol>
 <li><code>ls &gt; y</code>
@@ -118,103 +199,48 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 
 <blockquote><p>功能：把当前目录ls的结果存到y中,然后读取y的内容，然后将y的内容排序，去掉重复，然后统计字数，行数.并把结果保存到y1</p></blockquote>
 
-<hr />
-
-<h2>什么是Unix Pipeline</h2>
-
-<p>举个例子：
-<code>ls -1 | grep p | more</code>
-只列出来还有字母p的当前目录下的文件</p>
-
-<p>Pipeline 使用&#8221;|&ldquo;来区分多个命令，从左到右，前一个命令的结果是后一个命令的输入</p>
-
-<hr />
-
-<h2>sh.c 数据结构</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="p">{...}</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">execcmd</span><span class="p">{...}</span>  <span class="c1">// 普通指令</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">redicmd</span><span class="p">{...}</span>  <span class="c1">// 有重定向的指令</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">pipecmd</span><span class="p">{...}</span>  <span class="c1">// pipe指令</span>
-</span></code></pre></td></tr></table></div></figure>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/17/shell/">Read on &rarr;</a>
+    </footer>
+  
 
 
-<hr />
-
-<h2>sh.c 函数</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">void</span> <span class="n">runcmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">cmd</span><span class="p">)</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">getcmd</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nbuf</span><span class="p">)</span> <span class="c1">// 检测输入是否是标准输入流stdin，然后把用户输入存到buffer里</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">execcmd</span><span class="p">()</span> <span class="c1">// 为一个cmd数据结构分配内存</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">redircmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">subcmd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">)</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">pipecmd</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">left</span><span class="p">,</span> <span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">right</span><span class="p">)</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">gettoken</span><span class="p">(</span><span class="n">chasr</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">q</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">eq</span><span class="p">)</span> <span class="c1">// 把地址ps到es的字符串中的变量找到，并存到q到eq的地址去</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">peek</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">toks</span><span class="p">)</span> <span class="c1">//判断从地址ps到es的字符串是否含有toks里面的字符</span>
-</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">mkcopy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span> <span class="c1">// s指向需要拷贝的字符串头，es指向需要拷贝的字符串结尾. 这个函数拷贝从s到es的字符串，然后返回拷贝的地址。</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parsecmd</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="c1">// 解析命令把buffer里的命令包装成可执行的数据结构struct cmd</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parseline</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parsepipe</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parsedirs</span><span class="p">(</span><span class="k">struct</span> <span class="n">cmd</span> <span class="o">*</span><span class="n">cmd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">cmd</span><span class="o">*</span> <span class="n">parseexec</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">ps</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">es</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/17/os1/">Mit6.828 Chapter 0: Operating System Interfaces</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-<h2>用到的C和操作系统函数</h2>
-
-<ul>
-<li><p>函数原型：extern char <code>*strchr(char *str,char character)</code>
-参数说明：str为一个字符串的指针，character为一个待查找字符。
-所在库名：#include <code>&lt;string.h&gt;</code>
-函数功能：从字符串str中寻找字符character第一次出现的位置。</p></li>
-<li><p>execv
-函数原型：execv(char<em> cmd, char </em>argv[]);
-函数说明：execv 本质上是执行命令 cmd, *argv[] 是包括argv[0]的参数
-举例：
-  <code>c
-  execv(argv[0], argv);
- </code></p></li>
-<li>open
- 函数原型：int open(const char *pathname, int flags, mode_t mode);
- 函数说明：
-
-<ul>
-<li>creates a new open file description, an entry in the system-wide  table of       open files. The new open file description is initially not shared with any       other process, but  sharing  may  arise  via <strong>fork</strong></li>
-<li>parameter <strong>flags</strong> must include one of the following access modes:              O_RDONLY, O_WRONLY, or O_RDWR.</li>
-<li><strong>mode</strong>: 创建文件时设定的其他用户权限: S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-举例说明：</li>
-<li>打开一个新文件用来写入</li>
-</ul>
 
 
-<pre><code class="`` c">  #include &lt;fcntl.h&gt;
-  int fd;
-  mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-  char *filename = "/tmp/file";
-  fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
-</code></pre>
+<time class='entry-date' datetime='2015-01-17'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
 
-<blockquote><p>当打开的文件不存在时 <strong>flag</strong> 必须有O_CREATE, 打开已存在文件则不需要.</p></blockquote></li>
-</ul>
+
+  <div class="entry-content"><p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
+
+<blockquote><p>Procedure calls： 也叫系统调用，用来给process调用kernel service. 当process调用系统调用时，硬件cpu会提高程序的privilege level然后执行内核中已经定义好的函数.</p></blockquote>
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/17/os1/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -229,13 +255,35 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/01/os3/">Operating System III: X86 and PC Architecture</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/01/17/shell/">Mit6.828 Homework: Shell</a>
       </li>
     
+      <li class="post">
+        <a href="/blog/2015/01/17/os1/">Mit6.828 Chapter 0: Operating System Interfaces</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: NaN%" href="/tags/mit6-dot-828/">mit6.828</a>
+
   </ul>
 </section>
 
@@ -249,7 +297,7 @@ cat cat命令的用途是连接文件或标准输入并打印。这个命令常�
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Your Name -
+  Copyright &copy; 2015 - Min Li -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
