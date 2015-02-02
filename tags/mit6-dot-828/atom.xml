@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T23:11:07-05:00</updated>
+  <updated>2015-02-01T23:14:14-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -24,45 +24,45 @@
 <thead>
 <tr>
 <th style="text-align:left;"> Name </th>
-<th style="text-align:center;"> Description </th>
+<th style="text-align:left;"> Description </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;"> CS   </td>
-<td style="text-align:center;"> code segment, for fetches via <strong>IP</strong> </td>
+<td style="text-align:left;"> code segment, for fetches via <strong>IP</strong> </td>
 </tr>
 <tr>
 <td style="text-align:left;"> SS   </td>
-<td style="text-align:center;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
+<td style="text-align:left;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
 </tr>
 <tr>
 <td style="text-align:left;"> DS   </td>
-<td style="text-align:center;"> data segment, for load/store via other registers </td>
+<td style="text-align:left;"> data segment, for load/store via other registers </td>
 </tr>
 <tr>
 <td style="text-align:left;"> ES   </td>
-<td style="text-align:center;"> another data segment, <strong>destination for string operationgs</strong> </td>
+<td style="text-align:left;"> another data segment, <strong>destination for string operationgs</strong> </td>
 </tr>
 <tr>
 <td style="text-align:left;"> SP   </td>
-<td style="text-align:center;"> stack pointer </td>
+<td style="text-align:left;"> stack pointer </td>
 </tr>
 <tr>
 <td style="text-align:left;"> BP   </td>
-<td style="text-align:center;"> frame base pointer </td>
+<td style="text-align:left;"> frame base pointer </td>
 </tr>
 <tr>
 <td style="text-align:left;"> SI   </td>
-<td style="text-align:center;"> source index </td>
+<td style="text-align:left;"> source index </td>
 </tr>
 <tr>
 <td style="text-align:left;"> DI   </td>
-<td style="text-align:center;"> destination index </td>
+<td style="text-align:left;"> destination index </td>
 </tr>
 <tr>
 <td style="text-align:left;"> IP   </td>
-<td style="text-align:center;"> instruction pointer </td>
+<td style="text-align:left;"> instruction pointer </td>
 </tr>
 </tbody>
 </table>
@@ -161,12 +161,12 @@ b8 34 12 cd ab      32-bit CPU, EAX &lt;- 0xabcd1234
 
 <p>For example
 | ATT syntax | Introduction |
-|:&mdash;&mdash;&mdash;&mdash;&ndash;|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
+|:&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
 | movl %eax, %edx |  edx = eax |
 | movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = <em>(int32_t)0x123
- movl (%ebx), %edx | edx = </em>(int32_t)ebx |
-| movl 4(%ebx), %edx | edx = *(int32_t)(ebx+4) |</p>
+| movl 0x123, %edx | edx = * (int32_t)0x123 |
+| movl (%ebx), %edx | edx = * (int32_t)ebx |
+| movl 4(%ebx), %edx | edx = * (int32_t)(ebx+4) |</p>
 
 <h3>Gcc x86 Calling Conventions</h3>
 
@@ -205,7 +205,7 @@ Examples:
 <ul>
 <li><p>Just after call
 | Register or address in stack | What is stored |
-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;&mdash;-|
+|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-:|
 | %eip | The first instruction of callee |
 | %esp + 4 | First argument |
 | %esp | Return address |</p></li>
