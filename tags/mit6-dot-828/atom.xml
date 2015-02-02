@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-02T13:33:03-05:00</updated>
+  <updated>2015-02-02T13:35:29-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -31,47 +31,47 @@
 <tbody>
 <tr>
 <td>CS   </td>
-<td> </td>
+<td>   </td>
 <td> code segment, for fetches via <strong>IP</strong></td>
 </tr>
 <tr>
 <td>SS   </td>
-<td> </td>
+<td>   </td>
 <td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
 </tr>
 <tr>
 <td>DS   </td>
-<td> </td>
+<td>   </td>
 <td> data segment, for load/store via other registers</td>
 </tr>
 <tr>
 <td>ES   </td>
-<td> </td>
+<td>   </td>
 <td> another data segment, <strong>destination for string operationgs</strong></td>
 </tr>
 <tr>
 <td>SP   </td>
-<td> </td>
+<td>   </td>
 <td> stack pointer</td>
 </tr>
 <tr>
 <td>BP   </td>
-<td> </td>
+<td>   </td>
 <td> frame base pointer</td>
 </tr>
 <tr>
 <td>SI   </td>
-<td> </td>
+<td>   </td>
 <td> source index</td>
 </tr>
 <tr>
 <td>DI   </td>
-<td> </td>
+<td>   </td>
 <td> destination index</td>
 </tr>
 <tr>
 <td>IP   </td>
-<td> </td>
+<td>   </td>
 <td> instruction pointer</td>
 </tr>
 </tbody>
