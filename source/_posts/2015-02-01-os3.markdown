@@ -12,16 +12,16 @@ tag: mit6.828
 ### Registers
 
 | Name | Description |
-|------|-------------|
-| CS   | code segment, for fetches via **IP**|
-| SS   | stack segment, for load/store via **SP** and **BP**|
-| DS   | data segment, for load/store via other registers|
+|:---------------|:-----------------------------------------------------------------|
+| CS   | code segment, for fetches via **IP** |
+| SS   | stack segment, for load/store via **SP** and **BP** |
+| DS   | data segment, for load/store via other registers |
 | ES   | another data segment, **destination for string operationgs** |
 | SP   | stack pointer |
 | BP   | frame base pointer |
 | SI   | source index |
 | DI   | destination index |
-| IP   | instruction pointer|
+| IP   | instruction pointer |
 
 
 <!--more-->
@@ -38,8 +38,7 @@ tag: mit6.828
 #define   BUSY 0x80
 #define CONTROL_PORT 0x37A
 #define   STROBE 0x01
-void
-lpt_putc(int c)
+void lpt_putc(int c)
 {
   /* wait for printer to consume previous byte */
   while((inb(STATUS_PORT) & BUSY) == 0)
@@ -96,13 +95,13 @@ b8 34 12 cd ab		32-bit CPU, EAX <- 0xabcd1234
 > **Operation  stc, dest**
 
 For example
-|  ATT syntax  |    Introduction     |
-|--------------|---------------------|
+| ATT syntax | Introduction |
+|:-------------- |:---------------------:|
 | movl %eax, %edx |  edx = eax |
 | movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = *(int32_t)0x123 |
-| movl (%ebx), %edx | edx = *(int32_t)ebx |
-| movl 4(%ebx), %edx | edx = *(int32_t)(ebx+4) |
+| movl 0x123, %edx | edx = * (int32_t)0x123 |
+| movl (%ebx), %edx | edx = * (int32_t)ebx |
+| movl 4(%ebx), %edx | edx = * (int32_t)(ebx+4) |
 
 ### Gcc x86 Calling Conventions
 * X86 stack **grows down**
@@ -130,7 +129,7 @@ ret             // popl %eip
 
 * Just after call
 | Register or address in stack | What is stored |
-|---------------------|----------------|
+|:--------------------- |:-------------------------:|
 | %eip | The first instruction of callee |
 | %esp + 4 | First argument |
 | %esp | Return address |
