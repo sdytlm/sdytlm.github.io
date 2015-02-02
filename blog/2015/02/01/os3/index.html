@@ -250,8 +250,8 @@ For example:</li>
 <blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
 
 <p>For example
-| ATT syntax | Introduction |
-|:&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
+| <strong>ATT syntax</strong> | <strong>Introduction</strong> |
+|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |
 | movl %eax, %edx |  edx = eax |
 | movl $0x123, %edx | edx = 0x123 |
 | movl 0x123, %edx | edx = * (int32_t)0x123 |
@@ -300,8 +300,8 @@ Examples:</li>
 
 <ul>
 <li><p>Just after call
-| Register or address in stack | What is stored |
-|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-:|
+| <strong>Register or address in stack</strong> | <strong>What is stored</strong> |
+|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- |
 | %eip | The first instruction of callee |
 | %esp + 4 | First argument |
 | %esp | Return address |</p></li>
@@ -312,26 +312,26 @@ Examples:</li>
 <table>
 <thead>
 <tr>
-<th> Register or address in the stack </th>
-<th> What is stored </th>
+<th style="text-align:left;"> <strong>Register or address in the stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> %eip </td>
-<td> Contains the return address </td>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> Contains the return address </td>
 </tr>
 <tr>
-<td> %esp </td>
-<td> Points at arguments pushed by caller </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Points at arguments pushed by caller </td>
 </tr>
 <tr>
-<td> %eax (and %edx if 64-bit) </td>
-<td> Return value </td>
+<td style="text-align:left;"> %eax (and %edx if 64-bit) </td>
+<td style="text-align:left;"> Return value </td>
 </tr>
 <tr>
-<td> %ebp, %ebx, %esi, %edi </td>
-<td> contain contents from the time of call </td>
+<td style="text-align:left;"> %ebp, %ebx, %esi, %edi </td>
+<td style="text-align:left;"> contain contents from the time of call </td>
 </tr>
 </tbody>
 </table>
