@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-02T13:35:29-05:00</updated>
+  <updated>2015-02-02T13:36:39-05:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -81,9 +81,9 @@
 <!--more-->
 
 
-<hr />
-
 <blockquote><p>IP increment after running each instruction. CALL REt, JMP can modify it.</p></blockquote>
+
+<hr />
 
 <h3>I/O</h3>
 
