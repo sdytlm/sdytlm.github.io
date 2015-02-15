@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/c/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2015-02-15T12:24:00-08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[C Study Note I: Tutorial Introduction]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/02/15/c/"/>
+    <updated>2015-02-15T00:00:00-08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/02/15/c</id>
+    <content type="html"><![CDATA[<blockquote><p>I am strong because I&rsquo;ve been weak. I am fearless because I&rsquo;ve been afraid. I am wise because I&rsquo;ve been foolish.</p></blockquote>
+
+<h3>Variables and Expression</h3>
+
+<ul>
+<li>printf 的用法</li>
+</ul>
+
+
+<pre><code class="C">printf("%3d %6d\n", fahr, celsius); // %后面表示要输出的变量，有一个%，后面就得有一个变量. %后面的数字代表输出的最大长度，右对齐.
+
+printf("%3d%6d\n", fahr, celsius); // 比上面少一个空格
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="C  ">  3    -17
+  4    -18
+  5    -19
+  6    -20
+  7    -21
+</code></pre>
+
+<pre><code class="C">  3   -17
+  4   -18
+  5   -19
+  6   -20
+  7   -21
+</code></pre>
+
+<ul>
+<li>printf 浮点数输出</li>
+</ul>
+
+
+<pre><code class="C">float f = 3.0;
+printf("%f\n",f-2); // float和int一起操作, int会被转换成float. 不管是+,-,*,/还是&lt;&gt;.
+printf("%3.0f",f) // float总共3位,不算小数点和小数部分.
+printf("%6.1f",f) // float总共6位包括小数点和小数点后的部分,小数点后1位
+</code></pre>
+
+<pre><code class="C">1.000000
+  3
+   3.0
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> 参数 </th>
+<th style="text-align:center;"> 解释 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> %d </td>
+<td style="text-align:center;"> Print as decimal integer </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %o </td>
+<td style="text-align:center;"> octal </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %x </td>
+<td style="text-align:center;"> hexadecimal </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %c </td>
+<td style="text-align:center;"> character </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %s </td>
+<td style="text-align:center;"> string </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %6d </td>
+<td style="text-align:center;"> Print as decimal integer, at least 6 characters wide</td>
+</tr>
+<tr>
+<td style="text-align:left;"> %f </td>
+<td style="text-align:center;"> Print as float or double </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %ld </td>
+<td style="text-align:center;"> Print as a long </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %6f </td>
+<td style="text-align:center;"> Print as floating point, at least 6 characters wide</td>
+</tr>
+<tr>
+<td style="text-align:left;"> %.2f </td>
+<td style="text-align:center;"> Print as floating point, 2 characters after decimal point</td>
+</tr>
+<tr>
+<td style="text-align:left;"> %6.2f</td>
+<td style="text-align:center;"> Print as floating point, at least 6 wide and 2 after decimal point</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>输入输出</h3>
+
+<ul>
+<li><strong>getchar()</strong>: read next input character from a text stream. Normally, the characters are from keyboard input.</li>
+</ul>
+
+
+<pre><code class="c">    c = getchar();
+</code></pre>
+
+<ul>
+<li><strong>putchar()</strong>: print a character each time it is called. Usually, the output will appear in screen.</li>
+</ul>
+
+
+<pre><code class="c">    putchar(c);
+</code></pre>
+
+<ul>
+<li>Get characters and put them on screen</li>
+</ul>
+
+
+<pre><code class="c">    #include &lt;stdio.h&gt;
+    int main() {
+        int c       // 临时存储输入变量的是int型,
+        while ((c=getchar()) != EOF)    // EOF 是stdio.h中用define定义的文件结尾符.
+            putchar(c);
+    }
+</code></pre>
+
+<ul>
+<li>单引号‘ ’内的叫character constant. 其实在表达式中他对应着一个integer. 例如 &lsquo;A&rsquo; 对应65, &lsquo;\n&#8217;对应10</li>
+<li>统计输入文件的digits, white space, others</li>
+</ul>
+
+
+<pre><code class="c">    #include&lt; stdio.h&gt;
+    int main() {
+        int c, i, nwhite, nother;
+        int ndigit[10]; // 0-9 10个数
+        for(i=0;i&lt;10;++i)
+            ndigit[i] = 0; // 初始化ndigit
+        while((c = getchar()) != EOF) {
+            if(c&gt;='0' &amp;&amp; c&lt;='9')    // char 可以比较
+                ++ndight[c-'0'];    // c-'0'是个int值
+            else if (c==' ' || c=='\n' || c=='\t') // 空白符
+                ++nwhite;
+            else // others
+                ++nother;
+        }
+    }
+</code></pre>
+
+<blockquote><p>char 在算数表达式里当成int用, &lsquo;9&rsquo;-&lsquo;0&#8217;＝9</p></blockquote>
+
+<ul>
+<li>实现把最长的串拷贝出来</li>
+</ul>
+
+
+<pre><code class="c">    #include &lt;stdio.h&gt;
+    #define MAXLINE 1000
+
+    int getline(char line[], int maxline);  // 读一行
+    void copy(char to[], char from[]);      // copy一行
+
+    int main() {
+        int len;    // current line length
+        int max;    // maximum length so far
+        char line[MAXLINE];     // current input line
+        char longest[MAXLINE];  // longest line saved here
+
+        max = 0;
+        while ((len = getline(line, MAXLINE)) &gt; 0)
+            if (len &gt; max) {    // found longer line
+                max = len;
+                copy(longest, line);
+            }
+        printf("%s", longest)   // 输出
+        return 0;
+    }
+
+    int getline (char s[], int lim) {
+        int c,i;
+        for(i=0;i&lt;lim-1 &amp;&amp; (c=getchar())!=EOF &amp;&amp; c!='\n'; ++i)
+            s[i] = c;
+            if(c == '\n') {     // 行尾
+                s[i] = c;
+                ++i
+            }
+            s[i] = '\0';        // 每一行都已\0做结束
+            return i;
+    }
+
+    void copy(char top[], char from[]){
+        int i;
+        i = 0;
+        while((to[i]=from[i]) != '\0')
+            ++i;
+    }
+</code></pre>
+
+<ul>
+<li>函数内变量和extern 变量的区别: extern变量不会随函数而消失</li>
+</ul>
+
+
+<pre><code class="c">    #include&lt;stdio.h&gt;
+    #define MAXLINE 1000
+
+    char longest[MAXLINE];      // 先在函数外声明一次
+    char line[MAXLINE];
+
+    int main() {
+        extern char longest[];  // 函数内还要再声明一次;
+</code></pre>
+
+<blockquote><p>若外部变量的定义在某个函数使用他之前，则不需要在函数中再次定义. 例如上面代码中main 里其实不用再次声明longest[].</p></blockquote>
+
+<p>注意:</p>
+
+<blockquote><p>若一个程序有多个文件, external variable definition is in file1, 但是file2 和 file3 使用这个变量. 必须要在file2 和 file3 显示的extern declaration 一次。</p></blockquote>
+
+<p>再注意:</p>
+
+<blockquote><p><strong>Definition</strong>: refers to the place where the variable is created or assigned storage
+    <strong>Declaration</strong>: refers to places where the nature of the variable is stated but no storage is allocated.</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>

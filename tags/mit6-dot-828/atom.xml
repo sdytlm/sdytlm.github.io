@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: mit6.828 | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/mit6-dot-828/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T23:14:14-05:00</updated>
+  <updated>2015-02-15T12:24:00-08:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -16,53 +16,63 @@
   <entry>
     <title type="html"><![CDATA[Operating System III: x86 and PC Architecture]]></title>
     <link href="http://sdytlm.github.io/blog/2015/02/01/os3/"/>
-    <updated>2015-02-01T00:00:00-05:00</updated>
+    <updated>2015-02-01T00:00:00-08:00</updated>
     <id>http://sdytlm.github.io/blog/2015/02/01/os3</id>
     <content type="html"><![CDATA[<h3>Registers</h3>
 
 <table>
 <thead>
 <tr>
-<th style="text-align:left;"> Name </th>
-<th style="text-align:left;"> Description </th>
+<th><strong>Name</strong>  </th>
+<th>     </th>
+<th> <strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;"> CS   </td>
-<td style="text-align:left;"> code segment, for fetches via <strong>IP</strong> </td>
+<td>CS   </td>
+<td>   </td>
+<td> code segment, for fetches via <strong>IP</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> SS   </td>
-<td style="text-align:left;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
+<td>SS   </td>
+<td>   </td>
+<td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> DS   </td>
-<td style="text-align:left;"> data segment, for load/store via other registers </td>
+<td>DS   </td>
+<td>   </td>
+<td> data segment, for load/store via other registers</td>
 </tr>
 <tr>
-<td style="text-align:left;"> ES   </td>
-<td style="text-align:left;"> another data segment, <strong>destination for string operationgs</strong> </td>
+<td>ES   </td>
+<td>   </td>
+<td> another data segment, <strong>destination for string operationgs</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> SP   </td>
-<td style="text-align:left;"> stack pointer </td>
+<td>SP   </td>
+<td>   </td>
+<td> stack pointer</td>
 </tr>
 <tr>
-<td style="text-align:left;"> BP   </td>
-<td style="text-align:left;"> frame base pointer </td>
+<td>BP   </td>
+<td>   </td>
+<td> frame base pointer</td>
 </tr>
 <tr>
-<td style="text-align:left;"> SI   </td>
-<td style="text-align:left;"> source index </td>
+<td>SI   </td>
+<td>   </td>
+<td> source index</td>
 </tr>
 <tr>
-<td style="text-align:left;"> DI   </td>
-<td style="text-align:left;"> destination index </td>
+<td>DI   </td>
+<td>   </td>
+<td> destination index</td>
 </tr>
 <tr>
-<td style="text-align:left;"> IP   </td>
-<td style="text-align:left;"> instruction pointer </td>
+<td>IP   </td>
+<td>   </td>
+<td> instruction pointer</td>
 </tr>
 </tbody>
 </table>
@@ -72,6 +82,8 @@
 
 
 <blockquote><p>IP increment after running each instruction. CALL REt, JMP can modify it.</p></blockquote>
+
+<hr />
 
 <h3>I/O</h3>
 
@@ -102,6 +114,8 @@ void lpt_putc(int c)
 }
 </code></pre>
 
+<hr />
+
 <h3>MMIO</h3>
 
 <ul>
@@ -126,6 +140,8 @@ void lpt_putc(int c)
 
 <blockquote><p>side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。</p></blockquote>
 
+<hr />
+
 <h3>Translate virtual address to physical address</h3>
 
 <ul>
@@ -138,12 +154,16 @@ For example:</li>
 
 <blockquote><p>in 32-bit mode, MOVW is expressed as 0x66 MOVW</p></blockquote>
 
+<hr />
+
 <h3>Instruction encoding</h3>
 
 <pre><code class="c">b8 cd ab        16-bit CPU,  AX &lt;- 0xabcd
 b8 34 12 cd ab      32-bit CPU, EAX &lt;- 0xabcd1234
 66 b8 cd ab     32-bit CPU,  AX &lt;- 0xabcd
 </code></pre>
+
+<hr />
 
 <h3>x86 Physical Memory</h3>
 
@@ -155,18 +175,45 @@ b8 34 12 cd ab      32-bit CPU, EAX &lt;- 0xabcd1234
 
 <p><img src="https://copy.com/ydV77i6vO20CO3Ks" alt="image" /></p>
 
+<hr />
+
 <h3>ATT Syntax</h3>
 
 <blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
 
-<p>For example
-| ATT syntax | Introduction |
-|:&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
-| movl %eax, %edx |  edx = eax |
-| movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = * (int32_t)0x123 |
-| movl (%ebx), %edx | edx = * (int32_t)ebx |
-| movl 4(%ebx), %edx | edx = * (int32_t)(ebx+4) |</p>
+<p>For example</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>ATT syntax</strong> </th>
+<th style="text-align:left;"> <strong>Introduction</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> movl %eax, %edx </td>
+<td style="text-align:left;">  edx = eax </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl $0x123, %edx </td>
+<td style="text-align:left;"> edx = 0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 0x123, %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl (%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)ebx </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 4(%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)(ebx+4) </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Gcc x86 Calling Conventions</h3>
 
@@ -200,42 +247,67 @@ Examples:
 <pre><code class="c">ret             // popl %eip
 </code></pre>
 
+<hr />
+
 <h3>How the stack is used between caller and callee</h3>
 
 <ul>
-<li><p>Just after call
-| Register or address in stack | What is stored |
-|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-:|
-| %eip | The first instruction of callee |
-| %esp + 4 | First argument |
-| %esp | Return address |</p></li>
-<li><p>After ret instruction</p></li>
+<li>Just after call</li>
 </ul>
 
 
 <table>
 <thead>
 <tr>
-<th> Register or address in the stack </th>
-<th> What is stored </th>
+<th style="text-align:left;"> <strong>Register or address in stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> %eip </td>
-<td> Contains the return address </td>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> The first instruction of callee </td>
 </tr>
 <tr>
-<td> %esp </td>
-<td> Points at arguments pushed by caller </td>
+<td style="text-align:left;"> %esp + 4 </td>
+<td style="text-align:left;"> First argument </td>
 </tr>
 <tr>
-<td> %eax (and %edx if 64-bit) </td>
-<td> Return value </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Return address </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li>After ret instruction</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Register or address in the stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> Contains the return address </td>
 </tr>
 <tr>
-<td> %ebp, %ebx, %esi, %edi </td>
-<td> contain contents from the time of call </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Points at arguments pushed by caller </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %eax (and %edx if 64-bit) </td>
+<td style="text-align:left;"> Return value </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %ebp, %ebx, %esi, %edi </td>
+<td style="text-align:left;"> contain contents from the time of call </td>
 </tr>
 </tbody>
 </table>
@@ -271,6 +343,8 @@ movl %esp, %ebp   // ebp = esp, ebp point to the next address of saved %ebp
 <pre><code>movl %ebp, %esp     // esp = ebp, then after that esp point to the bottom of caller's stack
 pop %ebp
 </code></pre>
+
+<hr />
 
 <h3>C -> Assembly</h3>
 
@@ -768,7 +842,7 @@ int g(int x) { return x+3; }
 </span><span class='line'>  <span class="o">&lt;</span><span class="n">entry</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">title</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;html&quot;</span><span class="o">&gt;&lt;!</span><span class="p">[</span><span class="n">CDATA</span><span class="p">[</span><span class="n">Mit6</span><span class="mf">.828</span> <span class="nl">Homework</span><span class="p">:</span> <span class="n">Shell</span><span class="p">]]</span><span class="o">&gt;&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;http://sdytlm.github.io/blog/2015/01/17/shell/&quot;</span><span class="o">/&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2015</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">17</span><span class="nl">T00</span><span class="p">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">-</span><span class="mo">05</span><span class="o">:</span><span class="mo">00</span><span class="o">&lt;/</span><span class="n">updated</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2015</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">17</span><span class="nl">T00</span><span class="p">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">-</span><span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">&lt;/</span><span class="n">updated</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">id</span><span class="o">&gt;</span><span class="nl">http</span><span class="p">:</span><span class="c1">//sdytlm.github.io/blog/2015/01/17/shell&lt;/id&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">content</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;html&quot;</span><span class="o">&gt;&lt;!</span><span class="p">[</span><span class="n">CDATA</span><span class="p">[</span><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="err">常用</span><span class="n">Shell</span> <span class="err">命令</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
 </span><span class='line'>
@@ -977,7 +1051,7 @@ int g(int x) { return x+3; }
 </span><span class='line'>  <span class="o">&lt;</span><span class="n">entry</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">title</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;html&quot;</span><span class="o">&gt;&lt;!</span><span class="p">[</span><span class="n">CDATA</span><span class="p">[</span><span class="n">Mit6</span><span class="mf">.828</span> <span class="n">Chapter</span> <span class="mi">0</span><span class="o">:</span> <span class="n">Operating</span> <span class="n">System</span> <span class="n">Interfaces</span><span class="p">]]</span><span class="o">&gt;&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;http://sdytlm.github.io/blog/2015/01/17/os1/&quot;</span><span class="o">/&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2015</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">17</span><span class="nl">T00</span><span class="p">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">-</span><span class="mo">05</span><span class="o">:</span><span class="mo">00</span><span class="o">&lt;/</span><span class="n">updated</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">updated</span><span class="o">&gt;</span><span class="mi">2015</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">17</span><span class="nl">T00</span><span class="p">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">-</span><span class="mi">08</span><span class="o">:</span><span class="mo">00</span><span class="o">&lt;/</span><span class="n">updated</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">id</span><span class="o">&gt;</span><span class="nl">http</span><span class="p">:</span><span class="c1">//sdytlm.github.io/blog/2015/01/17/os1&lt;/id&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="n">content</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;html&quot;</span><span class="o">&gt;&lt;!</span><span class="p">[</span><span class="n">CDATA</span><span class="p">[</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">Process</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;:</span> <span class="n">include</span> <span class="n">memory</span> <span class="n">containing</span> <span class="n">instructions</span><span class="p">,</span> <span class="n">data</span> <span class="n">and</span> <span class="n">a</span> <span class="n">stack</span><span class="p">.</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">Instructions</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="n">implement</span> <span class="n">the</span> <span class="n">program</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="n">s</span> <span class="n">computation</span><span class="p">.</span> <span class="n">The</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">data</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="n">are</span> <span class="n">the</span> <span class="n">variables</span> <span class="n">on</span> <span class="n">which</span> <span class="n">the</span> <span class="n">computation</span> <span class="n">acts</span><span class="p">.</span> <span class="n">The</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">stack</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="n">organizes</span> <span class="n">the</span> <span class="n">program</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="n">s</span> <span class="n">procedure</span> <span class="n">calls</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>

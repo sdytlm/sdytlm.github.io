@@ -26,6 +26,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -90,46 +91,56 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left;"> Name </th>
-<th style="text-align:left;"> Description </th>
+<th><strong>Name</strong>  </th>
+<th>     </th>
+<th> <strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;"> CS   </td>
-<td style="text-align:left;"> code segment, for fetches via <strong>IP</strong> </td>
+<td>CS   </td>
+<td>   </td>
+<td> code segment, for fetches via <strong>IP</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> SS   </td>
-<td style="text-align:left;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
+<td>SS   </td>
+<td>   </td>
+<td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> DS   </td>
-<td style="text-align:left;"> data segment, for load/store via other registers </td>
+<td>DS   </td>
+<td>   </td>
+<td> data segment, for load/store via other registers</td>
 </tr>
 <tr>
-<td style="text-align:left;"> ES   </td>
-<td style="text-align:left;"> another data segment, <strong>destination for string operationgs</strong> </td>
+<td>ES   </td>
+<td>   </td>
+<td> another data segment, <strong>destination for string operationgs</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> SP   </td>
-<td style="text-align:left;"> stack pointer </td>
+<td>SP   </td>
+<td>   </td>
+<td> stack pointer</td>
 </tr>
 <tr>
-<td style="text-align:left;"> BP   </td>
-<td style="text-align:left;"> frame base pointer </td>
+<td>BP   </td>
+<td>   </td>
+<td> frame base pointer</td>
 </tr>
 <tr>
-<td style="text-align:left;"> SI   </td>
-<td style="text-align:left;"> source index </td>
+<td>SI   </td>
+<td>   </td>
+<td> source index</td>
 </tr>
 <tr>
-<td style="text-align:left;"> DI   </td>
-<td style="text-align:left;"> destination index </td>
+<td>DI   </td>
+<td>   </td>
+<td> destination index</td>
 </tr>
 <tr>
-<td style="text-align:left;"> IP   </td>
-<td style="text-align:left;"> instruction pointer </td>
+<td>IP   </td>
+<td>   </td>
+<td> instruction pointer</td>
 </tr>
 </tbody>
 </table>
@@ -139,6 +150,8 @@
 
 
 <blockquote><p>IP increment after running each instruction. CALL REt, JMP can modify it.</p></blockquote>
+
+<hr />
 
 <h3>I/O</h3>
 
@@ -188,6 +201,8 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>MMIO</h3>
 
 <ul>
@@ -212,6 +227,8 @@
 
 <blockquote><p>side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。</p></blockquote>
 
+<hr />
+
 <h3>Translate virtual address to physical address</h3>
 
 <ul>
@@ -224,6 +241,8 @@ For example:</li>
 
 <blockquote><p>in 32-bit mode, MOVW is expressed as 0x66 MOVW</p></blockquote>
 
+<hr />
+
 <h3>Instruction encoding</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -235,6 +254,8 @@ For example:</li>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>x86 Physical Memory</h3>
 
 <ul>
@@ -245,18 +266,45 @@ For example:</li>
 
 <p><img src="https://copy.com/ydV77i6vO20CO3Ks" alt="image" /></p>
 
+<hr />
+
 <h3>ATT Syntax</h3>
 
 <blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
 
-<p>For example
-| ATT syntax | Introduction |
-|:&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
-| movl %eax, %edx |  edx = eax |
-| movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = * (int32_t)0x123 |
-| movl (%ebx), %edx | edx = * (int32_t)ebx |
-| movl 4(%ebx), %edx | edx = * (int32_t)(ebx+4) |</p>
+<p>For example</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>ATT syntax</strong> </th>
+<th style="text-align:left;"> <strong>Introduction</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> movl %eax, %edx </td>
+<td style="text-align:left;">  edx = eax </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl $0x123, %edx </td>
+<td style="text-align:left;"> edx = 0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 0x123, %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl (%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)ebx </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 4(%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)(ebx+4) </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Gcc x86 Calling Conventions</h3>
 
@@ -296,42 +344,67 @@ Examples:</li>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>How the stack is used between caller and callee</h3>
 
 <ul>
-<li><p>Just after call
-| Register or address in stack | What is stored |
-|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-:|
-| %eip | The first instruction of callee |
-| %esp + 4 | First argument |
-| %esp | Return address |</p></li>
-<li><p>After ret instruction</p></li>
+<li>Just after call</li>
 </ul>
 
 
 <table>
 <thead>
 <tr>
-<th> Register or address in the stack </th>
-<th> What is stored </th>
+<th style="text-align:left;"> <strong>Register or address in stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> %eip </td>
-<td> Contains the return address </td>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> The first instruction of callee </td>
 </tr>
 <tr>
-<td> %esp </td>
-<td> Points at arguments pushed by caller </td>
+<td style="text-align:left;"> %esp + 4 </td>
+<td style="text-align:left;"> First argument </td>
 </tr>
 <tr>
-<td> %eax (and %edx if 64-bit) </td>
-<td> Return value </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Return address </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li>After ret instruction</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Register or address in the stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> Contains the return address </td>
 </tr>
 <tr>
-<td> %ebp, %ebx, %esi, %edi </td>
-<td> contain contents from the time of call </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Points at arguments pushed by caller </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %eax (and %edx if 64-bit) </td>
+<td style="text-align:left;"> Return value </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %ebp, %ebx, %esi, %edi </td>
+<td style="text-align:left;"> contain contents from the time of call </td>
 </tr>
 </tbody>
 </table>
@@ -373,6 +446,8 @@ Examples:</li>
 </span><span class='line'><span class="n">pop</span> <span class="o">%</span><span class="n">ebp</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h3>C -> Assembly</h3>
 
@@ -528,6 +603,8 @@ Examples:</li>
         <a class="basic-alignment left" href="/blog/2015/01/17/shell/" title="Previous Post: Mit6.828 Homework: Shell">&laquo; Mit6.828 Homework: Shell</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/02/15/c/" title="Next Post: C Study Note I: Tutorial Introduction">C Study Note I: Tutorial Introduction &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -539,13 +616,18 @@ Examples:</li>
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+    <li class='category'><a href='/blog/categories/c/'>c (1)</a></li>
+<li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/c/">C Study Note I: Tutorial Introduction</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/01/os3/">Operating System III: X86 and PC Architecture</a>
@@ -564,7 +646,8 @@ Examples:</li>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: NaN%" href="/tags/mit6-dot-828/">mit6.828</a>
+    <a style="font-size: 90%" href="/tags/c/">C</a>
+<a style="font-size: 210%" href="/tags/mit6-dot-828/">mit6.828</a>
 
   </ul>
 </section>

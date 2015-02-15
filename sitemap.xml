@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://sdytlm.github.io/blog/2015/02/15/c/</loc>
+    <lastmod>2015-02-15T00:00:00-08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://sdytlm.github.io/blog/2015/02/01/os3/</loc>
-    <lastmod>2015-02-01T00:00:00-05:00</lastmod>
+    <lastmod>2015-02-01T00:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://sdytlm.github.io/blog/2015/01/17/shell/</loc>
-    <lastmod>2015-01-17T00:00:00-05:00</lastmod>
+    <lastmod>2015-01-17T00:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://sdytlm.github.io/blog/2015/01/17/os1/</loc>
-    <lastmod>2015-01-17T00:00:00-05:00</lastmod>
+    <lastmod>2015-01-17T00:00:00-08:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://sdytlm.github.io/blog/archives/</loc>
-    <lastmod>2015-02-01T23:14:14-05:00</lastmod>
+    <lastmod>2015-02-15T12:24:00-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://sdytlm.github.io/</loc>
-    <lastmod>2015-02-01T23:14:14-05:00</lastmod>
+    <lastmod>2015-02-15T12:24:00-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

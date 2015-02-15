@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-01T23:14:14-05:00</updated>
+  <updated>2015-02-15T12:24:00-08:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -14,55 +14,409 @@
 
   
   <entry>
+    <title type="html"><![CDATA[C Study Note I: Tutorial Introduction]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/02/15/c/"/>
+    <updated>2015-02-15T00:00:00-08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/02/15/c</id>
+    <content type="html"><![CDATA[<blockquote><p>I am strong because I&rsquo;ve been weak. I am fearless because I&rsquo;ve been afraid. I am wise because I&rsquo;ve been foolish.</p></blockquote>
+
+<h3>Variables and Expression</h3>
+
+<ul>
+<li>printf 的用法</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%3d %6d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fahr</span><span class="p">,</span> <span class="n">celsius</span><span class="p">);</span> <span class="c1">// %后面表示要输出的变量，有一个%，后面就得有一个变量. %后面的数字代表输出的最大长度，右对齐.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%3d%6d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fahr</span><span class="p">,</span> <span class="n">celsius</span><span class="p">);</span> <span class="c1">// 比上面少一个空格</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Output:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'>  <span class="mi">3</span>    <span class="o">-</span><span class="mi">17</span>
+</span><span class='line'>  <span class="mi">4</span>    <span class="o">-</span><span class="mi">18</span>
+</span><span class='line'>  <span class="mi">5</span>    <span class="o">-</span><span class="mi">19</span>
+</span><span class='line'>  <span class="mi">6</span>    <span class="o">-</span><span class="mi">20</span>
+</span><span class='line'>  <span class="mi">7</span>    <span class="o">-</span><span class="mi">21</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'>  <span class="mi">3</span>   <span class="o">-</span><span class="mi">17</span>
+</span><span class='line'>  <span class="mi">4</span>   <span class="o">-</span><span class="mi">18</span>
+</span><span class='line'>  <span class="mi">5</span>   <span class="o">-</span><span class="mi">19</span>
+</span><span class='line'>  <span class="mi">6</span>   <span class="o">-</span><span class="mi">20</span>
+</span><span class='line'>  <span class="mi">7</span>   <span class="o">-</span><span class="mi">21</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>printf 浮点数输出</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// float和int一起操作, int会被转换成float. 不管是+,-,*,/还是&lt;&gt;.</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%3.0f&quot;</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="c1">// float总共3位,不算小数点和小数部分.</span>
+</span><span class='line'><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%6.1f&quot;</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="c1">// float总共6位包括小数点和小数点后的部分,小数点后1位</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="mf">1.000000</span>
+</span><span class='line'>  <span class="mi">3</span>
+</span><span class='line'>   <span class="mf">3.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> 参数 </th>
+<th style="text-align:center;"> 解释 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> %d </td>
+<td style="text-align:center;"> Print as decimal integer </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %o </td>
+<td style="text-align:center;"> octal </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %x </td>
+<td style="text-align:center;"> hexadecimal </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %c </td>
+<td style="text-align:center;"> character </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %s </td>
+<td style="text-align:center;"> string </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %6d </td>
+<td style="text-align:center;"> Print as decimal integer, at least 6 characters wide</td>
+</tr>
+<tr>
+<td style="text-align:left;"> %f </td>
+<td style="text-align:center;"> Print as float or double </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %ld </td>
+<td style="text-align:center;"> Print as a long </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %6f </td>
+<td style="text-align:center;"> Print as floating point, at least 6 characters wide</td>
+</tr>
+<tr>
+<td style="text-align:left;"> %.2f </td>
+<td style="text-align:center;"> Print as floating point, 2 characters after decimal point</td>
+</tr>
+<tr>
+<td style="text-align:left;"> %6.2f</td>
+<td style="text-align:center;"> Print as floating point, at least 6 wide and 2 after decimal point</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>输入输出</h3>
+
+<ul>
+<li><strong>getchar()</strong>: read next input character from a text stream. Normally, the characters are from keyboard input.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">c</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>putchar()</strong>: print a character each time it is called. Usually, the output will appear in screen.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">putchar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Get characters and put them on screen</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">c</span>       <span class="c1">// 临时存储输入变量的是int型,</span>
+</span><span class='line'>    <span class="k">while</span> <span class="p">((</span><span class="n">c</span><span class="o">=</span><span class="n">getchar</span><span class="p">())</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span>    <span class="c1">// EOF 是stdio.h中用define定义的文件结尾符.</span>
+</span><span class='line'>        <span class="n">putchar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>单引号‘ ’内的叫character constant. 其实在表达式中他对应着一个integer. 例如 &lsquo;A&rsquo; 对应65, &lsquo;\n&#8217;对应10</li>
+<li>统计输入文件的digits, white space, others</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include&lt; stdio.h&gt;</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">nwhite</span><span class="p">,</span> <span class="n">nother</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">ndigit</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="c1">// 0-9 10个数</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ndigit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 初始化ndigit</span>
+</span><span class='line'>    <span class="k">while</span><span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">())</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">&gt;=</span><span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">c</span><span class="o">&lt;=</span><span class="sc">&#39;9&#39;</span><span class="p">)</span>    <span class="c1">// char 可以比较</span>
+</span><span class='line'>            <span class="o">++</span><span class="n">ndight</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="sc">&#39;0&#39;</span><span class="p">];</span>    <span class="c1">// c-&#39;0&#39;是个int值</span>
+</span><span class='line'>        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39; &#39;</span> <span class="o">||</span> <span class="n">c</span><span class="o">==</span><span class="sc">&#39;\n&#39;</span> <span class="o">||</span> <span class="n">c</span><span class="o">==</span><span class="sc">&#39;\t&#39;</span><span class="p">)</span> <span class="c1">// 空白符</span>
+</span><span class='line'>            <span class="o">++</span><span class="n">nwhite</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">else</span> <span class="c1">// others</span>
+</span><span class='line'>            <span class="o">++</span><span class="n">nother</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>char 在算数表达式里当成int用, &lsquo;9&rsquo;-&lsquo;0&#8217;＝9</p></blockquote>
+
+<ul>
+<li>实现把最长的串拷贝出来</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#define MAXLINE 1000</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">getline</span><span class="p">(</span><span class="kt">char</span> <span class="n">line</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">maxline</span><span class="p">);</span>  <span class="c1">// 读一行</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">copy</span><span class="p">(</span><span class="kt">char</span> <span class="n">to</span><span class="p">[],</span> <span class="kt">char</span> <span class="n">from</span><span class="p">[]);</span>      <span class="c1">// copy一行</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">len</span><span class="p">;</span>    <span class="c1">// current line length</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">max</span><span class="p">;</span>    <span class="c1">// maximum length so far</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="n">line</span><span class="p">[</span><span class="n">MAXLINE</span><span class="p">];</span>     <span class="c1">// current input line</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="n">longest</span><span class="p">[</span><span class="n">MAXLINE</span><span class="p">];</span>  <span class="c1">// longest line saved here</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">while</span> <span class="p">((</span><span class="n">len</span> <span class="o">=</span> <span class="n">getline</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">MAXLINE</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// found longer line</span>
+</span><span class='line'>            <span class="n">max</span> <span class="o">=</span> <span class="n">len</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">copy</span><span class="p">(</span><span class="n">longest</span><span class="p">,</span> <span class="n">line</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">longest</span><span class="p">)</span>   <span class="c1">// 输出</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">getline</span> <span class="p">(</span><span class="kt">char</span> <span class="n">s</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">lim</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">c</span><span class="p">,</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">lim</span><span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">getchar</span><span class="p">())</span><span class="o">!=</span><span class="n">EOF</span> <span class="o">&amp;&amp;</span> <span class="n">c</span><span class="o">!=</span><span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>     <span class="c1">// 行尾</span>
+</span><span class='line'>            <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+</span><span class='line'>            <span class="o">++</span><span class="n">i</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>        <span class="c1">// 每一行都已\0做结束</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">copy</span><span class="p">(</span><span class="kt">char</span> <span class="n">top</span><span class="p">[],</span> <span class="kt">char</span> <span class="n">from</span><span class="p">[]){</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">while</span><span class="p">((</span><span class="n">to</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">from</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>函数内变量和extern 变量的区别: extern变量不会随函数而消失</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include&lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#define MAXLINE 1000</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">char</span> <span class="n">longest</span><span class="p">[</span><span class="n">MAXLINE</span><span class="p">];</span>      <span class="c1">// 先在函数外声明一次</span>
+</span><span class='line'><span class="kt">char</span> <span class="n">line</span><span class="p">[</span><span class="n">MAXLINE</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">extern</span> <span class="kt">char</span> <span class="n">longest</span><span class="p">[];</span>  <span class="c1">// 函数内还要再声明一次;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>若外部变量的定义在某个函数使用他之前，则不需要在函数中再次定义. 例如上面代码中main 里其实不用再次声明longest[].</p></blockquote>
+
+<p>注意:</p>
+
+<blockquote><p>若一个程序有多个文件, external variable definition is in file1, 但是file2 和 file3 使用这个变量. 必须要在file2 和 file3 显示的extern declaration 一次。</p></blockquote>
+
+<p>再注意:</p>
+
+<blockquote><p><strong>Definition</strong>: refers to the place where the variable is created or assigned storage
+    <strong>Declaration</strong>: refers to places where the nature of the variable is stated but no storage is allocated.</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Operating System III: X86 and PC Architecture]]></title>
     <link href="http://sdytlm.github.io/blog/2015/02/01/os3/"/>
-    <updated>2015-02-01T00:00:00-05:00</updated>
+    <updated>2015-02-01T00:00:00-08:00</updated>
     <id>http://sdytlm.github.io/blog/2015/02/01/os3</id>
     <content type="html"><![CDATA[<h3>Registers</h3>
 
 <table>
 <thead>
 <tr>
-<th style="text-align:left;"> Name </th>
-<th style="text-align:left;"> Description </th>
+<th><strong>Name</strong>  </th>
+<th>     </th>
+<th> <strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;"> CS   </td>
-<td style="text-align:left;"> code segment, for fetches via <strong>IP</strong> </td>
+<td>CS   </td>
+<td>   </td>
+<td> code segment, for fetches via <strong>IP</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> SS   </td>
-<td style="text-align:left;"> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong> </td>
+<td>SS   </td>
+<td>   </td>
+<td> stack segment, for load/store via <strong>SP</strong> and <strong>BP</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> DS   </td>
-<td style="text-align:left;"> data segment, for load/store via other registers </td>
+<td>DS   </td>
+<td>   </td>
+<td> data segment, for load/store via other registers</td>
 </tr>
 <tr>
-<td style="text-align:left;"> ES   </td>
-<td style="text-align:left;"> another data segment, <strong>destination for string operationgs</strong> </td>
+<td>ES   </td>
+<td>   </td>
+<td> another data segment, <strong>destination for string operationgs</strong></td>
 </tr>
 <tr>
-<td style="text-align:left;"> SP   </td>
-<td style="text-align:left;"> stack pointer </td>
+<td>SP   </td>
+<td>   </td>
+<td> stack pointer</td>
 </tr>
 <tr>
-<td style="text-align:left;"> BP   </td>
-<td style="text-align:left;"> frame base pointer </td>
+<td>BP   </td>
+<td>   </td>
+<td> frame base pointer</td>
 </tr>
 <tr>
-<td style="text-align:left;"> SI   </td>
-<td style="text-align:left;"> source index </td>
+<td>SI   </td>
+<td>   </td>
+<td> source index</td>
 </tr>
 <tr>
-<td style="text-align:left;"> DI   </td>
-<td style="text-align:left;"> destination index </td>
+<td>DI   </td>
+<td>   </td>
+<td> destination index</td>
 </tr>
 <tr>
-<td style="text-align:left;"> IP   </td>
-<td style="text-align:left;"> instruction pointer </td>
+<td>IP   </td>
+<td>   </td>
+<td> instruction pointer</td>
 </tr>
 </tbody>
 </table>
@@ -72,6 +426,8 @@
 
 
 <blockquote><p>IP increment after running each instruction. CALL REt, JMP can modify it.</p></blockquote>
+
+<hr />
 
 <h3>I/O</h3>
 
@@ -121,6 +477,8 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>MMIO</h3>
 
 <ul>
@@ -145,6 +503,8 @@
 
 <blockquote><p>side effect 是指：访问I/O寄存器时，不仅仅会像访问普通内存一样影响存储单元的值，更重要的是它可能改变CPU的I/O端口电平、输出时序或CPU对I/O端口电平的反应等等，从而实现CPU的控制功能。CPU在电路中的意义就是实现其side effect 。举个例子，有些设备的中断状态寄存器只要一读取，便自动清零。</p></blockquote>
 
+<hr />
+
 <h3>Translate virtual address to physical address</h3>
 
 <ul>
@@ -157,6 +517,8 @@ For example:</li>
 
 <blockquote><p>in 32-bit mode, MOVW is expressed as 0x66 MOVW</p></blockquote>
 
+<hr />
+
 <h3>Instruction encoding</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -168,6 +530,8 @@ For example:</li>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>x86 Physical Memory</h3>
 
 <ul>
@@ -178,18 +542,45 @@ For example:</li>
 
 <p><img src="https://copy.com/ydV77i6vO20CO3Ks" alt="image" /></p>
 
+<hr />
+
 <h3>ATT Syntax</h3>
 
 <blockquote><p><strong>Operation  stc, dest</strong></p></blockquote>
 
-<p>For example
-| ATT syntax | Introduction |
-|:&mdash;&mdash;&mdash;&mdash;&ndash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;:|
-| movl %eax, %edx |  edx = eax |
-| movl $0x123, %edx | edx = 0x123 |
-| movl 0x123, %edx | edx = * (int32_t)0x123 |
-| movl (%ebx), %edx | edx = * (int32_t)ebx |
-| movl 4(%ebx), %edx | edx = * (int32_t)(ebx+4) |</p>
+<p>For example</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>ATT syntax</strong> </th>
+<th style="text-align:left;"> <strong>Introduction</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> movl %eax, %edx </td>
+<td style="text-align:left;">  edx = eax </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl $0x123, %edx </td>
+<td style="text-align:left;"> edx = 0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 0x123, %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)0x123 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl (%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)ebx </td>
+</tr>
+<tr>
+<td style="text-align:left;"> movl 4(%ebx), %edx </td>
+<td style="text-align:left;"> edx = * (int32_t)(ebx+4) </td>
+</tr>
+</tbody>
+</table>
+
 
 <h3>Gcc x86 Calling Conventions</h3>
 
@@ -229,42 +620,67 @@ Examples:</li>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
 <h3>How the stack is used between caller and callee</h3>
 
 <ul>
-<li><p>Just after call
-| Register or address in stack | What is stored |
-|:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; |:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-:|
-| %eip | The first instruction of callee |
-| %esp + 4 | First argument |
-| %esp | Return address |</p></li>
-<li><p>After ret instruction</p></li>
+<li>Just after call</li>
 </ul>
 
 
 <table>
 <thead>
 <tr>
-<th> Register or address in the stack </th>
-<th> What is stored </th>
+<th style="text-align:left;"> <strong>Register or address in stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> %eip </td>
-<td> Contains the return address </td>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> The first instruction of callee </td>
 </tr>
 <tr>
-<td> %esp </td>
-<td> Points at arguments pushed by caller </td>
+<td style="text-align:left;"> %esp + 4 </td>
+<td style="text-align:left;"> First argument </td>
 </tr>
 <tr>
-<td> %eax (and %edx if 64-bit) </td>
-<td> Return value </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Return address </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li>After ret instruction</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Register or address in the stack</strong> </th>
+<th style="text-align:left;"> <strong>What is stored</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> %eip </td>
+<td style="text-align:left;"> Contains the return address </td>
 </tr>
 <tr>
-<td> %ebp, %ebx, %esi, %edi </td>
-<td> contain contents from the time of call </td>
+<td style="text-align:left;"> %esp </td>
+<td style="text-align:left;"> Points at arguments pushed by caller </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %eax (and %edx if 64-bit) </td>
+<td style="text-align:left;"> Return value </td>
+</tr>
+<tr>
+<td style="text-align:left;"> %ebp, %ebx, %esi, %edi </td>
+<td style="text-align:left;"> contain contents from the time of call </td>
 </tr>
 </tbody>
 </table>
@@ -306,6 +722,8 @@ Examples:</li>
 </span><span class='line'><span class="n">pop</span> <span class="o">%</span><span class="n">ebp</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h3>C -> Assembly</h3>
 
@@ -426,7 +844,7 @@ Examples:</li>
   <entry>
     <title type="html"><![CDATA[Mit6.828 Homework: Shell]]></title>
     <link href="http://sdytlm.github.io/blog/2015/01/17/shell/"/>
-    <updated>2015-01-17T00:00:00-05:00</updated>
+    <updated>2015-01-17T00:00:00-08:00</updated>
     <id>http://sdytlm.github.io/blog/2015/01/17/shell</id>
     <content type="html"><![CDATA[<h3>常用Shell 命令</h3>
 
@@ -742,7 +1160,7 @@ Examples:</li>
   <entry>
     <title type="html"><![CDATA[Mit6.828 Chapter 0: Operating System Interfaces]]></title>
     <link href="http://sdytlm.github.io/blog/2015/01/17/os1/"/>
-    <updated>2015-01-17T00:00:00-05:00</updated>
+    <updated>2015-01-17T00:00:00-08:00</updated>
     <id>http://sdytlm.github.io/blog/2015/01/17/os1</id>
     <content type="html"><![CDATA[<p><strong>Process</strong>: include memory containing instructions, data and a stack. <strong>Instructions</strong> implement the program&rsquo;s computation. The <strong>data</strong> are the variables on which the computation acts. The <strong>stack</strong> organizes the program&rsquo;s procedure calls.</p>
 
