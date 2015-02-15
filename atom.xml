@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-02-15T12:24:00-08:00</updated>
+  <updated>2015-02-15T12:25:48-08:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -97,53 +97,53 @@
 <thead>
 <tr>
 <th style="text-align:left;"> 参数 </th>
-<th style="text-align:center;"> 解释 </th>
+<th style="text-align:left;"> 解释 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;"> %d </td>
-<td style="text-align:center;"> Print as decimal integer </td>
+<td style="text-align:left;"> Print as decimal integer </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %o </td>
-<td style="text-align:center;"> octal </td>
+<td style="text-align:left;"> octal </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %x </td>
-<td style="text-align:center;"> hexadecimal </td>
+<td style="text-align:left;"> hexadecimal </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %c </td>
-<td style="text-align:center;"> character </td>
+<td style="text-align:left;"> character </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %s </td>
-<td style="text-align:center;"> string </td>
+<td style="text-align:left;"> string </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %6d </td>
-<td style="text-align:center;"> Print as decimal integer, at least 6 characters wide</td>
+<td style="text-align:left;"> Print as decimal integer, at least 6 characters wide</td>
 </tr>
 <tr>
 <td style="text-align:left;"> %f </td>
-<td style="text-align:center;"> Print as float or double </td>
+<td style="text-align:left;"> Print as float or double </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %ld </td>
-<td style="text-align:center;"> Print as a long </td>
+<td style="text-align:left;"> Print as a long </td>
 </tr>
 <tr>
 <td style="text-align:left;"> %6f </td>
-<td style="text-align:center;"> Print as floating point, at least 6 characters wide</td>
+<td style="text-align:left;"> Print as floating point, at least 6 characters wide</td>
 </tr>
 <tr>
 <td style="text-align:left;"> %.2f </td>
-<td style="text-align:center;"> Print as floating point, 2 characters after decimal point</td>
+<td style="text-align:left;"> Print as floating point, 2 characters after decimal point</td>
 </tr>
 <tr>
 <td style="text-align:left;"> %6.2f</td>
-<td style="text-align:center;"> Print as floating point, at least 6 wide and 2 after decimal point</td>
+<td style="text-align:left;"> Print as floating point, at least 6 wide and 2 after decimal point</td>
 </tr>
 </tbody>
 </table>
