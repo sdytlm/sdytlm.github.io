@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T11:39:36-07:00</updated>
+  <updated>2015-04-06T11:45:03-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -20,7 +20,11 @@
     <id>http://sdytlm.github.io/blog/2015/04/06/python1</id>
     <content type="html"><![CDATA[<h3>Study Resource</h3>
 
-<p>Python Official Document: <a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf">http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf</a></p>
+<ul>
+<li>Python Official Document: <a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf">http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf</a></li>
+<li>Python Standard Library: <a href="https://docs.python.org/2/library/index.html#library-index">https://docs.python.org/2/library/index.html#library-index</a></li>
+</ul>
+
 
 <!--more-->
 
