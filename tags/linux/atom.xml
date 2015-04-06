@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Linux | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/linux/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T14:02:26-07:00</updated>
+  <updated>2015-04-06T14:04:30-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -18,12 +18,18 @@
     <link href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/"/>
     <updated>2015-04-06T00:00:00-07:00</updated>
     <id>http://sdytlm.github.io/blog/2015/04/06/compile-kernel</id>
-    <content type="html"><![CDATA[<p>*</p>
+    <content type="html"><![CDATA[<ul>
+<li></li>
+</ul>
+
 
 <pre><code>cp /boot/config-3.4-desktop ~/Download/linux-3.10/
 </code></pre>
 
-<p>*</p>
+<ul>
+<li></li>
+</ul>
+
 
 <pre><code>make menuconfig
 </code></pre>

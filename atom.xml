@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T14:02:26-07:00</updated>
+  <updated>2015-04-06T14:04:30-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -45,7 +45,10 @@
     <link href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/"/>
     <updated>2015-04-06T00:00:00-07:00</updated>
     <id>http://sdytlm.github.io/blog/2015/04/06/compile-kernel</id>
-    <content type="html"><![CDATA[<p>*</p>
+    <content type="html"><![CDATA[<ul>
+<li></li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -53,7 +56,10 @@
 </span><span class='line'></span></code></pre></td></tr></table></div></figure>
 
 
-<p>*</p>
+<ul>
+<li></li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
