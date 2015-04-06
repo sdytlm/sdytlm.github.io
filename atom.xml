@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T15:15:28-07:00</updated>
+  <updated>2015-04-06T16:40:01-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -71,6 +71,70 @@
 
 
 <blockquote><p>Module name and command parameters are stored in <code>sys.argv[]</code></p></blockquote>
+
+<ul>
+<li>Make your python script executable</li>
+</ul>
+
+
+<p>** Add the following in the first line</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#! /usr/bin/env python3.4</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>** Give your file execution permission</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">yourpython</span><span class="o">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Use special character encoding
+Add the following in the first or second line for Windows 1252</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># -*- coding: cp-1252 -*-</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h3>Basic Introduction</h3>
+
+<h4>Number</h4>
+
+<ul>
+<li>Division will not dismiss fractional part</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span><span class="o">/</span><span class="mi">5</span>
+</span><span class='line'><span class="mf">1.6</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>If you don&rsquo;t like fractional part, use <code>\\</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="mi">7</span><span class="o">//</span><span class="mi">3</span>
+</span><span class='line'><span class="mi">2</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="mi">7</span><span class="o">//-</span><span class="mi">3</span>
+</span><span class='line'><span class="o">-</span><span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

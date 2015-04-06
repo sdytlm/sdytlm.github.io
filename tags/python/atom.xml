@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T15:15:28-07:00</updated>
+  <updated>2015-04-06T16:40:01-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -65,6 +65,58 @@
 </code></pre>
 
 <blockquote><p>Module name and command parameters are stored in <code>sys.argv[]</code></p></blockquote>
+
+<ul>
+<li>Make your python script executable</li>
+</ul>
+
+
+<p>** Add the following in the first line</p>
+
+<pre><code class="python">#! /usr/bin/env python3.4
+</code></pre>
+
+<p>** Give your file execution permission</p>
+
+<pre><code>chmod +x yourpython.py
+</code></pre>
+
+<ul>
+<li>Use special character encoding
+Add the following in the first or second line for Windows 1252
+&#8220;`
+
+<h1>-<em>- coding: cp-1252 -</em>-</h1>
+
+<p>&#8220;`</p></li>
+</ul>
+
+
+<hr />
+
+<h3>Basic Introduction</h3>
+
+<h4>Number</h4>
+
+<ul>
+<li>Division will not dismiss fractional part</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 8/5
+1.6
+</code></pre>
+
+<ul>
+<li>If you don&rsquo;t like fractional part, use <code>\\</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 7//3
+2
+&gt;&gt; 7//-3
+-3
+</code></pre>
 ]]></content>
   </entry>
   
