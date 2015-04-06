@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T11:45:03-07:00</updated>
+  <updated>2015-04-06T13:54:26-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -23,6 +23,15 @@
 <ul>
 <li>Python Official Document: <a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf">http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf</a></li>
 <li>Python Standard Library: <a href="https://docs.python.org/2/library/index.html#library-index">https://docs.python.org/2/library/index.html#library-index</a></li>
+</ul>
+
+
+<h3>Features</h3>
+
+<ul>
+<li>Advancced Data Structure</li>
+<li>Rely on <code>indentation</code>  (- -!)</li>
+<li>No declaration for parameters</li>
 </ul>
 
 
