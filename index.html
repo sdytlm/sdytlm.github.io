@@ -123,6 +123,73 @@ Python Standard Library: https://docs. &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/04/06/compile-kernel/">Compile Linux Kernel</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-06'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>Step 1</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp /boot/config-3.4-desktop ~/Download/linux-3.10/
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>make meuconfig</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make menuconfig
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>diff .config and the configration you copied</p></li>
+<li><p>make</p></li>
+<li><p>make modules</p></li>
+<li><p>make modules_install</p></li>
+<li><p>make install</p></li>
+<li><p>Update grub</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/02/01/os3/">Operating System III: X86 and PC Architecture</a></h1>
     
     
@@ -318,7 +385,8 @@ Python Standard Library: https://docs. &hellip;">
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+    <li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
+<li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
 
   </ul>
@@ -329,6 +397,10 @@ Python Standard Library: https://docs. &hellip;">
     
       <li class="post">
         <a href="/blog/2015/04/06/python1/">Python: Introduction</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/06/compile-kernel/">Compile Linux Kernel</a>
       </li>
     
       <li class="post">
@@ -348,7 +420,8 @@ Python Standard Library: https://docs. &hellip;">
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: 210%" href="/tags/mit6-dot-828/">mit6.828</a>
+    <a style="font-size: 90%" href="/tags/linux/">Linux</a>
+<a style="font-size: 210%" href="/tags/mit6-dot-828/">mit6.828</a>
 <a style="font-size: 90%" href="/tags/python/">python</a>
 
   </ul>

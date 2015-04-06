@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T13:54:26-07:00</updated>
+  <updated>2015-04-06T13:56:57-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -36,6 +36,53 @@
 
 
 <!--more-->
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Compile Linux Kernel]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/"/>
+    <updated>2015-04-06T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/06/compile-kernel</id>
+    <content type="html"><![CDATA[<ul>
+<li>Step 1</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp /boot/config-3.4-desktop ~/Download/linux-3.10/
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>make meuconfig</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make menuconfig
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>diff .config and the configration you copied</p></li>
+<li><p>make</p></li>
+<li><p>make modules</p></li>
+<li><p>make modules_install</p></li>
+<li><p>make install</p></li>
+<li><p>Update grub</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>

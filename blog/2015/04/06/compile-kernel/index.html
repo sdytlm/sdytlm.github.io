@@ -5,12 +5,16 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python: Introduction - 卖萌的弱渣</title>
+  <title>Compile Linux Kernel - 卖萌的弱渣</title>
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="Study Resource Python Official Document: http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf
-Python Standard Library: https://docs. &hellip;">
+  <meta name="description" content="Step 1 1
+2
+cp /boot/config-3.4-desktop ~/Download/linux-3.10/ make meuconfig 1
+2
+make menuconfig diff .config and the configration you copied
+make &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +23,7 @@ Python Standard Library: https://docs. &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://sdytlm.github.io/blog/2015/04/06/python1">
+  <link rel="canonical" href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
@@ -71,7 +75,7 @@ Python Standard Library: https://docs. &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Python: Introduction</h1>
+      <h1 class="entry-title">Compile Linux Kernel</h1>
     
     
       <p class="meta">
@@ -87,24 +91,44 @@ Python Standard Library: https://docs. &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>Study Resource</h3>
-
-<ul>
-<li>Python Official Document: <a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf">http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf</a></li>
-<li>Python Standard Library: <a href="https://docs.python.org/2/library/index.html#library-index">https://docs.python.org/2/library/index.html#library-index</a></li>
+<div class="entry-content"><ul>
+<li>Step 1</li>
 </ul>
 
 
-<h3>Features</h3>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp /boot/config-3.4-desktop ~/Download/linux-3.10/
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
 
 <ul>
-<li>Advancced Data Structure</li>
-<li>Rely on <code>indentation</code>  (- -!)</li>
-<li>No declaration for parameters</li>
+<li>make meuconfig</li>
 </ul>
 
 
-<!--more-->
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make menuconfig
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>diff .config and the configration you copied</p></li>
+<li><p>make</p></li>
+<li><p>make modules</p></li>
+<li><p>make modules_install</p></li>
+<li><p>make install</p></li>
+<li><p>Update grub</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -126,7 +150,7 @@ Python Standard Library: https://docs. &hellip;">
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/python/'>python</a>
+    <a class='category' href='/blog/categories/linux/'>linux</a>
   
 </span>
 
@@ -135,7 +159,7 @@ Python Standard Library: https://docs. &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sdytlm.github.io/blog/2015/04/06/python1/" data-via="" data-counturl="http://sdytlm.github.io/blog/2015/04/06/python1/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/" data-via="" data-counturl="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/" >Tweet</a>
   
   
   
@@ -144,8 +168,10 @@ Python Standard Library: https://docs. &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/04/06/compile-kernel/" title="Previous Post: Compile Linux Kernel">&laquo; Compile Linux Kernel</a>
+        <a class="basic-alignment left" href="/blog/2015/02/01/os3/" title="Previous Post: Operating System III: x86 and PC Architecture">&laquo; Operating System III: x86 and PC Architecture</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2015/04/06/python1/" title="Next Post: Python: Introduction">Python: Introduction &raquo;</a>
       
     </p>
   </footer>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Linux | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/tags/linux/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2015-04-06T13:56:57-07:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Compile Linux Kernel]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/"/>
+    <updated>2015-04-06T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/06/compile-kernel</id>
+    <content type="html"><![CDATA[<ul>
+<li>Step 1
+&#8220;`
+cp /boot/config-3.4-desktop ~/Download/linux-3.10/</li>
+</ul>
+
+
+<pre><code>
+* make meuconfig
+</code></pre>
+
+<p>make menuconfig</p>
+
+<pre><code>
+* diff .config and the configration you copied
+
+* make
+
+* make modules
+
+* make modules_install
+
+* make install
+
+* Update grub
+</code></pre>
+
+<p>grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+
+<p>&#8220;`</p>
+]]></content>
+  </entry>
+  
+</feed>
