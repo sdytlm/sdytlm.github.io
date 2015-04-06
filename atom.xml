@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T13:56:57-07:00</updated>
+  <updated>2015-04-06T14:02:26-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -45,10 +45,7 @@
     <link href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/"/>
     <updated>2015-04-06T00:00:00-07:00</updated>
     <id>http://sdytlm.github.io/blog/2015/04/06/compile-kernel</id>
-    <content type="html"><![CDATA[<ul>
-<li>Step 1</li>
-</ul>
-
+    <content type="html"><![CDATA[<p>*</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -56,10 +53,7 @@
 </span><span class='line'></span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>make meuconfig</li>
-</ul>
-
+<p>*</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -68,22 +62,53 @@
 
 
 <ul>
-<li><p>diff .config and the configration you copied</p></li>
-<li><p>make</p></li>
-<li><p>make modules</p></li>
-<li><p>make modules_install</p></li>
-<li><p>make install</p></li>
-<li><p>Update grub</p></li>
+<li><p>User a proper configuration file</p></li>
+<li></li>
 </ul>
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg
-</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make</span></code></pre></td></tr></table></div></figure>
 
 
+<ul>
+<li></li>
+</ul>
 
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make modules</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make modules_install</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Update grub</li>
+</ul>
+
+
+<p>&#8220;`
+grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+
+<p>&#8220;</p>
+
+<p>Usually, you don&rsquo;t need to do this.</p>
 ]]></content>
   </entry>
   

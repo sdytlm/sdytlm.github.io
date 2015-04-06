@@ -9,11 +9,13 @@
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="Step 1 1
+  <meta name="description" content="* 1
 2
-cp /boot/config-3.4-desktop ~/Download/linux-3.10/ make meuconfig 1
+cp /boot/config-3.4-desktop ~/Download/linux-3.10/ * 1
 2
-make menuconfig diff .config and the configration you copied
+make menuconfig User a proper configuration file 1
+make 1
+make modules 1
 make &hellip;">
   
 
@@ -91,10 +93,7 @@ make &hellip;">
   </header>
 
 
-<div class="entry-content"><ul>
-<li>Step 1</li>
-</ul>
-
+<div class="entry-content"><p>*</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -102,10 +101,7 @@ make &hellip;">
 </span><span class='line'></span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>make meuconfig</li>
-</ul>
-
+<p>*</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -114,22 +110,53 @@ make &hellip;">
 
 
 <ul>
-<li><p>diff .config and the configration you copied</p></li>
-<li><p>make</p></li>
-<li><p>make modules</p></li>
-<li><p>make modules_install</p></li>
-<li><p>make install</p></li>
-<li><p>Update grub</p></li>
+<li><p>User a proper configuration file</p></li>
+<li></li>
 </ul>
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg
-</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make</span></code></pre></td></tr></table></div></figure>
 
 
+<ul>
+<li></li>
+</ul>
 
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make modules</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make modules_install</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Update grub</li>
+</ul>
+
+
+<p>&#8220;`
+grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+
+<p>&#8220;</p>
+
+<p>Usually, you don&rsquo;t need to do this.</p>
 </div>
 
 

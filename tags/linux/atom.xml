@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Linux | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/linux/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T13:56:57-07:00</updated>
+  <updated>2015-04-06T14:02:26-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -18,36 +18,60 @@
     <link href="http://sdytlm.github.io/blog/2015/04/06/compile-kernel/"/>
     <updated>2015-04-06T00:00:00-07:00</updated>
     <id>http://sdytlm.github.io/blog/2015/04/06/compile-kernel</id>
-    <content type="html"><![CDATA[<ul>
-<li>Step 1
-&#8220;`
-cp /boot/config-3.4-desktop ~/Download/linux-3.10/</li>
+    <content type="html"><![CDATA[<p>*</p>
+
+<pre><code>cp /boot/config-3.4-desktop ~/Download/linux-3.10/
+</code></pre>
+
+<p>*</p>
+
+<pre><code>make menuconfig
+</code></pre>
+
+<ul>
+<li><p>User a proper configuration file</p></li>
+<li></li>
 </ul>
 
 
-<pre><code>
-* make meuconfig
+<pre><code>make
 </code></pre>
 
-<p>make menuconfig</p>
+<ul>
+<li></li>
+</ul>
 
-<pre><code>
-* diff .config and the configration you copied
 
-* make
-
-* make modules
-
-* make modules_install
-
-* make install
-
-* Update grub
+<pre><code>make modules
 </code></pre>
 
-<p>grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+<ul>
+<li></li>
+</ul>
 
-<p>&#8220;`</p>
+
+<pre><code>make modules_install
+</code></pre>
+
+<ul>
+<li></li>
+</ul>
+
+
+<pre><code>make install
+</code></pre>
+
+<ul>
+<li>Update grub</li>
+</ul>
+
+
+<p>&#8220;`
+grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+
+<p>&#8220;</p>
+
+<p>Usually, you don&rsquo;t need to do this.</p>
 ]]></content>
   </entry>
   
