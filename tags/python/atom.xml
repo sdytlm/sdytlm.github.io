@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T14:04:30-07:00</updated>
+  <updated>2015-04-06T15:15:28-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -37,6 +37,34 @@
 
 <!--more-->
 
+
+<h3>Interpreter</h3>
+
+<ul>
+<li>Boot with a script</li>
+</ul>
+
+
+<pre><code class="python">python test.py
+</code></pre>
+
+<ul>
+<li>Boot with command</li>
+</ul>
+
+
+<pre><code class="python">python -c command [arg]
+</code></pre>
+
+<ul>
+<li>Boot with module</li>
+</ul>
+
+
+<pre><code class="python">python -m module [arg]
+</code></pre>
+
+<blockquote><p>Module name and command parameters are stored in <code>sys.argv[]</code></p></blockquote>
 ]]></content>
   </entry>
   

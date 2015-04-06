@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-06T14:04:30-07:00</updated>
+  <updated>2015-04-06T15:15:28-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -37,6 +37,40 @@
 
 <!--more-->
 
+
+<h3>Interpreter</h3>
+
+<ul>
+<li>Boot with a script</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">python</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Boot with command</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="n">command</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Boot with module</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">module</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Module name and command parameters are stored in <code>sys.argv[]</code></p></blockquote>
 ]]></content>
   </entry>
   
@@ -109,10 +143,11 @@
 </ul>
 
 
-<p>&#8220;`
-grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
 
-<p>&#8220;</p>
 
 <p>Usually, you don&rsquo;t need to do this.</p>
 ]]></content>
