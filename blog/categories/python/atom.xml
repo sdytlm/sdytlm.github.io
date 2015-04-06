@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2015-04-06T11:39:36-07:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Introduction]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/06/python1/"/>
+    <updated>2015-04-06T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/06/python1</id>
+    <content type="html"><![CDATA[<h3>Study Resource</h3>
+
+<p>Python Official Document: <a href="http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf">http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf</a></p>
+
+<!--more-->
+
+]]></content>
+  </entry>
+  
+</feed>

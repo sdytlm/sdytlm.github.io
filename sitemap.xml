@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://sdytlm.github.io/blog/2015/04/06/python1/</loc>
+    <lastmod>2015-04-06T00:00:00-07:00</lastmod>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/blog/2015/02/01/os3/</loc>
+    <lastmod>2015-02-01T00:00:00-08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/blog/2015/01/17/shell/</loc>
+    <lastmod>2015-01-17T00:00:00-08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/blog/2015/01/17/os1/</loc>
+    <lastmod>2015-01-17T00:00:00-08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/blog/archives/</loc>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/</loc>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/blog/categories/mit6-dot-828/</loc>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/blog/categories/python/</loc>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/tags/mit6-dot-828/</loc>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/tags/python/</loc>
+  </url>
+</urlset>
