@@ -283,6 +283,34 @@ Add the following in the first or second line for Windows 1252</li>
 <h3>String</h3>
 
 <p>String can be expressed in &lsquo; &rsquo; or &ldquo; &rdquo;</p>
+
+<ul>
+<li>If you use &ldquo; &lsquo; &rdquo; or &rsquo; &ldquo; &lsquo;, the inside quote will be considered quote. Otherwise, you need use <code>\</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;eggs&#39;</span>
+</span><span class='line'><span class="s">&#39;spam eggs&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;doesn</span><span class="se">\&#39;</span><span class="s">t&#39;</span>     <span class="c"># use \&#39; to represent single quote because this is &#39; &#39; &#39;</span>
+</span><span class='line'><span class="s">&quot;doesn&#39;t:</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;&quot;Yes,&quot; he said.&#39;</span>  <span class="c"># you don&#39;t need \&quot; because it&#39;s &#39; &quot; &#39;</span>
+</span><span class='line'><span class="s">&#39;&quot;Yes,&quot; he said.&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">Yes,</span><span class="se">\&quot;</span><span class="s"> he said.&quot;</span>  <span class="c"># you have to use \&quot; for &quot;, because this is &quot; &quot; &quot;</span>
+</span><span class='line'><span class="s">&#39;&quot;Yes,&quot; he said.&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said,&#39;</span>
+</span><span class='line'><span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said.&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -324,6 +352,8 @@ Add the following in the first or second line for Windows 1252</li>
         <a class="basic-alignment left" href="/blog/2015/04/06/compile-kernel/" title="Previous Post: Compile Linux Kernel">&laquo; Compile Linux Kernel</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/04/07/USB-BOOT-ISO/" title="Next Post: Make Opensuse Installation USB on MacOS">Make Opensuse Installation USB on MacOS &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -335,7 +365,8 @@ Add the following in the first or second line for Windows 1252</li>
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
+    <li class='category'><a href='/blog/categories/geek/'>geek (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
 <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
 
@@ -344,6 +375,10 @@ Add the following in the first or second line for Windows 1252</li>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/USB-BOOT-ISO/">Make Opensuse Installation USB on MacOS</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/04/06/python1/">Python: Introduction</a>
@@ -361,16 +396,13 @@ Add the following in the first or second line for Windows 1252</li>
         <a href="/blog/2015/01/17/shell/">Mit6.828 Homework: Shell</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2015/01/17/os1/">Mit6.828 Chapter 0: Operating System Interfaces</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: 90%" href="/tags/linux/">Linux</a>
+    <a style="font-size: 90%" href="/tags/geek/">Geek</a>
+<a style="font-size: 90%" href="/tags/linux/">Linux</a>
 <a style="font-size: 210%" href="/tags/mit6-dot-828/">mit6.828</a>
 <a style="font-size: 90%" href="/tags/python/">python</a>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T11:46:04-07:00</updated>
+  <updated>2015-04-07T15:19:43-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Make Opensuse Installation USB on MacOS]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/07/USB-BOOT-ISO/"/>
+    <updated>2015-04-07T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/07/USB-BOOT-ISO</id>
+    <content type="html"><![CDATA[<ol>
+<li>Convert opensuse installtion ios to dmg</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hdiutil convert -format UDRW -o opensuse-13.01.img opensuse-13.01.iso</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Get the current device lists</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>diskutil list
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remeber the current existing device number</p>
+
+<ol>
+<li>Insert USB</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>diskutil list 
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>again and find the device node assigned to your usb ( e.g. /dev/disk1)</p>
+
+<ol>
+<li>Unmount your USB</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>diskutil unmountDisk /dev/disk1</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Burn the flash</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo dd if=/your_img_location/opensuse-13.01.img of=/dev/rdisk1 bs=1m</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Ignore the pop-up window and run</li>
+</ol>
+
+
+<p><code>`
+diskutil eject /dev/disk1
+</code></p>
+
+<ol>
+<li>Enjory it</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python: Introduction]]></title>
@@ -214,6 +286,34 @@ Add the following in the first or second line for Windows 1252</li>
 <h3>String</h3>
 
 <p>String can be expressed in &lsquo; &rsquo; or &ldquo; &rdquo;</p>
+
+<ul>
+<li>If you use &ldquo; &lsquo; &rdquo; or &rsquo; &ldquo; &lsquo;, the inside quote will be considered quote. Otherwise, you need use <code>\</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;eggs&#39;</span>
+</span><span class='line'><span class="s">&#39;spam eggs&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;doesn</span><span class="se">\&#39;</span><span class="s">t&#39;</span>     <span class="c"># use \&#39; to represent single quote because this is &#39; &#39; &#39;</span>
+</span><span class='line'><span class="s">&quot;doesn&#39;t:</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;&quot;Yes,&quot; he said.&#39;</span>  <span class="c"># you don&#39;t need \&quot; because it&#39;s &#39; &quot; &#39;</span>
+</span><span class='line'><span class="s">&#39;&quot;Yes,&quot; he said.&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">Yes,</span><span class="se">\&quot;</span><span class="s"> he said.&quot;</span>  <span class="c"># you have to use \&quot; for &quot;, because this is &quot; &quot; &quot;</span>
+</span><span class='line'><span class="s">&#39;&quot;Yes,&quot; he said.&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said,&#39;</span>
+</span><span class='line'><span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said.&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

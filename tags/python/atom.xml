@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T11:46:04-07:00</updated>
+  <updated>2015-04-07T15:19:43-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -245,6 +245,23 @@ NameError: xxxxxxxxx
 <h3>String</h3>
 
 <p>String can be expressed in &lsquo; &rsquo; or &ldquo; &rdquo;</p>
+
+<ul>
+<li>If you use &ldquo; &lsquo; &rdquo; or &rsquo; &ldquo; &lsquo;, the inside quote will be considered quote. Otherwise, you need use <code>\</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 'eggs'
+'spam eggs'
+&gt;&gt;&gt; 'doesn\'t'     # use \' to represent single quote because this is ' ' '
+"doesn't:
+&gt;&gt;&gt; '"Yes," he said.'  # you don't need \" because it's ' " '
+'"Yes," he said.'
+&gt;&gt;&gt; "\"Yes,\" he said."  # you have to use \" for ", because this is " " "
+'"Yes," he said.'
+&gt;&gt;&gt; '"Isn\'t," she said,'
+'"Isn\'t," she said.'
+</code></pre>
 ]]></content>
   </entry>
   

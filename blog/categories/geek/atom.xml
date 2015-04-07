@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Geek | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/geek/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2015-04-07T15:19:43-07:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Make Opensuse Installation USB on MacOS]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/07/USB-BOOT-ISO/"/>
+    <updated>2015-04-07T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/07/USB-BOOT-ISO</id>
+    <content type="html"><![CDATA[<ol>
+<li>Convert opensuse installtion ios to dmg</li>
+</ol>
+
+
+<pre><code class="">hdiutil convert -format UDRW -o opensuse-13.01.img opensuse-13.01.iso
+</code></pre>
+
+<ol>
+<li>Get the current device lists</li>
+</ol>
+
+
+<pre><code>diskutil list
+</code></pre>
+
+<p>Remeber the current existing device number</p>
+
+<ol>
+<li>Insert USB</li>
+</ol>
+
+
+<pre><code>diskutil list 
+</code></pre>
+
+<p>again and find the device node assigned to your usb ( e.g. /dev/disk1)</p>
+
+<ol>
+<li>Unmount your USB</li>
+</ol>
+
+
+<pre><code>diskutil unmountDisk /dev/disk1
+</code></pre>
+
+<ol>
+<li>Burn the flash</li>
+</ol>
+
+
+<pre><code>sudo dd if=/your_img_location/opensuse-13.01.img of=/dev/rdisk1 bs=1m
+</code></pre>
+
+<ol>
+<li>Ignore the pop-up window and run</li>
+</ol>
+
+
+<p><code>`
+diskutil eject /dev/disk1
+</code></p>
+
+<ol>
+<li>Enjory it</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
