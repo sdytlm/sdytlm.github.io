@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: virtualization | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/tags/virtualization/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2015-04-07T16:23:33-07:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Build Nested KVM Virtualization]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization/"/>
+    <updated>2015-04-07T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization</id>
+    <content type="html"><![CDATA[<h3>Platform</h3>
+
+<ul>
+<li>Dom0: Opensuse 13.1</li>
+<li>Host/Guest Hypervisor: KVM</li>
+<li>Guest OS: CentOS</li>
+</ul>
+
+
+<h3>Enable Nested in Host KVM</h3>
+
+<ol>
+<li>Check if nested is enabled in host hypervisor</li>
+</ol>
+
+
+<pre><code>cat /sys/module/kvm_intel/parameters/nested
+</code></pre>
+
+<p>if the result is <code>Y</code>. Nested virgualization in your host is open. Ohterwise you need to complete the followings</p>
+
+<ol>
+<li>Modify /etc/default/grub</li>
+</ol>
+
+
+<blockquote><p>GRUB_CMDLINE_LINX = &ldquo;kvm-intel.nested=1 &rdquo;</p></blockquote>
+
+<ol>
+<li>Update grub</li>
+</ol>
+
+
+<pre><code>grub2-mkconfig -o /boot/grub2/grub.cfg
+</code></pre>
+
+<ol>
+<li>Reboot and check again</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Geek - 卖萌的弱渣</title>
+  <title>Build Nested KVM Virtualization - 卖萌的弱渣</title>
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="Category: geek">
+  <meta name="description" content="Platform Dom0: Opensuse 13.1
+Host/Guest Hypervisor: KVM
+Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hypervisor 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://sdytlm.github.io/blog/categories/geek">
+  <link rel="canonical" href="http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
@@ -66,35 +68,113 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Geek</h1>
+    
+      <h1 class="entry-title">Build Nested KVM Virtualization</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-07'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>Platform</h3>
 
-  
-  <h2>2015</h2>
-
-<article>
-  
-<h1><a href="/blog/2015/04/07/USB-BOOT-ISO/">Make Opensuse Installation USB on MacOS</a></h1>
-<time datetime="2015-04-07T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>07</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/geek/'>geek</a></span>
-</footer>
+<ul>
+<li>Dom0: Opensuse 13.1</li>
+<li>Host/Guest Hypervisor: KVM</li>
+<li>Guest OS: CentOS</li>
+</ul>
 
 
-</article>
+<h3>Enable Nested in Host KVM</h3>
+
+<ol>
+<li>Check if nested is enabled in host hypervisor</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat /sys/module/kvm_intel/parameters/nested</span></code></pre></td></tr></table></div></figure>
+
+
+<p>if the result is <code>Y</code>. Nested virgualization in your host is open. Ohterwise you need to complete the followings</p>
+
+<ol>
+<li>Modify /etc/default/grub</li>
+</ol>
+
+
+<blockquote><p>GRUB_CMDLINE_LINX = &ldquo;kvm-intel.nested=1 &rdquo;</p></blockquote>
+
+<ol>
+<li>Update grub</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Reboot and check again</li>
+</ol>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Min Li</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-04-07'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/virtualization/'>virtualization</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization/" data-via="" data-counturl="http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/04/06/python1/" title="Previous Post: Python: Introduction">&laquo; Python: Introduction</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/04/07/USB-BOOT-ISO/" title="Next Post: Make Opensuse Installation USB on MacOS">Make Opensuse Installation USB on MacOS &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

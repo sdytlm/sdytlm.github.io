@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T15:19:43-07:00</updated>
+  <updated>2015-04-07T16:23:33-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -262,6 +262,44 @@ NameError: xxxxxxxxx
 &gt;&gt;&gt; '"Isn\'t," she said,'
 '"Isn\'t," she said.'
 </code></pre>
+
+<ul>
+<li>print() will handle &lsquo;\&rsquo; as special character</li>
+</ul>
+
+
+<blockquote><blockquote><blockquote><p>&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
+&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
+print(&lsquo;&ldquo;Isn&rsquo;\t,&#8221;she said.&lsquo;)
+&#8220;Isn&rsquo;t,&rdquo; she said.         # \ will not be displayed
+s = &#8216;First line, \nSecond line.&rsquo;
+&lsquo;First line, \nSecond line.&rsquo;
+print(s)
+First line,
+Second line.</p></blockquote></blockquote>
+
+<p>If you want python accpet \, you need to add <code>r</code> before the first quote</p></blockquote>
+
+<pre><code>&gt;&gt; print('C:\some\name')
+C:\some
+ame
+&gt;&gt;&gt; print(r'C:\some\name')
+C:\some\name
+</code></pre>
+
+<ul>
+<li>print() can display multiple line by using &ldquo; &rdquo; &ldquo;
+<code>python
+print("""\
+Usage: thingy
+     -h
+    -H
+""")
+</code></li>
+</ul>
+
+
+<p>Output is the same format as this input</p>
 ]]></content>
   </entry>
   

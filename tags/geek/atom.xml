@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Geek | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/geek/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T15:19:43-07:00</updated>
+  <updated>2015-04-07T16:23:33-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -67,9 +67,8 @@
 </ol>
 
 
-<p><code>`
-diskutil eject /dev/disk1
-</code></p>
+<pre><code>diskutil eject /dev/disk1
+</code></pre>
 
 <ol>
 <li>Enjory it</li>

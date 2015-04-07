@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T15:19:43-07:00</updated>
+  <updated>2015-04-07T16:23:33-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -74,12 +74,62 @@
 </ol>
 
 
-<p><code>`
-diskutil eject /dev/disk1
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>diskutil eject /dev/disk1</span></code></pre></td></tr></table></div></figure>
+
 
 <ol>
 <li>Enjory it</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Build Nested KVM Virtualization]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization/"/>
+    <updated>2015-04-07T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization</id>
+    <content type="html"><![CDATA[<h3>Platform</h3>
+
+<ul>
+<li>Dom0: Opensuse 13.1</li>
+<li>Host/Guest Hypervisor: KVM</li>
+<li>Guest OS: CentOS</li>
+</ul>
+
+
+<h3>Enable Nested in Host KVM</h3>
+
+<ol>
+<li>Check if nested is enabled in host hypervisor</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat /sys/module/kvm_intel/parameters/nested</span></code></pre></td></tr></table></div></figure>
+
+
+<p>if the result is <code>Y</code>. Nested virgualization in your host is open. Ohterwise you need to complete the followings</p>
+
+<ol>
+<li>Modify /etc/default/grub</li>
+</ol>
+
+
+<blockquote><p>GRUB_CMDLINE_LINX = &ldquo;kvm-intel.nested=1 &rdquo;</p></blockquote>
+
+<ol>
+<li>Update grub</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>grub2-mkconfig -o /boot/grub2/grub.cfg</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Reboot and check again</li>
 </ol>
 
 ]]></content>
@@ -314,6 +364,56 @@ Add the following in the first or second line for Windows 1252</li>
 </span><span class='line'><span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said.&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<ul>
+<li>print() will handle &lsquo;\&rsquo; as special character</li>
+</ul>
+
+
+<blockquote><blockquote><blockquote><p>&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
+&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
+print(&lsquo;&ldquo;Isn&rsquo;\t,&#8221;she said.&lsquo;)
+&#8220;Isn&rsquo;t,&rdquo; she said.         # \ will not be displayed
+s = &#8216;First line, \nSecond line.&rsquo;
+&lsquo;First line, \nSecond line.&rsquo;
+print(s)
+First line,
+Second line.</p></blockquote></blockquote>
+
+<p>If you want python accpet \, you need to add <code>r</code> before the first quote</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;C:\some</span><span class="se">\n</span><span class="s">ame&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">C</span><span class="p">:</span>\<span class="n">some</span>
+</span><span class='line'><span class="n">ame</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">r&#39;C:\some\name&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">C</span><span class="p">:</span>\<span class="n">some</span>\<span class="n">name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>print() can display multiple line by using &ldquo; &rdquo; &#8221;</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+</span><span class='line'><span class="s">Usage: thingy</span>
+</span><span class='line'><span class="s">       -h</span>
+</span><span class='line'><span class="s">      -H</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Output is the same format as this input</p>
 ]]></content>
   </entry>
   

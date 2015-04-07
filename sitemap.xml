@@ -5,6 +5,10 @@
     <lastmod>2015-04-07T00:00:00-07:00</lastmod>
   </url>
   <url>
+    <loc>http://sdytlm.github.io/blog/2015/04/07/Install-Nested-Virtualization/</loc>
+    <lastmod>2015-04-07T00:00:00-07:00</lastmod>
+  </url>
+  <url>
     <loc>http://sdytlm.github.io/blog/2015/04/06/python1/</loc>
     <lastmod>2015-04-06T00:00:00-07:00</lastmod>
   </url>
@@ -40,6 +44,9 @@
     <loc>http://sdytlm.github.io/blog/categories/python/</loc>
   </url>
   <url>
+    <loc>http://sdytlm.github.io/blog/categories/virtualization/</loc>
+  </url>
+  <url>
     <loc>http://sdytlm.github.io/blog/categories/geek/</loc>
   </url>
   <url>
@@ -50,6 +57,9 @@
   </url>
   <url>
     <loc>http://sdytlm.github.io/tags/python/</loc>
+  </url>
+  <url>
+    <loc>http://sdytlm.github.io/tags/virtualization/</loc>
   </url>
   <url>
     <loc>http://sdytlm.github.io/tags/geek/</loc>
