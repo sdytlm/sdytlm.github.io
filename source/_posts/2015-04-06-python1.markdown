@@ -1,0 +1,184 @@
+---
+layout: post
+title: "Python: Introduction"
+date: 2015-04-06
+comments: true
+categories: python
+tag: python
+---
+
+### Study Resource
+
+* Python Official Document: http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf
+* Python Standard Library: https://docs.python.org/2/library/index.html#library-index
+* Python Official Tutorial: https://docs.python.org/2/tutorial/index.html
+
+### Features
+
+* Advancced Data Structure
+* Rely on `indentation`  (- -!)
+* No declaration for parameters
+
+
+<!--more-->
+
+### Interpreter
+
+* Boot with a script
+
+``` python
+python test.py
+```
+
+* Boot with command
+
+``` python
+python -c command [arg]
+
+```
+
+* Boot with module
+
+``` python
+python -m module [arg]
+
+```
+
+> Module name and command parameters are stored in `sys.argv[]`
+
+* Make your python script executable
+
+** Add the following in the first line
+
+``` python
+#! /usr/bin/env python3.4
+```
+
+** Give your file execution permission
+
+```
+chmod +x yourpython.py
+```
+
+* Use special character encoding 
+Add the following in the first or second line for Windows 1252
+```
+# -*- coding: cp-1252 -*-
+```
+
+----
+### Basic Introduction
+
+#### Number
+
+* Division will not dismiss fractional part
+
+``` python
+>>> 8/5
+1.6
+```
+
+* If you don't like fractional part, use `//`
+
+``` python
+>>> 7//3
+2
+>> 7//-3
+-3
+```
+
+* Python will transfer int to float if your expression has both of them.
+
+``` python
+>>> 3 * 3.75 / 1.5
+7.5
+>>> 7.0/2
+3.5
+```
+
+#### Assignment
+
+``` python
+>>> width = 20
+>>> x = y = z = 10          # Assign multiple var with same value
+>>> x
+10
+>>> y
+10
+```
+
+* The last printed expression is assigned to the variable `_`
+
+``` python
+>>> tax = 12.5 / 100
+>>> price = 100.50
+>>> price * tax
+12.5625
+>>> price + _
+113.0625
+>>> round(_, 2)
+113.06
+
+> `_` variable is read-only by the user.
+```
+
+
+#### Parameter
+
+> Must define the parameter before you access it
+
+For example:
+``` python
+>>> n
+NameError: xxxxxxxxx
+```
+
+### String
+String can be expressed in ' ' or " "
+
+* If you use " ' " or ' " ', the inside quote will be considered quote. Otherwise, you need use `\` 
+
+``` python
+>>> 'eggs'
+'spam eggs'
+>>> 'doesn\'t'     # use \' to represent single quote because this is ' ' '
+"doesn't:
+>>> '"Yes," he said.'  # you don't need \" because it's ' " '
+'"Yes," he said.'
+>>> "\"Yes,\" he said."  # you have to use \" for ", because this is " " "
+'"Yes," he said.'
+>>> '"Isn\'t," she said,'
+'"Isn\'t," she said.'
+```
+
+* print() will handle '\' as special character
+
+>>> '"Isn\'t," she said.'
+'"Isn\'t," she said.'
+>>> print('"Isn'\t,"she said.')
+"Isn't," she said.         # \ will not be displayed
+>>> s = 'First line, \nSecond line.'
+'First line, \nSecond line.'
+>>> print(s)
+First line,
+Second line.
+
+> If you want python accpet \, you need to add `r` before the first quote
+
+```
+>> print('C:\some\name')
+C:\some
+ame
+>>> print(r'C:\some\name')
+C:\some\name
+```
+* print() can display multiple line by using " " "
+``` python
+print("""\
+Usage: thingy
+       -h
+      -H
+""")
+```
+
+Output is the same format as this input
