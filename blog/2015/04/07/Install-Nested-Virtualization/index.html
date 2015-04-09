@@ -171,6 +171,15 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
 </pre></td><td class='code'><pre><code class=''><span class='line'>virt-viewer -c qemu:///system  domain name</span></code></pre></td></tr></table></div></figure>
 
 
+<ul>
+<li>Delete a VM</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh destroy domain name
+</span><span class='line'>virsh undefine domain name</span></code></pre></td></tr></table></div></figure>
 
 </div>
 

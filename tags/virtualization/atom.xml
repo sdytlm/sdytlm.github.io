@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: virtualization | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/virtualization/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-08T18:20:42-07:00</updated>
+  <updated>2015-04-09T10:07:29-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -86,17 +86,30 @@
 </span><span class='line'>&lt;p&gt;virsh start domain name</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
-<li><p>Undefine a VM
-<code>
-virsh destroy domain name
-virsh undefine domain name
-</code></p></li>
-<li><p>Connect a VM
-<code>
-virt-viewer -c qemu:///system  domain name
-</code></p></li>
+<li>Undefine a VM</li>
 </ul>
 
+
+<pre><code>virsh destroy domain name
+virsh undefine domain name
+</code></pre>
+
+<ul>
+<li>Connect a VM</li>
+</ul>
+
+
+<pre><code>virt-viewer -c qemu:///system  domain name
+</code></pre>
+
+<ul>
+<li>Delete a VM</li>
+</ul>
+
+
+<pre><code>virsh destroy domain name
+virsh undefine domain name
+</code></pre>
 ]]></content>
   </entry>
   

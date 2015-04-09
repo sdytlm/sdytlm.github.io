@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-08T18:20:42-07:00</updated>
+  <updated>2015-04-09T10:07:29-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -87,13 +87,13 @@ python test.py
 </span><span class='line'>
 </span><span class='line'><span class="o">*</span> <span class="n">Make</span> <span class="n">your</span> <span class="n">python</span> <span class="n">script</span> <span class="n">executable</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">**</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">following</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">line</span>
+</span><span class='line'>  <span class="o">*</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">following</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">line</span>
 </span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">!</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">python3</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">**</span> <span class="n">Give</span> <span class="n">your</span> <span class="nb">file</span> <span class="n">execution</span> <span class="n">permission</span>
+</span><span class='line'>  <span class="o">*</span> <span class="n">Give</span> <span class="n">your</span> <span class="nb">file</span> <span class="n">execution</span> <span class="n">permission</span>
 </span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">yourpython</span><span class="o">.</span><span class="n">py</span>
@@ -185,6 +185,14 @@ Add the following in the first or second line for Windows 1252
 &gt; `_` variable is read-only by the user.
 </code></pre>
 
+<ul>
+<li>You can also do the multiple assignment</li>
+</ul>
+
+
+<pre><code class="python">a,b = 0,1   # a=0, b=1
+</code></pre>
+
 <hr />
 
 <h4>Parameter</h4>
@@ -197,7 +205,7 @@ Add the following in the first or second line for Windows 1252
 NameError: xxxxxxxxx
 </code></pre>
 
-<h3>String</h3>
+<h4>String</h4>
 
 <p>String can be expressed in &lsquo; &rsquo; or &ldquo; &rdquo;</p>
 
@@ -370,6 +378,109 @@ TypeError: 'str' does not support item assign
 <pre><code class="python">&gt;&gt;&gt; s = 'abcdefg'
 &gt;&gt;&gt; len(s)
 7
+</code></pre>
+
+<h4>Lists</h4>
+
+<ul>
+<li>Lists can contain items of different types, but usually the items have the same type</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; squares = [1,4,9,16,25]
+&gt;&gt;&gt; squares
+[1,4,9,16,25]
+</code></pre>
+
+<ul>
+<li>Lists can also be indexed and sliced:</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; squares = [1,4,9,16,25]
+&gt;&gt;&gt; squares[0]
+1
+&gt;&gt;&gt; square[-1]
+25
+&gt;&gt;&gt; squares[-3:]            // slice will return a new list
+[9,16,25]
+</code></pre>
+
+<ul>
+<li>List can also be concatenated</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; squares = [1,4,9,16,25]
+&gt;&gt;&gt; squares + [36,49,64,81,100]
+[1,4,9,16,25,36,49,64,81,100]
+</code></pre>
+
+<ul>
+<li>Strings cannot be changed, but list can be changed</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; cubes = [1,8,27,65,125]
+&gt;&gt;&gt; cubes[3] = 64
+&gt;&gt;&gt; cubes
+[1,8,27,64,125]
+</code></pre>
+
+<ul>
+<li>You can add new items at the ned of list by append()</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; cubes = [1,8,27,64,125]
+&gt;&gt;&gt; cubes.append(216)
+&gt;&gt;&gt; cubes.append(7**3)
+&gt;&gt;&gt; cubes
+[1,8,27,64,125,216,343]
+</code></pre>
+
+<ul>
+<li>You can even change the size of list or clear it by assignment to slices</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; letters = ['a','b','c','d','e','f','g']
+&gt;&gt;&gt; letters[2:5] = ['C','D','E']
+&gt;&gt;&gt; letters
+['a','b','C','D','E','f','g']
+# remove them
+&gt;&gt;&gt; letters[2:5] = []
+&gt;&gt;&gt; letters
+['a','b','f','g']
+&gt;&gt;&gt; letters[:] = []
+&gt;&gt;&gt; letters
+[]
+</code></pre>
+
+<ul>
+<li><code>len()</code> can applies to lists</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; letters = ['a','b','c','d']
+&gt;&gt;&gt; len(letters)
+4
+</code></pre>
+
+<ul>
+<li>A lists can contain other lists</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; a = ['a','b','c']
+&gt;&gt;&gt; n = [1,2,3,]
+&gt;&gt;&gt; x= [a,n]
+&gt;&gt;&gt; x
+[['a','b','c'],[1,2,3]]
+&gt;&gt;&gt; x[0]
+['a','b','c']
+&gt;&gt;&gt; x[0][1]                 # like two dimention array
+'b'
 </code></pre>
 ]]></content>
   </entry>
