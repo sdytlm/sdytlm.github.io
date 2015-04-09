@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T16:23:33-07:00</updated>
+  <updated>2015-04-08T17:22:52-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -42,50 +42,12 @@
 <h3>Interpreter</h3>
 
 <ul>
-<li>Boot with a script</li>
-</ul>
-
-
-<pre><code class="python">python test.py
-</code></pre>
-
-<ul>
-<li>Boot with command</li>
-</ul>
-
-
-<pre><code class="python">python -c command [arg]
-</code></pre>
-
-<ul>
-<li>Boot with module</li>
-</ul>
-
-
-<pre><code class="python">python -m module [arg]
-</code></pre>
-
-<blockquote><p>Module name and command parameters are stored in <code>sys.argv[]</code></p></blockquote>
-
-<ul>
-<li>Make your python script executable</li>
-</ul>
-
-
-<p>** Add the following in the first line</p>
-
-<pre><code class="python">#! /usr/bin/env python3.4
-</code></pre>
-
-<p>** Give your file execution permission</p>
-
-<pre><code>chmod +x yourpython.py
-</code></pre>
-
-<ul>
-<li>Use special character encoding
-Add the following in the first or second line for Windows 1252
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li><p>Boot with a script
+<code>python
+python test.py
+</code></p></li>
+<li><p>Boot with command
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -110,137 +72,130 @@ Add the following in the first or second line for Windows 1252
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>&lt;h1&gt;-&lt;em&gt;- coding: cp-1252 -&lt;/em&gt;-&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;```&lt;/p&gt;&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="n">command</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'>&lt;hr /&gt;
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">*</span> <span class="n">Boot</span> <span class="k">with</span> <span class="n">module</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;h3&gt;Basic Introduction&lt;/h3&gt;
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">module</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;h4&gt;Number&lt;/h4&gt;
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Module</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">command</span> <span class="n">parameters</span> <span class="n">are</span> <span class="n">stored</span> <span class="ow">in</span> <span class="sb">`sys.argv[]`</span>
 </span><span class='line'>
-</span><span class='line'>&lt;ul&gt;
-</span><span class='line'>&lt;li&gt;Division will not dismiss fractional part&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
+</span><span class='line'><span class="o">*</span> <span class="n">Make</span> <span class="n">your</span> <span class="n">python</span> <span class="n">script</span> <span class="n">executable</span>
 </span><span class='line'>
+</span><span class='line'><span class="o">**</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">following</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">line</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code class="python"&gt;&gt;&gt;&gt; 8/5
-</span><span class='line'>1.6
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">!</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">python3</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;ul&gt;
-</span><span class='line'>&lt;li&gt;If you don&rsquo;t like fractional part, use &lt;code&gt;//&lt;/code&gt;&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">**</span> <span class="n">Give</span> <span class="n">your</span> <span class="nb">file</span> <span class="n">execution</span> <span class="n">permission</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code class="python"&gt;&gt;&gt;&gt; 7//3
-</span><span class='line'>2
-</span><span class='line'>&gt;&gt; 7//-3
-</span><span class='line'>-3
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;ul&gt;
-</span><span class='line'>&lt;li&gt;Python will transfer int to float if your expression has both of them.&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code class="python"&gt;&gt;&gt;&gt; 3 * 3.75 / 1.5
-</span><span class='line'>7.5
-</span><span class='line'>&gt;&gt;&gt; 7.0/2
-</span><span class='line'>3.5
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h4&gt;Assignment&lt;/h4&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code class="python"&gt;&gt;&gt;&gt; width = 20
-</span><span class='line'>&gt;&gt;&gt; x = y = z = 10          # Assign multiple var with same value
-</span><span class='line'>&gt;&gt;&gt; x
-</span><span class='line'>10
-</span><span class='line'>&gt;&gt;&gt; y
-</span><span class='line'>10
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;ul&gt;
-</span><span class='line'>&lt;li&gt;The last printed expression is assigned to the variable &lt;code&gt;_&lt;/code&gt;&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code class="python"&gt;&gt;&gt;&gt; tax = 12.5 / 100
-</span><span class='line'>&gt;&gt;&gt; price = 100.50
-</span><span class='line'>&gt;&gt;&gt; price * tax
-</span><span class='line'>12.5625
-</span><span class='line'>&gt;&gt;&gt; price + _
-</span><span class='line'>113.0625
-</span><span class='line'>&gt;&gt;&gt; round(_, 2)
-</span><span class='line'>113.06
-</span><span class='line'>
-</span><span class='line'>&gt; `_` variable is read-only by the user.
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h4&gt;Parameter&lt;/h4&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;blockquote&gt;&lt;p&gt;Must define the parameter before you access it&lt;/p&gt;&lt;/blockquote&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;For example:</span></code></pre></td></tr></table></div></figure> python</p>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">yourpython</span><span class="o">.</span><span class="n">py</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<blockquote><blockquote><blockquote><p>n
+<ul>
+<li>Use special character encoding
+Add the following in the first or second line for Windows 1252
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;-&lt;</span><span class="n">em</span><span class="o">&gt;-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">cp</span><span class="o">-</span><span class="mi">1252</span> <span class="o">-&lt;/</span><span class="n">em</span><span class="o">&gt;-&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="sb">``</span><span class="err">`</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">Basic</span> <span class="n">Introduction</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Number</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Division</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">dismiss</span> <span class="n">fractional</span> <span class="n">part</span>
+</span></code></pre></td></tr></table></div></figure> python</p>
+
+<blockquote><blockquote><blockquote><p>8/5
+1.6
+&#8220;`</p></blockquote></blockquote></blockquote></li>
+<li><p>If you do not like fractional part, use <code>//</code>.</p></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 7//3
+2
+&gt;&gt; 7//-3
+-3
+</code></pre>
+
+<ul>
+<li>Python will transfer int to float if your expression has both of them.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 3 * 3.75 / 1.5
+7.5
+&gt;&gt;&gt; 7.0/2
+3.5
+</code></pre>
+
+<hr />
+
+<h4>Assignment</h4>
+
+<pre><code class="python">&gt;&gt;&gt; width = 20
+&gt;&gt;&gt; x = y = z = 10          # Assign multiple var with same value
+&gt;&gt;&gt; x
+10
+&gt;&gt;&gt; y
+10
+</code></pre>
+
+<ul>
+<li>The last printed expression is assigned to the variable <code>_</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; tax = 12.5 / 100
+&gt;&gt;&gt; price = 100.50
+&gt;&gt;&gt; price * tax
+12.5625
+&gt;&gt;&gt; price + _
+113.0625
+&gt;&gt;&gt; round(_, 2)
+113.06
+
+&gt; `_` variable is read-only by the user.
+</code></pre>
+
+<hr />
+
+<h4>Parameter</h4>
+
+<blockquote><p>Must define the parameter before you access it</p></blockquote>
+
+<p>For example:</p>
+
+<pre><code class="python">&gt;&gt;&gt; n
 NameError: xxxxxxxxx
-&#8220;`</p></blockquote></blockquote></blockquote>
+</code></pre>
 
 <h3>String</h3>
 
@@ -268,17 +223,18 @@ NameError: xxxxxxxxx
 </ul>
 
 
-<blockquote><blockquote><blockquote><p>&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
-&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
-print(&lsquo;&ldquo;Isn&rsquo;\t,&#8221;she said.&lsquo;)
-&#8220;Isn&rsquo;t,&rdquo; she said.         # \ will not be displayed
-s = &#8216;First line, \nSecond line.&rsquo;
-&lsquo;First line, \nSecond line.&rsquo;
-print(s)
+<pre><code class="python">&gt;&gt;&gt; '"Isn\'t," she said.'
+'"Isn\'t," she said.'
+&gt;&gt;&gt; print('"Isn'\t,"she said.')
+"Isn't," she said.         # \ will not be displayed
+&gt;&gt;&gt; s = 'First line, \nSecond line.'
+'First line, \nSecond line.'
+&gt;&gt;&gt; print(s)
 First line,
-Second line.</p></blockquote></blockquote>
+Second line.
+</code></pre>
 
-<p>If you want python accpet \, you need to add <code>r</code> before the first quote</p></blockquote>
+<blockquote><p>If you want python accpet \, you need to add <code>r</code> before the first quote</p></blockquote>
 
 <pre><code>&gt;&gt; print('C:\some\name')
 C:\some
@@ -288,18 +244,112 @@ C:\some\name
 </code></pre>
 
 <ul>
-<li>print() can display multiple line by using &ldquo; &rdquo; &ldquo;
-<code>python
-print("""\
-Usage: thingy
-     -h
-    -H
-""")
-</code></li>
+<li>print() can display multiple line by using &ldquo; &rdquo; &#8221;</li>
 </ul>
 
 
+<pre><code class="python">print("""\
+Usage: thingy
+       -h
+      -H
+""")
+</code></pre>
+
 <p>Output is the same format as this input</p>
+
+<ul>
+<li>String can be concatenated with <code>+</code> and repeated with <code>*</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 3 * 'un' + 'iun'
+'unununiun'
+</code></pre>
+
+<ul>
+<li>String literals next to each other are automatically concatenated</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 'Py' 'thon'
+'Python'
+</code></pre>
+
+<blockquote><p>This automatical concatenation Cannot concatenate a variable and a string</p></blockquote>
+
+<pre><code class="python">&gt;&gt;&gt; prefix = 'Py'
+&gt;&gt;&gt; prefix 'thon'
+SyntaxError: invalid syntax
+</code></pre>
+
+<p>But <code>+</code> still works</p>
+
+<pre><code class="python">&gt;&gt;&gt; prefix ='Py'
+&gt;&gt;&gt; prefix + 'thon'
+'Python'
+</code></pre>
+
+<ul>
+<li>String can be indexed starting from 0. string[0] is also string type</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; word = "Python"
+&gt;&gt;&gt; word[0]
+'P'
+&gt;&gt;&gt; word[5]
+'n'
+</code></pre>
+
+<ul>
+<li>Indices may also be negative numbers which start counting from the <code>right</code>, negative indices starts from <code>-1</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; word[-1]
+'n'
+&gt;&gt;&gt; word[-2]
+'o'
+&gt;&gt;&gt; word[-6]
+'P'
+</code></pre>
+
+<ul>
+<li>Slicing is supported in string. We can get substring by slicing</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; word='Python'
+&gt;&gt;&gt; word[0:2]    # get characters [0,2)
+'Py'
+&gt;&gt;&gt; word[:2]
+'Py'
+&gt;&gt;&gt; word[4:]    # get characters [4,length]
+'on'
+&gt;&gt;&gt; word[-2:]
+'on'
+&gt;&gt;&gt; word[:2] + word[2:]
+'Python'
+</code></pre>
+
+<ul>
+<li>Attempting to use a index that is too large will result in error</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; word='Python'
+&gt;&gt;&gt; word[42]
+IndexError: string index out of range
+</code></pre>
+
+<p>But slice index is ok for this</p>
+
+<pre><code class="python">&gt;&gt;&gt; word='Python'
+&gt;&gt;&gt; word[4:42]
+'on'
+&gt;&gt;&gt; word[42:]
+' '
+</code></pre>
 ]]></content>
   </entry>
   

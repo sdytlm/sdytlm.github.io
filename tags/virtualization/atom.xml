@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: virtualization | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/virtualization/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-07T16:23:33-07:00</updated>
+  <updated>2015-04-08T17:22:52-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -40,7 +40,7 @@
 <p>if the result is <code>Y</code>. Nested virgualization in your host is open. Ohterwise you need to complete the followings</p>
 
 <ol>
-<li>Modify /etc/default/grub</li>
+<li>`Modify /etc/default/grub</li>
 </ol>
 
 
@@ -57,6 +57,45 @@
 <ol>
 <li>Reboot and check again</li>
 </ol>
+
+
+<h3>Install the guest Hypervisor</h3>
+
+<p>I use the raw disk as the VM partition
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virt-install &ndash;name=centos5.6 &ndash;os-variant=RHEL5 &ndash;ram=1024 &ndash;vcpus=1 &ndash;disk path=/dev/sda4,format=raw,bus=virtio &ndash;accelerate &ndash;cdrom /Your DVD / &ndash;vnc &ndash;vncport=5910 &ndash;vnclisten=0.0.0.0 &ndash;network bridge=br0,model=virtio &ndash;noautoconsole&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>### Virsh Command
+</span><span class='line'>
+</span><span class='line'>* Launch a VM
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;virsh start domain name</span></code></pre></td></tr></table></div></figure></p>
+
+<ul>
+<li><p>Undefine a VM
+<code>
+virsh destroy domain name
+virsh undefine domain name
+</code></p></li>
+<li><p>Connect a VM
+<code>
+virt-viewer -c qemu:///system  domain name
+</code></p></li>
+</ul>
 
 ]]></content>
   </entry>

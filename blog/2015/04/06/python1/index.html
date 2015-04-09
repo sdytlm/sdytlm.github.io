@@ -191,7 +191,7 @@ Add the following in the first or second line for Windows 1252</li>
 
 
 <ul>
-<li>If you don&rsquo;t like fractional part, use <code>//</code></li>
+<li>If you do not like fractional part, use <code>//</code>.</li>
 </ul>
 
 
@@ -221,6 +221,8 @@ Add the following in the first or second line for Windows 1252</li>
 </span><span class='line'><span class="mf">3.5</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h4>Assignment</h4>
 
@@ -266,6 +268,8 @@ Add the following in the first or second line for Windows 1252</li>
 </span><span class='line'><span class="o">&gt;</span> <span class="sb">`_`</span> <span class="n">variable</span> <span class="ow">is</span> <span class="n">read</span><span class="o">-</span><span class="n">only</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span><span class="o">.</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h4>Parameter</h4>
 
@@ -317,17 +321,28 @@ Add the following in the first or second line for Windows 1252</li>
 </ul>
 
 
-<blockquote><blockquote><blockquote><p>&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
-&lsquo;&ldquo;Isn\&rsquo;t,&rdquo; she said.&rsquo;
-print(&lsquo;&ldquo;Isn&rsquo;\t,&#8221;she said.&lsquo;)
-&#8220;Isn&rsquo;t,&rdquo; she said.         # \ will not be displayed
-s = &#8216;First line, \nSecond line.&rsquo;
-&lsquo;First line, \nSecond line.&rsquo;
-print(s)
-First line,
-Second line.</p></blockquote></blockquote>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said.&#39;</span>
+</span><span class='line'><span class="s">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s">t,&quot; she said.&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;&quot;Isn&#39;</span>\<span class="n">t</span><span class="p">,</span><span class="s">&quot;she said.&#39;)</span>
+</span><span class='line'><span class="s">&quot;Isn&#39;t,&quot;</span> <span class="n">she</span> <span class="n">said</span><span class="o">.</span>         <span class="c"># \ will not be displayed</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#39;First line, </span><span class="se">\n</span><span class="s">Second line.&#39;</span>
+</span><span class='line'><span class="s">&#39;First line, </span><span class="se">\n</span><span class="s">Second line.&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'><span class="n">First</span> <span class="n">line</span><span class="p">,</span>
+</span><span class='line'><span class="n">Second</span> <span class="n">line</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>If you want python accpet \, you need to add <code>r</code> before the first quote</p></blockquote>
+
+<blockquote><p>If you want python accpet \, you need to add <code>r</code> before the first quote</p></blockquote>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -361,6 +376,149 @@ Second line.</p></blockquote></blockquote>
 
 
 <p>Output is the same format as this input</p>
+
+<ul>
+<li>String can be concatenated with <code>+</code> and repeated with <code>*</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">&#39;un&#39;</span> <span class="o">+</span> <span class="s">&#39;iun&#39;</span>
+</span><span class='line'><span class="s">&#39;unununiun&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>String literals next to each other are automatically concatenated</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;Py&#39;</span> <span class="s">&#39;thon&#39;</span>
+</span><span class='line'><span class="s">&#39;Python&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>This automatical concatenation Cannot concatenate a variable and a string</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#39;Py&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="s">&#39;thon&#39;</span>
+</span><span class='line'><span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But <code>+</code> still works</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="o">=</span><span class="s">&#39;Py&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s">&#39;thon&#39;</span>
+</span><span class='line'><span class="s">&#39;Python&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>String can be indexed starting from 0. string[0] is also string type</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s">&quot;Python&quot;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;P&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;n&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Indices may also be negative numbers which start counting from the <code>right</code>, negative indices starts from <code>-1</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;n&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;o&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;P&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Slicing is supported in string. We can get substring by slicing</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="o">=</span><span class="s">&#39;Python&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>    <span class="c"># get characters [0,2)</span>
+</span><span class='line'><span class="s">&#39;Py&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;Py&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>    <span class="c"># get characters [4,length]</span>
+</span><span class='line'><span class="s">&#39;on&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+</span><span class='line'><span class="s">&#39;on&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</span><span class='line'><span class="s">&#39;Python&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Attempting to use a index that is too large will result in error</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="o">=</span><span class="s">&#39;Python&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span>
+</span><span class='line'><span class="ne">IndexError</span><span class="p">:</span> <span class="n">string</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But slice index is ok for this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="o">=</span><span class="s">&#39;Python&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">42</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;on&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">:]</span>
+</span><span class='line'><span class="s">&#39; &#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 

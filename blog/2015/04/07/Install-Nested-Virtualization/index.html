@@ -111,7 +111,7 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
 <p>if the result is <code>Y</code>. Nested virgualization in your host is open. Ohterwise you need to complete the followings</p>
 
 <ol>
-<li>Modify /etc/default/grub</li>
+<li>`Modify /etc/default/grub</li>
 </ol>
 
 
@@ -129,6 +129,48 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
 <ol>
 <li>Reboot and check again</li>
 </ol>
+
+
+<h3>Install the guest Hypervisor</h3>
+
+<p>I use the raw disk as the VM partition</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virt-install --name=centos5.6 --os-variant=RHEL5 --ram=1024 --vcpus=1 --disk path=/dev/sda4,format=raw,bus=virtio --accelerate --cdrom /Your DVD / --vnc --vncport=5910 --vnclisten=0.0.0.0 --network bridge=br0,model=virtio --noautoconsole
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Virsh Command</h3>
+
+<ul>
+<li>Launch a VM</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh start domain name</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Undefine a VM</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh destroy domain name
+</span><span class='line'>virsh undefine domain name</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Connect a VM</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virt-viewer -c qemu:///system  domain name</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
