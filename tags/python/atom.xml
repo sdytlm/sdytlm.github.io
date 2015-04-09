@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-08T17:22:52-07:00</updated>
+  <updated>2015-04-08T18:20:42-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -349,6 +349,27 @@ IndexError: string index out of range
 'on'
 &gt;&gt;&gt; word[42:]
 ' '
+</code></pre>
+
+<ul>
+<li>Python strings cannot be changed</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; word[0] = 'J'
+TypeError: 'str' does not support item assign
+</code></pre>
+
+<blockquote><p>If you need a different string, you have to create a new one</p></blockquote>
+
+<ul>
+<li>Function <code>len()</code> returns the length of a string</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; s = 'abcdefg'
+&gt;&gt;&gt; len(s)
+7
 </code></pre>
 ]]></content>
   </entry>

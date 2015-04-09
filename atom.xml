@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-08T17:22:52-07:00</updated>
+  <updated>2015-04-08T18:20:42-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -612,6 +612,34 @@ Add the following in the first or second line for Windows 1252</li>
 </span><span class='line'><span class="s">&#39;on&#39;</span>
 </span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">:]</span>
 </span><span class='line'><span class="s">&#39; &#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Python strings cannot be changed</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;J&#39;</span>
+</span><span class='line'><span class="ne">TypeError</span><span class="p">:</span> <span class="s">&#39;str&#39;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assign</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>If you need a different string, you have to create a new one</p></blockquote>
+
+<ul>
+<li>Function <code>len()</code> returns the length of a string</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#39;abcdefg&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'><span class="mi">7</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
