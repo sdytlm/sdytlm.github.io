@@ -25,20 +25,17 @@ tag: python
 ### Interpreter
 
 * Boot with a script
-
 ``` python
 python test.py
 ```
 
 * Boot with command
-
 ``` python
 python -c command [arg]
 
 ```
 
 * Boot with module
-
 ``` python
 python -m module [arg]
 
@@ -49,18 +46,16 @@ python -m module [arg]
 * Make your python script executable
 
 ** Add the following in the first line
-
 ``` python
 #! /usr/bin/env python3.4
 ```
 
 ** Give your file execution permission
-
 ```
 chmod +x yourpython.py
 ```
 
-* Use special character encoding 
+* Use special character encoding
 Add the following in the first or second line for Windows 1252
 ```
 # -*- coding: cp-1252 -*-
@@ -72,13 +67,12 @@ Add the following in the first or second line for Windows 1252
 #### Number
 
 * Division will not dismiss fractional part
-
 ``` python
 >>> 8/5
 1.6
 ```
 
-* If you don't like fractional part, use `//`
+* If you do not like fractional part, use `//`.
 
 ``` python
 >>> 7//3
@@ -95,7 +89,7 @@ Add the following in the first or second line for Windows 1252
 >>> 7.0/2
 3.5
 ```
-
+----
 #### Assignment
 
 ``` python
@@ -122,12 +116,15 @@ Add the following in the first or second line for Windows 1252
 > `_` variable is read-only by the user.
 ```
 
-
+----
 #### Parameter
+
 
 > Must define the parameter before you access it
 
+
 For example:
+
 ``` python
 >>> n
 NameError: xxxxxxxxx
@@ -136,7 +133,7 @@ NameError: xxxxxxxxx
 ### String
 String can be expressed in ' ' or " "
 
-* If you use " ' " or ' " ', the inside quote will be considered quote. Otherwise, you need use `\` 
+* If you use " ' " or ' " ', the inside quote will be considered quote. Otherwise, you need use `\`
 
 ``` python
 >>> 'eggs'
@@ -153,6 +150,7 @@ String can be expressed in ' ' or " "
 
 * print() will handle '\' as special character
 
+``` python
 >>> '"Isn\'t," she said.'
 '"Isn\'t," she said.'
 >>> print('"Isn'\t,"she said.')
@@ -162,8 +160,10 @@ String can be expressed in ' ' or " "
 >>> print(s)
 First line,
 Second line.
+```
 
 > If you want python accpet \, you need to add `r` before the first quote
+
 
 ```
 >> print('C:\some\name')
@@ -172,7 +172,9 @@ ame
 >>> print(r'C:\some\name')
 C:\some\name
 ```
+
 * print() can display multiple line by using " " "
+
 ``` python
 print("""\
 Usage: thingy
@@ -182,3 +184,101 @@ Usage: thingy
 ```
 
 Output is the same format as this input
+
+* String can be concatenated with `+` and repeated with `*`
+
+``` python
+>>> 3 * 'un' + 'iun'
+'unununiun'
+```
+
+* String literals next to each other are automatically concatenated
+
+``` python
+>>> 'Py' 'thon'
+'Python'
+```
+
+> This automatical concatenation Cannot concatenate a variable and a string
+
+``` python
+>>> prefix = 'Py'
+>>> prefix 'thon'
+SyntaxError: invalid syntax
+```
+But `+` still works
+
+``` python
+>>> prefix ='Py'
+>>> prefix + 'thon'
+'Python'
+```
+
+* String can be indexed starting from 0. string[0] is also string type
+
+``` python
+>>> word = "Python"
+>>> word[0]
+'P'
+>>> word[5]
+'n'
+```
+
+* Indices may also be negative numbers which start counting from the `right`, negative indices starts from `-1`
+
+``` python
+>>> word[-1]
+'n'
+>>> word[-2]
+'o'
+>>> word[-6]
+'P'
+```
+* Slicing is supported in string. We can get substring by slicing
+
+``` python
+>>> word='Python'
+>>> word[0:2]    # get characters [0,2)
+'Py'
+>>> word[:2]
+'Py'
+>>> word[4:]    # get characters [4,length]
+'on'
+>>> word[-2:]
+'on'
+>>> word[:2] + word[2:]
+'Python'
+```
+* Attempting to use a index that is too large will result in error
+
+``` python
+>>> word='Python'
+>>> word[42]
+IndexError: string index out of range
+```
+But slice index is ok for this
+
+``` python
+>>> word='Python'
+>>> word[4:42]
+'on'
+>>> word[42:]
+' '
+```
+
+* Python strings cannot be changed
+
+``` python
+>>> word[0] = 'J'
+TypeError: 'str' does not support item assign
+```
+
+> If you need a different string, you have to create a new one
+
+* Function `len()` returns the length of a string
+
+``` python
+>>> s = 'abcdefg'
+>>> len(s)
+7
+```
