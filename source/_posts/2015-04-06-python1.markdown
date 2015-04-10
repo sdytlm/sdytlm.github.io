@@ -25,17 +25,20 @@ tag: python
 ### Interpreter
 
 * Boot with a script
+
 ``` python
 python test.py
 ```
 
 * Boot with command
+
 ``` python
 python -c command [arg]
 
 ```
 
 * Boot with module
+
 ``` python
 python -m module [arg]
 
@@ -45,18 +48,20 @@ python -m module [arg]
 
 * Make your python script executable
 
-** Add the following in the first line
+  * Add the following in the first line
+
 ``` python
 #! /usr/bin/env python3.4
 ```
+  * Give your file execution permission
 
-** Give your file execution permission
 ```
 chmod +x yourpython.py
 ```
 
 * Use special character encoding
 Add the following in the first or second line for Windows 1252
+
 ```
 # -*- coding: cp-1252 -*-
 ```
@@ -67,6 +72,7 @@ Add the following in the first or second line for Windows 1252
 #### Number
 
 * Division will not dismiss fractional part
+
 ``` python
 >>> 8/5
 1.6
@@ -116,6 +122,12 @@ Add the following in the first or second line for Windows 1252
 > `_` variable is read-only by the user.
 ```
 
+* You can also do the multiple assignment
+
+``` python
+a,b = 0,1   # a=0, b=1
+```
+
 ----
 #### Parameter
 
@@ -129,8 +141,8 @@ For example:
 >>> n
 NameError: xxxxxxxxx
 ```
-
-### String
+----
+#### String
 String can be expressed in ' ' or " "
 
 * If you use " ' " or ' " ', the inside quote will be considered quote. Otherwise, you need use `\`
@@ -281,4 +293,92 @@ TypeError: 'str' does not support item assign
 >>> s = 'abcdefg'
 >>> len(s)
 7
+```
+----
+#### Lists
+
+* Lists can contain items of different types, but usually the items have the same type
+
+``` python
+>>> squares = [1,4,9,16,25]
+>>> squares
+[1,4,9,16,25]
+
+```
+
+* Lists can also be indexed and sliced:
+
+``` python
+>>> squares = [1,4,9,16,25]
+>>> squares[0]
+1
+>>> square[-1]
+25
+>>> squares[-3:]            // slice will return a new list
+[9,16,25]
+```
+
+* List can also be concatenated
+
+``` python
+>>> squares = [1,4,9,16,25]
+>>> squares + [36,49,64,81,100]
+[1,4,9,16,25,36,49,64,81,100]
+```
+
+* Strings cannot be changed, but list can be changed
+
+``` python
+>>> cubes = [1,8,27,65,125]
+>>> cubes[3] = 64
+>>> cubes
+[1,8,27,64,125]
+```
+
+* You can add new items at the ned of list by append()
+
+``` python
+>>> cubes = [1,8,27,64,125]
+>>> cubes.append(216)
+>>> cubes.append(7**3)
+>>> cubes
+[1,8,27,64,125,216,343]
+```
+
+* You can even change the size of list or clear it by assignment to slices
+
+``` python
+>>> letters = ['a','b','c','d','e','f','g']
+>>> letters[2:5] = ['C','D','E']
+>>> letters
+['a','b','C','D','E','f','g']
+# remove them
+>>> letters[2:5] = []
+>>> letters
+['a','b','f','g']
+>>> letters[:] = []
+>>> letters
+[]
+```
+
+* `len()` can applies to lists
+
+``` python
+>>> letters = ['a','b','c','d']
+>>> len(letters)
+4
+```
+
+* A lists can contain other lists
+
+``` python
+>>> a = ['a','b','c']
+>>> n = [1,2,3,]
+>>> x= [a,n]
+>>> x
+[['a','b','c'],[1,2,3]]
+>>> x[0]
+['a','b','c']
+>>> x[0][1]                 # like two dimention array
+'b'
 ```

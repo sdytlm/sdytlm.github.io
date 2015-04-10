@@ -42,7 +42,29 @@ virt-install --name=centos5.6 --os-variant=RHEL5 --ram=1024 --vcpus=1 --disk pat
 
 ```
 
+### Configure the Guest Hypervisor
 
+* Disable cache on guest disk
+In xml file, do
+```
+<driver name='qemu' type='raw' cache='none'/>
+```
+
+* Enable VMX in guest CPU
+In xml file, do
+```
+<cpu match='exact'>
+  <model>core2duo</model>
+ <feature policy='require' name='vmx'/>
+</cpu>
+```
+
+* Check guest CPU feature in host
+In host OS
+
+```
+ps -ef | grep qemu-kvm
+```
 
 ### Virsh Command
 
@@ -53,14 +75,33 @@ virsh start domain name
 ```
 
 * Undefine a VM
+
 ```
 virsh destroy domain name
 virsh undefine domain name
 ```
 
 * Connect a VM
+
 ```
 virt-viewer -c qemu:///system  domain name
 ```
 
+* Delete a VM
 
+```
+virsh destroy domain name
+virsh undefine domain name
+```
+
+* Add VCPU to a VM
+
+```
+virsh shutdown domain Name
+virsh edit domain name
+```
+do this
+```
+edit <vcpu placement='static'>4</vcpu>
+virsh create /etc/libvirt/qemu/yourconfig.xml
+```
