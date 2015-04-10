@@ -140,6 +140,44 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h3>Configure the Guest Hypervisor</h3>
+
+<ul>
+<li>Disable cache on guest disk
+In xml file, do</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;driver name='qemu' type='raw' cache='none'/&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Enable VMX in guest CPU
+In xml file, do</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;cpu match='exact'&gt;
+</span><span class='line'>  &lt;model&gt;core2duo&lt;/model&gt;
+</span><span class='line'> &lt;feature policy='require' name='vmx'/&gt;
+</span><span class='line'>&lt;/cpu&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Check guest CPU feature in host
+In host OS</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ps -ef | grep qemu-kvm</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>Virsh Command</h3>
 
 <ul>
@@ -180,6 +218,25 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>virsh destroy domain name
 </span><span class='line'>virsh undefine domain name</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Add VCPU to a VM</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh shutdown domain Name
+</span><span class='line'>virsh edit domain name</span></code></pre></td></tr></table></div></figure>
+
+
+<p>do this</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>edit &lt;vcpu placement='static'&gt;4&lt;/vcpu&gt;
+</span><span class='line'>virsh create /etc/libvirt/qemu/yourconfig.xml</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -238,7 +295,7 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
     <li class='category'><a href='/blog/categories/geek/'>geek (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
 <li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
-<li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (2)</a></li>
 <li class='category'><a href='/blog/categories/virtualization/'>virtualization (1)</a></li>
 
   </ul>
@@ -246,6 +303,10 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/09/python2/">Python: Control Flow</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/04/07/USB-BOOT-ISO/">Make Opensuse Installation USB on MacOS</a>
@@ -263,10 +324,6 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
         <a href="/blog/2015/04/06/compile-kernel/">Compile Linux Kernel</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2015/02/01/os3/">Operating System III: X86 and PC Architecture</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -275,7 +332,7 @@ Guest OS: CentOS Enable Nested in Host KVM Check if nested is enabled in host hy
     <a style="font-size: 90%" href="/tags/geek/">Geek</a>
 <a style="font-size: 90%" href="/tags/linux/">Linux</a>
 <a style="font-size: 210%" href="/tags/mit6-dot-828/">mit6.828</a>
-<a style="font-size: 90%" href="/tags/python/">python</a>
+<a style="font-size: 166%" href="/tags/python/">python</a>
 <a style="font-size: 90%" href="/tags/virtualization/">virtualization</a>
 
   </ul>

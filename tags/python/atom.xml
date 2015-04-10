@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-09T10:07:29-07:00</updated>
+  <updated>2015-04-09T17:27:47-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,174 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Control Flow]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/09/python2/"/>
+    <updated>2015-04-09T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/09/python2</id>
+    <content type="html"><![CDATA[<h3>First Steps</h3>
+
+<pre><code class="python">&gt;&gt;&gt; a,b = 0,1
+&gt;&gt;&gt; while b&lt;10:
+    print(b)
+    a,b=b,a+b
+</code></pre>
+
+<blockquote><p>each line within a basic block must be idented by the same amount.</p></blockquote>
+
+<ul>
+<li>Use keyword <code>end</code> to avoid the newline after output.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; a,b = 0,1
+&gt;&gt;&gt; while b&lt;1000:
+    print(b,end=',')     # specify what character is used after output.
+    a,b = b,a+b
+1,1,2,3,5,8,
+</code></pre>
+
+<!--more-->
+
+
+<hr />
+
+<h3>If Statement</h3>
+
+<ul>
+<li><code>elif</code> and <code>else</code> part is optional</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; x = int (input("Please enter an integer: "))  # Defulat input will return a string
+Please enter an integer: 42
+&gt;&gt; if x &lt; 0:
+        x = 0
+    elif x == 0:
+        print('Zero')
+    elif x == 1:
+        print('Single')
+    else:
+        print('More')
+More
+</code></pre>
+
+<hr />
+
+<h3>For Statement</h3>
+
+<ul>
+<li>Iterates the items of a <code>list</code> or <code>string</code> in the order they appear.</li>
+</ul>
+
+
+<pre><code class="python">words = ['cat', 'window', 'defenestrate']   # list
+&gt;&gt;&gt; for w in words:
+    print(w, len(w))
+cat 3
+window 6
+defenestrate 12
+</code></pre>
+
+<ul>
+<li>if you modify the sequence, you may create a dead loop program</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; words = ['cat', 'window', 'defenestrate']
+&gt;&gt;&gt; for w in words[:]:        # word[:] will not make the program dead loop. If u use words, program will be dead loop
+        if len(w) &gt; 6:
+            words.insert (0,w)
+&gt;&gt;&gt; words
+['defenestrate', 'cat', 'window', 'defenestrate']
+</code></pre>
+
+<hr />
+
+<h3><code>range()</code> Function</h3>
+
+<p>It can generates arithmetic progressions:
+&#8220;` python</p>
+
+<blockquote><blockquote><blockquote><p>for i in range(5)
+   print(i)
+0
+1
+2
+3
+4
+5</p></blockquote></blockquote></blockquote>
+
+<pre><code>You can also specify the start index and step
+</code></pre>
+
+<blockquote><blockquote><blockquote><p>range(5,10)                  # 5,6,7,8,9
+range(0,10,3)                # 0,3,6,9
+range(-10,-100,-30)          # -10,-40,-70
+<code>
+You can combine `range()` and `len()`
+</code> python
+a = [&lsquo;Mary&rsquo;, &lsquo;had&rsquo;, &lsquo;a&rsquo;, &lsquo;little&rsquo;, &lsquo;lamb&rsquo;]
+for i in range(len(a)):
+  print(i,a[i])
+0 Mary
+1 had
+2 a
+3 little
+4 lamb</p>
+
+<h2>&#8220;`</h2>
+
+<h3>Break Statement</h3></blockquote></blockquote></blockquote>
+
+<ul>
+<li>Loop statement can have <code>else</code> clause. It is executed when loop terminates through exhaustion of list (<code>for</code>) or when condition becauses false (`while)</li>
+</ul>
+
+
+<blockquote><p><code>else</code> of loop statement cannot executed when loop is terminated by a <code>break</code> statement.</p></blockquote>
+
+<pre><code class="python">&gt;&gt;&gt; for n in range(2,10):
+&gt;&gt;&gt;     for x in range(2,n):
+&gt;&gt;&gt;         if n%x == 0:
+&gt;&gt;&gt;             print(n, 'equals',x,'*', n//x)
+&gt;&gt;&gt;             break
+&gt;&gt;&gt;     else:  # look at this intentation
+&gt;&gt;&gt;         print(n, 'is a prime number')
+
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+</code></pre>
+
+<ul>
+<li><code>continue</code> statement continues with the next iteration of the loop</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; for num in range (2,10):
+&gt;&gt;&gt;     if num % 2 == 0:
+&gt;&gt;&gt;         print("Found an even number", num)
+&gt;&gt;&gt;         continue                            # if 'if' is executed, the second print will not be executed.
+&gt;&gt;&gt;     print("Found a number", num)
+
+Found an even number 2
+Found a number 3
+Found an even number 4
+Found a number 5
+Found an even number 6
+Found a number 7
+Found an even number 8
+Found a number 9
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python: Introduction]]></title>
@@ -42,100 +210,78 @@
 <h3>Interpreter</h3>
 
 <ul>
-<li><p>Boot with a script
-<code>python
-python test.py
-</code></p></li>
-<li><p>Boot with command
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="n">command</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">*</span> <span class="n">Boot</span> <span class="k">with</span> <span class="n">module</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">module</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Module</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">command</span> <span class="n">parameters</span> <span class="n">are</span> <span class="n">stored</span> <span class="ow">in</span> <span class="sb">`sys.argv[]`</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">*</span> <span class="n">Make</span> <span class="n">your</span> <span class="n">python</span> <span class="n">script</span> <span class="n">executable</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="o">*</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">following</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">line</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="err">!</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">env</span> <span class="n">python3</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">*</span> <span class="n">Give</span> <span class="n">your</span> <span class="nb">file</span> <span class="n">execution</span> <span class="n">permission</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">yourpython</span><span class="o">.</span><span class="n">py</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<li>Boot with a script</li>
+</ul>
+
+
+<pre><code class="python">python test.py
+</code></pre>
+
+<ul>
+<li>Boot with command</li>
+</ul>
+
+
+<pre><code class="python">python -c command [arg]
+</code></pre>
+
+<ul>
+<li>Boot with module</li>
+</ul>
+
+
+<pre><code class="python">python -m module [arg]
+</code></pre>
+
+<blockquote><p>Module name and command parameters are stored in <code>sys.argv[]</code></p></blockquote>
+
+<ul>
+<li><p>Make your python script executable</p>
+
+<ul>
+<li>Add the following in the first line</li>
+</ul>
+</li>
+</ul>
+
+
+<pre><code class="python">#! /usr/bin/env python3.4
+</code></pre>
+
+<ul>
+<li>Give your file execution permission</li>
+</ul>
+
+
+<pre><code>chmod +x yourpython.py
+</code></pre>
 
 <ul>
 <li>Use special character encoding
-Add the following in the first or second line for Windows 1252
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;-&lt;</span><span class="n">em</span><span class="o">&gt;-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">cp</span><span class="o">-</span><span class="mi">1252</span> <span class="o">-&lt;/</span><span class="n">em</span><span class="o">&gt;-&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="sb">``</span><span class="err">`</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="n">Basic</span> <span class="n">Introduction</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Number</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Division</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">dismiss</span> <span class="n">fractional</span> <span class="n">part</span>
-</span></code></pre></td></tr></table></div></figure> python</p>
+Add the following in the first or second line for Windows 1252</li>
+</ul>
 
-<blockquote><blockquote><blockquote><p>8/5
+
+<pre><code># -*- coding: cp-1252 -*-
+</code></pre>
+
+<hr />
+
+<h3>Basic Introduction</h3>
+
+<h4>Number</h4>
+
+<ul>
+<li>Division will not dismiss fractional part</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 8/5
 1.6
-&#8220;`</p></blockquote></blockquote></blockquote></li>
-<li><p>If you do not like fractional part, use <code>//</code>.</p></li>
+</code></pre>
+
+<ul>
+<li>If you do not like fractional part, use <code>//</code>.</li>
 </ul>
 
 
@@ -204,6 +350,8 @@ Add the following in the first or second line for Windows 1252
 <pre><code class="python">&gt;&gt;&gt; n
 NameError: xxxxxxxxx
 </code></pre>
+
+<hr />
 
 <h4>String</h4>
 
@@ -379,6 +527,8 @@ TypeError: 'str' does not support item assign
 &gt;&gt;&gt; len(s)
 7
 </code></pre>
+
+<hr />
 
 <h4>Lists</h4>
 

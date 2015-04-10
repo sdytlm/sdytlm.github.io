@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-09T10:07:29-07:00</updated>
+  <updated>2015-04-09T17:27:47-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,270 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Control Flow]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/09/python2/"/>
+    <updated>2015-04-09T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/09/python2</id>
+    <content type="html"><![CDATA[<h3>First Steps</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">b</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<blockquote><p>each line within a basic block must be idented by the same amount.</p></blockquote>
+
+<ul>
+<li>Use keyword <code>end</code> to avoid the newline after output.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">b</span><span class="o">&lt;</span><span class="mi">1000</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">)</span>     <span class="c"># specify what character is used after output.</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--more-->
+
+
+<hr />
+
+<h3>If Statement</h3>
+
+<ul>
+<li><code>elif</code> and <code>else</code> part is optional</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">&quot;Please enter an integer: &quot;</span><span class="p">))</span>  <span class="c"># Defulat input will return a string</span>
+</span><span class='line'><span class="n">Please</span> <span class="n">enter</span> <span class="n">an</span> <span class="n">integer</span><span class="p">:</span> <span class="mi">42</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Zero&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Single&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;More&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">More</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h3>For Statement</h3>
+
+<ul>
+<li>Iterates the items of a <code>list</code> or <code>string</code> in the order they appear.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cat&#39;</span><span class="p">,</span> <span class="s">&#39;window&#39;</span><span class="p">,</span> <span class="s">&#39;defenestrate&#39;</span><span class="p">]</span>   <span class="c"># list</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+</span><span class='line'><span class="n">cat</span> <span class="mi">3</span>
+</span><span class='line'><span class="n">window</span> <span class="mi">6</span>
+</span><span class='line'><span class="n">defenestrate</span> <span class="mi">12</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>if you modify the sequence, you may create a dead loop program</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cat&#39;</span><span class="p">,</span> <span class="s">&#39;window&#39;</span><span class="p">,</span> <span class="s">&#39;defenestrate&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[:]:</span>        <span class="c"># word[:] will not make the program dead loop. If u use words, program will be dead loop</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">words</span><span class="o">.</span><span class="n">insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">words</span>
+</span><span class='line'><span class="p">[</span><span class="s">&#39;defenestrate&#39;</span><span class="p">,</span> <span class="s">&#39;cat&#39;</span><span class="p">,</span> <span class="s">&#39;window&#39;</span><span class="p">,</span> <span class="s">&#39;defenestrate&#39;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h3><code>range()</code> Function</h3>
+
+<p>It can generates arithmetic progressions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'><span class="mi">0</span>
+</span><span class='line'><span class="mi">1</span>
+</span><span class='line'><span class="mi">2</span>
+</span><span class='line'><span class="mi">3</span>
+</span><span class='line'><span class="mi">4</span>
+</span><span class='line'><span class="mi">5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also specify the start index and step</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>                  <span class="c"># 5,6,7,8,9</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>                <span class="c"># 0,3,6,9</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span>          <span class="c"># -10,-40,-70</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can combine <code>range()</code> and <code>len()</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Mary&#39;</span><span class="p">,</span> <span class="s">&#39;had&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;little&#39;</span><span class="p">,</span> <span class="s">&#39;lamb&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>   <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span><span class='line'><span class="mi">0</span> <span class="n">Mary</span>
+</span><span class='line'><span class="mi">1</span> <span class="n">had</span>
+</span><span class='line'><span class="mi">2</span> <span class="n">a</span>
+</span><span class='line'><span class="mi">3</span> <span class="n">little</span>
+</span><span class='line'><span class="mi">4</span> <span class="n">lamb</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h3>Break Statement</h3>
+
+<ul>
+<li>Loop statement can have <code>else</code> clause. It is executed when loop terminates through exhaustion of list (<code>for</code>) or when condition becauses false (`while)</li>
+</ul>
+
+
+<blockquote><p><code>else</code> of loop statement cannot executed when loop is terminated by a <code>break</code> statement.</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>         <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>             <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s">&#39;equals&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="n">x</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>             <span class="k">break</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>     <span class="k">else</span><span class="p">:</span>  <span class="c"># look at this intentation</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>         <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s">&#39;is a prime number&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">2</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">prime</span> <span class="n">number</span>
+</span><span class='line'><span class="mi">3</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">prime</span> <span class="n">number</span>
+</span><span class='line'><span class="mi">4</span> <span class="n">equals</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span class='line'><span class="mi">5</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">prime</span> <span class="n">number</span>
+</span><span class='line'><span class="mi">6</span> <span class="n">equals</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</span><span class='line'><span class="mi">7</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">prime</span> <span class="n">number</span>
+</span><span class='line'><span class="mi">8</span> <span class="n">equals</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span>
+</span><span class='line'><span class="mi">9</span> <span class="n">equals</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>continue</code> statement continues with the next iteration of the loop</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>     <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>         <span class="k">print</span><span class="p">(</span><span class="s">&quot;Found an even number&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>         <span class="k">continue</span>                            <span class="c"># if &#39;if&#39; is executed, the second print will not be executed.</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Found a number&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Found</span> <span class="n">an</span> <span class="n">even</span> <span class="n">number</span> <span class="mi">2</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">a</span> <span class="n">number</span> <span class="mi">3</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">an</span> <span class="n">even</span> <span class="n">number</span> <span class="mi">4</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">a</span> <span class="n">number</span> <span class="mi">5</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">an</span> <span class="n">even</span> <span class="n">number</span> <span class="mi">6</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">a</span> <span class="n">number</span> <span class="mi">7</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">an</span> <span class="n">even</span> <span class="n">number</span> <span class="mi">8</span>
+</span><span class='line'><span class="n">Found</span> <span class="n">a</span> <span class="n">number</span> <span class="mi">9</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Make Opensuse Installation USB on MacOS]]></title>
@@ -142,6 +406,44 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h3>Configure the Guest Hypervisor</h3>
+
+<ul>
+<li>Disable cache on guest disk
+In xml file, do</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;driver name='qemu' type='raw' cache='none'/&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Enable VMX in guest CPU
+In xml file, do</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;cpu match='exact'&gt;
+</span><span class='line'>  &lt;model&gt;core2duo&lt;/model&gt;
+</span><span class='line'> &lt;feature policy='require' name='vmx'/&gt;
+</span><span class='line'>&lt;/cpu&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Check guest CPU feature in host
+In host OS</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ps -ef | grep qemu-kvm</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>Virsh Command</h3>
 
 <ul>
@@ -182,6 +484,25 @@
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>virsh destroy domain name
 </span><span class='line'>virsh undefine domain name</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Add VCPU to a VM</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh shutdown domain Name
+</span><span class='line'>virsh edit domain name</span></code></pre></td></tr></table></div></figure>
+
+
+<p>do this</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>edit &lt;vcpu placement='static'&gt;4&lt;/vcpu&gt;
+</span><span class='line'>virsh create /etc/libvirt/qemu/yourconfig.xml</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -403,6 +724,8 @@ Add the following in the first or second line for Windows 1252</li>
 </span><span class='line'><span class="ne">NameError</span><span class="p">:</span> <span class="n">xxxxxxxxx</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h4>String</h4>
 
@@ -667,6 +990,8 @@ Add the following in the first or second line for Windows 1252</li>
 </span><span class='line'><span class="mi">7</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<hr />
 
 <h4>Lists</h4>
 

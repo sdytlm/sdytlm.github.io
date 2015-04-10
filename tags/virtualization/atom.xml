@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: virtualization | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/virtualization/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-09T10:07:29-07:00</updated>
+  <updated>2015-04-09T17:27:47-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -72,18 +72,43 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>virt-install &ndash;name=centos5.6 &ndash;os-variant=RHEL5 &ndash;ram=1024 &ndash;vcpus=1 &ndash;disk path=/dev/sda4,format=raw,bus=virtio &ndash;accelerate &ndash;cdrom /Your DVD / &ndash;vnc &ndash;vncport=5910 &ndash;vnclisten=0.0.0.0 &ndash;network bridge=br0,model=virtio &ndash;noautoconsole&lt;/p&gt;
 </span><span class='line'>
 </span><span class='line'>&lt;pre&gt;&lt;code&gt;
+</span><span class='line'>### Configure the Guest Hypervisor
 </span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>### Virsh Command
-</span><span class='line'>
-</span><span class='line'>* Launch a VM
+</span><span class='line'>* Disable cache on guest disk
+</span><span class='line'>In xml file, do
 </span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;p&gt;virsh start domain name</span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'>&lt;p&gt;&lt;driver name='qemu' type='raw' cache='none'/&gt;</span></code></pre></td></tr></table></div></figure></p>
+
+<ul>
+<li><p>Enable VMX in guest CPU
+In xml file, do
+<code>
+&lt;cpu match='exact'&gt;
+&lt;model&gt;core2duo&lt;/model&gt;
+&lt;feature policy='require' name='vmx'/&gt;
+&lt;/cpu&gt;
+</code></p></li>
+<li><p>Check guest CPU feature in host
+In host OS</p></li>
+</ul>
+
+
+<pre><code>ps -ef | grep qemu-kvm
+</code></pre>
+
+<h3>Virsh Command</h3>
+
+<ul>
+<li>Launch a VM</li>
+</ul>
+
+
+<pre><code>virsh start domain name
+</code></pre>
 
 <ul>
 <li>Undefine a VM</li>
@@ -110,6 +135,21 @@ virsh undefine domain name
 <pre><code>virsh destroy domain name
 virsh undefine domain name
 </code></pre>
+
+<ul>
+<li>Add VCPU to a VM</li>
+</ul>
+
+
+<pre><code>virsh shutdown domain Name
+virsh edit domain name
+</code></pre>
+
+<p>do this
+<code>
+edit &lt;vcpu placement='static'&gt;4&lt;/vcpu&gt;
+virsh create /etc/libvirt/qemu/yourconfig.xml
+</code></p>
 ]]></content>
   </entry>
   
