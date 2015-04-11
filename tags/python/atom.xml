@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-10T17:27:20-07:00</updated>
+  <updated>2015-04-10T18:15:24-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -257,7 +257,7 @@ None
         print(complaint)
 </code></pre>
 
-<blockquote><blockquote><blockquote><p>The default value is evaluted only once.</p></blockquote></blockquote></blockquote>
+<blockquote><p>The default value is evaluated only once.</p></blockquote>
 
 <pre><code class="python">&gt;&gt;&gt; def f(a, L=[]):          # L = [] will only be done once.
         L.append(a)
@@ -281,6 +281,16 @@ None
         return L
 </code></pre>
 
+<hr />
+
+<h3>More Function Parameter Rules</h3>
+
+<ul>
+<li>Keyword argument: <code>parrot(voltage=1000)</code></li>
+<li>Positional argument: <code>parrot(1000)</code></li>
+</ul>
+
+
 <blockquote><p>If you have default parameter in your function. You can choose not to pass value to the default parameter. But you still need to pass values to other regular parameters.</p></blockquote>
 
 <pre><code class="python">def parrot(voltage, state ='a stiff', actoon='voom', type='Blue'):
@@ -291,7 +301,7 @@ None
 <pre><code class="python">parrot(1000)                                 # 1 positional argument
 parrot(voltage=1000)                         # 1 keyword argument
 parrot(voltage=1000,'action='VBOOM')
-parrot(action='VBoom', voltage=1000)
+parrot(action='VBoom', voltage=1000)         # The order of keyword parameter is not important
 parrot('a million', 'berere', 'jump')
 parrot('a thousand', state='fdaf')
 </code></pre>
@@ -301,6 +311,39 @@ parrot('a thousand', state='fdaf')
 <pre><code class="python">parrot()      # require keyword argument
 parrot(voltage=5.0, 'dead')    # After keyword argument, you must use keyword argument
 parrot(1000,voltage=220)       # duplicate value for the same arguement
+</code></pre>
+
+<ul>
+<li>You define <code>*name</code> and <code>**name</code>. But <code>*name</code> must be put before <code>**name</code></li>
+</ul>
+
+
+<pre><code class="python">def test(kind, *arguments, **keywords):
+    print("Do you have", kind, "?")
+    for arg in arguments:
+        print(arg)
+    key = sorted(keywords.keys())       # sort the dictionary
+    for kw in keys:
+        print(kw, ":", keywords[kw])
+</code></pre>
+
+<p>Call it like this
+<code>python
+test("Limburger",
+     "It's very runny",
+     "It's very very runny"       # this two parameters will be sent to *arguments
+     shopkeeper="Michael"
+     client="John"
+    sketch="Cheese")             # this three will be sent to **keywords
+</code>
+It will display</p>
+
+<pre><code>Do you have Limburger?
+It's very runny,
+It's very very runny
+client:john
+shopkeeper:Michael
+sketch:Cheese
 </code></pre>
 ]]></content>
   </entry>

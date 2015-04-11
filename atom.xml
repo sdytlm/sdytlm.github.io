@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-10T17:27:20-07:00</updated>
+  <updated>2015-04-10T18:15:24-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -396,7 +396,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<blockquote><blockquote><blockquote><p>The default value is evaluted only once.</p></blockquote></blockquote></blockquote>
+<blockquote><p>The default value is evaluated only once.</p></blockquote>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -438,6 +438,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
+<h3>More Function Parameter Rules</h3>
+
+<ul>
+<li>Keyword argument: <code>parrot(voltage=1000)</code></li>
+<li>Positional argument: <code>parrot(1000)</code></li>
+</ul>
+
+
 <blockquote><p>If you have default parameter in your function. You can choose not to pass value to the default parameter. But you still need to pass values to other regular parameters.</p></blockquote>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -456,7 +466,7 @@
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>                                 <span class="c"># 1 positional argument</span>
 </span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="n">voltage</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>                         <span class="c"># 1 keyword argument</span>
 </span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="n">voltage</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="s">&#39;action=&#39;</span><span class="n">VBOOM</span><span class="s">&#39;)</span>
-</span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;VBoom&#39;</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s">&#39;VBoom&#39;</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>         <span class="c"># The order of keyword parameter is not important</span>
 </span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="s">&#39;a million&#39;</span><span class="p">,</span> <span class="s">&#39;berere&#39;</span><span class="p">,</span> <span class="s">&#39;jump&#39;</span><span class="p">)</span>
 </span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="s">&#39;a thousand&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s">&#39;fdaf&#39;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -470,6 +480,62 @@
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">parrot</span><span class="p">()</span>      <span class="c"># require keyword argument</span>
 </span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="n">voltage</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="s">&#39;dead&#39;</span><span class="p">)</span>    <span class="c"># After keyword argument, you must use keyword argument</span>
 </span><span class='line'><span class="n">parrot</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">voltage</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>       <span class="c"># duplicate value for the same arguement</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>You define <code>*name</code> and <code>**name</code>. But <code>*name</code> must be put before <code>**name</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Do you have&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="s">&quot;?&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">key</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keywords</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>       <span class="c"># sort the dictionary</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="n">kw</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="n">keywords</span><span class="p">[</span><span class="n">kw</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Call it like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">test</span><span class="p">(</span><span class="s">&quot;Limburger&quot;</span><span class="p">,</span>
+</span><span class='line'>     <span class="s">&quot;It&#39;s very runny&quot;</span><span class="p">,</span>
+</span><span class='line'>     <span class="s">&quot;It&#39;s very very runny&quot;</span>       <span class="c"># this two parameters will be sent to *arguments</span>
+</span><span class='line'>     <span class="n">shopkeeper</span><span class="o">=</span><span class="s">&quot;Michael&quot;</span>
+</span><span class='line'>     <span class="n">client</span><span class="o">=</span><span class="s">&quot;John&quot;</span>
+</span><span class='line'>    <span class="n">sketch</span><span class="o">=</span><span class="s">&quot;Cheese&quot;</span><span class="p">)</span>             <span class="c"># this three will be sent to **keywords </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It will display</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Do</span> <span class="n">you</span> <span class="n">have</span> <span class="n">Limburger</span><span class="err">?</span>
+</span><span class='line'><span class="n">It</span><span class="s">&#39;s very runny,</span>
+</span><span class='line'><span class="n">It</span><span class="s">&#39;s very very runny</span>
+</span><span class='line'><span class="n">client</span><span class="p">:</span><span class="n">john</span>
+</span><span class='line'><span class="n">shopkeeper</span><span class="p">:</span><span class="n">Michael</span>
+</span><span class='line'><span class="n">sketch</span><span class="p">:</span><span class="n">Cheese</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -561,6 +627,9 @@
 <li>Host/Guest Hypervisor: KVM</li>
 <li>Guest OS: CentOS</li>
 </ul>
+
+
+<!--more -->
 
 
 <h3>Enable Nested in Host KVM</h3>
