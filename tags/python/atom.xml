@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-09T17:27:47-07:00</updated>
+  <updated>2015-04-10T17:27:20-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -134,7 +134,7 @@ for i in range(len(a)):
 <h3>Break Statement</h3></blockquote></blockquote></blockquote>
 
 <ul>
-<li>Loop statement can have <code>else</code> clause. It is executed when loop terminates through exhaustion of list (<code>for</code>) or when condition becauses false (`while)</li>
+<li>Loop statement can have <code>else</code> clause. It is executed when loop terminates through exhaustion of list (<code>for</code>) or when condition becauses false (<code>while</code>)</li>
 </ul>
 
 
@@ -177,6 +177,130 @@ Found an even number 6
 Found a number 7
 Found an even number 8
 Found a number 9
+</code></pre>
+
+<hr />
+
+<h3>Pass Statement</h3>
+
+<p>It does nothing.</p>
+
+<pre><code class="python">&gt;&gt;&gt; while True:
+        pass # dead loop
+</code></pre>
+
+<hr />
+
+<h3>Define Functions</h3>
+
+<pre><code class="python">&gt;&gt;&gt; def fib(n):      # write Fibonacci series
+        a,b = 0,1
+        while a &lt; n:
+            print(a, end=' ')
+            a,b = b, a+b
+        print()
+&gt;&gt;&gt; # Call the function
+    fib(2000)
+</code></pre>
+
+<ul>
+<li>Execution of a function introduces a new symbol table for local variables. All function parameters will be stored in this table.</li>
+<li>When you pass the arguments some values, the values are always the object <code>reference</code>  not the value of the object</li>
+<li>A function definition introduces the function name in current symbol stable. You can also assign the function name to other parameter</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; fib
+&lt;function fib at 10042ed0&gt;
+&gt;&gt;&gt; f = fib
+&gt;&gt;&gt; f(100)                  # same as fib(100)
+</code></pre>
+
+<ul>
+<li>Actually, each function has a return value. At least it is <code>None</code></li>
+</ul>
+
+
+<pre><code class="python">print(fib(0))
+None
+</code></pre>
+
+<p>Lets change the fib functions to store the reurn value temporally</p>
+
+<pre><code class="python">&gt;&gt;&gt; def fib2(n):
+        result = []     # store the result value
+        a,b = 0,1
+        while a &lt; n:
+            result.append(a)        # the method we use to add the 
+            a,b = b,a+b
+        return result
+&gt;&gt;&gt; f100 = fib2(100)    # call the function
+&gt;&gt;&gt; f100
+[0,1,1,2,3,5,8,13,21,34,55,89]
+</code></pre>
+
+<ul>
+<li>Specify a default value for one or more arguments</li>
+</ul>
+
+
+<pre><code class="python">def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+    while True:
+        ok = input(prompt)
+        if ok in ('y','ye','yes'):                  # in can test if ok is in a sequence
+            return True
+        if ok in ('n','no','nop','nope'):
+            return False
+        retries = retries - 1
+        if retries &lt; 0:
+            raise OSError('uncooperative user')
+        print(complaint)
+</code></pre>
+
+<blockquote><blockquote><blockquote><p>The default value is evaluted only once.</p></blockquote></blockquote></blockquote>
+
+<pre><code class="python">&gt;&gt;&gt; def f(a, L=[]):          # L = [] will only be done once.
+        L.append(a)
+        return L
+
+&gt;&gt;&gt; print(f(1))
+&gt;&gt;&gt; print(f(2))
+&gt;&gt;&gt; print(f(3))
+
+[1]
+[1, 2]
+[1,2,3]
+</code></pre>
+
+<p>If you don&rsquo;t want the default to be shared.</p>
+
+<pre><code class="python">&gt;&gt;&gt; def f(a, L=None):
+        if L is None:    # `is` 
+            L = []
+        L.append(a)
+        return L
+</code></pre>
+
+<blockquote><p>If you have default parameter in your function. You can choose not to pass value to the default parameter. But you still need to pass values to other regular parameters.</p></blockquote>
+
+<pre><code class="python">def parrot(voltage, state ='a stiff', actoon='voom', type='Blue'):
+</code></pre>
+
+<p>The function can be called as</p>
+
+<pre><code class="python">parrot(1000)                                 # 1 positional argument
+parrot(voltage=1000)                         # 1 keyword argument
+parrot(voltage=1000,'action='VBOOM')
+parrot(action='VBoom', voltage=1000)
+parrot('a million', 'berere', 'jump')
+parrot('a thousand', state='fdaf')
+</code></pre>
+
+<p>But the following is not acceptable</p>
+
+<pre><code class="python">parrot()      # require keyword argument
+parrot(voltage=5.0, 'dead')    # After keyword argument, you must use keyword argument
+parrot(1000,voltage=220)       # duplicate value for the same arguement
 </code></pre>
 ]]></content>
   </entry>
