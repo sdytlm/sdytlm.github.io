@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: virtualization | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/virtualization/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-10T18:15:24-07:00</updated>
+  <updated>2015-04-11T16:16:37-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -101,6 +101,77 @@ In host OS</p></li>
 
 
 <pre><code>ps -ef | grep qemu-kvm
+</code></pre>
+
+<ul>
+<li><p>Disable SELinux
+In SELinux
+<code>
+SELINUX=permissive
+</code></p></li>
+<li><p>Configure network</p></li>
+</ul>
+
+
+<pre><code>service NetworkManager stop
+chkconfig NetworkManager off
+chkconfig network on
+yum install bridge-utils
+</code></pre>
+
+<p>eth0:</p>
+
+<pre><code>DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BRIDGE=br0
+</code></pre>
+
+<p>br0</p>
+
+<pre><code>DEVICE=br0
+NM_CONTROLLED=yes
+ONBOOT=yes
+TYPE=Bridge
+BOOTPROTO=dhcp
+</code></pre>
+
+<p>reboot your computer</p>
+
+<ul>
+<li>Compile and Install QEMU</li>
+</ul>
+
+
+<pre><code>./configure
+make
+make install
+</code></pre>
+
+<ul>
+<li>Install libvirt and management tool</li>
+</ul>
+
+
+<pre><code>yum install libvirt-client virt-viewer guestfish libguestfs-tools virt-top libvrt python-virtinst 
+</code></pre>
+
+<ul>
+<li>Launch libvirtd</li>
+</ul>
+
+
+<pre><code>service libvirtd start
+chkconfig libvirtd on
+</code></pre>
+
+<ul>
+<li>Check if libvirtd is turned on</li>
+</ul>
+
+
+<pre><code>virsh list
 </code></pre>
 
 <h3>Virsh Command</h3>

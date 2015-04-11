@@ -181,6 +181,104 @@ In host OS</li>
 </pre></td><td class='code'><pre><code class=''><span class='line'>ps -ef | grep qemu-kvm</span></code></pre></td></tr></table></div></figure>
 
 
+<ul>
+<li>Disable SELinux
+In SELinux</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELINUX=permissive</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Configure network</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>service NetworkManager stop
+</span><span class='line'>chkconfig NetworkManager off
+</span><span class='line'>chkconfig network on
+</span><span class='line'>yum install bridge-utils
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>eth0:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>DEVICE=eth0
+</span><span class='line'>TYPE=Ethernet
+</span><span class='line'>ONBOOT=yes
+</span><span class='line'>NM_CONTROLLED=yes
+</span><span class='line'>BRIDGE=br0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>br0</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>DEVICE=br0
+</span><span class='line'>NM_CONTROLLED=yes
+</span><span class='line'>ONBOOT=yes
+</span><span class='line'>TYPE=Bridge
+</span><span class='line'>BOOTPROTO=dhcp</span></code></pre></td></tr></table></div></figure>
+
+
+<p>reboot your computer</p>
+
+<ul>
+<li>Compile and Install QEMU</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./configure
+</span><span class='line'>make
+</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Install libvirt and management tool</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum install libvirt-client virt-viewer guestfish libguestfs-tools virt-top libvrt python-virtinst </span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Launch libvirtd</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>service libvirtd start
+</span><span class='line'>chkconfig libvirtd on</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Check if libvirtd is turned on</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh list</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>Virsh Command</h3>
 
 <ul>

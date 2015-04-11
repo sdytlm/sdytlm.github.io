@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-10T18:15:24-07:00</updated>
+  <updated>2015-04-11T16:16:37-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -344,6 +344,42 @@ It's very very runny
 client:john
 shopkeeper:Michael
 sketch:Cheese
+</code></pre>
+
+<ul>
+<li>Arbitrary argument, after <code>*args</code>, must use keywords rather than positional arguments.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; def concat (*args, sep="/"):          # after *args, you must use keywrod instead of positional arguments
+    return sep.join(args)
+&gt;&gt;&gt; concat("earth", "mars", "venus")
+'earth/mars/venus'
+&gt;&gt;&gt; concat("earth", "mars",sp=".")
+'earth/mars/
+</code></pre>
+
+<ul>
+<li>Call function with unpacked arguments</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; list(range(3,6)    # normal call with separate arguments
+[3,4,5]
+&gt;&gt;&gt; args = [3,6]
+&gt;&gt;&gt; list(range(*args)) # call with arguments unpacked
+[3,4,5]
+</code></pre>
+
+<ul>
+<li>call function with dictionary to deliver arguments</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt;def parrot(voltage, state='a stiff', action='voom'):
+
+&gt;&gt;&gt; d ={"voltage": "four million", "state": "demised", "action": "voom"}
+&gt;&gt;&gt; parrot(**d)
 </code></pre>
 ]]></content>
   </entry>
