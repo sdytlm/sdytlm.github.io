@@ -12,6 +12,7 @@ tag: virtualization
 * Host/Guest Hypervisor: KVM
 * Guest OS: CentOS 
 
+<!--more -->
 
 ### Enable Nested in Host KVM
 1. Check if nested is enabled in host hypervisor
@@ -65,6 +66,69 @@ In host OS
 ```
 ps -ef | grep qemu-kvm
 ```
+
+* Disable SELinux
+In SELinux
+```
+SELINUX=permissive
+```
+
+* Configure network
+
+```
+service NetworkManager stop
+chkconfig NetworkManager off
+chkconfig network on
+yum install bridge-utils
+
+```
+eth0:
+
+```
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BRIDGE=br0
+```
+br0
+
+```
+DEVICE=br0
+NM_CONTROLLED=yes
+ONBOOT=yes
+TYPE=Bridge
+BOOTPROTO=dhcp
+```
+reboot your computer
+
+
+* Compile and Install QEMU
+
+```
+./configure
+make
+make install
+```
+
+* Install libvirt and management tool
+
+```
+yum install libvirt-client virt-viewer guestfish libguestfs-tools virt-top libvrt python-virtinst 
+```
+* Launch libvirtd
+
+```
+service libvirtd start
+chkconfig libvirtd on
+```
+
+* Check if libvirtd is turned on
+
+```
+virsh list
+```
+
 
 ### Virsh Command
 
