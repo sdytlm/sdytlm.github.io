@@ -334,3 +334,16 @@ sketch:Cheese
 >>> parrot(**d)
 ```
 
+* Lambda Expressions
+
+`lambda` keyword can define a single expressions
+
+``` python
+>>> def make_incrementor(n):
+        return lambda x: x+n          # define a function return x+n
+>>> f = make_incrementor(42)
+>>> f(0)
+42
+>>> f(1)
+43
+```
