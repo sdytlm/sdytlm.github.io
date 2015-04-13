@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-13T13:23:00-07:00</updated>
+  <updated>2015-04-13T14:16:05-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Data Structure]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/12/python3/"/>
+    <updated>2015-04-12T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/12/python3</id>
+    <content type="html"><![CDATA[<!--more-->
+
+
+<h3>Functions on <code>list</code></h3>
+
+<ul>
+<li><p><strong>append(x)</strong>
+Add an item to the end of the list.
+<code>a[len(a)] = x</code></p></li>
+<li><p><strong>extend(L)</strong>
+Extend a list by appending all the items of given list <code>L</code>
+<code>a[len(a):] = L</code></p></li>
+<li><p><strong>insert(index, x)</strong>
+Insert <code>x</code> before <code>a[index]</code></p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a.insert(0,x)         # Insert at the begining
+</span><span class='line'>a.insert(len(a),x)    # Insert at the end
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p><strong>remove(x)</strong>
+Remove all values <code>x</code> from the list. If there is no value <code>x</code>, there will be an error</p></li>
+<li><p><strong>pop(index)</strong></p></li>
+</ul>
+
+
+<p>Remove the item at the given position <code>index</code> in the list and return it.
+But you can use <code>pop()</code> to return and remove the last item in the list</p>
+
+<ul>
+<li><p><strong>clear()</strong>
+Remove all items from the list</p></li>
+<li><p><strong>index(x)</strong>
+Return the index of value <code>x</code> in the list. There will be an error if no such item.</p></li>
+<li><p><strong>count(x)</strong>
+Return the nuber of times value <code>x</code> appears in the list</p></li>
+<li><p><strong>sort()</strong>
+Sort the items of the list in place</p></li>
+<li><p><strong>reverse()</strong>
+Reverse the items of list in place</p></li>
+<li><p><strong>copy()</strong>
+Return a copy of the list</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">66.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">333</span><span class="p">),</span> <span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="mi">2</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>        <span class="c"># add -1 before a[2]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">333</span><span class="p">)</span>         <span class="c"># andd 333 in the end</span>
+</span><span class='line'><span class="p">[</span><span class="mf">66.25</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1234.5</span><span class="p">,</span><span class="mi">333</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">333</span><span class="p">)</span>         <span class="c"># only search once</span>
+</span><span class='line'><span class="mi">1</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">333</span><span class="p">)</span>        <span class="c"># delete once from left</span>
+</span><span class='line'><span class="p">[</span><span class="mf">66.25</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">,</span> <span class="mi">333</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</span><span class='line'><span class="p">[</span><span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">66.25</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span class='line'><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">66.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>              <span class="c"># return and remove the last item</span>
+</span><span class='line'><span class="mf">1234.5</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+</span><span class='line'><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">66.25</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="mi">333</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Every method has return value. <code>insert</code>,<code>remove</code> and <code>sort</code> will return <code>None</code></p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python: Control Flow]]></title>

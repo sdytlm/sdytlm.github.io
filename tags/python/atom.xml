@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-13T13:23:00-07:00</updated>
+  <updated>2015-04-13T14:16:05-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Data Structure]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/12/python3/"/>
+    <updated>2015-04-12T00:00:00-07:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/12/python3</id>
+    <content type="html"><![CDATA[<!--more-->
+
+
+<h3>Functions on <code>list</code></h3>
+
+<ul>
+<li><p><strong>append(x)</strong>
+Add an item to the end of the list.
+<code>a[len(a)] = x</code></p></li>
+<li><p><strong>extend(L)</strong>
+Extend a list by appending all the items of given list <code>L</code>
+<code>a[len(a):] = L</code></p></li>
+<li><p><strong>insert(index, x)</strong>
+Insert <code>x</code> before <code>a[index]</code></p></li>
+</ul>
+
+
+<pre><code>a.insert(0,x)         # Insert at the begining
+a.insert(len(a),x)    # Insert at the end
+</code></pre>
+
+<ul>
+<li><p><strong>remove(x)</strong>
+Remove all values <code>x</code> from the list. If there is no value <code>x</code>, there will be an error</p></li>
+<li><p><strong>pop(index)</strong></p></li>
+</ul>
+
+
+<p>Remove the item at the given position <code>index</code> in the list and return it.
+But you can use <code>pop()</code> to return and remove the last item in the list</p>
+
+<ul>
+<li><p><strong>clear()</strong>
+Remove all items from the list</p></li>
+<li><p><strong>index(x)</strong>
+Return the index of value <code>x</code> in the list. There will be an error if no such item.</p></li>
+<li><p><strong>count(x)</strong>
+Return the nuber of times value <code>x</code> appears in the list</p></li>
+<li><p><strong>sort()</strong>
+Sort the items of the list in place</p></li>
+<li><p><strong>reverse()</strong>
+Reverse the items of list in place</p></li>
+<li><p><strong>copy()</strong>
+Return a copy of the list</p></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; a = [66.25, 333, 333, 1, 1234.5]
+&gt;&gt;&gt; print(a.count(333), a.count('x'))
+2 0
+
+&gt;&gt;&gt; a.insert(2, -1)        # add -1 before a[2]
+&gt;&gt;&gt; a.append(333)         # andd 333 in the end
+[66.25,333,-1,333,1,1234.5,333]
+
+&gt;&gt;&gt; a.index(333)         # only search once
+1
+&gt;&gt;&gt; a.remove(333)        # delete once from left
+[66.25, -1, 333, 1, 1234.5, 333]
+
+&gt;&gt;&gt; a.reverse()
+[333, 1234.5, 1, 333, -1, 66.25]
+
+&gt;&gt;&gt; a.sort()
+[-1,1,66.25, 333, 333, 1234.5]
+
+&gt;&gt;&gt; a.pop()              # return and remove the last item
+1234.5
+&gt;&gt;&gt; a
+[-1,1,66.25,333,333]
+</code></pre>
+
+<blockquote><p>Every method has return value. <code>insert</code>,<code>remove</code> and <code>sort</code> will return <code>None</code></p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python: Control Flow]]></title>
