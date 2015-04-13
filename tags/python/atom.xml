@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-11T16:16:37-07:00</updated>
+  <updated>2015-04-13T13:23:00-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -380,6 +380,22 @@ sketch:Cheese
 
 &gt;&gt;&gt; d ={"voltage": "four million", "state": "demised", "action": "voom"}
 &gt;&gt;&gt; parrot(**d)
+</code></pre>
+
+<ul>
+<li>Lambda Expressions</li>
+</ul>
+
+
+<p><code>lambda</code> keyword can define a single expressions</p>
+
+<pre><code class="python">&gt;&gt;&gt; def make_incrementor(n):
+        return lambda x: x+n          # define a function return x+n
+&gt;&gt;&gt; f = make_incrementor(42)
+&gt;&gt;&gt; f(0)
+42
+&gt;&gt;&gt; f(1)
+43
 </code></pre>
 ]]></content>
   </entry>

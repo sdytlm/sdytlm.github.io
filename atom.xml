@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-11T16:16:37-07:00</updated>
+  <updated>2015-04-13T13:23:00-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -593,6 +593,28 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<ul>
+<li>Lambda Expressions</li>
+</ul>
+
+
+<p><code>lambda</code> keyword can define a single expressions</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">make_incrementor</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">n</span>          <span class="c"># define a function return x+n</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">make_incrementor</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'><span class="mi">42</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="mi">43</span>
+</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
