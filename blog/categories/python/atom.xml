@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-13T14:16:05-07:00</updated>
+  <updated>2015-04-16T14:14:46-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -91,6 +91,43 @@ Return a copy of the list</p></li>
 </code></pre>
 
 <blockquote><p>Every method has return value. <code>insert</code>,<code>remove</code> and <code>sort</code> will return <code>None</code></p></blockquote>
+
+<h3>Using Lists as Stacks</h3>
+
+<p>Use <code>append()</code> and <code>pop()</code> to implement First in first out.</p>
+
+<pre><code>&gt;&gt;&gt; stack = [3,4,5]
+&gt;&gt;&gt; stack.append(6)
+&gt;&gt;&gt; stack.append(7)
+&gt;&gt;&gt; stack
+[3,4,5,6,7]
+&gt;&gt;&gt; stack.pop()
+7
+&gt;&gt;&gt; stack
+[3,4,5,6]
+&gt;&gt;&gt; stack.pop()
+6
+&gt;&gt;&gt; stack.pop()
+5
+&gt;&gt;&gt; stack
+[3,4]
+</code></pre>
+
+<h3>Using Lists as Queues</h3>
+
+<p>To implement First in Last out, use <code>collections.deque</code></p>
+
+<pre><code>&gt;&gt;&gt; from collections import deque
+&gt;&gt;&gt; queue = deque(['Eric", "John", "Michael"])
+&gt;&gt;&gt; queue.append("Terry")        # Terry arrives 
+&gt;&gt;&gt; queue.append("Graham")       # Graham arrives
+&gt;&gt;&gt; queue.popleft()              # Eric left
+'Eric'
+&gt;&gt;&gt; queue.popleft()              # John left
+'John'
+&gt;&gt;&gt; queue
+deque(['Michael', 'Terry', 'Graham'])
+</code></pre>
 ]]></content>
   </entry>
   

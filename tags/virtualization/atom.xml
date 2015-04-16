@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: virtualization | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/virtualization/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-13T14:16:05-07:00</updated>
+  <updated>2015-04-16T14:14:46-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -224,6 +224,38 @@ virsh edit domain name
 edit &lt;vcpu placement='static'&gt;4&lt;/vcpu&gt;
 virsh create /etc/libvirt/qemu/yourconfig.xml
 </code></p>
+
+<ul>
+<li>Solve the CPU incompatibility problems</li>
+</ul>
+
+
+<p>In host, run virsh commands to check CPU compatibility.
+<code>
+virsh  capabilities | virsh cpu-baseline /dev/stdin
+</code>
+Copy past the display in your VM XML file</p>
+
+<p>For example</p>
+
+<pre><code>&lt;cpu match='exact'&gt;
+  &lt;model&gt;Penryn&lt;/model&gt;
+  &lt;vendor&gt;Intel&lt;/vendor&gt;
+  &lt;feature policy='require' name='dca'/&gt;
+  &lt;feature policy='require' name='xtpr'/&gt;
+  &lt;feature policy='require' name='tm2'/&gt;
+  &lt;feature policy='require' name='vmx'/&gt;
+  &lt;feature policy='require' name='ds_cpl'/&gt;
+  &lt;feature policy='require' name='monitor'/&gt;
+  &lt;feature policy='require' name='pbe'/&gt;
+  &lt;feature policy='require' name='tm'/&gt;
+  &lt;feature policy='require' name='ht'/&gt;
+  &lt;feature policy='require' name='ss'/&gt;
+  &lt;feature policy='require' name='acpi'/&gt;
+  &lt;feature policy='require' name='ds'/&gt;
+  &lt;feature policy='require' name='vme'/&gt;
+&lt;/cpu&gt;
+</code></pre>
 ]]></content>
   </entry>
   

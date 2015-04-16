@@ -339,6 +339,59 @@ In SELinux</li>
 </pre></td><td class='code'><pre><code class=''><span class='line'>edit &lt;vcpu placement='static'&gt;4&lt;/vcpu&gt;
 </span><span class='line'>virsh create /etc/libvirt/qemu/yourconfig.xml</span></code></pre></td></tr></table></div></figure>
 
+
+<ul>
+<li>Solve the CPU incompatibility problems</li>
+</ul>
+
+
+<p>In host, run virsh commands to check CPU compatibility.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>virsh  capabilities | virsh cpu-baseline /dev/stdin </span></code></pre></td></tr></table></div></figure>
+
+
+<p>Copy past the display in your VM XML file</p>
+
+<p>For example</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;cpu match='exact'&gt;
+</span><span class='line'>  &lt;model&gt;Penryn&lt;/model&gt;
+</span><span class='line'>  &lt;vendor&gt;Intel&lt;/vendor&gt;
+</span><span class='line'>  &lt;feature policy='require' name='dca'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='xtpr'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='tm2'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='vmx'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='ds_cpl'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='monitor'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='pbe'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='tm'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='ht'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='ss'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='acpi'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='ds'/&gt;
+</span><span class='line'>  &lt;feature policy='require' name='vme'/&gt;
+</span><span class='line'>&lt;/cpu&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
 
 
