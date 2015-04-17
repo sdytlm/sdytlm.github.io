@@ -169,3 +169,36 @@ do this
 edit <vcpu placement='static'>4</vcpu>
 virsh create /etc/libvirt/qemu/yourconfig.xml
 ```
+
+* Solve the CPU incompatibility problems
+
+In host, run virsh commands to check CPU compatibility.
+```
+virsh  capabilities | virsh cpu-baseline /dev/stdin 
+```
+Copy past the display in your VM XML file
+
+For example
+
+```
+<cpu match='exact'>
+  <model>Penryn</model>
+  <vendor>Intel</vendor>
+  <feature policy='require' name='dca'/>
+  <feature policy='require' name='xtpr'/>
+  <feature policy='require' name='tm2'/>
+  <feature policy='require' name='vmx'/>
+  <feature policy='require' name='ds_cpl'/>
+  <feature policy='require' name='monitor'/>
+  <feature policy='require' name='pbe'/>
+  <feature policy='require' name='tm'/>
+  <feature policy='require' name='ht'/>
+  <feature policy='require' name='ss'/>
+  <feature policy='require' name='acpi'/>
+  <feature policy='require' name='ds'/>
+  <feature policy='require' name='vme'/>
+</cpu>
+```
+
+
+
