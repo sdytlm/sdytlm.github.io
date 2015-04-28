@@ -351,7 +351,7 @@ Return a copy of the list</p></li>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>Nested List Comprehension</h4>
+<h3>Nested List Comprehension</h3>
 
 <p>Implement a 3x4 matrix</p>
 
@@ -405,7 +405,65 @@ Return a copy of the list</p></li>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h3>The del statement</h3>
 
+<p>Remove an item from a given list by a index.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">66.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">65.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>      <span class="c"># delete a[2] and a[3]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">66.25</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Delete an entire list</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">del</span> <span class="n">a</span>
+</span><span class='line'><span class="ow">or</span>
+</span><span class='line'><span class="k">del</span> <span class="n">a</span><span class="p">[:]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Tuples and Sequences</h3>
+
+<p>The tuples is always enclosed in parentheses. Nested tuple is correct.
+The elements in Tuples can not be changed.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s">&#39;hello!&#39;</span>
+</span><span class='line'><span class="n">t</span>
+</span><span class='line'><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s">&#39;hello!&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">u</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>         <span class="c"># nested tuple</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">u</span>
+</span><span class='line'><span class="p">((</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s">&#39;hello!&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">888</span>         <span class="c"># Wrong !</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can build empty tuple and comma is not considered when you calculate the length of tuple</p>
 </div>
 
 
