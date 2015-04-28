@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-27T15:41:01-07:00</updated>
+  <updated>2015-04-27T17:52:09-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -213,6 +213,10 @@ deque(['Michael', 'Terry', 'Graham'])
 </code></pre>
 
 <blockquote><p>The built-in function <code>zip()</code> can provide the same functionality.</p></blockquote>
+
+<pre><code class="python">&gt;&gt;&gt; list(zip(*matrix))
+[(1,5,9),(2,6,10),(3,7,11),(4,8,12)]
+</code></pre>
 ]]></content>
   </entry>
   
