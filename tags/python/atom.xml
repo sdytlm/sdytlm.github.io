@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/tags/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-28T09:57:37-07:00</updated>
+  <updated>2015-04-30T11:40:24-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -255,6 +255,62 @@ t
 </code></pre>
 
 <p>You can build empty tuple and comma is not considered when you calculate the length of tuple</p>
+
+<pre><code class="python">&gt;&gt;&gt; empty = ()
+&gt;&gt;&gt; singlenton = 'hello',
+&gt;&gt;&gt; len(empty)
+0
+&gt;&gt;&gt; len(singleton)
+1
+&gt;&gt;&gt; 
+</code></pre>
+
+<h3>Sets</h3>
+
+<ul>
+<li>No duplicate elements</li>
+<li>Elements are unordered</li>
+</ul>
+
+
+<blockquote><p>To create an empty set, you have to use <code>set()</code>. If you do <code>{}</code>, you will create an empty dictionary.</p></blockquote>
+
+<pre><code class="python">&gt;&gt;&gt; basket = {'apple', 'orange', 'apple', 'pear', 'banana'}   # {} can be used to create un empty dictionary
+&gt;&gt;&gt; print(basket)
+{'orange','banana','pear','apple'}
+</code></pre>
+
+<ul>
+<li>Set support fast membership testing</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; 'orange' in basket
+True
+&gt;&gt;&gt; 'haha" in basket
+False
+</code></pre>
+
+<ul>
+<li>Set support <code>-</code>, <code>|</code>, <code>&amp;</code>, <code>^</code> operations</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; a = set('abracadabra')
+&gt;&gt;&gt; b = set('alacazam')
+&gt;&gt;&gt; a
+{'a','r','b','c','d'}
+&gt;&gt;&gt; a-b                       # letters in a but not in b
+{'r','d','b'}
+&gt;&gt;&gt; a | b                     # letters in either a or b
+{'a','c','r','d','b','m','z','l'}
+&gt;&gt;&gt; a &amp; b                     # letters in both a and b
+{'a','c'}
+&gt;&gt;&gt; a ^ b                     # letters in a or b but not both
+{'r','d','b','m','z','l'}
+</code></pre>
+
+<h3>Dictionaries</h3>
 ]]></content>
   </entry>
   
