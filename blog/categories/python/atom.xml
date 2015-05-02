@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2015-04-30T11:40:24-07:00</updated>
+  <updated>2015-05-01T18:12:53-07:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -311,6 +311,141 @@ False
 </code></pre>
 
 <h3>Dictionaries</h3>
+
+<ul>
+<li>Indexed by unique Keys. Key must be <code>immutable</code> type. List cannot be used as key.</li>
+<li>Check if a key is in the dictionary by using the <code>in</code> keyword</li>
+<li>List all keys by <code>list(d.keys())</code> or <code>sorted(d.keys())</code></li>
+<li>Each element in dictionary is <code>key:value</code> separated by comma</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; tel = {'jack':4098, 'sape:4139}
+&gt;&gt;&gt; tel['guido'] = 4127                # add a new one element
+&gt;&gt;&gt; tel
+{'sape':4139, 'guido':4127, 'jack':4098}
+&gt;&gt;&gt; tel['jack']
+4098
+&gt;&gt;&gt; del tel['sape']                    # delete an element
+&gt;&gt;&gt; tel['irv'] = 4127
+&gt;&gt;&gt; tel
+{'guido':4127, 'irv':4127, 'jack':4098}
+&gt;&gt;&gt; list(tel.keys())
+['irv','guido','jack']
+&gt;&gt;&gt; 'guido' in tel
+True
+</code></pre>
+
+<p><code>dict()</code> can build dictionaries from sequences of key-value pairs:</p>
+
+<pre><code class="python">&gt;&gt;&gt; dict([('sape',4139),('guido',4127),('jack',4098)])
+{'sape':4139, 'jack':4098, 'guido':4127}
+</code></pre>
+
+<p>You can create dictionaries with expressions</p>
+
+<pre><code class="python">&gt;&gt;&gt; {x: x**2 for x in (2,4,6)}
+{2:4, 4:16, 6:36}
+</code></pre>
+
+<p>If your keys are string, you can also do this</p>
+
+<pre><code class="python">&gt;&gt;&gt; dict(sape=4139, guido=4127, jack=4098)
+{'sape':4139, 'jack':4098, 'guido':4127}
+</code></pre>
+
+<h3>Looping</h3>
+
+<ul>
+<li>For dictionaries, Retrieve the key and value at the same time by using <code>items()</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+&gt;&gt;&gt; for k, v in knights.items();
+    print(k,v)
+gallahad the pure
+robin the brave
+</code></pre>
+
+<ul>
+<li>For a sequence, the position index and corresponding value can be retrieved at the same time using <code>enumerate()</code> function</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; for i,v in enumerate(['tic', 'tac', 'toe'])
+    print(i,v)
+0 tic
+1 tac
+2 toe
+</code></pre>
+
+<ul>
+<li>To loop over two or more sequences at the same time, entries can be paired with the <code>zip()</code> function.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; questions = ['name', 'quest', 'favorite color']
+&gt;&gt;&gt; answers = ['lancelot', 'the holy grail','blue']
+&gt;&gt;&gt; for q, a in zip(questions, answers):
+        print('What is your {0}? It is {1}.'.format(q,a))
+What is your name? It is lancelot.
+What is your quest? It is holy grail.
+What is your favorite color? It is blue.
+</code></pre>
+
+<ul>
+<li>To loop over a sequence in reverse,  call <code>reversed()</code> function</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; for i in reversed(range(1,10,2)):
+        print(i)
+9
+7
+5
+3
+1
+</code></pre>
+
+<ul>
+<li><code>Sorted()</code> function can loop over a sequence in sorted order and return a new sorted list while leaving source unaltered.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+&gt;&gt;&gt; for f in sorted(set(basket)):
+        print(f)
+apple
+banana
+orange
+pear
+</code></pre>
+
+<h3>Conditinos</h3>
+
+<ul>
+<li><code>is</code> and <code>is not</code> compare whether two objects are the same.</li>
+<li><code>in</code> and <code>not in</code> check whether a value occur in a sequence.</li>
+<li>Comparision can be chained</li>
+</ul>
+
+
+<pre><code class="python">a &lt; b == c         # a&lt;b &amp;&amp; b&lt;c
+</code></pre>
+
+<ul>
+<li>If you compare two sequence object with same type. It will use <code>lexicographical</code> ordering to compare them. The longer, the larger.</li>
+</ul>
+
+
+<pre><code class="python">(1,2,3) &lt; (1,2,4)
+'ABC' &lt; 'C' &lt; 'Pascal' &lt; 'Python'
+(1,2,3,4) &lt; (1,2,4)
+(1.0,2.0) == (1.0,2.0,3.0)
+(1,2,) &lt; ( 1,2,-1)
+(1,2,('aa','ab')) &lt; (1,2,('abc','a'),4)
+</code></pre>
 ]]></content>
   </entry>
   
