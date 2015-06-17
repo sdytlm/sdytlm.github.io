@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Python: Input and Output"
+date: 2015-06-15
+comments: true
+categories: python
+tag: python
+---
+
+<!-- more -->
+
+### Formatted Output
+* `str()` return representations of values which are fairly human-readable,
+* `repr()` return representations which can be read by interpreter.
+
+``` python
+>>> s = 'Hello, world.'
+
+```

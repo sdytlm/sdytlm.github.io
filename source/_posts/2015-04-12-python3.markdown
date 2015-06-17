@@ -174,4 +174,247 @@ More Examples:
 [1,2,3,4,5,6,7,8,9]
 
 ```
+### Nested List Comprehension
+
+Implement a 3x4 matrix
+
+``` python
+>>> matrix = [
+        [1,2,3,4],
+        [5,6,7,8],
+        [9,10,11,12],
+    ]
+``` 
+
+The following will switch the row and column.
+
+``` python
+>>> [[row[i] for row in matrix] for i in range(4)]
+[[1,5,9],[2,6,10],[3,7,11],[4,8,12]] 
+```
+This code is also equal to
+
+``` python
+>>> new_matrix = [];
+>>> for i in range(4);
+        new_matrix.append([row[i] for row in matrix])
+
+>>> new_matrix
+[[1,5,9],[2,6,10],[3,7,11],[4,8,12]]
+```
+
+> The built-in function `zip()` can provide the same functionality.
+
+``` python
+>>> list(zip(*matrix))
+[(1,5,9),(2,6,10),(3,7,11),(4,8,12)]
+```
+
+### The del statement
+Remove an item from a given list by a index. 
+
+``` python
+>>> a = [-1, 1, 66.25, 333, 333, 1234.5]
+>>> del a[0]
+>>> a
+[1, 65.25, 333, 333, 1234.5]      # delete a[2] and a[3]
+>>> del a[2:4]       
+>>> a
+[1,66.25, 1234.5]
+```
+
+
+Delete an entire list
+
+``` python
+del a 
+or 
+del a[:]
+```
+
+### Tuples and Sequences
+
+The tuples is always enclosed in parentheses. Nested tuple is correct. 
+The elements in Tuples can not be changed. 
+
+``` python
+>>> t = 12345, 54321, 'hello!'
+t
+(12345, 54321, 'hello!')
+
+>>> u = t, (1,2,3,4,5)         # nested tuple
+>>> u
+((12345, 54321, 'hello!'), (1,2,3,4,5))
+>>> t[0] = 888         # Wrong !
+>>> v = ([1,2,3],[3,2,1])
+```
+You can build empty tuple and comma is not considered when you calculate the length of tuple
+
+``` python
+>>> empty = ()
+>>> singlenton = 'hello',
+>>> len(empty)
+0
+>>> len(singleton)
+1
+>>> 
+```
+### Sets
+
+* No duplicate elements
+* Elements are unordered
+
+> To create an empty set, you have to use `set()`. If you do `{}`, you will create an empty dictionary.
+
+``` python
+>>> basket = {'apple', 'orange', 'apple', 'pear', 'banana'}   # {} can be used to create un empty dictionary
+>>> print(basket)
+{'orange','banana','pear','apple'}
+```
+
+* Set support fast membership testing
+
+``` python
+>>> 'orange' in basket
+True
+>>> 'haha" in basket
+False
+```
+
+* Set support `-`, `|`, `&`, `^` operations
+
+``` python
+>>> a = set('abracadabra')
+>>> b = set('alacazam')
+>>> a
+{'a','r','b','c','d'}
+>>> a-b                       # letters in a but not in b
+{'r','d','b'}
+>>> a | b                     # letters in either a or b
+{'a','c','r','d','b','m','z','l'}
+>>> a & b                     # letters in both a and b
+{'a','c'}
+>>> a ^ b                     # letters in a or b but not both
+{'r','d','b','m','z','l'}
+```
+
+### Dictionaries
+
+* Indexed by unique Keys. Key must be `immutable` type. List cannot be used as key.
+* Check if a key is in the dictionary by using the `in` keyword
+* List all keys by `list(d.keys())` or `sorted(d.keys())`
+* Each element in dictionary is `key:value` separated by comma
+
+``` python
+>>> tel = {'jack':4098, 'sape:4139}
+>>> tel['guido'] = 4127                # add a new one element
+>>> tel
+{'sape':4139, 'guido':4127, 'jack':4098}
+>>> tel['jack']
+4098
+>>> del tel['sape']                    # delete an element
+>>> tel['irv'] = 4127
+>>> tel
+{'guido':4127, 'irv':4127, 'jack':4098}
+>>> list(tel.keys())
+['irv','guido','jack']
+>>> 'guido' in tel
+True
+```
+`dict()` can build dictionaries from sequences of key-value pairs:
+
+``` python
+>>> dict([('sape',4139),('guido',4127),('jack',4098)])
+{'sape':4139, 'jack':4098, 'guido':4127}
+```
+
+You can create dictionaries with expressions
+
+``` python
+>>> {x: x**2 for x in (2,4,6)}
+{2:4, 4:16, 6:36}
+```
+
+If your keys are string, you can also do this
+
+``` python
+>>> dict(sape=4139, guido=4127, jack=4098)
+{'sape':4139, 'jack':4098, 'guido':4127}
+```
+### Looping
+
+* For dictionaries, Retrieve the key and value at the same time by using `items()`
+
+``` python
+>>> knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+>>> for k, v in knights.items();
+    print(k,v)
+gallahad the pure
+robin the brave
+```
+* For a sequence, the position index and corresponding value can be retrieved at the same time using `enumerate()` function
+
+``` python
+>>> for i,v in enumerate(['tic', 'tac', 'toe'])
+    print(i,v)
+0 tic
+1 tac
+2 toe
+```
+* To loop over two or more sequences at the same time, entries can be paired with the `zip()` function.
+
+``` python
+>>> questions = ['name', 'quest', 'favorite color']
+>>> answers = ['lancelot', 'the holy grail','blue']
+>>> for q, a in zip(questions, answers):
+        print('What is your {0}? It is {1}.'.format(q,a))
+What is your name? It is lancelot.
+What is your quest? It is holy grail.
+What is your favorite color? It is blue.
+```
+
+* To loop over a sequence in reverse,  call `reversed()` function
+
+``` python
+>>> for i in reversed(range(1,10,2)):
+        print(i)
+9
+7
+5
+3
+1
+```
+
+* `Sorted()` function can loop over a sequence in sorted order and return a new sorted list while leaving source unaltered.
+
+``` python
+>>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+>>> for f in sorted(set(basket)):
+        print(f)
+apple
+banana
+orange
+pear
+```
+
+### Conditinos
+
+* `is` and `is not` compare whether two objects are the same.
+* `in` and `not in` check whether a value occur in a sequence.
+* Comparision can be chained
+
+``` python
+a < b == c         # a<b && b<c
+```
+
+* If you compare two sequence object with same type. It will use `lexicographical` ordering to compare them. The longer, the larger.
+
+``` python
+(1,2,3) < (1,2,4)
+'ABC' < 'C' < 'Pascal' < 'Python'
+(1,2,3,4) < (1,2,4)
+(1.0,2.0) == (1.0,2.0,3.0)
+(1,2,) < ( 1,2,-1)
+(1,2,('aa','ab')) < (1,2,('abc','a'),4)
+```
 
