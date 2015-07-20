@@ -7,7 +7,6 @@ categories: python
 tag: python
 ---
 
-<!--more-->
 ### Functions on `list`
 
 * **append(x)** 
@@ -26,6 +25,8 @@ a.insert(0,x)         # Insert at the begining
 a.insert(len(a),x)    # Insert at the end
 
 ```
+
+<!--more-->
 
 * **remove(x)** 
 Remove all values `x` from the list. If there is no value `x`, there will be an error

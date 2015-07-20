@@ -7,7 +7,6 @@ categories: python
 tag: python
 ---
 
-<!-- more -->
 
 ### Formatted Output
 * `str()` return representations of values which are fairly human-readable,
@@ -15,5 +14,257 @@ tag: python
 
 ``` python
 >>> s = 'Hello, world.'
+>>> str(s)
+'Hello, world.'
+>>> repr(s)
+"'Hello, world.'"    # repr() of a string adds string quotes and backslashes
+>>> hello = 'hello, world\n'
+>>> hellos = repr(hello)
+>>> print(hellos)
+'Hello, world\n'
+>>> x = 10*3.25
+>>> s = 'The value of x is'+'repr(x)
+>>> print(s)
+>>> repr((x,y, ('spam','eggs')))  # any object can be used
+"(32.5,40000,('spam','eggs'))"
+```
+<!-- more -->
 
+###  Write A Table
+
+* `str.rjust(padding size)`: right-justifies a string of a given width by padding it with spaces on the left. `str.ljust()` and `str.center()` are similar.
+
+``` python
+>>> for x in range(1, 11):
+    print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
+
+1  1   1
+2  4   8
+3  9  27 
+
+```
+
+Or
+
+``` python
+>>> for x in range(1, 11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x, x*x, x*x*x))
+```
+
+* `str.zfill()`: pads a numeric string on the left with zeros. Understands `+` and `-`
+
+``` python
+>>> '12'.zfill(5)
+'00012'
+>>> '-3.14'.zfill(7)
+'-003.14'
+>>> '3.1415926'.zfill(5)
+'3.1415926'
+```
+
+### `str.format()`
+* Basic Usage
+
+``` python
+>>> print('We are the {} who say "{}!"'.format('knights', 'Ni'))
+
+We are the knights who say "Ni!"
+```
+
+* The anything with brackets will be replaced by the objects passed into the str.format(). You can use number in the brackets to refer to the position.
+
+``` python
+>>> print('{0} and {1}'.format('spam', 'eggs'))
+
+spam and eggs
+>>> print('{1} and {0}'.format('spam', 'eggs'))
+
+eggs and spam
+``` 
+
+* If you set up keywords within brackets, their values can be referred by using the name of argument.
+
+``` python
+>>> print('This {food} is {adjective}.'. format(food='spam', adjective='absolutely horrible'))
+
+This spam is absolutely horrible.
+``` 
+
+* You can combin the number and keyword
+
+``` python
+>>> print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred', other='Georg'))
+
+The story of Bill, Manfred, and Georg.
+```
+
+* `!a (ascii())`, `!s (str())` and `!r (repr())` can be used to convert the value before it is formateed
+
+``` python
+>>> import math
+>>> print('The value of PI is approximately {}.'.format(math.pi))
+
+The value of PI is approximately 3.141592653559
+>>> print('The value of PI is approximately {!r}.'.format(math.pi))
+
+The value of PI is approximately 3.141592653589793
+```
+* An optional `:` and format specifier can follow the field name. 
+
+``` python
+>>> import math
+>>> print('The value of PI is approximately {0:.3f}.'.format(math.pi))
+
+The value of PI is approximately 3.142       # three places after the decimal.
+```
+* Passing an integer after the ':' will cause that field to be a minimum number of characters wide. 
+
+``` python
+>>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
+>>> for name, phone in table.items():
+>>>     print('{0:10} ==> {1:10d}'.format(name, phone))
+
+Jack      ==>      4098
+Dcab      ==>      7678
+Sjoerd    ==>      4127
+```
+* You can reference the variables to be formatted by name instead of position. Use `dict` and `[ ]`
+
+``` python
+>>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
+>>> print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]: d}; Dcab: {0[Dcab]:d}'.format(table))
+
+Jack 4098; Sjoerd: 4127; Dcab:7678
+```
+Or You can pass the table as keyword arguments with `**` notation.
+
+``` python
+>>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab':7678}
+>>> print('Jack:{Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table))
+
+Jack: 4098; Sjoerd: 4127; Dcab: 7678
+```
+
+* `%` can also be used for string formatting, like printf()
+
+``` python
+>>> import math
+>>> print('The value of PI is approximately %5.3f.' % math.pi)
+
+The value of PI is approximately 3.142
+```
+
+### Reading and Writing Files
+
+ `open()` is used with two arguments `open(filename, mode)` and return a file object
+
+
+``` python
+>>> f = open('workfile', 'w')
+```
+
+`filename` is a string that contains the filename.
+`mode` ca be `r` when file is read only, `w` for only writing and `a` opens the file for appending. `r+` opens the file for both reading and writing. 
+`b` open the file in binary mode. In normal files are opened in text mode
+
+> By default, when reading in text mode, line endings (\n or \r\n) will be read. 
+
+After you create the file object `f`. you can do the following things.
+
+* `f.read()` can read a file and return the content as a string. You can also specify how much to read by f.read(size). If the end of the file has been reached, f.read() will return an empty string ('')
+ 
+``` python
+>>> f.read()
+`This is the entire file.\n'
+>>> f.read()
+''
+```
+
+* `f.readline()` can read a single line from the file. A newline character (\n) will be left at the end of the string. When the end of file is reached, an empty string will be returned. A blank line is represented by '\n'.
+
+``` python
+>>> f.readline()
+`This is the first line of the file.\n'
+>>> f.readline()
+`Second line of the file\n'
+>>> f.readline()
+''
+``` 
+
+* Read a whole file
+
+``` python
+>>> for line in f
+>>>   print(line, end='')
+This is the first line of the file.
+Second line of the file
+```
+
+> If you want to read all the lines of a file in a list, you can either `list(f)` or f.readlines().
+
+
+* `f.write(string)` writes the contents of `string` to the file and return the number of characters written.
+
+``` python
+>>> f.write('This is a test\n')
+15
+```
+
+> If you write something other than a string, you need to convert it to a string 
+
+
+``` python
+>>> value = ('the answer', 42)
+>>> s = str(value)
+>>> f.write(s)    # write 18 characters
+18
+```
+
+* `f.tell()` returns an integer giving the file object's current position in the file.
+
+* `f.seek(offset, from_what)` change the file object's position. 
+** By default, `from_what` is 0: from the begining of the file.
+** 1: use the current position
+** 2: use the end of the file.
+
+``` python
+>>> f = open('workfile', 'rb+')
+>>> f.write(b'0123456789abcdef')
+16
+>>> f.seek(5)                 # Go to the 6th byte in the file
+5
+>>> f. read(1)
+b'5'
+>>> f.seek(-3,2)              # Go to the 3rd byte before the end
+13
+>>> f.read(1)
+b'd'
+```
+In text files, ONLY seeks relative to the beginning of the file. **Offset values** must be 0 or f.tell() 
+
+* `f.close` can close the file you opened.
+
+* It is good to use `with` keyword when dealing with file objects.
+
+``` python
+>>> with open('workfile', 'r') as f:
+    read_data = f.read()
+>>> f.closed
+True
+```
+### Saving structured data with JSON
+
+* `json.dumps()` serialize the data
+
+``` python
+>>> json.dumps([1, 'simple', 'list'])
+'[1,"simple", "list"]'
+
+>>> json.dump(x,f)  # serialize the object x to text file f
+```
+
+* `json.load()` deserialize the data
+
+``` python
+x = json.load(f)
 ```

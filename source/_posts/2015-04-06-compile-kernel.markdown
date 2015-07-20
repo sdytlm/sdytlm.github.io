@@ -8,47 +8,35 @@ tag: Linux
 ---
 
 
-* 
-
 ```
 cp /boot/config-3.4-desktop ~/Download/linux-3.10/
 
 ```
-
-* 
 
 ```
 make menuconfig
 
 ```
 
-* User a proper configuration file
-
-* 
+User a proper configuration file
 
 ```
 make
 ```
 
-* 
-
 ```
 make modules
 ```
-
-* 
 
 ```
 make modules_install
 ```
 
-* 
-
 ```
 make install
 ```
 
-* Update grub
+Update grub
 
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg

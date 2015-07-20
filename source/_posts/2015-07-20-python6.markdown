@@ -1,0 +1,25 @@
+---
+layout: post
+title: "Python: Errors and Exceptions"
+date: 2015-07-20
+comments: true
+categories: python
+tag: python
+---
+
+There are two types of erros: Syntax Errors and Exceptions
+
+### Syntax Errors
+
+``` python
+>>> while True print('Hello world')
+File "<stdin>", line 1, in ?
+Syntax Error: invalid syntax
+```
+A colon is missing before print
+
+<!-- more -->
+
+### Exceptions
+
+Even if 
