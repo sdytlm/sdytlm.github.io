@@ -1,0 +1,295 @@
+---
+layout: post
+title: "Python: Class"
+date: 2015-07-29
+comments: true
+categories: python
+tag: python
+---
+
+### Namespace and Objects
+
+> `Namespace` is a mapping from names to objects including built-in names (e.g. abs()), global names in a module and the local names in a function.
+
+* You can access to any names in a module by `modname.attributeName`. 
+* Any attribute in the module is writable. e.g. modname.the_answer = 42.
+* You can also delete the attribute from the object. e.g. del modname.the_answer
+* The built-in names is created when Python interpreter starts and never deleted.
+* The global namesapce of a module is created when the module definition is read in, the module namespace last until the interpreter quits.
+* The local namespace of a function is created when the function is called and deleted when the function returns or raises an unhandled exception 
+
+> `Scope` is a textual region of a Python program where a namespace is directly accessible. 
+
+* 'nonlocal' statement can be used to rebind a variable found outside.
+* 'global' statement can be used to indicate that paticular variables live in the global scpe and rebould here
+
+<!-- more -->
+
+For example:
+
+``` python
+def scope_test():
+    def do_local():
+        spam = "local spam"                      # this can not change the spam defined in scope_test
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+    def do_global():
+        global spam
+        spam = "global spam"
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_local()
+    print("After global assignment:", spam)
+
+scope_test()
+print("In global scodpe: spam)
+
+```
+
+The output is:
+
+``` python
+After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: nonlocal spam
+In global scope: global spam
+```
+
+### A First Look at Class
+
+ class definition looks like:
+
+``` python
+class ClassName:
+    <statement-1>
+    
+    ......
+
+    <statement-2>
+```
+
+When a class definition is entered, a new namespace is created and used as the local scope. 
+
+
+### Class Objects 
+support two kinds of operations: attribute references and instantiation.
+
+* _Attribute references_ uses the standard syntax used for all attribute references: `obj.name`
+
+``` python
+class MyClass:
+    i = 12345
+    def f(self):
+        return 'hello world'
+``` 
+Then `MyClass.i` and `MyClass.f` are valid attribute references, returning an integer and a function object. 
+
+* _class instantiation_ uses function notation. 
+
+``` python
+x = MyClass()
+```
+will create a new instance of the class and assigns this object to variable x.
+
+A class may define a special method `__init__()` for instantiation.
+
+``` python
+def __init__(self):
+    self.data = []
+```
+
+The `__init__()` method may have arguments
+
+``` python
+class Complex:
+    def __init__(self, realpart, imagepart):
+        self.r = realpart       # self represent the object
+        self.i = imagepart
+x = Complex(3.0, -4.5)
+x.r, x.i
+(3.0, -4.5)
+```
+
+### Instance Objects
+
+> Data attributes need not be declared
+
+``` python
+x = MyClass()
+x.counter = 1
+while x.counter < 10:
+    x.counter = x.counter * 2
+print(x.counter)
+del x.counter
+```
+> If instance attribute reference is a method. This method must be declared in the class before
+
+In the above example, `x.f` is a valid method, but `x.i` is not.
+
+### Method Objects
+
+`object.method` is a method object, and can be stored and called at a later time.
+
+``` python
+x = MyClass()
+xf = x.f
+while True:
+    print(xf())
+```
+
+call x.f() is equivalent to MyClass.f(x)
+
+### Class and Instance Variables
+
+Instance variables are data unique to each instance.
+class variables are shared by all instances
+
+``` python
+class Dog:
+    kind = 'canine'         # class variable shared by all instances
+    def __int__(self, name):
+        self.name = name    # instance variable unique to each instance
+
+>>> d = Dog('Fido')
+>>> e = Dog('Buddy')
+>>> d.kind
+'canine'
+>>> e.kind
+'canine'
+>>> d.name
+'Fido'
+>>> e.name
+'Buddy'
+```
+
+* shared data can have problems with involing mutable objects such as `lists` and `dictionaries` 
+
+``` python
+class Dog:
+        
+    tricks = []         # Wrong!. shared value can not be used as mutable objects
+    def __int__(self,name):
+        self.name = name
+
+    def add_trick(self,trick):
+        self.tricks.append(trick)
+
+>>> d = Dog('Fido')
+>>> e = Dog('Buddy')
+>>> d.add_trick('roll over')
+>>> e.add_trick('play dead')
+>>> d.tricks                      # unexpectedly shared by all dogs
+['roll over', 'play dead']
+
+```
+The correct design should be like this:
+
+``` python
+class Dog:
+        
+    def __int__(self,name):
+        self.name = name
+        self.tricks = []
+
+    def add_trick(self,trick):
+        self.tricks.append(trick)
+
+>>> d = Dog('Fido')
+>>> e = Dog('Buddy')
+>>> d.add_trick('roll over')
+>>> e.add_trick('play dead')
+>>> d.tricks
+['roll over']
+>>> e.tricks
+['play dead']
+```
+### Random Remarks
+
+* It is ok to assign an outer method into a local variable in a class
+
+``` python
+def f1(self, x, y)
+    return min(x, x+y)
+
+class C:
+    f = f1
+    def g(self):
+        return 'hello world'
+    h = g
+```
+Now h(), g(), f() are all function method of class C
+
+* In the same class, one method may call other methods by using method attributes of the `self` argument:
+
+``` python
+class Bag:
+    def __init__(self):
+        self.data=[]
+    def add(self, x):
+        self.data.append(x)
+    def addtwice(self, x):
+        self.add(x)
+        self.add(x)
+```
+
+### Inheritance
+
+* syntax
+
+``` python
+class DerivedClassName(BaseClassName):
+    
+```
+BaseClassName must be defined in a scope containing the derived class definition.
+
+or 
+
+``` python
+class DrivedClassName(modname.BaseClassName):
+```
+
+* You can use DerivedClassName() to create a new instance.
+
+* Derived Classes may override methods of base class. But you can still call the method in baseclass by `BaseClassName.methodname(self, arguments)`
+
+* There are two built-in functions work with inheritance:
+** isinstance(obj, int): check if obj is derived from int
+** issubclass(bool, int): check if bool is the subclass of int
+
+### Multiple Inheritance
+
+``` python
+class DerivedClassName(Base1, Base2, Base3):
+    <statement-1>
+       ...
+    <statement-N>
+```
+### Private Variables
+
+The ***private*** variables in other languages do not exit in Python.
+Name Mangling is helpful to allow subclasses override methods without breaking intraclass methods.
+
+``` python
+class Mapping:
+    def __init__(self, iterable):
+        self.items_list = []
+        self.__update(iterable)
+    def update(self, iterable):
+        for item in iterable:
+            self.items_list.append(item)
+    __update = update       # private copy of original update() method
+
+class MappingSubclass(Mapping):
+    def update(self, keys, values):
+        # provides new signature for update()
+        # this will not break __init__(), because __init__ work with __update.
+        for item in zip(keys, values):
+            self.items_list.append(item)
+```
+
+
+### Odds and Ends
