@@ -257,8 +257,8 @@ class DrivedClassName(modname.BaseClassName):
 * Derived Classes may override methods of base class. But you can still call the method in baseclass by `BaseClassName.methodname(self, arguments)`
 
 * There are two built-in functions work with inheritance:
-** isinstance(obj, int): check if obj is derived from int
-** issubclass(bool, int): check if bool is the subclass of int
+    1.  isinstance(obj, int): check if obj is derived from int
+    2.  issubclass(bool, int): check if bool is the subclass of int
 
 ### Multiple Inheritance
 
@@ -292,4 +292,52 @@ class MappingSubclass(Mapping):
 ```
 
 
-### Odds and Ends
+### Exceptions
+Exceptions are also identified by classes
+
+``` python
+class B(Exception):
+    pass
+class C(B):
+    pass
+class D(C):
+    pass
+
+for cls in [B,C,D]:
+    try:
+        raise cls()
+    except D:
+        print("D")
+    except C:
+        print("C")
+    except B:
+        print("B")
+```
+The result is D->C->B. If `except B` is the first, the result is B->B->B. The first matching except is triggered first.
+
+### Iterators
+
+Most container objects can be looped over using for statement
+``` python
+for element in [1,2,3]:
+    print(element)
+for element in (1,2,3):
+    print(element)
+for key in {'one':1, 'two':2}:
+    print(key)
+for char in "123":
+    print(char)
+for line in open("myfile.txt"):
+    print(line, end='')
+```
+
+You can also define an interator and call `next()`
+
+``` python
+>>> s = 'abc'
+>>> it = iter(s)             #  create an iterator
+>>> it
+<iterator object at 0x00A1DB50>
+>>> next(it)
+'a'
+```
