@@ -341,3 +341,71 @@ You can also define an interator and call `next()`
 >>> next(it)
 'a'
 ```
+
+> In you class, you can define `__iter__()` method which returns an object with a `__next__()` method. If the class defines `__next__()`, then `__iter__()` can just return self
+
+``` python
+class Reverse:
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index-1
+        return self.data[self.index]
+
+
+>>> rev = Reverse('spam')
+>>> iter(rev)
+<__main__.Reverse object at 0x00A1DB50>
+
+>>> for char in rev:
+        print(char)
+m
+a
+p
+s
+```
+
+### Generators
+
+Generators are written like regular functions but use `yield` statement when then want to return data.
+
+``` python
+def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+
+>>> for char in reverse('golf'):
+        print(char)
+
+f
+l
+o
+g
+```
+
+* Generator Expressions
+
+``` python
+sum (i*i for i in range(10))
+285
+
+xvec = [10,20,30]
+yvec = [7,5,3]
+sum(x*y for x,y in zip(xvec, yvec))    # dot product
+260
+
+from math import pi, sin
+sine_table = {x: sin(x*pi/180) for x in range(0, 91)}
+unique_words = set(word for line in page for word in line.split())
+valedictorian = max((student.gpa, student.name) for student in graduates)
+
+data = 'golf'
+list(data[i] for i in range (len(data)-1, -1, -1))
+['f', 'l', 'o', 'g']
+
+```
