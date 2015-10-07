@@ -38,6 +38,181 @@ Be usre to use `import os` rather than `from os import *`
 'installdir'
 ```
 
-<!-- morei -->
+<!-- more -->
+
+### File Wildcards
+
+**glob** module provides a function for making file list from directorywildcard searches
+
+``` python
+>>> import glob
+>>> glob.glob('*.py')
+['primes.py', 'random.py', 'quote.py']
+
+```
+
+### Command Line Arguments
+**sys** module can process command line arguments. If you run `python demo.py one two three` and demo.py looks like
+
+``` python
+>>> import sys
+>>> print(sys.argv)
+['demo.py', 'one', 'two', 'three']
+
+```
+
+### Error Output Redirection and Program Termination
+**sys** module has attributes for stdin, stdout, and stderr
+
+``` python
+>>> sys.stderr.write('Warning, log file not found starting a new \n')
+Warning, log file not found starting a new one
+
+```
+
+### String Pattern Matching
+
+**re** module provides regular expression tools for string processing.
+
+``` python
+>>> import re
+>>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
+['foot', 'fell', 'fastest']
+
+>>> re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
+'cat in the hat'
+```
+When simple capabilities are needed, string methods are preferred
+
+``` python
+>>> 'tea for too'.replace('too','two')
+'tea for two'
+```
+
+### Mathematics
+
+* **math** module gives access to C library functions for loating point math.
+
+``` python
+>>> import math
+>>> math.cos(math.pi / 4)
+0.707106
+
+>>> math.log(1024, 2)
+10.0
+```
+
+* **random** module provides tools for making random selections.
+
+``` python
+>>> import random
+>>> random.choice(['apple', 'pear', 'banana'])
+'apple'
+
+>>> random.sample(range(100), 10)    # find 10 sampling without replacement
+[30, 83, 16,4,8,81,41,50,18,33]
+
+>>> random.random()  # random float
+0.17970987
+
+>>> random.randrange(6) # random integer chosen from range(6)
+4
+
+```
+
+* **statistics** module calculates basic statistical properties of numeric data
+
+``` python
+>>> import statistics
+>>> data = [2.7, 1.75, 1.25, 0.25, 0.5 1.25, 3.5]
+>>> statistics.mean(data)
+1.6071
+
+>>> statistics.median(data)
+1.25
+
+>>> statistics.variance(data)
+1.372023
+
+```
+
+### Internet Access
+
+**urllib.request** can retrieve data from URLs and **smtplib** can send mails.
+
+``` python
+>>> from urllib.request import urlopen
+>>> with urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl') as response:
+        for line in response:
+            line = line.decode('utf-8')
+            if 'EST' in line or 'EDT' in line:   # look for eastern time
+                print(line)
+
+<BR>Nov. 25, 09:43:32 PM EST
+```
+
+If there is a mailserver running on localhost
+
+``` python
+server = smtplib.SMTP('localhost')
+server.sendmail('a@example.org', 'b@example.org',
+"""
+This is mail content.
+To: b@example.org
+From: a@example.org
+""")
+server.quit()
+```
+
+### Dates and Times
+
+**datatime** module supports dates, times and time zone
+
+``` python
+>>> from datetime import date
+>>> now = date.today()
+>>> now
+datetime.date(2003, 12, 2)
+>>> now.strftime("%m-%d0%y, %d%b % Y is a %A on the %d day of %B.")
+'12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December
+
+>>> birth = date(1964, 7, 31)
+>>> age = now - birthday
+>>> age.days
+14368
+
+```
+
+### Data Compression
+
+Use module `zlib, gzip, bz2, lzma, zipfile and tarfile` archive and compress data.
+
+``` python
+>>> import zlib
+>>> s = b'witch which has which witches wrist watch'
+>>> len(s)
+41
+>>> t = zlib.compress(s)
+>> len(t)
+37
+>>> zlib.decompress(t)
+b'witch which has which witches wrist watch'
+>>> zlib.crc32(s)
+226805979
+```
+
+### Performance Measurement
+
+**timeit** can quickly demonstrate a modest performance advantage
+
+``` python
+>>> from timeit import Timer
+>>> Timer('t=a;a=b;b=t','a=1;b=2').timeit()    # Test code 1
+0.5753
+
+>>> Timer('a,b=b,a', 'a=1; b=2').timeit()      # Test code 2
+0.5496
+```
+> Compared with `timeit` moduel which can test in fine level of granularity, `profile` and `pstats` can test large block of codes
 
 
