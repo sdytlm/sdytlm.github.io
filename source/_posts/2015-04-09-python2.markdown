@@ -1,0 +1,349 @@
+---
+layout: post
+title: "Python: Control Flow"
+date: 2015-04-09
+comments: true
+categories: python
+tag: python
+---
+
+### First Steps
+
+``` python
+>>> a,b = 0,1
+>>> while b<10:
+    print(b)
+    a,b=b,a+b
+``` 
+
+> each line within a basic block must be idented by the same amount.
+
+* Use keyword `end` to avoid the newline after output.
+
+``` python
+>>> a,b = 0,1
+>>> while b<1000:
+    print(b,end=',')     # specify what character is used after output.
+    a,b = b,a+b
+1,1,2,3,5,8,
+```
+
+<!--more-->
+
+----
+### If Statement
+
+* `elif` and `else` part is optional
+
+``` python
+>>> x = int (input("Please enter an integer: "))  # Defulat input will return a string
+Please enter an integer: 42
+>> if x < 0:
+        x = 0
+    elif x == 0:
+        print('Zero')
+    elif x == 1:
+        print('Single')
+    else:
+        print('More')
+More
+```
+
+----
+### For Statement
+
+* Iterates the items of a `list` or `string` in the order they appear.
+
+``` python
+words = ['cat', 'window', 'defenestrate']   # list
+>>> for w in words:
+    print(w, len(w))
+cat 3
+window 6
+defenestrate 12
+```
+
+* if you modify the sequence, you may create a dead loop program
+
+``` python
+>>> words = ['cat', 'window', 'defenestrate']
+>>> for w in words[:]:        # word[:] will not make the program dead loop. If u use words, program will be dead loop
+        if len(w) > 6:
+            words.insert (0,w)
+>>> words
+['defenestrate', 'cat', 'window', 'defenestrate']
+```
+----
+### `range()` Function
+It can generates arithmetic progressions:
+``` python
+>>> for i in range(5)
+>>>    print(i)
+0
+1
+2
+3
+4
+5
+
+```
+You can also specify the start index and step
+``` python
+>>> range(5,10)                  # 5,6,7,8,9
+>>> range(0,10,3)                # 0,3,6,9
+>>> range(-10,-100,-30)          # -10,-40,-70
+```
+You can combine `range()` and `len()`
+``` python
+>>> a = ['Mary', 'had', 'a', 'little', 'lamb']
+>>> for i in range(len(a)):
+>>>   print(i,a[i])
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+```
+----
+### Break Statement
+
+* Loop statement can have `else` clause. It is executed when loop terminates through exhaustion of list (`for`) or when condition becauses false (`while`)
+
+> `else` of loop statement cannot executed when loop is terminated by a `break` statement.
+
+``` python
+>>> for n in range(2,10):
+>>>     for x in range(2,n):
+>>>         if n%x == 0:
+>>>             print(n, 'equals',x,'*', n//x)
+>>>             break
+>>>     else:  # look at this intentation
+>>>         print(n, 'is a prime number')
+
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+```
+
+* `continue` statement continues with the next iteration of the loop
+
+``` python
+>>> for num in range (2,10):
+>>>     if num % 2 == 0:
+>>>         print("Found an even number", num)
+>>>         continue                            # if 'if' is executed, the second print will not be executed.
+>>>     print("Found a number", num)
+
+Found an even number 2
+Found a number 3
+Found an even number 4
+Found a number 5
+Found an even number 6
+Found a number 7
+Found an even number 8
+Found a number 9
+```
+----
+### Pass Statement
+
+It does nothing.
+
+``` python
+>>> while True:
+        pass # dead loop
+```
+
+----
+### Define Functions
+
+``` python
+>>> def fib(n):      # write Fibonacci series
+        a,b = 0,1
+        while a < n:
+            print(a, end=' ')
+            a,b = b, a+b
+        print()
+>>> # Call the function
+    fib(2000)
+```
+
+* Execution of a function introduces a new symbol table for local variables. All function parameters will be stored in this table.
+* When you pass the arguments some values, the values are always the object `reference`  not the value of the object
+* A function definition introduces the function name in current symbol stable. You can also assign the function name to other parameter
+
+``` python
+>>> fib
+<function fib at 10042ed0>
+>>> f = fib
+>>> f(100)                  # same as fib(100)
+```
+* Actually, each function has a return value. At least it is `None`
+
+``` python
+print(fib(0))
+None
+```
+Lets change the fib functions to store the reurn value temporally
+
+``` python
+>>> def fib2(n):
+        result = []     # store the result value
+        a,b = 0,1
+        while a < n:
+            result.append(a)        # the method we use to add the 
+            a,b = b,a+b
+        return result
+>>> f100 = fib2(100)    # call the function
+>>> f100
+[0,1,1,2,3,5,8,13,21,34,55,89]
+```
+* Specify a default value for one or more arguments
+
+``` python
+def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+    while True:
+        ok = input(prompt)
+        if ok in ('y','ye','yes'):                  # in can test if ok is in a sequence
+            return True
+        if ok in ('n','no','nop','nope'):
+            return False
+        retries = retries - 1
+        if retries < 0:
+            raise OSError('uncooperative user')
+        print(complaint)
+```
+
+> The default value is evaluated only once. 
+
+``` python
+>>> def f(a, L=[]):          # L = [] will only be done once.
+        L.append(a)
+        return L
+
+>>> print(f(1))
+>>> print(f(2))
+>>> print(f(3))
+
+[1]
+[1, 2]
+[1,2,3]
+
+```
+
+If you don't want the default to be shared.
+
+``` python
+>>> def f(a, L=None):
+        if L is None:    # `is` 
+            L = []
+        L.append(a)
+        return L
+```
+
+----
+### More Function Parameter Rules
+
+* Keyword argument: `parrot(voltage=1000)`
+* Positional argument: `parrot(1000)`
+
+> If you have default parameter in your function. You can choose not to pass value to the default parameter. But you still need to pass values to other regular parameters.
+
+``` python
+def parrot(voltage, state ='a stiff', actoon='voom', type='Blue'):
+```
+The function can be called as
+
+``` python
+parrot(1000)                                 # 1 positional argument
+parrot(voltage=1000)                         # 1 keyword argument
+parrot(voltage=1000,'action='VBOOM')
+parrot(action='VBoom', voltage=1000)         # The order of keyword parameter is not important
+parrot('a million', 'berere', 'jump')
+parrot('a thousand', state='fdaf')
+```
+But the following is not acceptable
+
+``` python
+parrot()      # require keyword argument
+parrot(voltage=5.0, 'dead')    # After keyword argument, you must use keyword argument
+parrot(1000,voltage=220)       # duplicate value for the same arguement
+```
+* You define `*name` and `**name`. But `*name` must be put before `**name`
+
+``` python
+def test(kind, *arguments, **keywords):
+    print("Do you have", kind, "?")
+    for arg in arguments:
+        print(arg)
+    key = sorted(keywords.keys())       # sort the dictionary
+    for kw in keys:
+        print(kw, ":", keywords[kw])
+```
+Call it like this
+``` python
+test("Limburger",
+     "It's very runny",
+     "It's very very runny"       # this two parameters will be sent to *arguments
+     shopkeeper="Michael"
+     client="John"
+    sketch="Cheese")             # this three will be sent to **keywords 
+```
+It will display 
+
+```
+Do you have Limburger?
+It's very runny,
+It's very very runny
+client:john
+shopkeeper:Michael
+sketch:Cheese
+```
+
+* Arbitrary argument, after `*args`, must use keywords rather than positional arguments.
+
+``` python
+>>> def concat (*args, sep="/"):          # after *args, you must use keywrod instead of positional arguments
+    return sep.join(args)
+>>> concat("earth", "mars", "venus")
+'earth/mars/venus'
+>>> concat("earth", "mars",sp=".")
+'earth/mars/
+```
+
+* Call function with unpacked arguments
+
+``` python
+>>> list(range(3,6)    # normal call with separate arguments
+[3,4,5]
+>>> args = [3,6]
+>>> list(range(*args)) # call with arguments unpacked
+[3,4,5]
+```
+
+* call function with dictionary to deliver arguments
+
+``` python
+>>>def parrot(voltage, state='a stiff', action='voom'):
+
+>>> d ={"voltage": "four million", "state": "demised", "action": "voom"}
+>>> parrot(**d)
+```
+
+* Lambda Expressions
+
+`lambda` keyword can define a single expressions
+
+``` python
+>>> def make_incrementor(n):
+        return lambda x: x+n          # define a function return x+n
+>>> f = make_incrementor(42)
+>>> f(0)
+42
+>>> f(1)
+43
+```

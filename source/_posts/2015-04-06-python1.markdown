@@ -1,0 +1,384 @@
+---
+layout: post
+title: "Python: Introduction"
+date: 2015-04-06
+comments: true
+categories: python
+tag: python
+---
+
+### Study Resource
+
+* Python Official Document: http://liam0205.me/attachment/Python/The_Python_Tutorial_zh-cn.pdf
+* Python Standard Library: https://docs.python.org/2/library/index.html#library-index
+* Python Official Tutorial: https://docs.python.org/2/tutorial/index.html
+
+### Features
+
+* Advancced Data Structure
+* Rely on `indentation`  (- -!)
+* No declaration for parameters
+
+
+<!--more-->
+
+### Interpreter
+
+* Boot with a script
+
+``` python
+python test.py
+```
+
+* Boot with command
+
+``` python
+python -c command [arg]
+
+```
+
+* Boot with module
+
+``` python
+python -m module [arg]
+
+```
+
+> Module name and command parameters are stored in `sys.argv[]`
+
+* Make your python script executable
+
+  * Add the following in the first line
+
+``` python
+#! /usr/bin/env python3.4
+```
+  * Give your file execution permission
+
+```
+chmod +x yourpython.py
+```
+
+* Use special character encoding
+Add the following in the first or second line for Windows 1252
+
+```
+# -*- coding: cp-1252 -*-
+```
+
+----
+### Basic Introduction
+
+#### Number
+
+* Division will not dismiss fractional part
+
+``` python
+>>> 8/5
+1.6
+```
+
+* If you do not like fractional part, use `//`.
+
+``` python
+>>> 7//3
+2
+>> 7//-3
+-3
+```
+
+* Python will transfer int to float if your expression has both of them.
+
+``` python
+>>> 3 * 3.75 / 1.5
+7.5
+>>> 7.0/2
+3.5
+```
+----
+#### Assignment
+
+``` python
+>>> width = 20
+>>> x = y = z = 10          # Assign multiple var with same value
+>>> x
+10
+>>> y
+10
+```
+
+* The last printed expression is assigned to the variable `_`
+
+``` python
+>>> tax = 12.5 / 100
+>>> price = 100.50
+>>> price * tax
+12.5625
+>>> price + _
+113.0625
+>>> round(_, 2)
+113.06
+
+> `_` variable is read-only by the user.
+```
+
+* You can also do the multiple assignment
+
+``` python
+a,b = 0,1   # a=0, b=1
+```
+
+----
+#### Parameter
+
+
+> Must define the parameter before you access it
+
+
+For example:
+
+``` python
+>>> n
+NameError: xxxxxxxxx
+```
+----
+#### String
+String can be expressed in ' ' or " "
+
+* If you use " ' " or ' " ', the inside quote will be considered quote. Otherwise, you need use `\`
+
+``` python
+>>> 'eggs'
+'spam eggs'
+>>> 'doesn\'t'     # use \' to represent single quote because this is ' ' '
+"doesn't:
+>>> '"Yes," he said.'  # you don't need \" because it's ' " '
+'"Yes," he said.'
+>>> "\"Yes,\" he said."  # you have to use \" for ", because this is " " "
+'"Yes," he said.'
+>>> '"Isn\'t," she said,'
+'"Isn\'t," she said.'
+```
+
+* print() will handle '\' as special character
+
+``` python
+>>> '"Isn\'t," she said.'
+'"Isn\'t," she said.'
+>>> print('"Isn'\t,"she said.')
+"Isn't," she said.         # \ will not be displayed
+>>> s = 'First line, \nSecond line.'
+'First line, \nSecond line.'
+>>> print(s)
+First line,
+Second line.
+```
+
+> If you want python accpet \, you need to add `r` before the first quote
+
+
+```
+>> print('C:\some\name')
+C:\some
+ame
+>>> print(r'C:\some\name')
+C:\some\name
+```
+
+* print() can display multiple line by using " " "
+
+``` python
+print("""\
+Usage: thingy
+       -h
+      -H
+""")
+```
+
+Output is the same format as this input
+
+* String can be concatenated with `+` and repeated with `*`
+
+``` python
+>>> 3 * 'un' + 'iun'
+'unununiun'
+```
+
+* String literals next to each other are automatically concatenated
+
+``` python
+>>> 'Py' 'thon'
+'Python'
+```
+
+> This automatical concatenation Cannot concatenate a variable and a string
+
+``` python
+>>> prefix = 'Py'
+>>> prefix 'thon'
+SyntaxError: invalid syntax
+```
+But `+` still works
+
+``` python
+>>> prefix ='Py'
+>>> prefix + 'thon'
+'Python'
+```
+
+* String can be indexed starting from 0. string[0] is also string type
+
+``` python
+>>> word = "Python"
+>>> word[0]
+'P'
+>>> word[5]
+'n'
+```
+
+* Indices may also be negative numbers which start counting from the `right`, negative indices starts from `-1`
+
+``` python
+>>> word[-1]
+'n'
+>>> word[-2]
+'o'
+>>> word[-6]
+'P'
+```
+* Slicing is supported in string. We can get substring by slicing
+
+``` python
+>>> word='Python'
+>>> word[0:2]    # get characters [0,2)
+'Py'
+>>> word[:2]
+'Py'
+>>> word[4:]    # get characters [4,length]
+'on'
+>>> word[-2:]
+'on'
+>>> word[:2] + word[2:]
+'Python'
+```
+* Attempting to use a index that is too large will result in error
+
+``` python
+>>> word='Python'
+>>> word[42]
+IndexError: string index out of range
+```
+But slice index is ok for this
+
+``` python
+>>> word='Python'
+>>> word[4:42]
+'on'
+>>> word[42:]
+' '
+```
+
+* Python strings cannot be changed
+
+``` python
+>>> word[0] = 'J'
+TypeError: 'str' does not support item assign
+```
+
+> If you need a different string, you have to create a new one
+
+* Function `len()` returns the length of a string
+
+``` python
+>>> s = 'abcdefg'
+>>> len(s)
+7
+```
+----
+#### Lists
+
+* Lists can contain items of different types, but usually the items have the same type
+
+``` python
+>>> squares = [1,4,9,16,25]
+>>> squares
+[1,4,9,16,25]
+
+```
+
+* Lists can also be indexed and sliced:
+
+``` python
+>>> squares = [1,4,9,16,25]
+>>> squares[0]
+1
+>>> square[-1]
+25
+>>> squares[-3:]            // slice will return a new list
+[9,16,25]
+```
+
+* List can also be concatenated
+
+``` python
+>>> squares = [1,4,9,16,25]
+>>> squares + [36,49,64,81,100]
+[1,4,9,16,25,36,49,64,81,100]
+```
+
+* Strings cannot be changed, but list can be changed
+
+``` python
+>>> cubes = [1,8,27,65,125]
+>>> cubes[3] = 64
+>>> cubes
+[1,8,27,64,125]
+```
+
+* You can add new items at the ned of list by append()
+
+``` python
+>>> cubes = [1,8,27,64,125]
+>>> cubes.append(216)
+>>> cubes.append(7**3)
+>>> cubes
+[1,8,27,64,125,216,343]
+```
+
+* You can even change the size of list or clear it by assignment to slices
+
+``` python
+>>> letters = ['a','b','c','d','e','f','g']
+>>> letters[2:5] = ['C','D','E']
+>>> letters
+['a','b','C','D','E','f','g']
+# remove them
+>>> letters[2:5] = []
+>>> letters
+['a','b','f','g']
+>>> letters[:] = []
+>>> letters
+[]
+```
+
+* `len()` can applies to lists
+
+``` python
+>>> letters = ['a','b','c','d']
+>>> len(letters)
+4
+```
+
+* A lists can contain other lists
+
+``` python
+>>> a = ['a','b','c']
+>>> n = [1,2,3,]
+>>> x= [a,n]
+>>> x
+[['a','b','c'],[1,2,3]]
+>>> x[0]
+['a','b','c']
+>>> x[0][1]                 # like two dimention array
+'b'
+```

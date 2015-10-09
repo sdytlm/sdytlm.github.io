@@ -1,0 +1,93 @@
+---
+layout: post
+title: "Python: Modules"
+date: 2015-05-08
+comments: true
+categories: python
+tag: python
+---
+
+Python has a way to put definitions in a file and use them in the future.
+
+> The python file name is the module name. Within a module, you can access the module by  variable `__name__`.
+
+ <!-- more -->
+
+For example, define fibo.py
+
+``` python
+def fib(n):
+    a,b = 0,1
+    while b<n:
+        print(b, end=' ')   # end define which character to put at the end.
+        a,b = b,a+b
+    print()
+
+def fib2(n):
+    result = []
+    a,b = 0,1
+    while b<n:
+        result.append(b)
+        a,b=b,a+b
+    return result
+
+```
+
+In another module or interpreter
+
+``` python
+>>> fibo.fib(1000)
+>>> fibo.fib2(100)
+>>> fib = fibo.fib
+>>> fib(1000)
+
+```
+
+### Import
+
+Importing module will place imported module names in his global symbol table.
+Use `import` statement to import a module
+
+``` python
+>>> from fibo import fib, fib2    # import two functions from fibo.py
+>>> fib(500)
+```
+
+or 
+
+``` python
+>>> from fibo import *           # import all from fibo.py
+>>> fib(500)
+```
+
+> Python will not import names begining with underscore `_`.
+
+----
+### Standard Modules
+
+#### The dir() Function
+
+Find out which names a modules defines. 
+
+
+``` python
+>>> import fibo, sys
+>>> dir(fibo)
+```
+
+Can also find the names you defines
+
+
+``` python
+>>> dir()
+```
+
+By default, dir() cannot list built-in functions and variables. You need to specify it
+
+``` python
+>>> import builtins
+>>> dir (builtins)
+```
+
+
+

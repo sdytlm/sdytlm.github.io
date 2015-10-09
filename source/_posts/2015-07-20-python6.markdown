@@ -1,0 +1,191 @@
+---
+layout: post
+title: "Python: Errors and Exceptions"
+date: 2015-07-20
+comments: true
+categories: python
+tag: python
+---
+
+There are two types of erros: Syntax Errors and Exceptions
+
+### Syntax Errors
+
+``` python
+>>> while True print('Hello world')
+File "<stdin>", line 1, in ?
+Syntax Error: invalid syntax
+```
+A colon is missing before print
+
+<!-- more -->
+
+### Exceptions
+
+Even if a statement is syntactically correct, it may cause an exception.
+
+For example:
+
+``` python
+>>> 10 * (1/0)  # ZeroDivisionError
+>>> 4 + spam*3  # NameError
+>>> '2' + 2     # TypeError
+```
+
+### Handle Exceptions
+
+``` python
+>>> while True:
+        try:
+            x = int(input("Please enter a number: "))
+            break;
+        except ValueError:
+            print("Oops! That was not a valid number. Try again...")
+```
+
+* `try` statement will work as follows:
+** statements between try and except are executed.
+** If no exception occurs, try statement is finished.
+** If one exception occurs, the rest of the statements will be skipped.
+  ** If the exception type matches the name after **except** keyword.The except statement will be executed, then execution continues after the try
+  ** If the exception type does not match all except names. It is an unhandled exception and execution will stop.
+
+
+* Multiple excepts may share the same except statement.
+
+``` python
+except (RuntimeError, TypeError, NameError):
+       except statement.
+```
+
+* The last except clause can be used as a wildcard to alert the programmer and re-raise the exception.
+
+``` python
+import sys
+
+try:
+    f = open('myfile.txt')
+    s = f.read()
+    i = int(s.strip())
+except OSError as err:
+    print("OS error: {0}".format(err))
+except ValueError:
+    print("Cloud not convert data to an integer.")
+except:
+    print("Unexpected error:", sys.exec_info()[0])
+    raise`
+```
+* `try ... except` can has an optional `else clause`. The `else clause` will be used if `try` does not raise an exception.
+
+``` python
+for arg in sys.argv[1:]:
+    try: 
+        f = open(arg, 'r')
+    except IOError:
+        print('cannot open', arg)
+    else:
+        print(arg, 'has', len(f.readlines()), 'lines')
+        f.close()
+```
+
+* You can specify a variable after the exception name. The variable is stored in `instance.args` 
+
+``` python
+try: 
+    raise Exception('spam', 'eggs')
+except Exception as inst:
+    print(type(inst))    # print the type of exception instance
+    print(inst.args)     # print the arguments
+    print(inst)          # print the arguments
+    x,y = inst.args      # unpack the args
+    print(x)
+    print(y)
+
+<class 'Exception'>
+('spam', 'eggs')
+('spam', 'eggs')
+x = spam
+y = eggs
+
+```
+
+### Raising Exceptions
+
+* `raise` statement allows the programmer foce a specified except to occur. The except must be an exception instance or an exception class
+
+``` python
+>>> raise NameError('HiThere')
+
+Traceback (most recent call last):
+    File "<stdin>", line 1, in ?
+NameError: HiThere
+```
+
+* If you do not want to handle the exceptions, you can use `raise` to re-raise the exception
+
+``` python
+>>> try:
+        raise NameError('HiThere')
+    except NameError:
+        print('An exception flew by!')
+        raise         # re-raise the NameError
+
+An exception flew by!
+Traceback (most recent call last):
+    File "<stdin>", line2, in ?
+NameError: HiThere
+
+```
+### User-defined Exceptions
+
+* The new exceptions should be derived from `Exception` class
+
+``` python
+>>> class MyError(Exception):
+    def __int__(self, value):           # override the default __init__()
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+
+>>> try:
+        raise MyError(2*2)
+    except MyError as e:
+        print('My exception occurred, value:', e.value)
+
+My exception occurred, value: 4
+
+>>> raise MyError('oopos!')
+
+Traceback (most recent call last):
+    File "<stdin>", line1, in ?
+__main__.MyError: 'oops!'
+
+```
+
+* It is a common practice to create a base class for exceptions then define subclass to create specific exception.
+
+``` python
+class Error (Exception):    # base class
+
+class InputError(Error):    # inputError
+    def __int__(self, expression, message):
+        self.expression = expression
+        self.message = message
+
+class TransitionError(Error)
+    def __int__(self, previous, next, message):
+        self.previous = previous
+        self.next = next
+        self.message = message
+
+```
+
+### Predefined Clean-up Actions
+
+`with` statement allows objects to be cleaned up after it is not used.
+
+``` python
+with open ("myfile.txt") as f:
+    for line in f:
+        print(line, end="")
+```
