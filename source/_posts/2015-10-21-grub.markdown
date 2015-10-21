@@ -1,0 +1,37 @@
+---
+layout: post
+title: "Downgrade Ubuntu Grub2 to Grub 1"
+date: 2015-10-21
+comments: true
+categories: Linux
+tag: Linux
+---
+
+If you hate Grub2 like me, you can downgrade it to Grub 1. Enjoy it !!
+
+<!--more-->
+
+* Delete Grub2
+
+```
+sudo apt-get purge grub* os-prober
+```
+```
+sudo apt-get purge grub-gfxpayload-lists
+```
+* Install Grub1
+
+```
+sudo apt-get install grub
+```
+
+* Create grub menu
+
+``` 
+sudo update-grub
+```
+
+* Refresh MBR
+```
+grub-install /dev/sda
+```
