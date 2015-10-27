@@ -1,0 +1,23 @@
+---
+layout: post
+title: "Compile one specific kernel module without clean all kernel sources"
+date: 2015-10-27
+comments: true
+categories: linux
+tag: linux
+---
+
+```
+cd kernel soruce dir
+```
+
+```
+# make sure CONFIG_FB_UVESA can be found in Kconfig
+make M=drivers/video/uvesafb CONFIG_FB_UVESA=m
+
+```
+If you dont have `CONFIG_FB_UVESA` or similar
+
+```
+make drivers/video/uvesafb.ko
+```
