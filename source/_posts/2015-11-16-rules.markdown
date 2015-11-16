@@ -1,0 +1,133 @@
+---
+layout: post
+title: "How to write a service script"
+date: 2015-11-16
+comments: true
+categories: linux
+tag: linux
+---
+
+
+### Script location
+`/etc/init.d`
+
+
+### Header
+`xxx` is the script name
+
+```
+#!/bin/sh
+#
+# /etc/init.d/xxx
+# Subsystem file for "xxx" server
+# 
+#
+# chkconfig: 2345 95 05
+# description: xxx server daemon
+# 
+# processname: xxx
+# config: /etc/xxx/xxx.conf      // Config file
+# config: /etc/sysconfig/xxx     // config file
+# pidfile: /var/run/xxx.pid
+
+### BEGIN INIT INFO
+# Provides: xxx
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start daemon at boot time
+# Description: Enable service provided by daemon
+### END INIT INFO
+```
+
+<!-- more -->
+
+### Inclde required files
+
+```
+# source function library
+[ -f /etc/sysconfig/xxx  ] && . /etc/rc.d/init.d/functions    # include many third-party libraries
+
+# configuration
+[ -f /etc/sysconfig/xxx ] && . /etc/sysconfig/xxx
+
+```
+
+### Complete Required function: ***start***, ***stop***, ***restart***
+
+```
+RETVAL=0
+prog="xxx"
+
+start() {	
+	echo -n $"Starting $prog:"
+	
+	RETVAL=$?
+	echo
+}
+
+stop() {	
+	echo -n $"Stopping $prog:"
+	
+	killproc $prog -TERM
+	RETVAL=$?
+	
+	echo
+}
+
+reload() {	
+	echo -n $"Reloading $prog:"
+	killproc $prog -HUP
+	RETVAL=$?
+	echo
+}
+
+case "$1" in	(9)
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		stop
+		start
+		;;
+	reload)
+		reload
+		;;
+        status)
+		status $prog
+		RETVAL=$?
+		;;
+	*)	
+		echo $"Usage: $0 {start|stop|restart|reload|status}"
+		RETVAL=1
+esac
+exit $RETVAL
+
+```
+
+
+### Update the symbolic links in /etc/rc.d/rcN.d
+
+```
+chkconfig -add xxx
+```
+
+OR
+
+> Put this script into associate /etc/rc.d/rcN.d folder
+
+### Run the script manually
+
+```
+service xxx start|status|reload|stop
+```
+
+OR
+
+```
+/etc/init.d/xxx start|status|reload|stop
+```
