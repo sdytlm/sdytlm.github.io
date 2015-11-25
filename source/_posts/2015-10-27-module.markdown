@@ -21,3 +21,9 @@ If you dont have `CONFIG_FB_UVESA` or similar
 ```
 make drivers/video/uvesafb.ko
 ```
+
+The loadable modules are located in 
+
+```
+/lib/modules/kernel-version/kernel/driver
+```
