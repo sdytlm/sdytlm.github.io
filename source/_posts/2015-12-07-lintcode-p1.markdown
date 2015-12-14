@@ -21,7 +21,19 @@ All inputs will be in lower-case
 
 <!-- more -->
 
-#### Solution
+### Solution
+* sorted_string: A list of sorted strings matching the input `strs`
+For example: 
 
+```
+strs: = {"ab", "ba", "e"}
+sorted_string: = {"ab", "ab", "e"}
+```
 
-{% include_code LintCode/Anagrams.py %}
+* hash_map : `<sorted_string[i], NumofAppearance(sorted_string[i])> ` maintain how many times does each sorted string appear. 
+
+  1. Sort each string from **strs** and put it into sorted_string
+  2. Use the hash map to record how many times does sorted_string[i] appear.
+  3. Chose the string which appear more than **2** times. Put it into result string
+
+{% include_code Anagrams LintCode/Anagrams.py %}
