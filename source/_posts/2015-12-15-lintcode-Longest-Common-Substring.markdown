@@ -15,7 +15,6 @@ Given two strings, find the longest common substring
 
 Return the length of it.
 
-Have you met this question in a real interview? Yes
 
 #### Example
 Given A = "ABCD", B = "CBCE", return 2.
