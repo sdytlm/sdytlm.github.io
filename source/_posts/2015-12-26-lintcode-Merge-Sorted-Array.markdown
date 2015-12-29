@@ -20,3 +20,9 @@ You may assume that A has enough space (size that is greater or equal to m + n) 
 <!--more-->
 
 ### Solution
+* Time: O(N), Space: O(1)
+* Tranverse A and B from the end
+* index: index of the result
+* i: index of A
+* j: index of B
+{% include_code LintCode/Merge-Sorted-Array.py %}
