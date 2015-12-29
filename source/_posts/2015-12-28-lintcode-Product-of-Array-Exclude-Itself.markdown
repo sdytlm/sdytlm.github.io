@@ -19,5 +19,6 @@ For A = [1, 2, 3], return [6, 3, 2].
 <!--more-->
 
 ### Solution
-
+* Time: O(N^2), Space: O(N)
+{% include_code LintCode/Product-Of-Array-Exclude-Itself.py %}
 
