@@ -24,5 +24,10 @@ You may assume no duplicate exists in the array.
 <!--more-->
 
 ### Solution
+* 数组可以看成是两个ordered subarray 组成
+* 前面那个subarray的任意值都比后面那个大
+* 最小值一定在后面那个sub array中
+* 如果num[front] > num[end]， 那么没有找到有序的sub array, 后移front
+* 反之，则在sub array中，找最小值
 
 {% include_code LintCode/Find-Minimum-in-Rotated-Array.py %}
