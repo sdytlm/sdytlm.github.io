@@ -23,3 +23,10 @@ O(logn)
 <!--more-->
 
 ### Solution
+* Time: O(logn)
+
+> (a * b) % p = ((a % p) * (b % p)) % p 
+
+* a^2 %b = ((a%b) * (a%b))%b
+* a^3 %b = ((a^2%b) * (a%b))%b
+{% include_code LintCode/Fast-Power.py %}
