@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Play Virtio on QEMU"
-date: 2016-01-23
+date: 2016-01-20
 comments: true
 categories: virtualization
 tag: virtualization
@@ -44,6 +44,35 @@ qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
 -name 23 -cpu core2duo -monitor stdio -smp sockets=1,cores=2,threads=1
 
 ```
+### virtio-net + virtio-serial port
+
+```
+qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none -bios bios.bin \
+-device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait \
+-netdev tap,script=/data/images/qemu-image/qemu-ifup0.sh,id=net0 -device virtio-net-pci,netdev=net0 \
+-hda /data/images/qemu-image/opensuse-50G.raw -name 23 -cpu core2duo -monitor stdio\
+ -smp sockets=1,cores=1,threads=1 -vnc :23 -device virtio-serial-pci \
+-chardev socket,id=foo,host=localhost,port=1224,server,nowait \
+-device virtserialport,chardev=foo,name=virtio.port.0
+```
+#### Test virtio serial port
+* On Host
+
+```
+nc localhost 1224 > test.txt
+```
+
+* On Guest
+
+```
+echo "hello" > /dev/virtio-ports/virtio.port.0
+```
+
+* Resut
+
+Cat test.txt on host, you will see "hello"
+
+
 
 ### virtio-blk
 
@@ -66,6 +95,20 @@ qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
 -drive if=none,id=hd,file=/data/images/qemu-image/opensuse-50G.raw \
 -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd -name 23 \
 -cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23
+```
+
+### virtio-scsi cdrom
+
+```
+qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 \
+-serial tcp::1223,server,nowait -net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+-drive if=none,id=hd,file=/data/images/qemu-image/opensuse-50G.raw \
+-device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd -name 23 \
+-cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23\
+-drive if=none,file=/path/xxx.iso,id=cd -device scsi-cd,drive=cd
+
 ```
 
 ### virtio-input-pci
