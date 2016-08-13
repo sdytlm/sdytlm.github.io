@@ -31,19 +31,20 @@ tag: virtualization
 <img src="{{ root_url }}/images/msix-capability-structure.png"/>
 
 * read MSIX capability structure in offset `40h` 
-    * `11 00 01 80`: MSIX capability ID, table size (2) including one empty entry, MSIX enabled, no next capability
-    * `01 00 00 00`: read MSIX table address in `BAR1` (2nd bar), offset: `00h`
-    * `01 08 00 00`: read MSIX function pending bit array address in `BAR1`, offset: `08h`
+    * `11 00 01 80` => `80 01 00 11`: MSIX capability ID, table size (2) including one empty entry, MSIX enabled, no next capability
+    * `01 00 00 00` => `00 00 00 01`: read MSIX table address in `BAR1` (2nd bar), offset: `00h`
+    * `01 08 00 00` => `00 00 08 01`: read MSIX function pending bit array address in `BAR1`, offset: `08h`
 
 * check BAR 1 and find the start address is `0xfebd6000` (device address)
 * peek and get the start address (`0xfe00000`) of the first MSIX table
+* Note: BAR 0 is used as I/O bar. 
 
 ``` 
 ./peek.o 0xfebd6000 0x0
 >> 0xfee00000 
 ``` 
 
-* peek `0xfebd0000 + 08h` and get the start point of MSIx pending bit array address
+* peek `0xfebd6000 + 08h` and get the start point of MSIx pending bit array address
 * The MSIX table entry struct is as follow
 
 <img src="{{ root_url }}/images/msix-table-entry.png"/>
