@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Add and Search Word"
-date: 2016-08-09
+title: "Power of Four"
+date: 2016-08-12
 comments: true
 categories: LeetCode
 tag: LeetCode
