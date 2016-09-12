@@ -30,3 +30,9 @@ You may assume that the secret number and your friend's guess only contain digit
 
 <!--more-->
 ### Solution
+
+* bulls: 只需要检查guess[i]==secret[i]
+* cows: 需要digits[]帮助,digits[i]表示secret中的数字出现次数
+* 依次遍历guess, 找到一个cows，需要update digits[i]
+
+{% include_code LeetCode/Python/Bulls-and-Cows.py %}
