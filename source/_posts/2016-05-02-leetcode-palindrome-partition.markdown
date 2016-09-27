@@ -24,4 +24,10 @@ Return
 <!--more-->
 ### Solution
 
+* Dfs
+
+* Java
+{% include_code LeetCode/Java/Palindrome-Partitioning.java %}
+
+* Python
 {% include_code LeetCode/Python/Palindrome-Partition.py %}

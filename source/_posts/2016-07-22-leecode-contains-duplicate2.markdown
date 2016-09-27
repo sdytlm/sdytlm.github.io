@@ -14,3 +14,6 @@ Given an array of integers and an integer k, find out whether there are two dist
 
 * Use hash_map [nums[i],i] to help
 {% include_code LeetCode/Python/Contains-Duplicate2.py %}
+
+* Java:
+{% include_code LeetCode/Java/Contains-Duplicate2.java %}

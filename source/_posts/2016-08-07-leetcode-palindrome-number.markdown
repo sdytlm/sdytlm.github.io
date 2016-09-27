@@ -22,4 +22,10 @@ Some hints:
 <!--more-->
 
 ### Solution
+* 把x反转，除了最高位不要.
+* p是反转以后的结果，ｑ是最高位
+
+* Java Solution:
+{% include_code LeetCode/Java/Palindrome-Number.java %}
+
 {% include_code LeetCode/Python/Palindrome-Number.py %}

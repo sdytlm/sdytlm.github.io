@@ -23,5 +23,7 @@ Given a column title as appear in an Excel sheet, return its corresponding colum
 
 <!--more-->
 ### Solution
-
+* Java
+{% include_code LeetCode/Java/Excel-Sheet-Column-Number.java %}
+* Python
 {% include_code LeetCode/Python/Excel-Sheet-Column-Number.py %}

@@ -22,5 +22,10 @@ Here is an example of version numbers ordering:
 
 <!--more-->
 ### Solution
-* 考虑清除"1.0.1" 和 "1.0"的情况
+* Java: 利用compareTo和split
+{% include_code LeetCode/Java/Compare-Version-Numbers.java %}
+
+
+* Python: 考虑清除"1.0.1" 和 "1.0"的情况
+
 {% include_code LeetCode/Python/Compare-Version-Numbers.py %}

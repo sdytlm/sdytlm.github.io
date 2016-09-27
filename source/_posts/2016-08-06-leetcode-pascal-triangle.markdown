@@ -24,4 +24,8 @@ Return
 <!--more-->
 ### Solution
 
+* Java
+{% include_code LeetCode/Java/Pascal-Triangle.java %}
+
+* Python
 {% include_code LeetCode/Python/Pascal-Triangle.py %}

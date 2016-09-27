@@ -30,3 +30,5 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 1 4 3  2  k=0 L=3  swap-> 2431 逆置-> 2134
 
 {% include_code LeetCode/Python/Next-Permutation.py %}
+
+{% include_code LeetCode/Java/Next-Permutation.java %}

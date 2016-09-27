@@ -30,4 +30,9 @@ return its zigzag level order traversal as:
 
 <!--more-->
 ### Solution
+* Java: DFS
+{% include_code LeetCode/Java/Binary-Tree-Zigzag-Level-Order-Traversal.java %}
+
+* Python: BFS
+
 {% include_code LeetCode/Python/Binary-Tree-Zigzag-Level-Order-Traversal.py %}

@@ -20,3 +20,8 @@ Assume that the total area is never beyond the maximum possible value of int.
 ### Solution
 * 面积＝两个长方形面积－相交部分的面积
 {% include_code LeetCode/Python/Rectangle-Area.py %}
+
+* Java:
+{% include_code LeetCode/Java/Rectangle-Area.java %}
+
+

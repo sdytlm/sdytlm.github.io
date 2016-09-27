@@ -19,4 +19,9 @@ Could you optimize your algorithm to use only O(k) extra space?
 <!--more-->
 ### Solution
 
+* 每次循环开始前在dp前面插入１，ret[i] = ret[i]+ret[i+1],
+{% include_code LeetCode/Java/Pascal-Triangle2.java %}
+
+
+* Python
 {% include_code LeetCode/Python/Pascal-Triangle2.py %}

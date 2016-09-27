@@ -29,4 +29,8 @@ Bonus point if you are able to do this using only O(n) extra space, where n is t
 * dp[j]: 表示某一行每一列的最小值
 * 从下往上便利
 * dp[j] = triangle[i][j]+min(dp[j],dp[j+1]) 
+
+* Java
+{% include_code LeetCode/Java/Triangle.java %}
+* Python
 {% include_code LeetCode/Python/Triangle.py %}

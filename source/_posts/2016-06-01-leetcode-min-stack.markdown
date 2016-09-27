@@ -29,4 +29,8 @@ minStack.getMin();   --> Returns -2.
 <!--more-->
 ### Solution
 
+* Java: One Stack
+{% include_code LeetCode/Java/Min-Stack.java %}
+
+* Python: Two stack
 {% include_code LeetCode/Python/Min-Stack.py %}

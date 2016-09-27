@@ -17,4 +17,8 @@ You can only move either down or right at any point in time.
 
 * dp[i][j]: minimum path sum until grid[i][j]
 
+* Java
+{% include_code LeetCode/Java/Minimum-Path-Sum.java %}
+
+* Python
 {% include_code LeetCode/Python/Minimum-Path-Sum.py %}

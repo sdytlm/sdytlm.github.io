@@ -24,4 +24,9 @@ You may assume that you have an infinite number of each kind of coin.
 
 <!--more-->
 ### Solution
+
+* Java 
+{% include_code LeetCode/Java/Coin-Change.java %}
+
+* Python
 {% include_code LeetCode/Python/Coin-Change.py %}

@@ -20,4 +20,8 @@ Your function should return length = 2, with the first two elements of nums bein
 
 <!--more-->
 ### Solution
+* Java: i记录当前不重复的index，便利所有Nums，不重复的插入到i的位置
+{% include_code LeetCode/Java/Remove-Duplicates-from-Sorted-Array.java %}
+
+* Python
 {% include_code LeetCode/Python/Remove-Duplicates-from-Sorted-Array.py %}

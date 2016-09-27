@@ -33,3 +33,7 @@ to
 ### Solution
 
 {% include_code LeetCode/Python/Invert-Binary-Tree.py %}
+
+* Java solution: recursive. 也可以用stack
+
+{% include_code LeetCode/Java/Invert-Binary-Tree.java %}

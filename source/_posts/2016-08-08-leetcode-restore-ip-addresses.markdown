@@ -18,4 +18,9 @@ return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
 
 ### Solution
 * 深度优先搜索
+
+* Java
+{% include_code LeetCode/Java/Restore-IP-Addresses.java %}
+
+* Python
 {% include_code LeetCode/Python/Restore-IP-Addresses.py %}

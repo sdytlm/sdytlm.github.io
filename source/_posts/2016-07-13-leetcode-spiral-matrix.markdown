@@ -23,3 +23,9 @@ You should return [1,2,3,6,9,8,7,4,5].
 <!--more-->
 ### Solution
 {% include_code LeetCode/Python/Spiral-Matrix.py %}
+
+* Java solution:
+
+{% include_code LeetCode/Java/Spiral-Matrix.java %}
+
+

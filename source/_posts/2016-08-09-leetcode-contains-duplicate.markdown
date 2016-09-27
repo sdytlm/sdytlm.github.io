@@ -13,4 +13,7 @@ Given an array of integers, find if the array contains any duplicates. Your func
 
 <!--more-->
 
+* Java: hash_set
+{% include_code LeetCode/Java/Contains-Duplicate.java %}
+
 {% include_code LeetCode/Python/Contains-Duplicate.py %}

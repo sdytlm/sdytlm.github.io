@@ -22,4 +22,8 @@ return 5.
 <!--more-->
 ### Solution
 
+* Java
+{% include_code LeetCode/Java/Length-of-Last-Word.java %}
+
+* Python
 {% include_code LeetCode/Python/Length-of-Last-Word.py %}

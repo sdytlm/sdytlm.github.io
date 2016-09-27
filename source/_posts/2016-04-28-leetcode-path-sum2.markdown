@@ -31,4 +31,8 @@ return
 ### Solution
 * DFS search all path (search until the leaf)
 
+* Java
+{% include_code LeetCode/Java/Path-Sum2.java %}
+
+* Python
 {% include_code LeetCode/Python/Path-Sum2.py %}

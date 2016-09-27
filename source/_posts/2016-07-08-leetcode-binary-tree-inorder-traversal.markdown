@@ -31,3 +31,8 @@ Recursive solution is trivial, could you do it iteratively?
 ### Solution
 * Iterative solution
 {% include_code LeetCode/Python/Binary-Tree-Inorder-Traversal.py %}
+
+* 更简练的java solution: 不需要预处理左字树
+{% include_code LeetCode/Java/Binary-Tree-Inorder-Traversal.java %}
+
+

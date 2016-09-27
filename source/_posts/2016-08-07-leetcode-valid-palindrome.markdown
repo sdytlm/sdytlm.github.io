@@ -24,3 +24,8 @@ For the purpose of this problem, we define empty string as valid palindrome.
 ### Solution
 * 只考虑数字和字符
 {% include_code LeetCode/Python/Valid-Palindrome.py %}
+
+* Java:
+{% include_code LeetCode/Java/Valid-Palindrome.java %}
+
+

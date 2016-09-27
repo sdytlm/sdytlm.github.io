@@ -50,3 +50,6 @@ So，如果我们与上一个可以在奇数上面选择位置的数，也就是
 0101 0101 …… 十六进制表示为： 0x55555555
 
 {% include_code LeetCode/Python/Power-of-Four.py %}
+
+* Java Solution:
+{% include_code LeetCode/Java/Power-of-Four.java %}

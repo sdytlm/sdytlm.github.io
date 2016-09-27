@@ -25,4 +25,11 @@ A valid Sudoku board (partially filled) is not necessarily solvable. Only the fi
 2. 检查他所在列是否和他重复
 3. 检查他所在`3*3` 小矩阵是否和他重复
 
+* Python
 {% include_code LeetCode/Python/Valid-Sudoku.py %}
+
+* Java
+
+{% include_code LeetCode/Java/Valid-Sudoku.java %}
+
+

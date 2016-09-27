@@ -30,4 +30,8 @@ m and n will be at most 100.
 
 <!--more-->
 ### Solution
-{% include_code LeetCode/Python/Unique-Path2.py %}
+* Java
+{% include_code LeetCode/Java/Unique-Path2.java %}
+
+* Python
+{% include_code LeetCode/Python/Unique-Paths2.py %}

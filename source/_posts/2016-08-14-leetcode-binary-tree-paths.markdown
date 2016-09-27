@@ -25,3 +25,7 @@ All root-to-leaf paths are:
 
 <!--more-->
 {% include_code LeetCode/Python/Binary-Tree-Paths.py %}
+
+* Java:
+{% include_code LeetCode/Java/Binary-Tree-Paths.java %}
+

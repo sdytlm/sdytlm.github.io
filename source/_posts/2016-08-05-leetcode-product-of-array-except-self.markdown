@@ -20,5 +20,7 @@ Could you solve it with constant space complexity? (Note: The output array does 
 
 <!--more-->
 ### Solution
-* consider "0" carefully
-{% include_code LeetCode/Python/Product-of-Array-Except-Self.py %}
+* 先o(n)　时间累乘nums[i]左边
+* 再O(n) 累乘nums[i]右边
+
+{% include_code LeetCode/Java/Product-of-Array-Except-Self.java %}

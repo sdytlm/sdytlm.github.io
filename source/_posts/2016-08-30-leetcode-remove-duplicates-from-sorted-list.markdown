@@ -17,3 +17,7 @@ Given a sorted linked list, delete all duplicates such that each element appear 
 ### Solution
 
 {% include_code LeetCode/Python/Remove-Duplicates-from-Sorted-List.py %}
+
+{% include_code LeetCode/Java/Remove-Duplicates-from-Sorted-List.java %}
+
+

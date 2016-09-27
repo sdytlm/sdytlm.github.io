@@ -19,4 +19,7 @@ How many possible unique paths are there?
 <!--more-->
 
 ### Solution
+* Java:
+{% include_code LeetCode/Java/Unique-Paths.java %}
+
 {% include_code LeetCode/Python/Unique-Paths.py %}

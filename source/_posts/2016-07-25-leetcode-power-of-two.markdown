@@ -15,4 +15,8 @@ Given an integer, write a function to determine if it is a powero two.
 
 等价于：n & (n - 1) = 0，且n > 0
 
+* Java
+{% include_code LeetCode/Java/Power-of-Two.java %}
+
+* Python
 {% include_code LeetCode/Python/Power-of-Two.py %}

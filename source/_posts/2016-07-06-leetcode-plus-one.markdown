@@ -13,4 +13,9 @@ The digits are stored such that the most significant digit is at the head of the
 
 <!--more-->
 ### Solution
+* Java solution: 
+{% include_code LeetCode/Java/Plus-One.java %}
+
+* Python
+
 {% include_code LeetCode/Python/Plus-One.py %}

@@ -15,4 +15,9 @@ Given s = "hello", return "olleh".
 <!--more-->
 ### Solution
 
+* Java
+{% include_code LeetCode/Java/Reverse-String.java %}
+
+
+* Python
 {% include_code LeetCode/Python/Reverse-String.py %}

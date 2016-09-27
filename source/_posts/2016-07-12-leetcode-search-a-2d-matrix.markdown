@@ -32,4 +32,13 @@ Given target = 3, return true.
 
 ### Solution
 * Binary Search
+`n * m matrix convert to an array => matrix[x][y] => a[x * m + y]`
+
+`an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];`
+
+* Java
+{% include_code LeetCode/Java/Search-2D-Matrix.java %}
+
+* Python
+
 {% include_code LeetCode/Python/Search-A-2D-Matrix.py %}

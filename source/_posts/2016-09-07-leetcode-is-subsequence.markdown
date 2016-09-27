@@ -32,4 +32,9 @@ If there are lots of incoming S, say S1, S2, ... , Sk where k >= 1B, and you wan
 * 同时便利s和t,只要有s[i]==t[j]，i+=1. 否则只增加j
 * 若i 最终和s长度相同，则true
 
+* Java
+{% include_code LeetCode/Java/Is-Subsequence.java %}
+
+* Python
+
 {% include_code LeetCode/Python/is-Subsequence.py %}

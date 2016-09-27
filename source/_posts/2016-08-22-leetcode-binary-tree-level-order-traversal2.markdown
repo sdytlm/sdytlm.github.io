@@ -31,3 +31,6 @@ return its bottom-up level order traversal as:
 ### Solution
 * BFS 然后翻转结果
 {% include_code LeetCode/Python/Binary-Tree-Level-Order-Traversal2.py %}
+
+* java solution: BFS, 需要stack辅助
+{% include_code LeetCode/Java/Binary-Tree-Level-Order-Traversal2.java %}

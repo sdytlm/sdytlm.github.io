@@ -23,3 +23,6 @@ Implement the following operations of a stack using queues.
 
 ### Solution
 {% include_code LeetCode/Python/Implement-Stack-Using-Queues.py %}
+
+* Java: push 的时候，把queue反过来
+{% include_code LeetCode/Java/Implement-Stack-Using-Queues.java %}

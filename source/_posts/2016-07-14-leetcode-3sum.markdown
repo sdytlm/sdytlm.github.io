@@ -27,3 +27,6 @@ A solution set is:
 <!--more-->
 ### Solution
 {% include_code LeetCode/Python/3Sum.py %}
+
+* Java: 注意规避重复元素
+{% include_code LeetCode/Java/3Sum.java %}

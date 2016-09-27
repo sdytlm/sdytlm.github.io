@@ -25,4 +25,7 @@ Return 4.
 `dp[x][y] = min(dp[x - 1][y - 1], dp[x][y - 1], dp[x - 1][y]) + 1`
 上式中，dp[x][y]表示以坐标(x, y)为右下角元素的全1正方形矩阵的最大长度（宽度）
 
+* Java :更好的solution
+{% include_code LeetCode/Java/Maximal-Square.java %}
+
 {% include_code LeetCode/Python/Maximal-Square.py %}

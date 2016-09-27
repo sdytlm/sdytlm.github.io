@@ -25,4 +25,8 @@ Could you do it in-place with O(1) extra space?
 * Reverse array[0,k]: [7 6 5 4 3 2 1] => [5 6 7 4 3 2 1]
 * Reverse array[n-k,n]: [5 6 7 4 3 2 1] => [5 6 7 1 2 3 4]
 
-{% include_code Leetcode/Python/Rotate-Array.py %}
+* Java:
+{% include_code LeetCode/Java/Rotate-Array.java %}
+
+* Python
+{% include_code LeetCode/Python/Rotate-Array.py %}

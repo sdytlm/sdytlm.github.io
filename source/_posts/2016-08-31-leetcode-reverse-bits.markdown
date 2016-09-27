@@ -19,4 +19,8 @@ If this function is called many times, how would you optimize it?
 <!--more-->
 ### Solution
 [优化](http://bookshadow.com/weblog/2015/03/08/leetcode-reverse-bits/)
+
+* Java:
+{% include_code LeetCode/Java/Reverse-Bits.java %}
+
 {% include_code LeetCode/Python/Reverse-Bits.py %}

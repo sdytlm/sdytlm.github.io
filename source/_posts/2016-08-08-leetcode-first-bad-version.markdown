@@ -17,3 +17,7 @@ You are given an API bool isBadVersion(version) which will return whether versio
 ### Solution
 * 二分查找
 {% include_code LeetCode/Python/First-Bad-Version.py %}
+
+* Java solution:
+* 需要用l+(r-l)/2而不是 (l+r)/2. 后者会超过int上线
+{% include_code LeetCode/Java/First-Bad-Version.java %}

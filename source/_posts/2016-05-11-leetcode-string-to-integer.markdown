@@ -27,4 +27,8 @@ If no valid conversion could be performed, a zero value is returned. If the corr
 <!--more-->
 ### Solution
 
+* Java: 不用考虑小数
+{% include_code LeetCode/Java/atoi.java %}
+
+* Python
 {% include_code LeetCode/Python/String-to-Integer.py %}

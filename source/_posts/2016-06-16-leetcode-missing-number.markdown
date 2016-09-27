@@ -19,4 +19,8 @@ Yourlgorithm should run in linear runtime complexity. Could you implement it usi
 ### Solution
 * X ^ 0 ^ X = 0
 * X ^ 0 = X
+* Java
+{% include_code LeetCode/Java/Missing-Number.java %}
+
+* Python
 {% include_code LeetCode/Python/Missing-Number.py %}

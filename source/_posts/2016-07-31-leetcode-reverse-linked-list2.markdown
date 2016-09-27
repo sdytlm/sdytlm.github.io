@@ -21,4 +21,11 @@ Given m, n satisfy the following condition:
 
 <!--more-->
 ### Solution
+[超简单的解法](https://discuss.leetcode.com/topic/8976/simple-java-solution-with-clear-explanation)
+
+
+* Java
+{% include_code LeetCode/Java/Reverse-Linked-List2.java %}
+
+* Python
 {% include_code LeetCode/Python/Reverse-Linked-List2.py %}

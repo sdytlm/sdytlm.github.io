@@ -26,3 +26,6 @@ What if the inputs contain unicode characters? How would you adapt your solution
 ### Solution
 * 排序s,t, 看是否相同
 {% include_code LeetCode/Python/Valid-Anagram.py %}
+
+* Java solution: 利用hash_map存每个字母出现次数
+{% include_code LeetCode/Java/Valid-Anagram.java %}
