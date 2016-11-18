@@ -30,5 +30,5 @@ You may assume k is always valid, 1 ≤ k ≤ n2.
 * 二分查找，start = matrix[0][0], end = matrix[-1][-1]
 * mid = (start+end)/2，统计小于等于mid的个数（统计时，以左下角为起点)
 
-{% include_code LeetCode/Python/K-Smallest-Element-in-A-Sorted-Matrix.py %}
+{% include_code LeetCode/Python/Kth-Smallest-Element-in-A-Sorted-Matrix.py %}
 

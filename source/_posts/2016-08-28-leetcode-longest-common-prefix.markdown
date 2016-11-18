@@ -11,4 +11,8 @@ Write a function to find the longest common prefix string amongst an array of st
 
 <!--more-->
 ### Solution
+* Java
+{% include_code LeetCode/Java/Longest-Common-Prefix.java %}
+
+* Python
 {% include_code LeetCode/Python/Longest-Common-Prefix.py %}

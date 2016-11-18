@@ -26,4 +26,10 @@ By calling next repeatedly until hasNext returns false, the order of elements re
 ### Solution
 
 * nestedList: List[NestedInteger]. NestedInteger有可能是integer也有可能还是一个List[NestedInteger]
+
+* Java
+
+{% include_code LeetCode/Java/Flatten-Nested-List-Iterator.java %}
+* Python
+
 {% include_code LeetCode/Python/Flatten-Nested-List-Iterator.py %}

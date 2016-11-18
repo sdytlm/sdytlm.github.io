@@ -45,5 +45,9 @@ After calling your function, the tree should look like:
 
 <!--more-->
 ### Solution
+* Java: Better solution
+{% include_code LeetCode/Java/Populating-Next-Right-Pointers-in-Each-Node.java %}
+
+
 * BFS
 {% include_code LeetCode/Python/Populating-next-right-pointers-in-each-node.py %}

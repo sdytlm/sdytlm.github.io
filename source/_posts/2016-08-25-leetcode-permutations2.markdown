@@ -22,6 +22,9 @@ Given a collection of numbers that might contain duplicates, return all possible
 ```
 <!--more-->
 ### Solution
-* 递归，注意去掉nums[i]==nums[i-1]的情况
+% Java: 用used记录当前element是否在tmp中
+{% include_code LeetCode/Java/Permutations2.java %}
+
+* Python: 递归，注意去掉nums[i]==nums[i-1]的情况
 
 {% include_code LeetCode/Python/Permutations2.py %}

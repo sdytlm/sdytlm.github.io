@@ -31,5 +31,8 @@ Given target = 20, return false.
 
 <!--more-->
 ### Solution
+* Java: Best Solution O(M+N)
+{% include_code LeetCode/Java/Search-a-2D-Matrix2.java %}
+
 * 搜索合适的行，二分查找该行
 {% include_code LeetCode/Python/Search-2D-Matrix2.py %}

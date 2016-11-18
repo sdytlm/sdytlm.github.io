@@ -23,6 +23,10 @@ You should return the following matrix:
 
 <!--more-->
 ### Solution
+* Java: Best Solution
+
+{% include_code LeetCode/Java/Spiral-Matrix2.java %}
+
 
 * Ideas is posted in `Spiral Matrix`
 

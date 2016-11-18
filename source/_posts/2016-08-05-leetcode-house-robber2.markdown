@@ -13,5 +13,8 @@ Given a list of non-negative integers representing the amount of money of each h
 
 <!--more-->
 ### Solution
-* Consider two cases: nums[0] not used and nums[n-1] not used
+* Java: 不用dp
+{% include_code LeetCode/Java/House-Robber2.java %}
+
+* Python: Consider two cases: nums[0] not used and nums[n-1] not used
 {% include_code LeetCode/Python/House-Robber2.py %}

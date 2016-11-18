@@ -22,5 +22,10 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 
 <!--more-->
 ### Solution
+* Java
+inorder递归，但是要引入两个global 变量
+
+{% include_code LeetCode/Java/Kth-Smallest-Element-in-BST.java %}
+
 * Mantain a stack to record the left subtree of current node.
 {% include_code LeetCode/Python/Kth-Smallest-Element-in-A-BST.py %}

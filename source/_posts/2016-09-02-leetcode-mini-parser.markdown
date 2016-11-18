@@ -37,7 +37,9 @@ Return a NestedInteger object containing a nested list with 2 elements:
 
 <!--more-->
 ### Solution
-
+####  Java Solution
+{% include_code LeetCode/Java/Mini-Parser.java %}
+#### Python Solution
 * 遍历字符串s，记当前字符为c
 
 * 如果c为'-'，则将符号变量negmul置为-1

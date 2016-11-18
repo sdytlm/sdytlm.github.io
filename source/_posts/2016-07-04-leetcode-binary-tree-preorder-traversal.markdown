@@ -26,4 +26,8 @@ Recursive solution is trivial, could you do it iteratively?
 
 <!--more-->
 ### Solution
+* Java: Iterative
+{% include_code LeetCode/Java/Binary-Tree-Preorder-Traversal.java %}
+
+* Python: recursive
 {% include_code LeetCode/Python/Binary-Tree-Preorder-Traversal.py %}

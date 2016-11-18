@@ -31,4 +31,9 @@ For now, the judge is able to judge based on one instance of gray code sequence.
 <!--more-->
 ### Solution
 * 一部分是n-1位格雷码，再加上 1<<(n-1)和n-1位格雷码的逆序的和。
+* Java
+{% include_code LeetCode/Java/Gray-Code.java %}
+
+
+* Python
 {% include_code LeetCode/Python/Gray-Code.py %}

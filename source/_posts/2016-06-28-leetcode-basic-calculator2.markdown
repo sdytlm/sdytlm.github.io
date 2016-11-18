@@ -27,6 +27,10 @@ Do not use the eval built-in library function.
 
 <!--more-->
 ### Solution
+#### Java
+{% include_code LeetCode/Java/Basic-Calculator2.java %}
+
+#### Python
 * 若当前运算符为乘除法，则马上对d与下一个运算数执行乘除运算，赋值给d；
 
 * 若当前运算符为加减法，则对total与d执行func（加减）运算，赋值给total，并更新func；

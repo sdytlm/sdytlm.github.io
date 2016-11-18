@@ -20,7 +20,11 @@ return [3, 4].
 
 <!--more-->
 ### Solution
-* Binary Search
+* Java: 两次二分
+{% include_code LeetCode/Java/Search-for-A-Range.java %}
+
+
+* Python: Binary Search
 
 {% include_code LeetCode/Python/Search-for-a-Range.py %}
 

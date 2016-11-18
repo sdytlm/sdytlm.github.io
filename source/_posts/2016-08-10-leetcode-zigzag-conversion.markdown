@@ -25,7 +25,7 @@ convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 * 模拟从第一行插入到numRows-1行，再倒回去，依次往复
 
 * Java:
-{% include_code LeetCode/Java/Zigzag-Conversion.java %}
+{% include_code LeetCode/Java/ZigZag-Conversion.java %}
 
 * Python
 {% include_code LeetCode/Python/Zigzag-Conversion.py %}

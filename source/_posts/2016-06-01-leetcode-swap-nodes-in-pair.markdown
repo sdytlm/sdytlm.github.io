@@ -17,4 +17,7 @@ Your algorithm should use only constant space. You may not modify the values in 
 <!--more-->
 
 ### Solution
+* Java
+{% include_code LeetCode/Java/Swap-Nodes-in-Pairs.java %}
+* Python
 {% include_code LeetCode/Python/Swap-Nodes-in-Pairs.py %}

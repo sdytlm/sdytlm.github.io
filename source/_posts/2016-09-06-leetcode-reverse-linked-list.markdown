@@ -16,4 +16,8 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 <!--more-->
 ### Solution
 
+*　Java
+{% include_code LeetCode/Java/Reverse-Linked-List.java %}
+
+* Python
 {% include_code LeetCode/Python/Reverse-Linked-List.py %}

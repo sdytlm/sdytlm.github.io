@@ -22,5 +22,8 @@ You should return [1, 3, 4].
 
 <!--more-->
 ### Solution
+* Java: Recursive
+{% include_code LeetCode/Java/Binary-Tree-Right-Size-View.java %}
+
 * BFS
 {% include_code LeetCode/Python/Binary-Tree-Right-Side-View.py %}

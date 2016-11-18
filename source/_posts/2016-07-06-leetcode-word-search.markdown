@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Word Search"
-date: 2016-07-05
+date: 2016-07-06
 comments: true
 categories: LeetCode
 tag: LeetCode
@@ -31,5 +31,8 @@ word = "ABCB", -> returns false.
 
 <!--more-->
 ### Solution
-* Use "." to replace the board[i][j] when it is visited.
+* Java: board[i][j] ^= 256，把字母变成非法数字
+{% include_code LeetCode/Java/Word-Search.java %}
+
+* Python: Use "." to replace the board[i][j] when it is visited.
 {% include_code LeetCode/Python/Word-Search.py %}

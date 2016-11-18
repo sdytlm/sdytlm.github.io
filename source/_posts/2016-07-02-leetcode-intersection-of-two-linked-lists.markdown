@@ -31,7 +31,10 @@ begin to intersect at node c1.
 
 <!--more-->
 ### Solution
+* Java: 把两条链跑两边,返回交点
+{% include_code LeetCode/Java/Intersection-of-Two-Linked-Lists.java %}
 
+* Python
 * 挪动较长的list. 保证headA 和 headB到末尾距离相同
 
 * 同时挪动headA和headB，判断是否有重合

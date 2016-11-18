@@ -24,4 +24,8 @@ Your solution should be in logarithmic complexity.
 
 <!--more-->
 ### Solution
+* Java: iteration+recursive
+{% include_code LeetCode/Java/Find-Peak-Element.java %}
+
+* Python
 {% include_code LeetCode/Python/Find-Peak-Element.py %}

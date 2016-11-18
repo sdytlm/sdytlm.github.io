@@ -29,5 +29,7 @@ Explanation:
 
 <!--more-->
 ### Solution
-
+* Java: 利用抑或
+{% include_code LeetCode/Java/Find-the-Difference.java %}
+* Python: 排序
 {% include_code LeetCode/Python/find-the-difference.py %}

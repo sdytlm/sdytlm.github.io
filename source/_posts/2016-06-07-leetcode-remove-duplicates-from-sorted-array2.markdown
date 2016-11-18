@@ -17,5 +17,8 @@ Your function should return length = 5, with the first five elements of nums bei
 
 <!--more-->
 ### Solution
+* Java: Best Solution
+{% include_code LeetCode/Java/Remove-Duplicates-from-Sorted-Array2.java %}
+
 
 {% include_code LeetCode/Python/Remove-Duplicates-from-Sorted-Array2.py %}

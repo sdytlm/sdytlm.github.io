@@ -46,5 +46,7 @@ All possible pairs are returned from the sequence:
 ### Solution
 * 运用min-heap
 关键是不知道nums1[i+1]+nums2[0] 与 nums1[i]+nums2[j] 之间的关系
-
+* Java
+{% include_code LeetCode/Java/Find-K-Pairs-with-Smallest-Sums.java %}
+* Python
 {% include_code LeetCode/Python/Find-K-Pairs-with-Smallest-Sums.py %} 

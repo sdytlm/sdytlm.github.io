@@ -14,4 +14,8 @@ Count the number of prime numbers less than a non-negative number, n.
 ### Solution
 
 * 打表求素数
+* Java
+{% include_code LeetCode/Java/Count-Primes.java %}
+
+* Python
 {% include_code LeetCode/Python/Count-Primes.py %}

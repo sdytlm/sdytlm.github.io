@@ -18,6 +18,9 @@ Given 1->1->1->2->3, return 2->3.
 
 <!--more-->
 ### Solution
+* Java
+{% include_code LeetCode/Java/Remove-Duplicates-from-Sorted-List2.java %}
 
+* Python
 * New list only contains the node without duplicates in the old list.
 {% include_code LeetCode/Python/Remove-Duplicates-from-Sorted-List2.py %}

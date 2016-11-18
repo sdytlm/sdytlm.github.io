@@ -29,6 +29,10 @@ Return the sum = 12 + 13 = 25.
 
 <!--more-->
 ### Solution
+* Recursive
+* Java
+{% include_code LeetCode/Java/Sum-Root-to-Leaf-Numbers.java %}
+
 
 * Tranverse the tree and record the value for each path
 {% include_code LeetCode/Python/Sum-Root-to-Leaf-Numbers.py %}

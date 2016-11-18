@@ -42,4 +42,8 @@ Given a particular n ≥ 1, find out how much money you need to have to guarante
 ### Solution
 * dp[i][j]: 表示搜索上下界位[i][j]时，需要付出的最大代价
 
+#### Java
+{% include_code LeetCode/Java/Guess-Number-Higher-or-Lower2.java %}
+
+#### Python
 {% include_code LeetCode/Python/Guess-Number-Higher-Lower2.py %}

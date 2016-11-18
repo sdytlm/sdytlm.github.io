@@ -23,4 +23,10 @@ You may check the breaking results of n ranging from 7 to 10 to discover the reg
 
 <!--more-->
 ### Solution
+* Java
+用所有的3作为因子，证明如下
+[思路](https://discuss.leetcode.com/topic/45341/a-simple-explanation-of-the-math-part-and-a-o-n-solution)
+{% include_code LeetCode/Java/Integer-Break.java %}
+
+* Python
 {% include_code LeetCode/Python/Integer-Break.py %}

@@ -29,4 +29,9 @@ given n = 3, a solution set is:
 * r: len of right parenthese you need to fill
 * r should be always >= l
 
+* Java:
+{% include_code LeetCode/Java/Generate-Parentheses.java %}
+
+
+* Python
 {% include_code LeetCode/Python/Generate-Parentheses.py %}

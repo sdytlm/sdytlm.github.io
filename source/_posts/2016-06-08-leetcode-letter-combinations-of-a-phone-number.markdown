@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Letter Combinations of a Phone Number"
-date: 2016-06-07
+date: 2016-06-08
 comments: true
 categories: LeetCode
 tag: LeetCode
@@ -21,4 +21,7 @@ Although the above answer is in lexicographical order, your answer could be in a
 
 <!--more-->
 ### Solution
+* Java
+{% include_code LeetCode/Java/Letter-Combinations-of-A-Phone-Number.java %}
+* Python
 {% include_code LeetCode/Python/Letter-Combinations-of-a-Phone-Number.py %}

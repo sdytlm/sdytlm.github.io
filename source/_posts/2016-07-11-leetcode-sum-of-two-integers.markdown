@@ -17,6 +17,11 @@ Given a = 1 and b = 2, return 3.
 
 * for negative integers, do it in C++, because `>> 1` in C++ will not fill 1
 
+* Java
+{% include_code LeetCode/Java/Sum-of-Two-Integers.java %}
+
+
+* Python
 ```
 class Solution {
 public:

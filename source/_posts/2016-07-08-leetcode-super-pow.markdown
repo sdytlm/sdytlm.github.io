@@ -26,6 +26,7 @@ Result: 1024
 
 <!--more-->
 ### Solution
-
+* Java
+{% include_code LeetCode/Java/Super-Pow.java %}
 * c mod m = (a ⋅ b) mod m  = [(a mod m) ⋅ (b mod m)] mod m
 {% include_code LeetCode/Python/Super-Pow.py %}

@@ -25,6 +25,9 @@ s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 
 <!--more-->
 ### Solution
+* Java 
+{% include_code LeetCode/Java/Decode-String.java %}
 
+* Python 
 * `stack<string,num>` 辅助
 {% include_code LeetCode/Python/Decode-String.py %}

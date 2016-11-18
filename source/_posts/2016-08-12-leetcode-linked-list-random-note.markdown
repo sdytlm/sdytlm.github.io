@@ -27,9 +27,18 @@ solution.getRandom();
 
 <!--more-->
 ### Solution
+[Proof](https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling/2)
+
+#### Java
+{% include_code LeetCode/Java/Linked-List-Random-Node.java %}
+
+#### Python
+
 * 我们以第2个数为例（就是head.next.val）
 
 * 在从[0,n]遍历一边的过程中被选取的概率为`(1/2)* （2/3）*（3/4）* ……….. (n-1) / n = 1/n`   （选取第2个数在长度为2的时候为1/2，其他的都不要选)
 
 * 此一类推，任何一个数x在遍历一边中被选到的概率都是1/n
-{% include_code LeetCode/Python/Linked-List-Random-Note.py %}
+
+{% include_code LeetCode/Python/Linked-List-Random-Node.py %}
+

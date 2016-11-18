@@ -38,6 +38,10 @@ If you notice carefully in the flattened tree, each node's right child points to
 
 <!--more-->
 ### Solution
+* Java Solution
+{% include_code LeetCode/Java/Flatten-Binary-Tree-to-Linked-List.java %}
+
+* Python Solution
 * Pre-order and put node into a stack.
 * change the tree by the nodes in stack.
 {% include_code LeetCode/Python/Flatten-Binary-Tree-to-Linked-List.py %}

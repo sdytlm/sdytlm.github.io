@@ -24,7 +24,7 @@ In this case, you should ignore redundant slashes and return "/home/foo".
 ### Solution
 
 * Java
-{% include_code LeetCode/Java/Simplify-Path.java %}
+{% include_code LeetCode/Java/Simplify-path.java %}
 
 * Python
 {% include_code LeetCode/Python/Simplify-Path.py %}

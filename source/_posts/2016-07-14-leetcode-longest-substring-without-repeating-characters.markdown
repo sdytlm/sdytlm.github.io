@@ -20,4 +20,11 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 
 <!--more-->
 ### Solution
+
+* Java
+* hash_map记录所有已经出现的字符最近的位置
+* j: 当前非重复串的起点, i: 当前非重复串的
+{% include_code LeetCode/Java/Longest-Substring-without-Repeating.java %}
+
+* Python
 {% include_code LeetCode/Python/Longest-Substring-Without-Repeating-Characters.py %}

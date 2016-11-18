@@ -58,4 +58,8 @@ How many MHTs can a graph have at most?
 
 * 基本思路是“逐层删去叶子节点，直到剩下根节点为止”
 
+* Java
+{% include_code LeetCode/Java/Minimum-Height-Trees.java %}
+
+* Python
 {% include_code LeetCode/Python/Minimum-Height-Trees.py %}
