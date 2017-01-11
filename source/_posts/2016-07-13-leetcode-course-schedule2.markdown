@@ -33,3 +33,6 @@ The input prerequisites is a graph represented by a list of edges, not adjacency
 
 <!--more-->
 ### Solution
+#### Java
+
+{%include_code LeetCode/Java/Course-Schedule2.java %}

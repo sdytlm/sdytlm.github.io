@@ -12,7 +12,10 @@ Given a string S, find the longest palindromic substring in S. You may assume th
 
 <!--more-->
 ### Solution
-
+#### DP
 [讲解](http://articles.leetcode.com/longest-palindromic-substring-part-i/)
 
 {% include_code LeetCode/Python/Longest-Palindromic-Substring.py %}
+
+#### Recursive
+{% include_code LeetCode/Java/Longest-Palindromic-Substring.java %}

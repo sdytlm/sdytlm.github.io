@@ -37,4 +37,8 @@ Visually, the graph looks like the following:
 
 ### Solution
 
+#### Java
+DFS
+{% include_code LeetCode/Java/Clone-Graph.java %}
+#### Python
 {% include_code LeetCode/Python/Clone-Graph.py %}
