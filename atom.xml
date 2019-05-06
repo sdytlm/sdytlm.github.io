@@ -4,7 +4,7 @@
   <title><![CDATA[卖萌的弱渣]]></title>
   <link href="http://sdytlm.github.io/atom.xml" rel="self"/>
   <link href="http://sdytlm.github.io/"/>
-  <updated>2019-05-06T11:22:00+08:00</updated>
+  <updated>2019-05-06T11:38:15+08:00</updated>
   <id>http://sdytlm.github.io/</id>
   <author>
     <name><![CDATA[Min Li]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Company List]]></title>
+    <link href="http://sdytlm.github.io/blog/2019/05/06/company-list/"/>
+    <updated>2019-05-06T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2019/05/06/company-list</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>layout: post
+title: &ldquo;公司清单&rdquo;
+date: 2019-05-06
+comments: true
+categories: Investment</p>
+
+<h2>tag: Investment</h2>
+
+<p>=== 公司主营业务</p>
+
+<p>主营业务是什么，最近几年的销量和收入增速</p>
+
+<p>=== 行业分析</p>
+
+<p>行业的产业链、产量、产能、竞争格局、供应和需求分析、行业发展阶段（不同行业分析的重点可能不同）。</p>
+
+<p>比如行业的发展阶段若出于快速衰退和可以预见到被取代则pass，而行业停滞和缓慢衰退同时市场集中度不高的则也有投资价值（水泥行业）。</p>
+
+<p>=== 业务是否存在</p>
+
+<p>这一点可重要可不重要，因为很多企业尤其是to C的企业基本不会有这个问题，而在看一家to B的企业时则需要关注这个点（很多港股的化工企业就有这个问题）。</p>
+
+<p>实地调研、竞争对手、供应商、消费者、上市年份（超过10年的基本不会有问题）、借壳上市（有问题的可能性更大）。</p>
+
+<p>=== 财务数据是否真实</p>
+
+<p>+有足够的货币资金，是否还有大量的短期和长期借款；</p>
+
+<p>+商誉数额，形成的原因；</p>
+
+<p>+经营性净现金流/归母净；</p>
+
+<p>+毛利率、净利率异于同行的原因；</p>
+
+<p>+存货、应收账款周转率是否异于行业；</p>
+
+<p>+关联交易数额；</p>
+
+<p>=== 财务表现（本身以及同行业比较）</p>
+
+<p>ROE、ROIC、十年资本支出效率</p>
+
+<p>=== 公司的核心竞争力（护城河）</p>
+
+<p>需要与第5点一起看。</p>
+
+<p>成本优势、品牌优势、技术优势、特许经营权</p>
+
+<p>=== 股权结构</p>
+
+<p>很多公司为什么不具有先发优势、不具有天生优势、所在的行业也不是一个好生意，但是依然可以超越同行，为投资者带来丰厚的回报，原因是管理效率高，而根本的原因是股权结构。比如海螺水泥、洋河股份，他们的管理层和员工持股激发了人的活力。</p>
+
+<p>我认为股权结构从好到不好的顺序是混合所有制、国资绝对控股、民营绝对控股。</p>
+
+<p>=== 利益相关者、企业文化、社会责任</p>
+
+<p>看完基业长青这本书知道企业文化很重要，做正确的事，使企业更长久和健康的活下去，需要公司有正确的企业文化，但是这一点还是蛮难观察的，可能通过实地调研是更好的办法。</p>
+
+<p>=== 未来业务发展</p>
+
+<p>价格和量上</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[会计报表]]></title>
@@ -1993,105 +2064,6 @@ The first 3 bits are all one&rsquo;s and the 4th bit is 0 means it is a 3-bytes 
 <li>Python
 File /Users/minli/Desktop/Personal/sdytlm.github.io/source/downloads/code/LeetCode/Python/Reverse-Linked-List.py could not be found</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rectangle Area]]></title>
-    <link href="http://sdytlm.github.io/blog/2016/09/06/leetcode-rectangle-area/"/>
-    <updated>2016-09-06T00:00:00+08:00</updated>
-    <id>http://sdytlm.github.io/blog/2016/09/06/leetcode-rectangle-area</id>
-    <content type="html"><![CDATA[<p>Find the total area covered by two rectilinear rectangles in a 2D plane.</p>
-
-<p>Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.</p>
-
-<p>Rectangle Area
-Assume that the total area is never beyond the maximum possible value of int.</p>
-
-<!--more-->
-
-
-<h3>Solution</h3>
-
-<ul>
-<li>面积＝两个长方形面积－相交部分的面积</li>
-</ul>
-
-
-<figure class='code'><figcaption><span> (Rectangle-Area.py)</span> <a href='http://sdytlm.github.io/downloads/code/LeetCode/Python/Rectangle-Area.py'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">computeArea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
-</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="sd">        :type A: int</span>
-</span><span class='line'><span class="sd">        :type B: int</span>
-</span><span class='line'><span class="sd">        :type C: int</span>
-</span><span class='line'><span class="sd">        :type D: int</span>
-</span><span class='line'><span class="sd">        :type E: int</span>
-</span><span class='line'><span class="sd">        :type F: int</span>
-</span><span class='line'><span class="sd">        :type G: int</span>
-</span><span class='line'><span class="sd">        :type H: int</span>
-</span><span class='line'><span class="sd">        :rtype: int</span>
-</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
-</span><span class='line'>        <span class="c"># 两个长方形面积和</span>
-</span><span class='line'>        <span class="n">area</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span><span class="o">-</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">D</span><span class="o">-</span><span class="n">B</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">G</span><span class="o">-</span><span class="n">E</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">H</span><span class="o">-</span><span class="n">F</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">if</span> <span class="n">A</span> <span class="o">&gt;</span> <span class="n">G</span> <span class="ow">or</span> <span class="n">C</span> <span class="o">&lt;</span> <span class="n">E</span> <span class="ow">or</span> <span class="n">D</span> <span class="o">&lt;</span> <span class="n">F</span> <span class="ow">or</span> <span class="n">B</span> <span class="o">&gt;</span> <span class="n">H</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">area</span>
-</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">area</span> <span class="o">-</span> <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">H</span><span class="p">)</span><span class="o">-</span><span class="nb">max</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">F</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">E</span><span class="p">))</span>
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Java:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span> (Rectangle-Area.java)</span> <a href='http://sdytlm.github.io/downloads/code/LeetCode/Java/Rectangle-Area.java'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">computeArea</span><span class="o">(</span><span class="kt">int</span> <span class="n">A</span><span class="o">,</span> <span class="kt">int</span> <span class="n">B</span><span class="o">,</span> <span class="kt">int</span> <span class="n">C</span><span class="o">,</span> <span class="kt">int</span> <span class="n">D</span><span class="o">,</span> <span class="kt">int</span> <span class="n">E</span><span class="o">,</span> <span class="kt">int</span> <span class="n">F</span><span class="o">,</span> <span class="kt">int</span> <span class="n">G</span><span class="o">,</span> <span class="kt">int</span> <span class="n">H</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">int</span> <span class="n">area</span> <span class="o">=</span> <span class="o">(</span><span class="n">G</span><span class="o">-</span><span class="n">E</span><span class="o">)*(</span><span class="n">H</span><span class="o">-</span><span class="n">F</span><span class="o">)</span> <span class="o">+</span> <span class="o">(</span><span class="n">C</span><span class="o">-</span><span class="n">A</span><span class="o">)*(</span><span class="n">D</span><span class="o">-</span><span class="n">B</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">A</span><span class="o">&gt;</span><span class="n">G</span> <span class="o">||</span> <span class="n">B</span><span class="o">&gt;</span><span class="n">H</span> <span class="o">||</span> <span class="n">D</span><span class="o">&lt;</span><span class="n">F</span> <span class="o">||</span> <span class="n">C</span><span class="o">&lt;</span><span class="n">E</span><span class="o">)</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">area</span><span class="o">;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">area</span><span class="o">-(</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">C</span><span class="o">,</span><span class="n">G</span><span class="o">)-</span><span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">A</span><span class="o">,</span><span class="n">E</span><span class="o">))*(</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">D</span><span class="o">,</span><span class="n">H</span><span class="o">)-</span><span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">B</span><span class="o">,</span><span class="n">F</span><span class="o">));</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
 
 ]]></content>
   </entry>

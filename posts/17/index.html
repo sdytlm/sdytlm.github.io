@@ -9,7 +9,7 @@
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="Given a range [m, n] where 0 &lt;= m &lt;= n &lt;= 2147483647, return the bitwise AND of all numbers in this range, inclusive. For example, given the &hellip;">
+  <meta name="description" content="Given a 2d grid map of &lsquo;1&rsquo;s (land) and '0&rsquo;s (water), count the number of islands. An island is surrounded by water and is formed by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/07/21/leetcode-number-of-islands/">Number of Islands</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-21'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a 2d grid map of &lsquo;1&rsquo;s (land) and &#8216;0&rsquo;s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+
+<h4>Example 1:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>11110
+</span><span class='line'>11010
+</span><span class='line'>11000
+</span><span class='line'>00000</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Answer: 1</p>
+
+<h4>Example 2:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>11000
+</span><span class='line'>11000
+</span><span class='line'>00100
+</span><span class='line'>00011</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Answer: 3</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/07/21/leetcode-number-of-islands/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -483,86 +545,6 @@ You should NOT use internal library such as BigInteger.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/07/14/leetcode-flatten-binary-tree-to-linked-list/">Flatten Binary Tree to Linked List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-07-14'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Given a binary tree, flatten it to a linked list in-place.</p>
-
-<h4>Example</h4>
-
-<p>Given</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>     1
-</span><span class='line'>    / \
-</span><span class='line'>   2   5
-</span><span class='line'>  / \   \
-</span><span class='line'> 3   4   6</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The flattened tree should look like:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>   1
-</span><span class='line'>    \
-</span><span class='line'>     2
-</span><span class='line'>      \
-</span><span class='line'>       3
-</span><span class='line'>        \
-</span><span class='line'>         4
-</span><span class='line'>          \
-</span><span class='line'>           5
-</span><span class='line'>            \
-</span><span class='line'>             6</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Hints:</h4>
-
-<p>If you notice carefully in the flattened tree, each node&rsquo;s right child points to the next node of a pre-order traversal.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/07/14/leetcode-flatten-binary-tree-to-linked-list/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/18">&larr; Older</a>
@@ -594,6 +576,10 @@ You should NOT use internal library such as BigInteger.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/06/company-list/">Company List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/04/01/accountant/">会计报表</a>
       </li>
     
@@ -607,10 +593,6 @@ You should NOT use internal library such as BigInteger.</p>
     
       <li class="post">
         <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
       </li>
     
   </ul>

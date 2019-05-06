@@ -9,7 +9,7 @@
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array. &hellip;">
+  <meta name="description" content="Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/07/09/leetcode-path-sum/">Path Sum</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-09'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+
+<h4>Example:</h4>
+
+<p>Given the below binary tree and sum = 22,</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>          5
+</span><span class='line'>         / \
+</span><span class='line'>        4   8
+</span><span class='line'>       /   / \
+</span><span class='line'>      11  13  4
+</span><span class='line'>     /  \      \
+</span><span class='line'>    7    2      1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/07/09/leetcode-path-sum/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -505,55 +561,6 @@ b = [1,0]</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/07/06/leetcode-kth-smallest-element-in-a-bst/">Kth Smallest Element in a BST</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-07-06'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
-
-<h4>Note:</h4>
-
-<p>You may assume k is always valid, 1 ≤ k ≤ BST&rsquo;s total elements.</p>
-
-<h4>Follow up:</h4>
-
-<p>What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
-
-<ul>
-<li>Try to utilize the property of a BST.</li>
-<li>What if you could modify the BST node&rsquo;s structure?</li>
-<li>The optimal runtime complexity is O(height of BST).</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/07/06/leetcode-kth-smallest-element-in-a-bst/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/21">&larr; Older</a>
@@ -585,6 +592,10 @@ b = [1,0]</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/06/company-list/">Company List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/04/01/accountant/">会计报表</a>
       </li>
     
@@ -598,10 +609,6 @@ b = [1,0]</p>
     
       <li class="post">
         <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
       </li>
     
   </ul>

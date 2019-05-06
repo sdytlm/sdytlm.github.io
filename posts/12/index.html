@@ -9,7 +9,10 @@
   <meta name="author" content="Min Li">
 
   
-  <meta name="description" content="Given a 2D board and a list of words from the dictionary, find all words in the board. Each word must be constructed from letters of sequentially &hellip;">
+  <meta name="description" content="Design a data structure that supports the following two operations: 1
+2
+void addWord(word)
+bool search(word) search(word) can search a literal word &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +70,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/09/leetcode-add-and-search-word/">Add and Search Word</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-09'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Design a data structure that supports the following two operations:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void addWord(word)
+</span><span class='line'>bool search(word)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>search(word) can search a literal word or a regular expression string containing only letters a-z or .. A . means it can represent any one letter.</p>
+
+<h4>For example:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>addWord("bad")
+</span><span class='line'>addWord("dad")
+</span><span class='line'>addWord("mad")
+</span><span class='line'>search("pad") -&gt; false
+</span><span class='line'>search("bad") -&gt; true
+</span><span class='line'>search(".ad") -&gt; true
+</span><span class='line'>search("b..") -&gt; true</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Note:</h4>
+
+<p>You may assume that all words are consist of lowercase letters a-z.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/09/leetcode-add-and-search-word/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -481,50 +548,6 @@ return [0, 1].</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/08/07/leetcode-search-for-a-range/">Search for a Range</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-07'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Given a sorted array of integers, find the starting and ending position of a given target value.</p>
-
-<p>Your algorithm&rsquo;s runtime complexity must be in the order of O(log n).</p>
-
-<p>If the target is not found in the array, return [-1, -1].</p>
-
-<h4>Example</h4>
-
-<p>Given [5, 7, 7, 8, 8, 10] and target value 8,</p>
-
-<p>return [3, 4].</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/08/07/leetcode-search-for-a-range/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/13">&larr; Older</a>
@@ -556,6 +579,10 @@ return [0, 1].</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/06/company-list/">Company List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/04/01/accountant/">会计报表</a>
       </li>
     
@@ -569,10 +596,6 @@ return [0, 1].</p>
     
       <li class="post">
         <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
       </li>
     
   </ul>
