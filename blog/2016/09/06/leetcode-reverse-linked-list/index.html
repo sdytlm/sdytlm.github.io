@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Reverse Linked List - 卖萌的弱渣</title>
+  <meta name="author" content="Min Li">
+
+  
+  <meta name="description" content="Reverse a singly linked list. Hint: A linked list can be reversed either iteratively or recursively. Could you implement both? Solution *　Java ( &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sdytlm.github.io/blog/2016/09/06/leetcode-reverse-linked-list">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">卖萌的弱渣</a></h1>
+  
+    <h2>I am stupid, I am hungry.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="sdytlm.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://ramsites.net/~lim4/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Reverse Linked List</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-09-06'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Reverse a singly linked list.</p>
+
+<h4>Hint:</h4>
+
+<p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+
+<!--more-->
+
+
+<h3>Solution</h3>
+
+<p>*　Java</p>
+
+<figure class='code'><figcaption><span> (Reverse-Linked-List.java)</span> <a href='/downloads/code/LeetCode/Java/Reverse-Linked-List.java'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Definition for singly-linked list.</span>
+</span><span class='line'><span class="cm"> * public class ListNode {</span>
+</span><span class='line'><span class="cm"> *      int val;</span>
+</span><span class='line'><span class="cm"> *      ListNode next;</span>
+</span><span class='line'><span class="cm"> *      ListNode(int x) { val = x; }</span>
+</span><span class='line'><span class="cm"> * }</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">reverseList</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">reverse</span><span class="o">(</span><span class="n">head</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">reverse</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="n">ListNode</span> <span class="n">newhead</span><span class="o">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">newhead</span><span class="o">;</span>
+</span><span class='line'>        <span class="n">ListNode</span> <span class="n">nextNode</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span><span class='line'>        <span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newhead</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">reverse</span><span class="o">(</span><span class="n">nextNode</span><span class="o">,</span><span class="n">head</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Python
+File /Users/minli/Desktop/Personal/sdytlm.github.io/source/downloads/code/LeetCode/Python/Reverse-Linked-List.py could not be found</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Min Li</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-09-06'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://sdytlm.github.io/blog/2016/09/06/leetcode-reverse-linked-list/" data-via="" data-counturl="http://sdytlm.github.io/blog/2016/09/06/leetcode-reverse-linked-list/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/09/06/leetcode-rectangle-area/" title="Previous Post: Rectangle Area">&laquo; Rectangle Area</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/09/07/leetcode-count-primes/" title="Next Post: Count Primes">Count Primes &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/geek/'>geek (3)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (281)</a></li>
+<li class='category'><a href='/blog/categories/lintcode/'>lintcode (78)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (6)</a></li>
+<li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>nodejs (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (9)</a></li>
+<li class='category'><a href='/blog/categories/virtualization/'>virtualization (10)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/04/01/accountant/">会计报表</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/16/virtualization-play-kvmgt/">Play KVMGT (GPU Virtualization)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/leetcode-partition-equal-subset-sum/">Partition Equal Subset Sum</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 90%" href="/tags/geek/">Geek</a>
+<a style="font-size: 210%" href="/tags/leetcode/">LeetCode</a>
+<a style="font-size: 184%" href="/tags/lintcode/">LintCode</a>
+<a style="font-size: 114%" href="/tags/linux/">Linux</a>
+<a style="font-size: 90%" href="/tags/geek/">geek</a>
+<a style="font-size: 159%" href="/tags/leetcode/">leetcode</a>
+<a style="font-size: 114%" href="/tags/linux/">linux</a>
+<a style="font-size: 114%" href="/tags/mit6-dot-828/">mit6.828</a>
+<a style="font-size: 138%" href="/tags/python/">python</a>
+<a style="font-size: 140%" href="/tags/virtualization/">virtualization</a>
+
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Min Li -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

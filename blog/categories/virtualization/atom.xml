@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Virtualization | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/virtualization/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Play KVMGT (GPU Virtualization)]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/11/16/virtualization-play-kvmgt/"/>
+    <updated>2016-11-16T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/11/16/virtualization-play-kvmgt</id>
+    <content type="html"><![CDATA[<h3>Host (Opensuse 14.2)</h3>
+
+<ul>
+<li>install libcheese</li>
+</ul>
+
+
+<p><code>sudo apt-get install libglew-dev libcheese7 libcheese-gtk23 libclutter-gst-2.0-0 libcogl15 libclutter-gtk-1.0-0 libclutter-1.0-0</code></p>
+
+<ul>
+<li>Download new host kernel</li>
+</ul>
+
+
+<pre><code>git clone https://github.com/01org/igvtg-kernel kernel_src
+cd kernel_src
+git checkout 2016q2-4.3.0 (linux kernel 4.3)
+cp configure-file to ./.config
+make ; make modules ; make modules_install ; make install; 
+</code></pre>
+
+<h3>QEMU (2.3)</h3>
+
+<p>In ./configure, Add <code>-lEGL</code> when vgt-egl-compositor is used.</p>
+
+<pre><code>git clone https://github.com/01org/igvtg-qemu qemu_src
+cd qemu_src
+git submodule update --init dtc
+git submodule update --init roms/seabios
+./configure --prefix=/usr \
+            --enable-kvm \
+            --enable-sdl \
+            --disable-werror \
+            --target-list=x86_64-softmmu
+make 
+cd roms/seabios
+LC_ALL=C make -j8
+</code></pre>
+
+<h3>Host Grub</h3>
+
+<p>Add <code>intel_iommu=igfx_off i915.hvm_boot_foreground=1 loglvl=all guest_loglvl=all conring_size=4M noreboot</code> on linux option.</p>
+
+<h3>Host Driver</h3>
+
+<ul>
+<li>Update all packages including x11-xorg</li>
+</ul>
+
+
+<pre><code>git clone git://anongit.freedesktop.org/git/xorg/driver/xf86-video-intel
+cd xf86-video-intel
+git checkout 2.99.917
+./autogen.sh --prefix=/opt/hsw/usr
+make &amp;&amp; make install
+cd /usr/lib64/xorg/modules/drivers/
+ln -sf /opt/hsw/usr/lib64/xorg/modules/drivers/intel_drv.so intel_drv.so
+</code></pre>
+
+<h3>Guest</h3>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Display Guest's Boot Message in Host]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/04/01/qemu-debug-guest/"/>
+    <updated>2016-04-01T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/04/01/qemu-debug-guest</id>
+    <content type="html"><![CDATA[<h3>QEMU Commands</h3>
+
+<ul>
+<li>virtualized serial port is directed to the host tcp port:1223
+<code>
+qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none -bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait -netdev tap,script=/data/images/qemu-image/qemu-ifup0.sh,id=net0 -device virtio-net-pci,netdev=net0 -hda /data/images/qemu-image/opensuse-50G.raw -name 23 -cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23
+</code></li>
+</ul>
+
+
+<h3>Configure Guest GRUB</h3>
+
+<ul>
+<li><p><code>dmesg | grep ttyS</code> make sure virtualized serial port exists</p></li>
+<li><p>Make guest display boot message on serial</p>
+
+<ol>
+<li>/etc/default/grub/</li>
+</ol>
+</li>
+</ul>
+
+
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,9600n8 "
+GRUB_TERMINAL=serial
+GRUB_SERIAL_COMMAND="serial --speed=9600 -unit=0 --word=8 --parity=no --stop=1"    
+</code></pre>
+
+<pre><code>2. update grub config
+</code></pre>
+
+<h3>Host connection</h3>
+
+<ul>
+<li>Turn of the VM</li>
+<li>Add <code>-S</code> in the qemu command to suspend the VM and you can telnet the port</li>
+<li>Boot the VM and <code>telnet localhost 1223</code> after VM is suspended.</li>
+<li>Resume the VM in qemu</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Virtio-pci Device PCI Config Space]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/02/18/virtio-pci-config-space/"/>
+    <updated>2016-02-18T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/02/18/virtio-pci-config-space</id>
+    <content type="html"><![CDATA[<h3>Decode the virtio pci config space</h3>
+
+<ul>
+<li>Device: virtio-serial</li>
+<li>QEMU: 2.5</li>
+<li>Helper: PCI peek program (written by myself)
+
+<ul>
+<li>open <code>/dev/mem</code></li>
+<li>use linux mmap to map the device address to virtual address (address must be page aligned.</li>
+<li>read the content from the virtual address</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>Virtio pci config space</h4>
+
+<p><img src="/images/virtio-pci-space.png"/></p>
+
+<!--more-->
+
+
+<h4>Decode Manually</h4>
+
+<ul>
+<li>Check pci capability list (offset <code>33h</code>)</li>
+<li>Get the entry point of capability list: <code>40h</code></li>
+<li>Read offset <code>40h</code> and get the first capability id <code>0x11</code></li>
+<li>Google the capability id for pci config and find <code>0x11</code> means <code>MSIX</code></li>
+<li>Read the following bits based on the MSIX spec</li>
+</ul>
+
+
+<p><img src="/images/msix-capability-structure.png"/></p>
+
+<ul>
+<li><p>read MSIX capability structure in offset <code>40h</code></p>
+
+<ul>
+<li><code>11 00 01 80</code> => <code>80 01 00 11</code>: MSIX capability ID, table size (2) including one empty entry, MSIX enabled, no next capability</li>
+<li><code>01 00 00 00</code> => <code>00 00 00 01</code>: read MSIX table address in <code>BAR1</code> (2nd bar), offset: <code>00h</code></li>
+<li><code>01 08 00 00</code> => <code>00 00 08 01</code>: read MSIX function pending bit array address in <code>BAR1</code>, offset: <code>08h</code></li>
+</ul>
+</li>
+<li><p>check BAR 1 and find the start address is <code>0xfebd6000</code> (device address)</p></li>
+<li>peek and get the start address (<code>0xfe00000</code>) of the first MSIX table</li>
+<li>Note: BAR 0 is used as I/O bar.</li>
+</ul>
+
+
+<pre><code class="">./peek.o 0xfebd6000 0x0
+&gt;&gt; 0xfee00000 
+</code></pre>
+
+<ul>
+<li>peek <code>0xfebd6000 + 08h</code> and get the start point of MSIx pending bit array address</li>
+<li>The MSIX table entry struct is as follow</li>
+</ul>
+
+
+<p><img src="/images/msix-table-entry.png"/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Virtio-pci Driver Initialization]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/02/16/virtualization-virtio-pci/"/>
+    <updated>2016-02-16T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/02/16/virtualization-virtio-pci</id>
+    <content type="html"><![CDATA[<p><img src="/images/virtio-pci-driver-init.png"/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[QEMU Compile SeaBios]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/02/04/qemu-compile-seabios/"/>
+    <updated>2016-02-04T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/02/04/qemu-compile-seabios</id>
+    <content type="html"><![CDATA[<p>You must follow the order:
+<code>
+in qemu/
+make distclean
+</code>
+<code>
+in rom/
+make bios CONFIG_ROM_SIZE=256
+</code>
+<code>
+in qemu/
+./configure --target-list=x86_64-softmmu
+</code>
+<code>
+in qemu/
+make
+make install
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

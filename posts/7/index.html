@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>卖萌的弱渣</title>
+  <meta name="author" content="Min Li">
+
+  
+  <meta name="description" content="Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n. Example: Given n = 2, return 91. (The answer should be &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sdytlm.github.io/posts/7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">卖萌的弱渣</a></h1>
+  
+    <h2>I am stupid, I am hungry.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="sdytlm.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://ramsites.net/~lim4/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/24/leetcode-count-numbers-with-unique-digits/">Count Numbers With Unique Digits</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-24'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.</p>
+
+<h4>Example:</h4>
+
+<p>Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</p>
+
+<h4>Hint:</h4>
+
+<ul>
+<li>A direct way is to use the backtracking approach.</li>
+<li>Backtracking should contains three states which are (the current number, number of steps to get that number and a bitmask which represent which number is marked as visited so far in the current number). Start with state (0,0,0) and count all valid number till we reach number of steps equals to 10n.</li>
+<li>This problem can also be solved using a dynamic programming approach and some knowledge of combinatorics.</li>
+<li>Let f(k) = count of numbers with unique digits with length equals k.</li>
+<li>f(1) = 10, &hellip;, f(k) = 9 * 9 * 8 * &hellip; (9 - k + 2) [The first factor is 9 because a number cannot start with 0].</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/24/leetcode-count-numbers-with-unique-digits/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-valid-anagram/">Valid Anagram</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
+
+<h4>For example,</h4>
+
+<p>s = &ldquo;anagram&rdquo;, t = &ldquo;nagaram&rdquo;, return true.
+s = &ldquo;rat&rdquo;, t = &ldquo;car&rdquo;, return false.</p>
+
+<h4>Note:</h4>
+
+<p>You may assume the string contains only lowercase alphabets.</p>
+
+<h4>Follow up:</h4>
+
+<p>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-valid-anagram/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-merge-intervals/">Merge Intervals</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a collection of intervals, merge all overlapping intervals.</p>
+
+<h4>For example,</h4>
+
+<p>Given [1,3],[2,6],[8,10],[15,18],</p>
+
+<p>return [1,6],[8,10],[15,18].</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-merge-intervals/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-max-points-on-a-line/">Max Points on a Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given n points on a 2D plane, find the maximum number of points that lie on the same straight line</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-max-points-on-a-line/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-jump-game2/">Jump Game II</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+
+<p>Each element in the array represents your maximum jump length at that position.</p>
+
+<p>Your goal is to reach the last index in the minimum number of jumps.</p>
+
+<h4>For example:</h4>
+
+<p>Given array A = [2,3,1,1,4]</p>
+
+<p>The minimum number of jumps to reach the last index is 2. (Jump 1 step from index 0 to 1, then 3 steps to the last index.)</p>
+
+<h4>Note:</h4>
+
+<p>You can assume that you can always reach the last index.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-jump-game2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a string, find the first non-repeating character in it and return it&rsquo;s index. If it doesn&rsquo;t exist, return -1.</p>
+
+<h4>Examples:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>s = "leetcode"
+</span><span class='line'>return 0.
+</span><span class='line'>
+</span><span class='line'>s = "loveleetcode",
+</span><span class='line'>return 2.</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Note:</h4>
+
+<p>You may assume the string contain only lowercase letters.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-first-unique-character-in-a-string/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-binary-tree-postorder-traversal/">Binary Tree Postorder Traversal</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a binary tree, return the postorder traversal of its nodes&#8217; values.</p>
+
+<h4>For example:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Given binary tree {1,#,2,3},
+</span><span class='line'>   1
+</span><span class='line'>    \
+</span><span class='line'>     2
+</span><span class='line'>    /
+</span><span class='line'>   3</span></code></pre></td></tr></table></div></figure>
+
+
+<p>return [3,2,1].</p>
+
+<h4>Note:</h4>
+
+<p>Recursive solution is trivial, could you do it iteratively?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-binary-tree-postorder-traversal/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/23/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Sell and Buy Stock With Cooldown</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-23'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:</p>
+
+<p>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
+After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)</p>
+
+<h4>Example:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>prices = [1, 2, 3, 0, 2]
+</span><span class='line'>maxProfit = 3
+</span><span class='line'>transactions = [buy, sell, cooldown, buy, sell]</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/23/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/22/leetcode-valid-number/">Valid Number</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-22'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Validate if a given string is numeric.</p>
+
+<p>Some examples:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"0" =&gt; true
+</span><span class='line'>" 0.1 " =&gt; true
+</span><span class='line'>"abc" =&gt; false
+</span><span class='line'>"1 a" =&gt; false
+</span><span class='line'>"2e10" =&gt; true</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Note:</h4>
+
+<p>It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/22/leetcode-valid-number/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/22/leetcode-merge-k-sorted-lists/">Merge K Sorted Lists</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-22'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/08/22/leetcode-merge-k-sorted-lists/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/8">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/6">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/geek/'>geek (3)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (281)</a></li>
+<li class='category'><a href='/blog/categories/lintcode/'>lintcode (78)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (6)</a></li>
+<li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>nodejs (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (9)</a></li>
+<li class='category'><a href='/blog/categories/virtualization/'>virtualization (10)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/04/01/accountant/">会计报表</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/16/virtualization-play-kvmgt/">Play KVMGT (GPU Virtualization)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/leetcode-partition-equal-subset-sum/">Partition Equal Subset Sum</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 90%" href="/tags/geek/">Geek</a>
+<a style="font-size: 210%" href="/tags/leetcode/">LeetCode</a>
+<a style="font-size: 184%" href="/tags/lintcode/">LintCode</a>
+<a style="font-size: 114%" href="/tags/linux/">Linux</a>
+<a style="font-size: 90%" href="/tags/geek/">geek</a>
+<a style="font-size: 159%" href="/tags/leetcode/">leetcode</a>
+<a style="font-size: 114%" href="/tags/linux/">linux</a>
+<a style="font-size: 114%" href="/tags/mit6-dot-828/">mit6.828</a>
+<a style="font-size: 138%" href="/tags/python/">python</a>
+<a style="font-size: 140%" href="/tags/virtualization/">virtualization</a>
+
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Min Li -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

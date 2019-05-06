@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: geek | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/tags/geek/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[会计报表]]></title>
+    <link href="http://sdytlm.github.io/blog/2017/04/01/accountant/"/>
+    <updated>2017-04-01T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2017/04/01/accountant</id>
+    <content type="html"><![CDATA[<h3>资产负债表</h3>
+
+<h3>利润表</h3>
+
+<h3>现金流量表</h3>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: NodeJS | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/tags/nodejs/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NodeJS: Introduction]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/08/24/NodeJS1/"/>
+    <updated>2015-08-24T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/08/24/NodeJS1</id>
+    <content type="html"><![CDATA[<!--more-->
+
+
+<pre><code class="javascript">// hello.js
+
+console.log('Hello World');
+console.log('%s: %d', 'Hello', 25);
+</code></pre>
+
+<pre><code class="javascript">// app.js
+
+var http = require('http');
+http.createServer(function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('&lt;h1&gt;Node.js&lt;/h1&gt;');
+    res.end('&lt;p&gt;Hello World&lt;/p&gt;');
+}).listen(3000);
+console.log("HTTP server is listening at port 3000.");
+</code></pre>
+
+<pre><code class="javascript">// readfile.js
+// 异步I/O
+
+var fs = require('fs');
+fs.readFile('file.txt', 'utf-8', function(err,data) {
+    if(err) 
+        console.error(err);
+    else
+        console.error(data);
+});
+
+console.log('end.');
+</code></pre>
+
+<pre><code class="javascript">// readfilecallback.js
+// 单独定义回调函数
+
+function readFileCallBack(err, data) {
+    if (err)
+        console.error(err);
+    else
+        console.log(data);
+}
+
+var fs = require('fs');
+fs.readFile('file.txt', 'utf-8', readFileCallBack);
+console.log('end.');
+</code></pre>
+
+<pre><code class="javascript">// readfilesync.js
+// 同步I/O
+
+var fs = require('fs');
+var data = fs.readFileSync('file.txt', 'utf-8');
+console.log(data);
+console.log('end.');
+</code></pre>
+
+<pre><code class="javascript">// event.js
+// I/O 操作完成后会发送一个`事件`到事件队列。所有的事件由EventEmitter对象提供.
+var EventEmitter = require('events').EventEmitter;
+var event = new EventEmitter();
+
+event.on('some_event', function() {       // 注册一个事件some event
+    console.log('some_event occured.');
+});
+
+setTimeout(function() {                  // timer 向event发送事件some_event
+    event.emit('some_event');}, 1000);
+</code></pre>
+
+<p><code>Node.js 程序由事件循环开始,到事件循环结束,所有的逻辑都是事件的回调函数,所以 Node.js 始终在事件循环中,程序入口就是 事件循环第一个事件的回调函数。事件的回调函数在执行的过程中,可能会发出 I/O 请求或 直接发射(emit)事件,执行完毕后再返回事件循环,事件循环会检查事件队列中有没有未 处理的事件,直到程序结束。
+</code></p>
+
+<p>Node.js 提供了 require 函数来调用其他模块
+<code>For example: var http = require('http').</code></p>
+]]></content>
+  </entry>
+  
+</feed>

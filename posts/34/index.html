@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>卖萌的弱渣</title>
+  <meta name="author" content="Min Li">
+
+  
+  <meta name="description" content="Next Permutation Given a list of integers, which denote a permutation. Find the next permutation in ascending order. Example For [1,3,2,3], the next &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sdytlm.github.io/posts/34">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">卖萌的弱渣</a></h1>
+  
+    <h2>I am stupid, I am hungry.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="sdytlm.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://ramsites.net/~lim4/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/25/lintcode-Next-Permutation/">Next Permutation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-25'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Next Permutation</h3>
+
+<p>Given a list of integers, which denote a permutation.</p>
+
+<p>Find the next permutation in ascending order.</p>
+
+<h4>Example</h4>
+
+<p>For [1,3,2,3], the next permutation is [1,3,3,2]</p>
+
+<p>For [4,3,2,1], the next permutation is [1,2,3,4]</p>
+
+<h4>Note</h4>
+
+<p>The list may contains duplicate integers.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/25/lintcode-Next-Permutation/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/22/lintcode-Single-Number/">Single Number</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-22'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Single Number</h3>
+
+<blockquote><p>Given 2 * n + 1 numbers, every numbers occurs twice except one, find it.</p></blockquote>
+
+<h4>Example</h4>
+
+<p>Given [1,2,2,1,3,4,3], return 4</p>
+
+<h4>Challenge</h4>
+
+<p>One-pass, constant extra space.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/22/lintcode-Single-Number/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/20/Play-Virtio/">Play Virtio on QEMU</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-20'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>QEMU: 2.4</li>
+<li>Host: Linux3.10</li>
+<li>Guest: Opensuse 12.x with Linux3.10</li>
+</ul>
+
+
+<h3>Original QEMU commands</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+</span><span class='line'>-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 \
+</span><span class='line'>-serial tcp::1223,server,nowait -net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+</span><span class='line'>-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+</span><span class='line'>-hda /data/images/qemu-image/opensuse-50G.img -name 23 -cpu core2duo \
+</span><span class='line'>-monitor stdio -smp sockets=1,cores=2,threads=1 -vnc :23
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>virtio-gpu</h3>
+
+<p>Just standard VGA right now. Will suport 3D in the future.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+</span><span class='line'>-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 \
+</span><span class='line'>-serial tcp::1223,server,nowait -net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+</span><span class='line'>-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+</span><span class='line'>-hda /data/images/qemu-image/opensuse-50G.img -name 23 -cpu core2duo \
+</span><span class='line'>-monitor stdio -smp sockets=1,cores=2,threads=1 -vnc :23 -vga virtio
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>virtio-net</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+</span><span class='line'>-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait \
+</span><span class='line'>-netdev tap,script=/data/images/qemu-image/qemu-ifup0.sh,id=net0 \
+</span><span class='line'>-device virtio-net-pci,netdev=net0 -hda /data/images/qemu-image/opensuse.img \
+</span><span class='line'>-name 23 -cpu core2duo -monitor stdio -smp sockets=1,cores=2,threads=1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>virtio-net + virtio-serial port</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none -bios bios.bin \
+</span><span class='line'>-device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait \
+</span><span class='line'>-netdev tap,script=/data/images/qemu-image/qemu-ifup0.sh,id=net0 -device virtio-net-pci,netdev=net0 \
+</span><span class='line'>-hda /data/images/qemu-image/opensuse-50G.raw -name 23 -cpu core2duo -monitor stdio\
+</span><span class='line'> -smp sockets=1,cores=1,threads=1 -vnc :23 -device virtio-serial-pci \
+</span><span class='line'>-chardev socket,id=foo,host=localhost,port=1224,server,nowait \
+</span><span class='line'>-device virtserialport,chardev=foo,name=virtio.port.0</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Test virtio serial port</h4>
+
+<ul>
+<li>On Host</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nc localhost 1224 &gt; test.txt</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>On Guest</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo "hello" &gt; /dev/virtio-ports/virtio.port.0</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Resut</li>
+</ul>
+
+
+<p>Cat test.txt on host, you will see &ldquo;hello&rdquo;</p>
+
+<h3>virtio-blk</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+</span><span class='line'>-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait \
+</span><span class='line'>-net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+</span><span class='line'>-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+</span><span class='line'>-drive file=/data/images/qemu-image/opensuse.img,if=virtio,boot=on \
+</span><span class='line'>-name 23 -cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>virtio-scsi</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+</span><span class='line'>-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 \
+</span><span class='line'>-serial tcp::1223,server,nowait -net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+</span><span class='line'>-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+</span><span class='line'>-drive if=none,id=hd,file=/data/images/qemu-image/opensuse-50G.raw \
+</span><span class='line'>-device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd -name 23 \
+</span><span class='line'>-cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>virtio-scsi cdrom</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none \
+</span><span class='line'>-bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 \
+</span><span class='line'>-serial tcp::1223,server,nowait -net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+</span><span class='line'>-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+</span><span class='line'>-drive if=none,id=hd,file=/data/images/qemu-image/opensuse-50G.raw \
+</span><span class='line'>-device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd -name 23 \
+</span><span class='line'>-cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23\
+</span><span class='line'>-drive if=none,file=/path/xxx.iso,id=cd -device scsi-cd,drive=cd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>virtio-input-pci</h3>
+
+<ul>
+<li>Require:
+
+<ol>
+<li>Guest Linux Kernel >= 4.1</li>
+<li>QEMU >=2.4</li>
+</ol>
+</li>
+<li>keyboard: add <code>-device virtio-keyboard-pci</code></li>
+<li>mouse: add <code>-device virtio-mouse-pci</code></li>
+<li>tablet: add <code>-device virtio-tablet-pci</code></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/19/perf-test-kvm/">Perf Evaluate KVM Performance</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-19'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Platform</h3>
+
+<ul>
+<li>Guest: Opensuse with Linux3.10</li>
+<li>Host: Linux3.10</li>
+<li>virtio enabled?: Yes</li>
+</ul>
+
+
+<h3>Boot VM</h3>
+
+<p>Boot A VM with virtio block</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none -bios bios.bin \
+</span><span class='line'>-device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait \
+</span><span class='line'>-net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 \
+</span><span class='line'>-net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh \
+</span><span class='line'>-drive file=/data/images/qemu-image/opensuse-50G.raw,if=virtio,boot=on \
+</span><span class='line'>-name 23 -cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Count VMExit for block R/W</h3>
+
+<p>Create an empty file (1GB) and count how many VMExits happens.</p>
+
+<p>On host Machine</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>perf kvm stat record -a ssh root@GuestIP "dd if=/dev/zero of=tempfile bs=1MB count=1024"</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>-a: capture all VCPUs</li>
+</ul>
+
+
+<h3>Read report</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>perf kvm stat report --event=vmexit</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>You will get statistics about VMEXIT</li>
+<li>There are three event you can capture <strong>vmexit</strong>,<strong>mmio</strong>,<strong>ioport</strong></li>
+</ul>
+
+
+<h3>Detailed report</h3>
+
+<ul>
+<li>Boot the VM first</li>
+<li>On Host Machine</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>perf kvm record -a ssh root@GuestIP "dd if=/dev/zero of=tempfile bs=1MB count=1024"</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>After that, You will get a file named <strong>perf.data.guest</strong></li>
+<li>Run report command to look at it</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>perf kvm report</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>collect performance data from the host</h3>
+
+<p>Add <code>--host</code> between <code>kvm</code> and <code>record</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>perf kvm --host record -a ssh root@GuestIP "dd if=/dev/zero of=tempfile bs=1MB count=1024"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will get a file namedd <strong>perf.data.kvm</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>perf kvm report --input perf.data.kvm</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/18/lintcode-Trailing-Zeros/">Trailing Zeros</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-18'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Trailing Zeros</h3>
+
+<blockquote><p>Write an algorithm which computes the number of trailing zeros in n factorial.</p></blockquote>
+
+<h4>Example</h4>
+
+<p>11! = 39916800, so the out should be 2</p>
+
+<h4>hallenge</h4>
+
+<p>O(log N) time</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/18/lintcode-Trailing-Zeros/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/18/lintcode-Binary-Representation/">Binary Representation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-18'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Binary Representation</h3>
+
+<p>Given a (decimal - e.g. 3.72) number that is passed in as a string, return the binary representation that is passed in as a string. If the fractional part of the number can not be represented accurately in binary with at most 32 characters, return ERROR.</p>
+
+<h4>Example</h4>
+
+<p>For n = &ldquo;3.72&rdquo;, return &ldquo;ERROR&rdquo;.</p>
+
+<p>For n = &ldquo;3.5&rdquo;, return &ldquo;11.1&rdquo;.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/18/lintcode-Binary-Representation/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/15/Linux-Benchmark/">Linux Disk Benchmark</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-15'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For a complete benchmark suit in Linux, I would recommend <code>lmbench</code>.
+You will have the benchmark result for CPU, memory, network, disk etc.</p>
+
+<h3>Simple Linux Disk Benchmark</h3>
+
+<p>Actually, you can rely on <strong>dd</strong> for simple disk performance evaluation</p>
+
+<h4>Test Write speed</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dd if=/dev/zero of=tempfile bs=1M count=1024</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Test Read speed from buffer</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dd if=tempfile of=/dev/null bs=1M count=1024
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Teest Real Read speed</h4>
+
+<p>Just clear the linux cache, then run dd</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sysctl -w vm/drop_caches=3
+</span><span class='line'>dd if=tempfile of=/dev/null bs=1M count=1024</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Test on external hard drive</h4>
+
+<p>External HD includes external HDD, USB flash drive, removable device etc.</p>
+
+<p>Replace <strong>tempfile</strong> in the above command by your mount point</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dd if=/dev/zero of=/media/user/MyUSB/tempfile bs=1M count=1024</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/15/CPU-Assign/">Linux Cgroup Assign Dedicated CPUs for a VM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-15'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Platform</h3>
+
+<ul>
+<li>Host: Linux-3.10</li>
+<li>Guest: Linux-3.10</li>
+<li>Host CPU#: 8</li>
+<li>Assigned CPUs: CPU #6</li>
+</ul>
+
+
+<h3>Configure Cgroup</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Create another cgroup folder
+</span><span class='line'>mkdir /sys/fs/cgroup/cpuset/test
+</span><span class='line'>
+</span><span class='line'># You will get a bunch of files in test folder  after create the folder
+</span><span class='line'># Assign the CPU 6 or you can replace 6 by "6-7" if you want more cpus assigned to the VM
+</span><span class='line'>echo 6 &gt; /sys/fs/cgroup/cpuset/test/cpuset.cpus
+</span><span class='line'>
+</span><span class='line'># Assign the memory boundary
+</span><span class='line'>echo 0 &gt; /sys/fs/cgroup/cpuset/test/cpuset.mems
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Modify your VM boot script</h3>
+
+<p>Add qemu process# into cgroup.procs</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Add the following line at the beginning
+</span><span class='line'>echo $$ &gt; /sys/fs/cgroup/cpuset/test/cgroup.procs
+</span><span class='line'>
+</span><span class='line'># Add "exec" before qemu-system-x86_64 binary
+</span><span class='line'>exec qemu-system-x86_64 -enable-kvm -rtc base=utc,clock=vm,driftfix=none -bios bios.bin -device piix3-usb-uhci -soundhw ac97,hda -m 1024 -serial tcp::1223,server,nowait -net nic,macaddr=00:20:18:11:01:23,model=rtl8139,vlan=0 -net tap,vlan=0,script=/data/images/qemu-image/qemu-ifup0.sh -drive file=/data/images/qemu-image/opensuse-50G.raw,if=virtio,boot=on -name 23 -cpu core2duo -monitor stdio -smp sockets=1,cores=1,threads=1 -vnc :23</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, run the boot script, you will see the qemu process number in <code>/sys/fs/cgroup/cpuset/test/cgroup.procs</code> and all threads in <code>/sys/fs/cgroup/cpuset/test/tasks</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/13/lintcode-Unique-Binary-Search-Trees/">Unique Binary Search Trees</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-13'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Unique Binary Search Trees</h3>
+
+<p>Given n, how many structurally unique BSTs (binary search trees) that store values 1&hellip;n?</p>
+
+<h4>Example</h4>
+
+<p>Given n = 3, there are a total of 5 unique BST&rsquo;s.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1           3    3       2      1
+</span><span class='line'> \         /    /       / \      \
+</span><span class='line'>  3      2     1       1   3      2
+</span><span class='line'> /      /       \                  \
+</span><span class='line'>2     1          2                  3</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/13/lintcode-Unique-Binary-Search-Trees/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/13/lintcode-Fast-Power/">Fast Power</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-13'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Fast Power</h3>
+
+<p>Calculate the a<sup>n</sup> % b where a, b and n are all 32 bit integers.</p>
+
+<h4>Example</h4>
+
+<p>For 231 % 3 = 2</p>
+
+<p>For 100<sup>1000</sup> % 1000 = 0</p>
+
+<h4>Challenge</h4>
+
+<p>O(logn)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/13/lintcode-Fast-Power/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/35">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/33">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/geek/'>geek (3)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (281)</a></li>
+<li class='category'><a href='/blog/categories/lintcode/'>lintcode (78)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (6)</a></li>
+<li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>nodejs (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (9)</a></li>
+<li class='category'><a href='/blog/categories/virtualization/'>virtualization (10)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/04/01/accountant/">会计报表</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/16/virtualization-play-kvmgt/">Play KVMGT (GPU Virtualization)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/leetcode-partition-equal-subset-sum/">Partition Equal Subset Sum</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 90%" href="/tags/geek/">Geek</a>
+<a style="font-size: 210%" href="/tags/leetcode/">LeetCode</a>
+<a style="font-size: 184%" href="/tags/lintcode/">LintCode</a>
+<a style="font-size: 114%" href="/tags/linux/">Linux</a>
+<a style="font-size: 90%" href="/tags/geek/">geek</a>
+<a style="font-size: 159%" href="/tags/leetcode/">leetcode</a>
+<a style="font-size: 114%" href="/tags/linux/">linux</a>
+<a style="font-size: 114%" href="/tags/mit6-dot-828/">mit6.828</a>
+<a style="font-size: 138%" href="/tags/python/">python</a>
+<a style="font-size: 140%" href="/tags/virtualization/">virtualization</a>
+
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Min Li -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

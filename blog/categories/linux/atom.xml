@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linux Disk Benchmark]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/01/15/Linux-Benchmark/"/>
+    <updated>2016-01-15T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/01/15/Linux-Benchmark</id>
+    <content type="html"><![CDATA[<p>For a complete benchmark suit in Linux, I would recommend <code>lmbench</code>.
+You will have the benchmark result for CPU, memory, network, disk etc.</p>
+
+<h3>Simple Linux Disk Benchmark</h3>
+
+<p>Actually, you can rely on <strong>dd</strong> for simple disk performance evaluation</p>
+
+<h4>Test Write speed</h4>
+
+<pre><code>dd if=/dev/zero of=tempfile bs=1M count=1024
+</code></pre>
+
+<h4>Test Read speed from buffer</h4>
+
+<pre><code>dd if=tempfile of=/dev/null bs=1M count=1024
+</code></pre>
+
+<h4>Teest Real Read speed</h4>
+
+<p>Just clear the linux cache, then run dd</p>
+
+<pre><code>sysctl -w vm/drop_caches=3
+dd if=tempfile of=/dev/null bs=1M count=1024
+</code></pre>
+
+<h4>Test on external hard drive</h4>
+
+<p>External HD includes external HDD, USB flash drive, removable device etc.</p>
+
+<p>Replace <strong>tempfile</strong> in the above command by your mount point</p>
+
+<pre><code>dd if=/dev/zero of=/media/user/MyUSB/tempfile bs=1M count=1024
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dump Stack in Linux]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/12/01/dump-stack/"/>
+    <updated>2015-12-01T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/12/01/dump-stack</id>
+    <content type="html"><![CDATA[<p><code>dump_stack()</code> is a useful tool to understand call procedure of a function. You can enable it in the kernel source.</p>
+
+<h3>Enable dump_stack</h3>
+
+<p>Make sure the following flag is <code>y</code></p>
+
+<ul>
+<li>CONFIG_PREEMPT</li>
+<li>CONFIG_DEBUG_KERNEL</li>
+<li>CONFIG_KALLSYMS</li>
+<li>CONFIG_SPINLOCK_SLEEP</li>
+<li>CONFIG_MAGIC_SYSRQ</li>
+</ul>
+
+
+<h3>Use dump_stack in your code</h3>
+
+<pre><code class="c">printk(KERN_ERR, "%x", parameter);
+dump_stack()
+</code></pre>
+
+<p>After that</p>
+
+<p>You can watch the stack result in <code>dmesg</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Write a Service Script]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/11/16/rules/"/>
+    <updated>2015-11-16T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/11/16/rules</id>
+    <content type="html"><![CDATA[<h3>Script location</h3>
+
+<p><code>/etc/init.d</code></p>
+
+<h3>Header</h3>
+
+<p><code>xxx</code> is the script name</p>
+
+<pre><code>#!/bin/sh
+#
+# /etc/init.d/xxx
+# Subsystem file for "xxx" server
+# 
+#
+# chkconfig: 2345 95 05
+# description: xxx server daemon
+# 
+# processname: xxx
+# config: /etc/xxx/xxx.conf      // Config file
+# config: /etc/sysconfig/xxx     // config file
+# pidfile: /var/run/xxx.pid
+
+### BEGIN INIT INFO
+# Provides: xxx
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start daemon at boot time
+# Description: Enable service provided by daemon
+### END INIT INFO
+</code></pre>
+
+<!-- more -->
+
+
+<h3>Inclde required files</h3>
+
+<pre><code># source function library
+[ -f /etc/sysconfig/xxx  ] &amp;&amp; . /etc/rc.d/init.d/functions    # include many third-party libraries
+
+# configuration
+[ -f /etc/sysconfig/xxx ] &amp;&amp; . /etc/sysconfig/xxx
+</code></pre>
+
+<h3>Complete Required function: <strong><em>start</em></strong>, <strong><em>stop</em></strong>, <strong><em>restart</em></strong></h3>
+
+<pre><code>RETVAL=0
+prog="xxx"
+
+start() {   
+    echo -n $"Starting $prog:"
+
+    RETVAL=$?
+    echo
+}
+
+stop() {    
+    echo -n $"Stopping $prog:"
+
+    killproc $prog -TERM
+    RETVAL=$?
+
+    echo
+}
+
+reload() {  
+    echo -n $"Reloading $prog:"
+    killproc $prog -HUP
+    RETVAL=$?
+    echo
+}
+
+case "$1" in    (9)
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        reload
+        ;;
+        status)
+        status $prog
+        RETVAL=$?
+        ;;
+    *)  
+        echo $"Usage: $0 {start|stop|restart|reload|status}"
+        RETVAL=1
+esac
+exit $RETVAL
+</code></pre>
+
+<h3>Update the symbolic links in /etc/rc.d/rcN.d</h3>
+
+<pre><code>chkconfig -add xxx
+</code></pre>
+
+<p>OR</p>
+
+<blockquote><p>Put this script into associate /etc/rc.d/rcN.d folder</p></blockquote>
+
+<h3>Run the script manually</h3>
+
+<pre><code>service xxx start|status|reload|stop
+</code></pre>
+
+<p>OR</p>
+
+<pre><code>/etc/init.d/xxx start|status|reload|stop
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Compile One Specific Kernel Module Without Clean All Kernel Sources]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/10/27/module/"/>
+    <updated>2015-10-27T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/10/27/module</id>
+    <content type="html"><![CDATA[<pre><code>cd kernel soruce dir
+</code></pre>
+
+<pre><code># make sure CONFIG_FB_UVESA can be found in Kconfig
+make M=drivers/video/ CONFIG_FB_UVESA=m
+</code></pre>
+
+<p>If you dont have <code>CONFIG_FB_UVESA</code> or similar</p>
+
+<pre><code>make drivers/video/uvesafb.ko
+</code></pre>
+
+<p>The loadable modules are located in</p>
+
+<pre><code>/lib/modules/kernel-version/kernel/driver
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Downgrade Ubuntu Grub2 to Grub 1]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/10/21/grub/"/>
+    <updated>2015-10-21T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/10/21/grub</id>
+    <content type="html"><![CDATA[<p>If you hate Grub2 like me, you can downgrade it to Grub 1. Enjoy it !!</p>
+
+<!--more-->
+
+
+<ul>
+<li>Delete Grub2</li>
+</ul>
+
+
+<pre><code>sudo apt-get purge grub* os-prober
+</code></pre>
+
+<pre><code>sudo apt-get purge grub-gfxpayload-lists
+</code></pre>
+
+<ul>
+<li>Install Grub1</li>
+</ul>
+
+
+<pre><code>sudo apt-get install grub
+</code></pre>
+
+<ul>
+<li>Create grub menu</li>
+</ul>
+
+
+<pre><code class="">sudo update-grub
+</code></pre>
+
+<ul>
+<li>Refresh MBR
+<code>
+grub-install /dev/sda
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

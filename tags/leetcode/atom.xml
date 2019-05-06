@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: leetcode | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/tags/leetcode/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Word Ladder II]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/08/31/leetcode-word-ladder2/"/>
+    <updated>2016-08-31T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/08/31/leetcode-word-ladder2</id>
+    <content type="html"><![CDATA[<p>Given two words (beginWord and endWord), and a dictionary&rsquo;s word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:</p>
+
+<ol>
+<li>Only one letter can be changed at a time</li>
+<li>Each intermediate word must exist in the word list</li>
+</ol>
+
+
+<p>For example,
+<code>
+Given:
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+Return
+  [
+    ["hit","hot","dot","dog","cog"],
+    ["hit","hot","lot","log","cog"]
+  ]
+</code></p>
+
+<h4>Note:</h4>
+
+<ul>
+<li>All words have the same length.</li>
+<li>All words contain only lowercase alphabetic characters.</li>
+</ul>
+
+
+<!--more-->
+
+
+<h3>Solution</h3>
+
+<p><figure class='code'><figcaption><span> (Word-Ladder2.py)</span> <a href='/downloads/code/LeetCode/Python/Word-Ladder2.py'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">findLadders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beginWord</span><span class="p">,</span> <span class="n">endWord</span><span class="p">,</span> <span class="n">wordlist</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        :type beginWord: str</span>
+</span><span class='line'><span class="sd">        :type endWord: str</span>
+</span><span class='line'><span class="sd">        :type wordlist: Set[str]</span>
+</span><span class='line'><span class="sd">        :rtype: List[List[int]]</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="c"># 把结尾单词插入list中</span>
+</span><span class='line'>        <span class="n">wordlist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">endWord</span><span class="p">)</span>
+</span><span class='line'>        <span class="c"># BFS 每一层节点和他们的parents </span>
+</span><span class='line'>        <span class="n">level</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">beginWord</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">parents</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">while</span> <span class="n">level</span> <span class="ow">and</span> <span class="n">endWord</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">next_level</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">level</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span><span class="p">:</span>
+</span><span class='line'>                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)):</span>
+</span><span class='line'>                        <span class="n">newWord</span> <span class="o">=</span> <span class="n">word</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">c</span><span class="o">+</span><span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+</span><span class='line'>                        <span class="c"># 找到新单词</span>
+</span><span class='line'>                        <span class="k">if</span> <span class="n">newWord</span> <span class="ow">in</span> <span class="n">wordlist</span> <span class="ow">and</span> <span class="n">newWord</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
+</span><span class='line'>                            <span class="c"># word 是 word的parents</span>
+</span><span class='line'>                            <span class="n">next_level</span><span class="p">[</span><span class="n">newWord</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">level</span> <span class="o">=</span> <span class="n">next_level</span>
+</span><span class='line'>            <span class="n">parents</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">next_level</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># 从end word 开始建立结果</span>
+</span><span class='line'>        <span class="n">res</span> <span class="o">=</span> <span class="p">[[</span><span class="n">endWord</span><span class="p">]]</span>
+</span><span class='line'>        <span class="k">while</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">beginWord</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">res</span> <span class="o">=</span> <span class="p">[[</span><span class="n">p</span><span class="p">]</span><span class="o">+</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">res</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Water and Jug Problem]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/08/31/leetcode-water-and-jug-problem/"/>
+    <updated>2016-08-31T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/08/31/leetcode-water-and-jug-problem</id>
+    <content type="html"><![CDATA[<p>You are given two jugs with capacities x and y litres. There is an infinite amount of water supply available. You need to determine whether it is possible to measure exactly z litres using these two jugs.</p>
+
+<p>If z liters of water is measurable, you must have z liters of water contained within one or both buckets by the end.</p>
+
+<p>Operations allowed:</p>
+
+<ul>
+<li>Fill any of the jugs completely with water.</li>
+<li>Empty any of the jugs.</li>
+<li>Pour water from one jug into another till the other jug is completely full or the first jug itself is empty.</li>
+</ul>
+
+
+<h4>Example 1: (From the famous &ldquo;Die Hard&rdquo; example)</h4>
+
+<pre><code>Input: x = 3, y = 5, z = 4
+Output: True
+</code></pre>
+
+<h4>Example 2:</h4>
+
+<pre><code>Input: x = 2, y = 6, z = 5
+Output: False
+</code></pre>
+
+<!--more-->
+
+
+<h3>Solution</h3>
+
+<p>求最大公约数</p>
+
+<p>如果x与y互质（最大公约数为1），则容量范围[1, x + y]之内的任意整数体积均可以通过适当的操作得到。</p>
+
+<p>否则，记x与y的最大公约数为gcd，则可以获得的容量z只能为gcd的整数倍，且z &lt;= x + y</p>
+
+<p><figure class='code'><figcaption><span> (Water-and-Jug-Problem.py)</span> <a href='/downloads/code/LeetCode/Python/Water-and-Jug-Problem.py'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">canMeasureWater</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        :type x: int</span>
+</span><span class='line'><span class="sd">        :type y: int</span>
+</span><span class='line'><span class="sd">        :type z: int</span>
+</span><span class='line'><span class="sd">        :rtype: bool</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">findGCD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">y</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">findGCD</span><span class="p">(</span><span class="n">y</span><span class="o">%</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span><span class="n">x</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">gcd</span> <span class="o">=</span> <span class="n">findGCD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">gcd</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">z</span> <span class="o">%</span> <span class="n">gcd</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reverse Bits]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/08/31/leetcode-reverse-bits/"/>
+    <updated>2016-08-31T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/08/31/leetcode-reverse-bits</id>
+    <content type="html"><![CDATA[<p>Reverse bits of a given 32 bits unsigned integer.</p>
+
+<p>For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), return 964176192 (represented in binary as 00111001011110000010100101000000).</p>
+
+<h4>Follow up:</h4>
+
+<p>If this function is called many times, how would you optimize it?</p>
+
+<!--more-->
+
+
+<h3>Solution</h3>
+
+<p><a href="http://bookshadow.com/weblog/2015/03/08/leetcode-reverse-bits/">优化</a></p>
+
+<ul>
+<li>Java:
+<figure class='code'><figcaption><span> (Reverse-Bits.java)</span> <a href='/downloads/code/LeetCode/Java/Reverse-Bits.java'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// you need treat n as an unsigned value</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">reverseBits</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+</span><span class='line'>            <span class="n">result</span> <span class="o">+=</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>            <span class="c1">// n右移1位</span>
+</span><span class='line'>            <span class="n">n</span> <span class="o">&gt;&gt;&gt;=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">31</span><span class="o">)</span>
+</span><span class='line'>                <span class="n">result</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></li>
+</ul>
+
+
+<p><figure class='code'><figcaption><span> (Reverse-Bits.py)</span> <a href='/downloads/code/LeetCode/Python/Reverse-Bits.py'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">reverseBits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        :type n: int</span>
+</span><span class='line'><span class="sd">        :rtype: int</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">):</span>
+</span><span class='line'>            <span class="n">ret</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>            <span class="n">ret</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span>
+</span><span class='line'>            <span class="n">n</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">ret</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[N Queens]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/08/31/leetcode-n-queens/"/>
+    <updated>2016-08-31T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/08/31/leetcode-n-queens</id>
+    <content type="html"><![CDATA[<p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
+
+<p>Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
+
+<p>Each solution contains a distinct board configuration of the n-queens&#8217; placement, where &lsquo;Q&rsquo; and &lsquo;.&rsquo; both indicate a queen and an empty space respectively.</p>
+
+<h4>Example:</h4>
+
+<p>There exist two distinct solutions to the 4-queens puzzle:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[
+</span><span class='line'> [&ldquo;.Q..&rdquo;,  // Solution 1
+</span><span class='line'>  &ldquo;&hellip;Q&rdquo;,
+</span><span class='line'>  &ldquo;Q&hellip;&rdquo;,
+</span><span class='line'>  &ldquo;..Q.&rdquo;],&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt; [&ldquo;..Q.&rdquo;,  // Solution 2
+</span><span class='line'>  &ldquo;Q&hellip;&rdquo;,
+</span><span class='line'>  &ldquo;&hellip;Q&rdquo;,
+</span><span class='line'>  &ldquo;.Q..&rdquo;]
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure></p>
+
+<!--more-->
+
+
+<h3>Solution</h3>
+
+<ul>
+<li>DFS: visited[n] 记录当前ｑ都在什么位置
+<figure class='code'><figcaption><span> (N-Queens.py)</span> <a href='/downloads/code/LeetCode/Python/N-Queens.py'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">solveNQueens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        :type n: int</span>
+</span><span class='line'><span class="sd">        :rtype: List[List[str]]</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="p">[]</span>
+</span><span class='line'>        <span class="c"># 记录每一行当前Q在哪里</span>
+</span><span class='line'>        <span class="n">visited</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+</span><span class='line'>        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">rec</span><span class="p">([],</span><span class="n">ret</span><span class="p">,</span><span class="n">visited</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">ret</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">rec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">board</span><span class="p">,</span><span class="n">ret</span><span class="p">,</span><span class="n">visited</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">visited</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">col</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="nb">abs</span><span class="p">(</span><span class="n">col</span><span class="o">-</span><span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+</span><span class='line'>                    <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">board</span><span class="p">[:])</span>
+</span><span class='line'>            <span class="k">return</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>            <span class="c"># 第[index][j]可以被放queen</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">visited</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">j</span><span class="p">):</span>
+</span><span class='line'>                <span class="n">visited</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">newstr</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="o">*</span><span class="n">n</span>
+</span><span class='line'>                <span class="bp">self</span><span class="o">.</span><span class="n">rec</span><span class="p">(</span><span class="n">board</span><span class="o">+</span><span class="p">[</span><span class="n">newstr</span><span class="p">[:</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="s">&#39;Q&#39;</span><span class="o">+</span><span class="n">newstr</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">:]],</span><span class="n">ret</span><span class="p">,</span><span class="n">visited</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Find the Difference]]></title>
+    <link href="http://sdytlm.github.io/blog/2016/08/31/leetcode-find-the-difference/"/>
+    <updated>2016-08-31T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2016/08/31/leetcode-find-the-difference</id>
+    <content type="html"><![CDATA[<p>Given two strings s and t which consist of only lowercase letters.</p>
+
+<p>String t is generated by random shuffling string s and then add one more letter at a random position.</p>
+
+<p>Find the letter that was added in t.</p>
+
+<h4>Example:</h4>
+
+<pre><code>Input:
+s = "abcd"
+t = "abcde"
+
+Output:
+e
+
+Explanation:
+'e' is the letter that was added.
+</code></pre>
+
+<!--more-->
+
+
+<h3>Solution</h3>
+
+<ul>
+<li>Java: 利用抑或
+<figure class='code'><figcaption><span> (Find-the-Difference.java)</span> <a href='/downloads/code/LeetCode/Java/Find-the-Difference.java'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">char</span> <span class="nf">findTheDifference</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">String</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+</span><span class='line'>        <span class="kt">char</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+</span><span class='line'>            <span class="n">ret</span> <span class="o">^=</span> <span class="n">t</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">ret</span> <span class="o">^=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></li>
+<li>Python: 排序
+<figure class='code'><figcaption><span> (find-the-difference.py)</span> <a href='/downloads/code/LeetCode/Python/find-the-difference.py'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">findTheDifference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">        :type s: str</span>
+</span><span class='line'><span class="sd">        :type t: str</span>
+</span><span class='line'><span class="sd">        :rtype: str</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">t</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">s</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">t</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

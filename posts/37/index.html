@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>卖萌的弱渣</title>
+  <meta name="author" content="Min Li">
+
+  
+  <meta name="description" content="Subarray Sum Given an integer array, find a subarray where the sum of numbers is zero. Your code should return the index of the first number and the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://sdytlm.github.io/posts/37">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="卖萌的弱渣" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">卖萌的弱渣</a></h1>
+  
+    <h2>I am stupid, I am hungry.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="sdytlm.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://ramsites.net/~lim4/">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/22/lintcode-Subarray-Sum/">Subarry Sum</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-22'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Subarray Sum</h3>
+
+<p><code>Given an integer array, find a subarray where the sum of numbers is zero. Your code should return the index of the first number and the index of the last number.</code></p>
+
+<h4>Example</h4>
+
+<p>Given [-3, 1, 2, -3, 4], return [0, 2] or [1, 3].</p>
+
+<h4>Note</h4>
+
+<p>There is at least one subarray that it&rsquo;s sum equals to zero.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/22/lintcode-Subarray-Sum/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/22/lintcode-Remove-Duplicate-From-Sorted-Array/">Remove Duplicates From Sorted Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-22'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Remove Duplicates from Sorted Array</h3>
+
+<p><code>Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</code></p>
+
+<h4>Note</h4>
+
+<p>Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+
+<h4>Example</h4>
+
+<p>Given input array A = [1,1,2],</p>
+
+<p>Your function should return length = 2, and A is now [1,2].</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/22/lintcode-Remove-Duplicate-From-Sorted-Array/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/21/lintcode-First-Missing-Positive/">First Missing Positive</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-21'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>First Missing Positive</h3>
+
+<p>Given an unsorted integer array, find the first missing positive integer.</p>
+
+<h4>Example</h4>
+
+<p>Given [1,2,0] return 3,
+and [3,4,-1,1] return 2.</p>
+
+<h4>Challenge</h4>
+
+<p>Your algorithm should run in O(n) time and uses constant space.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/21/lintcode-First-Missing-Positive/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/20/lintcode-remove-element/">Remove Element</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-20'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Remove Element</h3>
+
+<p>Given an array and a value, remove all occurrences of that value in place and return the new length.</p>
+
+<p>The order of elements can be changed, and the elements after the new length don&rsquo;t matter.</p>
+
+<h4>Example</h4>
+
+<p>Given an array [0,4,4,0,0,2,4,4], value=4</p>
+
+<p>return 4 and front four elements of the array is [0,0,0,2]</p>
+
+<h4>Note</h4>
+
+<ol>
+<li>Return the length of new array <code>A</code></li>
+<li>Don&rsquo;t create another container</li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/20/lintcode-remove-element/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/18/lintcode-Longest-Common-Prefix/">Longest Common Prefix</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-18'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Longest Common Prefix</h3>
+
+<p><code>Given k strings, find the longest common prefix (LCP).</code></p>
+
+<h4>Example</h4>
+
+<p>For strings &ldquo;ABCD&rdquo;, &ldquo;ABEF&rdquo; and &ldquo;ACEF&rdquo;, the LCP is &ldquo;A&rdquo;</p>
+
+<p>For strings &ldquo;ABCDEFG&rdquo;, &ldquo;ABCEFG&rdquo; and &ldquo;ABCEFA&rdquo;, the LCP is &ldquo;ABC&rdquo;</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/18/lintcode-Longest-Common-Prefix/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/17/lintcode-strStr/">strStr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-17'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>strStr</h3>
+
+<p><code>For a given source string and a target string, you should output the first index(from 0) of target string in source string.</code></p>
+
+<p><code>If target does not exist in source, just return -1.</code></p>
+
+<h4>Example</h4>
+
+<p>If source = &ldquo;source&rdquo; and target = &ldquo;target&rdquo;, return -1.</p>
+
+<p>If source = &ldquo;abcdabcdefg&rdquo; and target = &ldquo;bcd&rdquo;, return 1.</p>
+
+<h4>Challenge</h4>
+
+<p>O(n<sup>2</sup>) is acceptable. Can you implement an O(n) algorithm? (hint: KMP)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/17/lintcode-strStr/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/15/lintcode-Longest-Common-Substring/">Longest Common Substring</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-15'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Longest Common Substring</h3>
+
+<p>Given two strings, find the longest common substring</p>
+
+<p>Return the length of it.</p>
+
+<h4>Example</h4>
+
+<p>Given A = &ldquo;ABCD&rdquo;, B = &ldquo;CBCE&rdquo;, return 2.</p>
+
+<h4>Note</h4>
+
+<p>The characters in <strong>substring</strong> should occur continuously in original string. This is different with <strong>subsequence</strong>.</p>
+
+<ul>
+<li>substring: 必须是一个string中连续的一部分</li>
+<li>subsequence: 把一个string, 任意去掉一些字符后，得到的结果，不需要是连续的。</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/15/lintcode-Longest-Common-Substring/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/15/lintcode-Compare-Strings/">Compare Strings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-15'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Compare Strings</h3>
+
+<h4>Example</h4>
+
+<p>For A = &ldquo;ABCD&rdquo;, B = &ldquo;ACD&rdquo;, return true.</p>
+
+<p>For A = &ldquo;ABCD&rdquo;, B = &ldquo;AABC&rdquo;, return false.</p>
+
+<h4>Note</h4>
+
+<p>The characters of B in A are not necessary continuous or ordered.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/15/lintcode-Compare-Strings/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/14/lintcode-Two-Strings-Are-Anagrams/">Two Strings Are Anagrams</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-14'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Two Strings Are Anagrams</h3>
+
+<p><code>Write a method anagram(s,t) to decide if two strings are anagrams or not.</code></p>
+
+<h4>Example</h4>
+
+<p>Given s=&ldquo;abcd&rdquo;, t=&ldquo;dcab&rdquo;, return true.</p>
+
+<h4>Challenge</h4>
+
+<p>O(n) time, O(1) extra space</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/14/lintcode-Two-Strings-Are-Anagrams/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/07/lintcode-p1/">Anagrams</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-07'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Anagrams</h3>
+
+<p><code>Given an array of strings, return all groups of strings that are anagrams.</code></p>
+
+<h4>Example</h4>
+
+<p>Given [&ldquo;lint&rdquo;, &ldquo;intl&rdquo;, &ldquo;inlt&rdquo;, &ldquo;code&rdquo;], return [&ldquo;lint&rdquo;, &ldquo;inlt&rdquo;, &ldquo;intl&rdquo;].</p>
+
+<p>Given [&ldquo;ab&rdquo;, &ldquo;ba&rdquo;, &ldquo;cd&rdquo;, &ldquo;dc&rdquo;, &ldquo;e&rdquo;], return [&ldquo;ab&rdquo;, &ldquo;ba&rdquo;, &ldquo;cd&rdquo;, &ldquo;dc&rdquo;].</p>
+
+<h4>Note</h4>
+
+<p>All inputs will be in lower-case</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/07/lintcode-p1/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/38">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/36">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/geek/'>geek (3)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (281)</a></li>
+<li class='category'><a href='/blog/categories/lintcode/'>lintcode (78)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (6)</a></li>
+<li class='category'><a href='/blog/categories/mit6-828/'>mit6.828 (3)</a></li>
+<li class='category'><a href='/blog/categories/nodejs/'>nodejs (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (9)</a></li>
+<li class='category'><a href='/blog/categories/virtualization/'>virtualization (10)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/04/01/accountant/">会计报表</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/16/virtualization-play-kvmgt/">Play KVMGT (GPU Virtualization)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/leetcode-partition-equal-subset-sum/">Partition Equal Subset Sum</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/10/combination-sum4/">Combination Sum 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/10/05/leetcode-queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+    <a style="font-size: 90%" href="/tags/geek/">Geek</a>
+<a style="font-size: 210%" href="/tags/leetcode/">LeetCode</a>
+<a style="font-size: 184%" href="/tags/lintcode/">LintCode</a>
+<a style="font-size: 114%" href="/tags/linux/">Linux</a>
+<a style="font-size: 90%" href="/tags/geek/">geek</a>
+<a style="font-size: 159%" href="/tags/leetcode/">leetcode</a>
+<a style="font-size: 114%" href="/tags/linux/">linux</a>
+<a style="font-size: 114%" href="/tags/mit6-dot-828/">mit6.828</a>
+<a style="font-size: 138%" href="/tags/python/">python</a>
+<a style="font-size: 140%" href="/tags/virtualization/">virtualization</a>
+
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Min Li -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

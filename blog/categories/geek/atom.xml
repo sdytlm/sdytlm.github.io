@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Geek | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/geek/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[会计报表]]></title>
+    <link href="http://sdytlm.github.io/blog/2017/04/01/accountant/"/>
+    <updated>2017-04-01T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2017/04/01/accountant</id>
+    <content type="html"><![CDATA[<h3>资产负债表</h3>
+
+<h3>利润表</h3>
+
+<h3>现金流量表</h3>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Make OSX Installer (Iso) by Using Install App]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/08/26/create-OSX-installer/"/>
+    <updated>2015-08-26T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/08/26/create-OSX-installer</id>
+    <content type="html"><![CDATA[<ul>
+<li>so let&rsquo;s start with that:
+<code>
+sudo -s
+</code></li>
+<li>Mount the installer image:
+<code>
+hdiutil attach /Applications/Install\ OS\ X\ Yosemite.app/Contents/SharedSupport/InstallESD.dmg -noverify -nobrowse -mountpoint /Volumes/install_app
+</code></li>
+<li>Convert the boot image to a sparse bundle:
+<code>
+hdiutil convert /Volumes/install_app/BaseSystem.dmg -format UDSP -o /tmp/Yosemite
+</code></li>
+</ul>
+
+
+<!--more-->
+
+
+<ul>
+<li>Increase the sparse bundle capacity for packages, kernel, etc.:
+<code>
+hdiutil resize -size 8g /tmp/Yosemite.sparseimage
+</code></li>
+<li>Mount the sparse bundle target for further processing:
+<code>
+hdiutil attach /tmp/Yosemite.sparseimage -noverify -nobrowse -mountpoint /Volumes/install_build
+</code></li>
+<li>Remove Package link and replace with actual files:
+<code>
+rm /Volumes/install_build/System/Installation/Packages
+cp -rp /Volumes/install_app/Packages /Volumes/install_build/System/Installation/
+</code></li>
+<li><strong><em>Only Yosemite</em></strong>, there are additional installer dependencies:
+<code>
+cp -rp /Volumes/install_app/BaseSystem* /Volumes/install_build/
+</code></li>
+<li><strong><em>Only Yosemite</em></strong> Assuming we&rsquo;re executing these steps on a Yosemite machine:
+<code>
+cp -rp /System/Library/Kernels /Volumes/install_build/System/Library/
+</code></li>
+<li>Unmount both the installer image and the target sparse bundle:
+<code>
+hdiutil detach /Volumes/install_app
+hdiutil detach /Volumes/install_build
+</code></li>
+<li>Resize the partition in the sparse bundle to remove any free space:
+<code>
+hdiutil resize -size $(hdiutil resize -limits /tmp/Yosemite.sparseimage | tail -n 1 | awk '{ print $1 }')b /tmp/Yosemite.sparseimage
+</code></li>
+<li>Convert the sparse bundle to ISO/CD master:
+<code>
+hdiutil convert /tmp/Yosemite.sparseimage -format UDTO -o /tmp/Yosemite
+</code></li>
+<li>Remove the sparse bundle:
+<code>
+rm /tmp/Yosemite.sparseimage
+</code></li>
+<li>Rename the ISO and move it to the desktop:
+<code>
+mv /tmp/Yosemite.cdr ~/Desktop/Yosemite.iso
+</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Make Opensuse Installation USB on MacOS]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/04/07/USB-BOOT-ISO/"/>
+    <updated>2015-04-07T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/04/07/USB-BOOT-ISO</id>
+    <content type="html"><![CDATA[<ol>
+<li>Convert opensuse installtion ios to dmg</li>
+</ol>
+
+
+<pre><code class="">hdiutil convert -format UDRW -o opensuse-13.01.img opensuse-13.01.iso
+</code></pre>
+
+<ol>
+<li>Get the current device lists</li>
+</ol>
+
+
+<pre><code>diskutil list
+</code></pre>
+
+<p>Remeber the current existing device number</p>
+
+<ol>
+<li>Insert USB</li>
+</ol>
+
+
+<pre><code>diskutil list 
+</code></pre>
+
+<p>again and find the device node assigned to your usb ( e.g. /dev/disk1)</p>
+
+<ol>
+<li>Unmount your USB</li>
+</ol>
+
+
+<pre><code>diskutil unmountDisk /dev/disk1
+</code></pre>
+
+<ol>
+<li>Burn the flash</li>
+</ol>
+
+
+<pre><code>sudo dd if=/your_img_location/opensuse-13.01.img of=/dev/rdisk1 bs=1m
+</code></pre>
+
+<ol>
+<li>Ignore the pop-up window and run</li>
+</ol>
+
+
+<pre><code>diskutil eject /dev/disk1
+</code></pre>
+
+<ol>
+<li>Enjory it</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

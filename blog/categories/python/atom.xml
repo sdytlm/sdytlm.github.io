@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | 卖萌的弱渣]]></title>
+  <link href="http://sdytlm.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://sdytlm.github.io/"/>
+  <updated>2019-05-06T11:22:00+08:00</updated>
+  <id>http://sdytlm.github.io/</id>
+  <author>
+    <name><![CDATA[Min Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Standard Library II]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/10/02/python9/"/>
+    <updated>2015-10-02T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/10/02/python9</id>
+    <content type="html"><![CDATA[<h3>Output Formatting</h3>
+
+<ul>
+<li><strong>reprlib</strong> can provide abbreviated displays of large containers</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import reprlib
+&gt;&gt;&gt; reprlib.repr(set('supercalifragi'))
+"{'a','c','d','e','f','g',...}"
+</code></pre>
+
+<ul>
+<li><strong>pprint</strong> offer more sophisticated control over built-in and user-defined objects.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import pprint
+&gt;&gt;&gt; t = [[[['black', 'cyan'], 'white', ['green', 'red']], [['magenta',
+...     'yellow'], 'blue']]]
+...
+&gt;&gt;&gt; pprint.pprint(t, width=30)
+[[[['black', 'cyan'],
+   'white',
+   ['green', 'red']],
+  [['magenta', 'yellow'],
+   'blue']]]
+</code></pre>
+
+<ul>
+<li><strong>textwrap</strong> can format paragraphs of text to fit a given screen width
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;&lt;</span><span class="n">blockquote</span><span class="o">&gt;&lt;</span><span class="n">blockquote</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">textwrap</span>
+</span><span class='line'><span class="n">doc</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">The</span> <span class="n">wrap</span><span class="p">()</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">just</span> <span class="n">like</span> <span class="n">fill</span><span class="p">()</span> <span class="k">except</span> <span class="n">that</span> <span class="n">it</span> <span class="n">returns</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">strings</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">one</span> <span class="n">big</span> <span class="n">string</span> <span class="k">with</span> <span class="n">newlines</span> <span class="n">to</span> <span class="n">separate</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span> <span class="n">the</span> <span class="n">wrapped</span> <span class="n">lines</span><span class="o">.&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
+</span><span class='line'><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span>
+</span><span class='line'><span class="n">The</span> <span class="n">wrap</span><span class="p">()</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">just</span> <span class="n">like</span> <span class="n">fill</span><span class="p">()</span>
+</span><span class='line'><span class="k">except</span> <span class="n">that</span> <span class="n">it</span> <span class="n">returns</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">strings</span>
+</span><span class='line'><span class="n">instead</span> <span class="n">of</span> <span class="n">one</span> <span class="n">big</span> <span class="n">string</span> <span class="k">with</span> <span class="n">newlines</span>
+</span><span class='line'><span class="n">to</span> <span class="n">separate</span> <span class="n">the</span> <span class="n">wrapped</span> <span class="n">lines</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure></p></blockquote></blockquote></blockquote></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Templating</h3>
+
+<ul>
+<li><strong>string</strong> module includes a <code>Template</code> class to allow users customize
+The format uses placeholder names formed by <code>$</code> valid Python identifier</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; from string import Template
+&gt;&gt;&gt; t = Template('${village}folk send $$10 to $cause.')
+&gt;&gt;&gt; t.substitute(village='Nottingham', cause='the ditch fund')
+'Nottinghamfolk send $10 to the ditch fund.'
+</code></pre>
+
+<ul>
+<li><strong>substitute()</strong> method raises a <code>KeyError</code>, when a placeholder is not supplied. <strong>safe_substitute()</strong> will leave placeholder unchanged if data is missing.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; t = Template('Return the $item to $owner.')
+&gt;&gt;&gt; d = dict(item='unladen swallow')
+&gt;&gt;&gt; t.substitute(d)
+....
+KeyError: 'owner'
+
+&gt;&gt;&gt; t.safe_substitute(d)
+'Return the unladen swallow to $owner'
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Standard Library]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/10/01/python8/"/>
+    <updated>2015-10-01T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/10/01/python8</id>
+    <content type="html"><![CDATA[<h3>Operating System Interface</h3>
+
+<p>The <strong>os</strong> module provides dozens of functions to interact wieh OS.</p>
+
+<pre><code class="python">&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.getcwd()                     # Return current working directory
+'C:\\Python35'
+&gt;&gt;&gt; os.chdir('/server/accesslogs')  # Change current working directory
+&gt;&gt;&gt; os.system('mkdir today')        # Run the command "mkdir" in system shell
+0
+</code></pre>
+
+<p>Be usre to use <code>import os</code> rather than <code>from os import *</code></p>
+
+<ul>
+<li>The built-in <strong>dir()</strong> and <strong>help()</strong> functions are useful.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; dir(os)   # return all module functions
+&gt;&gt;&gt; help(os)  # return manual page.
+</code></pre>
+
+<ul>
+<li>The <strong>shutil</strong> can provide higher level interface</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; shutil.copyfile('data.db', 'archive.db')
+'archive.db'
+
+&gt;&gt;&gt; shutil.move('/build/executables', 'installdir')
+'installdir'
+</code></pre>
+
+<!-- more -->
+
+
+<h3>File Wildcards</h3>
+
+<p><strong>glob</strong> module provides a function for making file list from directorywildcard searches</p>
+
+<pre><code class="python">&gt;&gt;&gt; import glob
+&gt;&gt;&gt; glob.glob('*.py')
+['primes.py', 'random.py', 'quote.py']
+</code></pre>
+
+<h3>Command Line Arguments</h3>
+
+<p><strong>sys</strong> module can process command line arguments. If you run <code>python demo.py one two three</code> and demo.py looks like</p>
+
+<pre><code class="python">&gt;&gt;&gt; import sys
+&gt;&gt;&gt; print(sys.argv)
+['demo.py', 'one', 'two', 'three']
+</code></pre>
+
+<h3>Error Output Redirection and Program Termination</h3>
+
+<p><strong>sys</strong> module has attributes for stdin, stdout, and stderr</p>
+
+<pre><code class="python">&gt;&gt;&gt; sys.stderr.write('Warning, log file not found starting a new \n')
+Warning, log file not found starting a new one
+</code></pre>
+
+<h3>String Pattern Matching</h3>
+
+<p><strong>re</strong> module provides regular expression tools for string processing.</p>
+
+<pre><code class="python">&gt;&gt;&gt; import re
+&gt;&gt;&gt; re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
+['foot', 'fell', 'fastest']
+
+&gt;&gt;&gt; re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
+'cat in the hat'
+</code></pre>
+
+<p>When simple capabilities are needed, string methods are preferred</p>
+
+<pre><code class="python">&gt;&gt;&gt; 'tea for too'.replace('too','two')
+'tea for two'
+</code></pre>
+
+<h3>Mathematics</h3>
+
+<ul>
+<li><strong>math</strong> module gives access to C library functions for loating point math.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import math
+&gt;&gt;&gt; math.cos(math.pi / 4)
+0.707106
+
+&gt;&gt;&gt; math.log(1024, 2)
+10.0
+</code></pre>
+
+<ul>
+<li><strong>random</strong> module provides tools for making random selections.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import random
+&gt;&gt;&gt; random.choice(['apple', 'pear', 'banana'])
+'apple'
+
+&gt;&gt;&gt; random.sample(range(100), 10)    # find 10 sampling without replacement
+[30, 83, 16,4,8,81,41,50,18,33]
+
+&gt;&gt;&gt; random.random()  # random float
+0.17970987
+
+&gt;&gt;&gt; random.randrange(6) # random integer chosen from range(6)
+4
+</code></pre>
+
+<ul>
+<li><strong>statistics</strong> module calculates basic statistical properties of numeric data</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import statistics
+&gt;&gt;&gt; data = [2.7, 1.75, 1.25, 0.25, 0.5 1.25, 3.5]
+&gt;&gt;&gt; statistics.mean(data)
+1.6071
+
+&gt;&gt;&gt; statistics.median(data)
+1.25
+
+&gt;&gt;&gt; statistics.variance(data)
+1.372023
+</code></pre>
+
+<h3>Internet Access</h3>
+
+<p><strong>urllib.request</strong> can retrieve data from URLs and <strong>smtplib</strong> can send mails.</p>
+
+<pre><code class="python">&gt;&gt;&gt; from urllib.request import urlopen
+&gt;&gt;&gt; with urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl') as response:
+        for line in response:
+            line = line.decode('utf-8')
+            if 'EST' in line or 'EDT' in line:   # look for eastern time
+                print(line)
+
+&lt;BR&gt;Nov. 25, 09:43:32 PM EST
+</code></pre>
+
+<p>If there is a mailserver running on localhost</p>
+
+<pre><code class="python">server = smtplib.SMTP('localhost')
+server.sendmail('a@example.org', 'b@example.org',
+"""
+This is mail content.
+To: b@example.org
+From: a@example.org
+""")
+server.quit()
+</code></pre>
+
+<h3>Dates and Times</h3>
+
+<p><strong>datatime</strong> module supports dates, times and time zone</p>
+
+<pre><code class="python">&gt;&gt;&gt; from datetime import date
+&gt;&gt;&gt; now = date.today()
+&gt;&gt;&gt; now
+datetime.date(2003, 12, 2)
+&gt;&gt;&gt; now.strftime("%m-%d0%y, %d%b % Y is a %A on the %d day of %B.")
+'12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December
+
+&gt;&gt;&gt; birth = date(1964, 7, 31)
+&gt;&gt;&gt; age = now - birthday
+&gt;&gt;&gt; age.days
+14368
+</code></pre>
+
+<h3>Data Compression</h3>
+
+<p>Use module <code>zlib, gzip, bz2, lzma, zipfile and tarfile</code> archive and compress data.</p>
+
+<pre><code class="python">&gt;&gt;&gt; import zlib
+&gt;&gt;&gt; s = b'witch which has which witches wrist watch'
+&gt;&gt;&gt; len(s)
+41
+&gt;&gt;&gt; t = zlib.compress(s)
+&gt;&gt; len(t)
+37
+&gt;&gt;&gt; zlib.decompress(t)
+b'witch which has which witches wrist watch'
+&gt;&gt;&gt; zlib.crc32(s)
+226805979
+</code></pre>
+
+<h3>Performance Measurement</h3>
+
+<p><strong>timeit</strong> can quickly demonstrate a modest performance advantage</p>
+
+<pre><code class="python">&gt;&gt;&gt; from timeit import Timer
+&gt;&gt;&gt; Timer('t=a;a=b;b=t','a=1;b=2').timeit()    # Test code 1
+0.5753
+
+&gt;&gt;&gt; Timer('a,b=b,a', 'a=1; b=2').timeit()      # Test code 2
+0.5496
+</code></pre>
+
+<blockquote><p>Compared with <code>timeit</code> moduel which can test in fine level of granularity, <code>profile</code> and <code>pstats</code> can test large block of codes</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Class]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/07/29/python7/"/>
+    <updated>2015-07-29T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/07/29/python7</id>
+    <content type="html"><![CDATA[<h3>Namespace and Objects</h3>
+
+<blockquote><p><code>Namespace</code> is a mapping from names to objects including built-in names (e.g. abs()), global names in a module and the local names in a function.</p></blockquote>
+
+<ul>
+<li>You can access to any names in a module by <code>modname.attributeName</code>.</li>
+<li>Any attribute in the module is writable. e.g. modname.the_answer = 42.</li>
+<li>You can also delete the attribute from the object. e.g. del modname.the_answer</li>
+<li>The built-in names is created when Python interpreter starts and never deleted.</li>
+<li>The global namesapce of a module is created when the module definition is read in, the module namespace last until the interpreter quits.</li>
+<li>The local namespace of a function is created when the function is called and deleted when the function returns or raises an unhandled exception</li>
+</ul>
+
+
+<blockquote><p><code>Scope</code> is a textual region of a Python program where a namespace is directly accessible.</p></blockquote>
+
+<ul>
+<li>&lsquo;nonlocal&rsquo; statement can be used to rebind a variable found outside.</li>
+<li>&lsquo;global&rsquo; statement can be used to indicate that paticular variables live in the global scpe and rebould here</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>For example:</p>
+
+<pre><code class="python">def scope_test():
+    def do_local():
+        spam = "local spam"                      # this can not change the spam defined in scope_test
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+    def do_global():
+        global spam
+        spam = "global spam"
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_local()
+    print("After global assignment:", spam)
+
+scope_test()
+print("In global scodpe: spam)
+</code></pre>
+
+<p>The output is:</p>
+
+<pre><code class="python">After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: nonlocal spam
+In global scope: global spam
+</code></pre>
+
+<h3>A First Look at Class</h3>
+
+<p> class definition looks like:</p>
+
+<pre><code class="python">class ClassName:
+    &lt;statement-1&gt;
+
+    ......
+
+    &lt;statement-2&gt;
+</code></pre>
+
+<p>When a class definition is entered, a new namespace is created and used as the local scope.</p>
+
+<h3>Class Objects</h3>
+
+<p>support two kinds of operations: attribute references and instantiation.</p>
+
+<ul>
+<li><em>Attribute references</em> uses the standard syntax used for all attribute references: <code>obj.name</code></li>
+</ul>
+
+
+<pre><code class="python">class MyClass:
+    i = 12345
+    def f(self):
+        return 'hello world'
+</code></pre>
+
+<p>Then <code>MyClass.i</code> and <code>MyClass.f</code> are valid attribute references, returning an integer and a function object.</p>
+
+<ul>
+<li><em>class instantiation</em> uses function notation.</li>
+</ul>
+
+
+<pre><code class="python">x = MyClass()
+</code></pre>
+
+<p>will create a new instance of the class and assigns this object to variable x.</p>
+
+<p>A class may define a special method <code>__init__()</code> for instantiation.</p>
+
+<pre><code class="python">def __init__(self):
+    self.data = []
+</code></pre>
+
+<p>The <code>__init__()</code> method may have arguments</p>
+
+<pre><code class="python">class Complex:
+    def __init__(self, realpart, imagepart):
+        self.r = realpart       # self represent the object
+        self.i = imagepart
+x = Complex(3.0, -4.5)
+x.r, x.i
+(3.0, -4.5)
+</code></pre>
+
+<h3>Instance Objects</h3>
+
+<blockquote><p>Data attributes need not be declared</p></blockquote>
+
+<pre><code class="python">x = MyClass()
+x.counter = 1
+while x.counter &lt; 10:
+    x.counter = x.counter * 2
+print(x.counter)
+del x.counter
+</code></pre>
+
+<blockquote><p>If instance attribute reference is a method. This method must be declared in the class before</p></blockquote>
+
+<p>In the above example, <code>x.f</code> is a valid method, but <code>x.i</code> is not.</p>
+
+<h3>Method Objects</h3>
+
+<p><code>object.method</code> is a method object, and can be stored and called at a later time.</p>
+
+<pre><code class="python">x = MyClass()
+xf = x.f
+while True:
+    print(xf())
+</code></pre>
+
+<p>call x.f() is equivalent to MyClass.f(x)</p>
+
+<h3>Class and Instance Variables</h3>
+
+<p>Instance variables are data unique to each instance.
+class variables are shared by all instances</p>
+
+<pre><code class="python">class Dog:
+    kind = 'canine'         # class variable shared by all instances
+    def __int__(self, name):
+        self.name = name    # instance variable unique to each instance
+
+&gt;&gt;&gt; d = Dog('Fido')
+&gt;&gt;&gt; e = Dog('Buddy')
+&gt;&gt;&gt; d.kind
+'canine'
+&gt;&gt;&gt; e.kind
+'canine'
+&gt;&gt;&gt; d.name
+'Fido'
+&gt;&gt;&gt; e.name
+'Buddy'
+</code></pre>
+
+<ul>
+<li>shared data can have problems with involing mutable objects such as <code>lists</code> and <code>dictionaries</code></li>
+</ul>
+
+
+<pre><code class="python">class Dog:
+
+    tricks = []         # Wrong!. shared value can not be used as mutable objects
+    def __int__(self,name):
+        self.name = name
+
+    def add_trick(self,trick):
+        self.tricks.append(trick)
+
+&gt;&gt;&gt; d = Dog('Fido')
+&gt;&gt;&gt; e = Dog('Buddy')
+&gt;&gt;&gt; d.add_trick('roll over')
+&gt;&gt;&gt; e.add_trick('play dead')
+&gt;&gt;&gt; d.tricks                      # unexpectedly shared by all dogs
+['roll over', 'play dead']
+</code></pre>
+
+<p>The correct design should be like this:</p>
+
+<pre><code class="python">class Dog:
+
+    def __int__(self,name):
+        self.name = name
+        self.tricks = []
+
+    def add_trick(self,trick):
+        self.tricks.append(trick)
+
+&gt;&gt;&gt; d = Dog('Fido')
+&gt;&gt;&gt; e = Dog('Buddy')
+&gt;&gt;&gt; d.add_trick('roll over')
+&gt;&gt;&gt; e.add_trick('play dead')
+&gt;&gt;&gt; d.tricks
+['roll over']
+&gt;&gt;&gt; e.tricks
+['play dead']
+</code></pre>
+
+<h3>Random Remarks</h3>
+
+<ul>
+<li>It is ok to assign an outer method into a local variable in a class</li>
+</ul>
+
+
+<pre><code class="python">def f1(self, x, y)
+    return min(x, x+y)
+
+class C:
+    f = f1
+    def g(self):
+        return 'hello world'
+    h = g
+</code></pre>
+
+<p>Now h(), g(), f() are all function method of class C</p>
+
+<ul>
+<li>In the same class, one method may call other methods by using method attributes of the <code>self</code> argument:</li>
+</ul>
+
+
+<pre><code class="python">class Bag:
+    def __init__(self):
+        self.data=[]
+    def add(self, x):
+        self.data.append(x)
+    def addtwice(self, x):
+        self.add(x)
+        self.add(x)
+</code></pre>
+
+<h3>Inheritance</h3>
+
+<ul>
+<li>syntax</li>
+</ul>
+
+
+<pre><code class="python">class DerivedClassName(BaseClassName):
+</code></pre>
+
+<p>BaseClassName must be defined in a scope containing the derived class definition.</p>
+
+<p>or</p>
+
+<pre><code class="python">class DrivedClassName(modname.BaseClassName):
+</code></pre>
+
+<ul>
+<li><p>You can use DerivedClassName() to create a new instance.</p></li>
+<li><p>Derived Classes may override methods of base class. But you can still call the method in baseclass by <code>BaseClassName.methodname(self, arguments)</code></p></li>
+<li><p>There are two built-in functions work with inheritance:</p>
+
+<ol>
+<li>isinstance(obj, int): check if obj is derived from int</li>
+<li>issubclass(bool, int): check if bool is the subclass of int</li>
+</ol>
+</li>
+</ul>
+
+
+<h3>Multiple Inheritance</h3>
+
+<pre><code class="python">class DerivedClassName(Base1, Base2, Base3):
+    &lt;statement-1&gt;
+       ...
+    &lt;statement-N&gt;
+</code></pre>
+
+<h3>Private Variables</h3>
+
+<p>The <strong><em>private</em></strong> variables in other languages do not exit in Python.
+Name Mangling is helpful to allow subclasses override methods without breaking intraclass methods.</p>
+
+<pre><code class="python">class Mapping:
+    def __init__(self, iterable):
+        self.items_list = []
+        self.__update(iterable)
+    def update(self, iterable):
+        for item in iterable:
+            self.items_list.append(item)
+    __update = update       # private copy of original update() method
+
+class MappingSubclass(Mapping):
+    def update(self, keys, values):
+        # provides new signature for update()
+        # this will not break __init__(), because __init__ work with __update.
+        for item in zip(keys, values):
+            self.items_list.append(item)
+</code></pre>
+
+<h3>Exceptions</h3>
+
+<p>Exceptions are also identified by classes</p>
+
+<pre><code class="python">class B(Exception):
+    pass
+class C(B):
+    pass
+class D(C):
+    pass
+
+for cls in [B,C,D]:
+    try:
+        raise cls()
+    except D:
+        print("D")
+    except C:
+        print("C")
+    except B:
+        print("B")
+</code></pre>
+
+<p>The result is D->C->B. If <code>except B</code> is the first, the result is B->B->B. The first matching except is triggered first.</p>
+
+<h3>Iterators</h3>
+
+<p>Most container objects can be looped over using for statement
+<code>python
+for element in [1,2,3]:
+    print(element)
+for element in (1,2,3):
+    print(element)
+for key in {'one':1, 'two':2}:
+    print(key)
+for char in "123":
+    print(char)
+for line in open("myfile.txt"):
+    print(line, end='')
+</code></p>
+
+<p>You can also define an interator and call <code>next()</code></p>
+
+<pre><code class="python">&gt;&gt;&gt; s = 'abc'
+&gt;&gt;&gt; it = iter(s)             #  create an iterator
+&gt;&gt;&gt; it
+&lt;iterator object at 0x00A1DB50&gt;
+&gt;&gt;&gt; next(it)
+'a'
+</code></pre>
+
+<blockquote><p>In you class, you can define <code>__iter__()</code> method which returns an object with a <code>__next__()</code> method. If the class defines <code>__next__()</code>, then <code>__iter__()</code> can just return self</p></blockquote>
+
+<pre><code class="python">class Reverse:
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index-1
+        return self.data[self.index]
+
+
+&gt;&gt;&gt; rev = Reverse('spam')
+&gt;&gt;&gt; iter(rev)
+&lt;__main__.Reverse object at 0x00A1DB50&gt;
+
+&gt;&gt;&gt; for char in rev:
+        print(char)
+m
+a
+p
+s
+</code></pre>
+
+<h3>Generators</h3>
+
+<p>Generators are written like regular functions but use <code>yield</code> statement when then want to return data.</p>
+
+<pre><code class="python">def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+
+&gt;&gt;&gt; for char in reverse('golf'):
+        print(char)
+
+f
+l
+o
+g
+</code></pre>
+
+<ul>
+<li>Generator Expressions</li>
+</ul>
+
+
+<pre><code class="python">sum (i*i for i in range(10))
+285
+
+xvec = [10,20,30]
+yvec = [7,5,3]
+sum(x*y for x,y in zip(xvec, yvec))    # dot product
+260
+
+from math import pi, sin
+sine_table = {x: sin(x*pi/180) for x in range(0, 91)}
+unique_words = set(word for line in page for word in line.split())
+valedictorian = max((student.gpa, student.name) for student in graduates)
+
+data = 'golf'
+list(data[i] for i in range (len(data)-1, -1, -1))
+['f', 'l', 'o', 'g']
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Errors and Exceptions]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/07/20/python6/"/>
+    <updated>2015-07-20T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/07/20/python6</id>
+    <content type="html"><![CDATA[<p>There are two types of erros: Syntax Errors and Exceptions</p>
+
+<h3>Syntax Errors</h3>
+
+<pre><code class="python">&gt;&gt;&gt; while True print('Hello world')
+File "&lt;stdin&gt;", line 1, in ?
+Syntax Error: invalid syntax
+</code></pre>
+
+<p>A colon is missing before print</p>
+
+<!-- more -->
+
+
+<h3>Exceptions</h3>
+
+<p>Even if a statement is syntactically correct, it may cause an exception.</p>
+
+<p>For example:</p>
+
+<pre><code class="python">&gt;&gt;&gt; 10 * (1/0)  # ZeroDivisionError
+&gt;&gt;&gt; 4 + spam*3  # NameError
+&gt;&gt;&gt; '2' + 2     # TypeError
+</code></pre>
+
+<h3>Handle Exceptions</h3>
+
+<pre><code class="python">&gt;&gt;&gt; while True:
+        try:
+            x = int(input("Please enter a number: "))
+            break;
+        except ValueError:
+            print("Oops! That was not a valid number. Try again...")
+</code></pre>
+
+<ul>
+<li><p><code>try</code> statement will work as follows:
+<strong> statements between try and except are executed.
+</strong> If no exception occurs, try statement is finished.
+<strong> If one exception occurs, the rest of the statements will be skipped.
+</strong> If the exception type matches the name after <strong>except</strong> keyword.The except statement will be executed, then execution continues after the try
+** If the exception type does not match all except names. It is an unhandled exception and execution will stop.</p></li>
+<li><p>Multiple excepts may share the same except statement.</p></li>
+</ul>
+
+
+<pre><code class="python">except (RuntimeError, TypeError, NameError):
+       except statement.
+</code></pre>
+
+<ul>
+<li>The last except clause can be used as a wildcard to alert the programmer and re-raise the exception.</li>
+</ul>
+
+
+<pre><code class="python">import sys
+
+try:
+    f = open('myfile.txt')
+    s = f.read()
+    i = int(s.strip())
+except OSError as err:
+    print("OS error: {0}".format(err))
+except ValueError:
+    print("Cloud not convert data to an integer.")
+except:
+    print("Unexpected error:", sys.exec_info()[0])
+    raise`
+</code></pre>
+
+<ul>
+<li><code>try ... except</code> can has an optional <code>else clause</code>. The <code>else clause</code> will be used if <code>try</code> does not raise an exception.</li>
+</ul>
+
+
+<pre><code class="python">for arg in sys.argv[1:]:
+    try: 
+        f = open(arg, 'r')
+    except IOError:
+        print('cannot open', arg)
+    else:
+        print(arg, 'has', len(f.readlines()), 'lines')
+        f.close()
+</code></pre>
+
+<ul>
+<li>You can specify a variable after the exception name. The variable is stored in <code>instance.args</code></li>
+</ul>
+
+
+<pre><code class="python">try: 
+    raise Exception('spam', 'eggs')
+except Exception as inst:
+    print(type(inst))    # print the type of exception instance
+    print(inst.args)     # print the arguments
+    print(inst)          # print the arguments
+    x,y = inst.args      # unpack the args
+    print(x)
+    print(y)
+
+&lt;class 'Exception'&gt;
+('spam', 'eggs')
+('spam', 'eggs')
+x = spam
+y = eggs
+</code></pre>
+
+<h3>Raising Exceptions</h3>
+
+<ul>
+<li><code>raise</code> statement allows the programmer foce a specified except to occur. The except must be an exception instance or an exception class</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; raise NameError('HiThere')
+
+Traceback (most recent call last):
+    File "&lt;stdin&gt;", line 1, in ?
+NameError: HiThere
+</code></pre>
+
+<ul>
+<li>If you do not want to handle the exceptions, you can use <code>raise</code> to re-raise the exception</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; try:
+        raise NameError('HiThere')
+    except NameError:
+        print('An exception flew by!')
+        raise         # re-raise the NameError
+
+An exception flew by!
+Traceback (most recent call last):
+    File "&lt;stdin&gt;", line2, in ?
+NameError: HiThere
+</code></pre>
+
+<h3>User-defined Exceptions</h3>
+
+<ul>
+<li>The new exceptions should be derived from <code>Exception</code> class</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; class MyError(Exception):
+    def __int__(self, value):           # override the default __init__()
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+
+&gt;&gt;&gt; try:
+        raise MyError(2*2)
+    except MyError as e:
+        print('My exception occurred, value:', e.value)
+
+My exception occurred, value: 4
+
+&gt;&gt;&gt; raise MyError('oopos!')
+
+Traceback (most recent call last):
+    File "&lt;stdin&gt;", line1, in ?
+__main__.MyError: 'oops!'
+</code></pre>
+
+<ul>
+<li>It is a common practice to create a base class for exceptions then define subclass to create specific exception.</li>
+</ul>
+
+
+<pre><code class="python">class Error (Exception):    # base class
+
+class InputError(Error):    # inputError
+    def __int__(self, expression, message):
+        self.expression = expression
+        self.message = message
+
+class TransitionError(Error)
+    def __int__(self, previous, next, message):
+        self.previous = previous
+        self.next = next
+        self.message = message
+</code></pre>
+
+<h3>Predefined Clean-up Actions</h3>
+
+<p><code>with</code> statement allows objects to be cleaned up after it is not used.</p>
+
+<pre><code class="python">with open ("myfile.txt") as f:
+    for line in f:
+        print(line, end="")
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Input and Output]]></title>
+    <link href="http://sdytlm.github.io/blog/2015/06/15/python5/"/>
+    <updated>2015-06-15T00:00:00+08:00</updated>
+    <id>http://sdytlm.github.io/blog/2015/06/15/python5</id>
+    <content type="html"><![CDATA[<h3>Formatted Output</h3>
+
+<ul>
+<li><code>str()</code> return representations of values which are fairly human-readable,</li>
+<li><code>repr()</code> return representations which can be read by interpreter.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; s = 'Hello, world.'
+&gt;&gt;&gt; str(s)
+'Hello, world.'
+&gt;&gt;&gt; repr(s)
+"'Hello, world.'"    # repr() of a string adds string quotes and backslashes
+&gt;&gt;&gt; hello = 'hello, world\n'
+&gt;&gt;&gt; hellos = repr(hello)
+&gt;&gt;&gt; print(hellos)
+'Hello, world\n'
+&gt;&gt;&gt; x = 10*3.25
+&gt;&gt;&gt; s = 'The value of x is'+'repr(x)
+&gt;&gt;&gt; print(s)
+&gt;&gt;&gt; repr((x,y, ('spam','eggs')))  # any object can be used
+"(32.5,40000,('spam','eggs'))"
+</code></pre>
+
+<!-- more -->
+
+
+<h3>Write A Table</h3>
+
+<ul>
+<li><code>str.rjust(padding size)</code>: right-justifies a string of a given width by padding it with spaces on the left. <code>str.ljust()</code> and <code>str.center()</code> are similar.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; for x in range(1, 11):
+    print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
+
+1  1   1
+2  4   8
+3  9  27 
+</code></pre>
+
+<p>Or</p>
+
+<pre><code class="python">&gt;&gt;&gt; for x in range(1, 11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x, x*x, x*x*x))
+</code></pre>
+
+<ul>
+<li><code>str.zfill()</code>: pads a numeric string on the left with zeros. Understands <code>+</code> and <code>-</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; '12'.zfill(5)
+'00012'
+&gt;&gt;&gt; '-3.14'.zfill(7)
+'-003.14'
+&gt;&gt;&gt; '3.1415926'.zfill(5)
+'3.1415926'
+</code></pre>
+
+<h3><code>str.format()</code></h3>
+
+<ul>
+<li>Basic Usage</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; print('We are the {} who say "{}!"'.format('knights', 'Ni'))
+
+We are the knights who say "Ni!"
+</code></pre>
+
+<ul>
+<li>The anything with brackets will be replaced by the objects passed into the str.format(). You can use number in the brackets to refer to the position.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; print('{0} and {1}'.format('spam', 'eggs'))
+
+spam and eggs
+&gt;&gt;&gt; print('{1} and {0}'.format('spam', 'eggs'))
+
+eggs and spam
+</code></pre>
+
+<ul>
+<li>If you set up keywords within brackets, their values can be referred by using the name of argument.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; print('This {food} is {adjective}.'. format(food='spam', adjective='absolutely horrible'))
+
+This spam is absolutely horrible.
+</code></pre>
+
+<ul>
+<li>You can combin the number and keyword</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred', other='Georg'))
+
+The story of Bill, Manfred, and Georg.
+</code></pre>
+
+<ul>
+<li><code>!a (ascii())</code>, <code>!s (str())</code> and <code>!r (repr())</code> can be used to convert the value before it is formateed</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import math
+&gt;&gt;&gt; print('The value of PI is approximately {}.'.format(math.pi))
+
+The value of PI is approximately 3.141592653559
+&gt;&gt;&gt; print('The value of PI is approximately {!r}.'.format(math.pi))
+
+The value of PI is approximately 3.141592653589793
+</code></pre>
+
+<ul>
+<li>An optional <code>:</code> and format specifier can follow the field name.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import math
+&gt;&gt;&gt; print('The value of PI is approximately {0:.3f}.'.format(math.pi))
+
+The value of PI is approximately 3.142       # three places after the decimal.
+</code></pre>
+
+<ul>
+<li>Passing an integer after the &lsquo;:&rsquo; will cause that field to be a minimum number of characters wide.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
+&gt;&gt;&gt; for name, phone in table.items():
+&gt;&gt;&gt;     print('{0:10} ==&gt; {1:10d}'.format(name, phone))
+
+Jack      ==&gt;      4098
+Dcab      ==&gt;      7678
+Sjoerd    ==&gt;      4127
+</code></pre>
+
+<ul>
+<li>You can reference the variables to be formatted by name instead of position. Use <code>dict</code> and <code>[ ]</code></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
+&gt;&gt;&gt; print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]: d}; Dcab: {0[Dcab]:d}'.format(table))
+
+Jack 4098; Sjoerd: 4127; Dcab:7678
+</code></pre>
+
+<p>Or You can pass the table as keyword arguments with <code>**</code> notation.</p>
+
+<pre><code class="python">&gt;&gt;&gt; table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab':7678}
+&gt;&gt;&gt; print('Jack:{Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table))
+
+Jack: 4098; Sjoerd: 4127; Dcab: 7678
+</code></pre>
+
+<ul>
+<li><code>%</code> can also be used for string formatting, like printf()</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; import math
+&gt;&gt;&gt; print('The value of PI is approximately %5.3f.' % math.pi)
+
+The value of PI is approximately 3.142
+</code></pre>
+
+<h3>Reading and Writing Files</h3>
+
+<p> <code>open()</code> is used with two arguments <code>open(filename, mode)</code> and return a file object</p>
+
+<pre><code class="python">&gt;&gt;&gt; f = open('workfile', 'w')
+</code></pre>
+
+<p><code>filename</code> is a string that contains the filename.
+<code>mode</code> ca be <code>r</code> when file is read only, <code>w</code> for only writing and <code>a</code> opens the file for appending. <code>r+</code> opens the file for both reading and writing.
+<code>b</code> open the file in binary mode. In normal files are opened in text mode</p>
+
+<blockquote><p>By default, when reading in text mode, line endings (\n or \r\n) will be read.</p></blockquote>
+
+<p>After you create the file object <code>f</code>. you can do the following things.</p>
+
+<ul>
+<li><code>f.read()</code> can read a file and return the content as a string. You can also specify how much to read by f.read(size). If the end of the file has been reached, f.read() will return an empty string (&lsquo;&rsquo;)</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; f.read()
+`This is the entire file.\n'
+&gt;&gt;&gt; f.read()
+''
+</code></pre>
+
+<ul>
+<li><code>f.readline()</code> can read a single line from the file. A newline character (\n) will be left at the end of the string. When the end of file is reached, an empty string will be returned. A blank line is represented by &lsquo;\n&rsquo;.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; f.readline()
+`This is the first line of the file.\n'
+&gt;&gt;&gt; f.readline()
+`Second line of the file\n'
+&gt;&gt;&gt; f.readline()
+''
+</code></pre>
+
+<ul>
+<li>Read a whole file</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; for line in f
+&gt;&gt;&gt;   print(line, end='')
+This is the first line of the file.
+Second line of the file
+</code></pre>
+
+<blockquote><p>If you want to read all the lines of a file in a list, you can either <code>list(f)</code> or f.readlines().</p></blockquote>
+
+<ul>
+<li><code>f.write(string)</code> writes the contents of <code>string</code> to the file and return the number of characters written.</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; f.write('This is a test\n')
+15
+</code></pre>
+
+<blockquote><p>If you write something other than a string, you need to convert it to a string</p></blockquote>
+
+<pre><code class="python">&gt;&gt;&gt; value = ('the answer', 42)
+&gt;&gt;&gt; s = str(value)
+&gt;&gt;&gt; f.write(s)    # write 18 characters
+18
+</code></pre>
+
+<ul>
+<li><p><code>f.tell()</code> returns an integer giving the file object&rsquo;s current position in the file.</p></li>
+<li><p><code>f.seek(offset, from_what)</code> change the file object&rsquo;s position.
+<strong> By default, <code>from_what</code> is 0: from the begining of the file.
+</strong> 1: use the current position
+** 2: use the end of the file.</p></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; f = open('workfile', 'rb+')
+&gt;&gt;&gt; f.write(b'0123456789abcdef')
+16
+&gt;&gt;&gt; f.seek(5)                 # Go to the 6th byte in the file
+5
+&gt;&gt;&gt; f. read(1)
+b'5'
+&gt;&gt;&gt; f.seek(-3,2)              # Go to the 3rd byte before the end
+13
+&gt;&gt;&gt; f.read(1)
+b'd'
+</code></pre>
+
+<p>In text files, ONLY seeks relative to the beginning of the file. <strong>Offset values</strong> must be 0 or f.tell()</p>
+
+<ul>
+<li><p><code>f.close</code> can close the file you opened.</p></li>
+<li><p>It is good to use <code>with</code> keyword when dealing with file objects.</p></li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; with open('workfile', 'r') as f:
+    read_data = f.read()
+&gt;&gt;&gt; f.closed
+True
+</code></pre>
+
+<h3>Saving structured data with JSON</h3>
+
+<ul>
+<li><code>json.dumps()</code> serialize the data</li>
+</ul>
+
+
+<pre><code class="python">&gt;&gt;&gt; json.dumps([1, 'simple', 'list'])
+'[1,"simple", "list"]'
+
+&gt;&gt;&gt; json.dump(x,f)  # serialize the object x to text file f
+</code></pre>
+
+<ul>
+<li><code>json.load()</code> deserialize the data</li>
+</ul>
+
+
+<pre><code class="python">x = json.load(f)
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
